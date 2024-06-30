@@ -1,0 +1,196 @@
+30.06.2024 14:19:25.300 Info [P:3696 T:2520] - TDM.DataModuleCreate Begin
+30.06.2024 14:19:25.300 Info [P:3696 T:2520] - TDM.DataModuleCreate: D:\GitHub\Account\project\Win32\Debug\
+30.06.2024 14:19:25.300 Info [P:3696 T:2520] - TDM.DataModuleCreate: MSSQL
+30.06.2024 14:19:25.300 Info [P:3696 T:2520] - TDM.DataModuleCreate End
+30.06.2024 14:20:53.404 Info [P:10072 T:9596] - TDM.DataModuleCreate Begin
+30.06.2024 14:20:53.404 Info [P:10072 T:9596] - TDM.DataModuleCreate: D:\GitHub\Account\project\Win32\Debug\
+30.06.2024 14:20:53.404 Info [P:10072 T:9596] - TDM.DataModuleCreate End
+30.06.2024 14:22:16.995 Info [P:5712 T:6812] - TDM.DataModuleCreate Begin
+30.06.2024 14:22:16.995 Info [P:5712 T:6812] - TDM.DataModuleCreate: D:\GitHub\Account\project\Win32\Debug\
+30.06.2024 14:22:16.995 Info [P:5712 T:6812] - TDM.DataModuleCreate End
+30.06.2024 14:24:45.592 Info [P:2640 T:10512] - TDM.DataModuleCreate Begin
+30.06.2024 14:24:45.592 Info [P:2640 T:10512] - TDM.DataModuleCreate: D:\GitHub\Account\project\Win32\Debug\
+30.06.2024 14:24:45.592 Info [P:2640 T:10512] - TDM.DataModuleCreate End
+30.06.2024 14:25:08.810 Info [P:4536 T:10512] - TDM.DataModuleCreate Begin
+30.06.2024 14:25:08.810 Info [P:4536 T:10512] - TDM.DataModuleCreate: D:\GitHub\Account\project\Win32\Debug\
+30.06.2024 14:25:08.810 Info [P:4536 T:10512] - TDM.DataModuleCreate End
+30.06.2024 14:33:29.768 Info [P:3284 T:13460] - TDM.DataModuleCreate Begin
+30.06.2024 14:33:29.768 Info [P:3284 T:13460] - TDM.DataModuleCreate: D:\GitHub\Account\project\Win32\Debug\
+30.06.2024 14:33:29.768 Info [P:3284 T:13460] - TDM.DataModuleCreate End
+30.06.2024 14:34:02.347 Info [P:4080 T:13340] - TDM.DataModuleCreate Begin
+30.06.2024 14:34:02.347 Info [P:4080 T:13340] - TDM.DataModuleCreate: D:\GitHub\Account\project\Win32\Debug\
+30.06.2024 14:34:02.347 Info [P:4080 T:13340] - TDM.DataModuleCreate End
+30.06.2024 14:34:11.538 Info [P:7684 T:6836] - TDM.DataModuleCreate Begin
+30.06.2024 14:34:11.538 Info [P:7684 T:6836] - TDM.DataModuleCreate: D:\GitHub\Account\project\Win32\Debug\
+30.06.2024 14:34:11.538 Info [P:7684 T:6836] - TDM.DataModuleCreate End
+30.06.2024 14:34:17.529 Info [P:7684 T:6836] - TDM.dbConnect Begin
+30.06.2024 14:34:17.529 Info [P:7684 T:6836] - TUniMainModule Параметры подключения
+30.06.2024 14:34:17.529 Info [P:7684 T:6836] - TUniMainModule ConnectionDefFileName: D:\GitHub\Account\project\Win32\Debug\Connection.ini
+30.06.2024 14:34:17.529 Info [P:7684 T:6836] - TUniMainModule FDConnection DriverID: MSSQL
+30.06.2024 14:34:17.529 Info [P:7684 T:6836] - TUniMainModule DriverID: MSSQL
+30.06.2024 14:34:17.529 Info [P:7684 T:6836] - TUniMainModule Server: DESKTOP-5SNO83B
+30.06.2024 14:34:17.529 Info [P:7684 T:6836] - TUniMainModule Database: 
+30.06.2024 14:34:17.529 Info [P:7684 T:6836] - TUniMainModule User_name:
+30.06.2024 14:34:17.623 Info [P:7684 T:6836] - TDM.dbConnect Begin
+30.06.2024 14:35:07.966 Info [P:2560 T:4384] - TDM.DataModuleCreate Begin
+30.06.2024 14:35:07.966 Info [P:2560 T:4384] - TDM.DataModuleCreate: D:\GitHub\Account\project\Win32\Debug\
+30.06.2024 14:35:07.966 Info [P:2560 T:4384] - TDM.DataModuleCreate End
+30.06.2024 14:37:25.028 Info [P:13172 T:10444] - TDM.DataModuleCreate Begin
+30.06.2024 14:37:25.028 Info [P:13172 T:10444] - TDM.DataModuleCreate: D:\GitHub\Account\project\Win32\Debug\
+30.06.2024 14:37:25.028 Info [P:13172 T:10444] - TDM.DataModuleCreate End
+30.06.2024 14:37:32.672 Info [P:3856 T:9748] - TDM.DataModuleCreate Begin
+30.06.2024 14:37:32.672 Info [P:3856 T:9748] - TDM.DataModuleCreate: D:\GitHub\Account\project\Win32\Debug\
+30.06.2024 14:37:32.672 Info [P:3856 T:9748] - TDM.DataModuleCreate End
+30.06.2024 14:37:37.834 Info [P:3856 T:9748] - TDM.dbConnect Begin
+30.06.2024 14:37:37.834 Info [P:3856 T:9748] - TUniMainModule Параметры подключения
+30.06.2024 14:37:37.834 Info [P:3856 T:9748] - TUniMainModule ConnectionDefFileName: D:\GitHub\Account\project\Win32\Debug\Connection.ini
+30.06.2024 14:37:37.834 Info [P:3856 T:9748] - TUniMainModule FDConnection DriverID: MSSQL
+30.06.2024 14:37:37.834 Info [P:3856 T:9748] - TUniMainModule DriverID: MSSQL
+30.06.2024 14:37:37.834 Info [P:3856 T:9748] - TUniMainModule Server: DESKTOP-5SNO83B
+30.06.2024 14:37:37.834 Info [P:3856 T:9748] - TUniMainModule Database: 
+30.06.2024 14:37:37.834 Info [P:3856 T:9748] - TUniMainModule User_name:
+30.06.2024 14:37:37.868 Info [P:3856 T:9748] - TDM.dbConnect Begin
+30.06.2024 14:37:45.727 Info [P:14132 T:10628] - TDM.DataModuleCreate Begin
+30.06.2024 14:37:45.727 Info [P:14132 T:10628] - TDM.DataModuleCreate: D:\GitHub\Account\project\Win32\Debug\
+30.06.2024 14:37:45.727 Info [P:14132 T:10628] - TDM.DataModuleCreate End
+30.06.2024 14:37:50.403 Info [P:14132 T:10628] - TDM.dbConnect Begin
+30.06.2024 14:37:50.403 Info [P:14132 T:10628] - TUniMainModule Параметры подключения
+30.06.2024 14:37:50.403 Info [P:14132 T:10628] - TUniMainModule ConnectionDefFileName: D:\GitHub\Account\project\Win32\Debug\Connection.ini
+30.06.2024 14:37:50.403 Info [P:14132 T:10628] - TUniMainModule FDConnection DriverID: MSSQL
+30.06.2024 14:37:50.403 Info [P:14132 T:10628] - TUniMainModule DriverID: MSSQL
+30.06.2024 14:37:50.403 Info [P:14132 T:10628] - TUniMainModule Server: DESKTOP-5SNO83B
+30.06.2024 14:37:50.403 Info [P:14132 T:10628] - TUniMainModule Database: 
+30.06.2024 14:37:50.403 Info [P:14132 T:10628] - TUniMainModule User_name:
+30.06.2024 14:37:50.419 Info [P:14132 T:10628] - TDM.dbConnect Begin
+30.06.2024 14:37:59.764 Info [P:14132 T:10628] - TDM.dbConnect Begin
+30.06.2024 14:37:59.764 Info [P:14132 T:10628] - TUniMainModule Параметры подключения
+30.06.2024 14:37:59.764 Info [P:14132 T:10628] - TUniMainModule ConnectionDefFileName: D:\GitHub\Account\project\Win32\Debug\Connection.ini
+30.06.2024 14:37:59.764 Info [P:14132 T:10628] - TUniMainModule FDConnection DriverID: 
+30.06.2024 14:37:59.764 Info [P:14132 T:10628] - TUniMainModule DriverID: MSSQL
+30.06.2024 14:37:59.764 Info [P:14132 T:10628] - TUniMainModule Server: DESKTOP-5SNO83B
+30.06.2024 14:37:59.764 Info [P:14132 T:10628] - TUniMainModule Database: 
+30.06.2024 14:37:59.764 Info [P:14132 T:10628] - TUniMainModule User_name:
+30.06.2024 14:37:59.786 Info [P:14132 T:10628] - TDM.dbConnect Begin
+30.06.2024 14:38:01.076 Info [P:14132 T:10628] - TDM.dbConnect Begin
+30.06.2024 14:38:01.076 Info [P:14132 T:10628] - TUniMainModule Параметры подключения
+30.06.2024 14:38:01.076 Info [P:14132 T:10628] - TUniMainModule ConnectionDefFileName: D:\GitHub\Account\project\Win32\Debug\Connection.ini
+30.06.2024 14:38:01.076 Info [P:14132 T:10628] - TUniMainModule FDConnection DriverID: 
+30.06.2024 14:38:01.076 Info [P:14132 T:10628] - TUniMainModule DriverID: MSSQL
+30.06.2024 14:38:01.076 Info [P:14132 T:10628] - TUniMainModule Server: DESKTOP-5SNO83B
+30.06.2024 14:38:01.076 Info [P:14132 T:10628] - TUniMainModule Database: 
+30.06.2024 14:38:01.076 Info [P:14132 T:10628] - TUniMainModule User_name:
+30.06.2024 14:38:01.092 Info [P:14132 T:10628] - TDM.dbConnect Begin
+30.06.2024 14:38:03.929 Info [P:14132 T:10628] - TDM.dbConnect Begin
+30.06.2024 14:38:03.929 Info [P:14132 T:10628] - TUniMainModule Параметры подключения
+30.06.2024 14:38:03.929 Info [P:14132 T:10628] - TUniMainModule ConnectionDefFileName: D:\GitHub\Account\project\Win32\Debug\Connection.ini
+30.06.2024 14:38:03.929 Info [P:14132 T:10628] - TUniMainModule FDConnection DriverID: 
+30.06.2024 14:38:03.929 Info [P:14132 T:10628] - TUniMainModule DriverID: MSSQL
+30.06.2024 14:38:03.929 Info [P:14132 T:10628] - TUniMainModule Server: DESKTOP-5SNO83B
+30.06.2024 14:38:03.929 Info [P:14132 T:10628] - TUniMainModule Database: 
+30.06.2024 14:38:03.929 Info [P:14132 T:10628] - TUniMainModule User_name:
+30.06.2024 14:38:03.944 Info [P:14132 T:10628] - TDM.dbConnect Begin
+30.06.2024 14:42:03.532 Info [P:7344 T:4900] - TDM.DataModuleCreate Begin
+30.06.2024 14:42:03.532 Info [P:7344 T:4900] - TDM.DataModuleCreate: D:\GitHub\Account\project\Win32\Debug\
+30.06.2024 14:42:03.532 Info [P:7344 T:4900] - TDM.DataModuleCreate End
+30.06.2024 14:42:04.868 Info [P:7344 T:4900] - TDM.dbConnect Begin
+30.06.2024 14:42:04.868 Info [P:7344 T:4900] - TUniMainModule Параметры подключения
+30.06.2024 14:42:04.868 Info [P:7344 T:4900] - TUniMainModule ConnectionDefFileName: D:\GitHub\Account\project\Win32\Debug\Connection.ini
+30.06.2024 14:42:04.868 Info [P:7344 T:4900] - TUniMainModule FDConnection DriverID: MSSQL
+30.06.2024 14:42:04.868 Info [P:7344 T:4900] - TUniMainModule DriverID: MSSQL
+30.06.2024 14:42:04.868 Info [P:7344 T:4900] - TUniMainModule Server: DESKTOP-5SNO83B
+30.06.2024 14:42:04.868 Info [P:7344 T:4900] - TUniMainModule Database: 
+30.06.2024 14:42:04.868 Info [P:7344 T:4900] - TUniMainModule User_name:
+30.06.2024 14:42:04.897 Info [P:7344 T:4900] - TDM.dbConnect Begin
+30.06.2024 14:42:20.751 Info [P:7344 T:4900] - TDM.dbConnect Begin
+30.06.2024 14:42:20.751 Info [P:7344 T:4900] - TUniMainModule Параметры подключения
+30.06.2024 14:42:20.751 Info [P:7344 T:4900] - TUniMainModule ConnectionDefFileName: D:\GitHub\Account\project\Win32\Debug\Connection.ini
+30.06.2024 14:42:20.751 Info [P:7344 T:4900] - TUniMainModule FDConnection DriverID: 
+30.06.2024 14:42:20.751 Info [P:7344 T:4900] - TUniMainModule DriverID: MSSQL
+30.06.2024 14:42:20.751 Info [P:7344 T:4900] - TUniMainModule Server: DESKTOP-5SNO83B
+30.06.2024 14:42:20.751 Info [P:7344 T:4900] - TUniMainModule Database: 
+30.06.2024 14:42:20.751 Info [P:7344 T:4900] - TUniMainModule User_name:
+30.06.2024 14:42:20.767 Info [P:7344 T:4900] - TDM.dbConnect Begin
+30.06.2024 14:42:28.305 Info [P:10628 T:956] - TDM.DataModuleCreate Begin
+30.06.2024 14:42:28.305 Info [P:10628 T:956] - TDM.DataModuleCreate: D:\GitHub\Account\project\Win32\Debug\
+30.06.2024 14:42:28.305 Info [P:10628 T:956] - TDM.DataModuleCreate End
+30.06.2024 14:49:09.387 Info [P:15036 T:14932] - TDM.DataModuleCreate Begin
+30.06.2024 14:49:09.387 Info [P:15036 T:14932] - TDM.DataModuleCreate: D:\GitHub\Account\project\Win32\Debug\
+30.06.2024 14:49:09.387 Info [P:15036 T:14932] - TDM.DataModuleCreate End
+30.06.2024 14:49:23.291 Info [P:14472 T:5524] - TDM.DataModuleCreate Begin
+30.06.2024 14:49:23.291 Info [P:14472 T:5524] - TDM.DataModuleCreate: D:\GitHub\Account\project\Win32\Debug\
+30.06.2024 14:49:23.291 Info [P:14472 T:5524] - TDM.DataModuleCreate End
+30.06.2024 14:50:20.113 Info [P:9576 T:6112] - TDM.DataModuleCreate Begin
+30.06.2024 14:50:20.113 Info [P:9576 T:6112] - TDM.DataModuleCreate: D:\GitHub\Account\project\Win32\Debug\
+30.06.2024 14:50:20.113 Info [P:9576 T:6112] - TDM.DataModuleCreate End
+30.06.2024 14:50:39.441 Info [P:14628 T:9956] - TDM.DataModuleCreate Begin
+30.06.2024 14:50:39.441 Info [P:14628 T:9956] - TDM.DataModuleCreate: D:\GitHub\Account\project\Win32\Debug\
+30.06.2024 14:50:39.441 Info [P:14628 T:9956] - TDM.DataModuleCreate End
+30.06.2024 14:50:50.266 Info [P:14628 T:9956] - TDM.dbConnect Begin
+30.06.2024 14:50:50.281 Info [P:14628 T:9956] - TUniMainModule Параметры подключения
+30.06.2024 14:50:50.281 Info [P:14628 T:9956] - TUniMainModule ConnectionDefFileName: D:\GitHub\Account\project\Win32\Debug\Connection.ini
+30.06.2024 14:50:50.281 Info [P:14628 T:9956] - TUniMainModule FDConnection DriverID: MSSQL
+30.06.2024 14:50:50.281 Info [P:14628 T:9956] - TUniMainModule DriverID: MSSQL
+30.06.2024 14:50:50.281 Info [P:14628 T:9956] - TUniMainModule Server: DESKTOP-5SNO83B
+30.06.2024 14:50:50.281 Info [P:14628 T:9956] - TUniMainModule Database: 
+30.06.2024 14:50:50.281 Info [P:14628 T:9956] - TUniMainModule User_name:
+30.06.2024 14:50:50.297 Info [P:14628 T:9956] - TDM.dbConnect Begin
+30.06.2024 14:55:47.788 Info [P:6788 T:14348] - TDM.DataModuleCreate Begin
+30.06.2024 14:55:47.788 Info [P:6788 T:14348] - TDM.DataModuleCreate: D:\GitHub\Account\project\Win32\Debug\
+30.06.2024 14:55:47.788 Info [P:6788 T:14348] - TDM.DataModuleCreate End
+30.06.2024 14:55:54.581 Info [P:6788 T:14348] - TDM.dbConnect Begin
+30.06.2024 14:55:54.581 Info [P:6788 T:14348] - TUniMainModule Параметры подключения
+30.06.2024 14:55:54.581 Info [P:6788 T:14348] - TUniMainModule ConnectionDefFileName: D:\GitHub\Account\project\Win32\Debug\Connection.ini
+30.06.2024 14:55:54.581 Info [P:6788 T:14348] - TUniMainModule FDConnection DriverID: MSSQL
+30.06.2024 14:55:54.581 Info [P:6788 T:14348] - TUniMainModule DriverID: MSSQL
+30.06.2024 14:55:54.581 Info [P:6788 T:14348] - TUniMainModule Server: DESKTOP-5SNO83B
+30.06.2024 14:55:54.581 Info [P:6788 T:14348] - TUniMainModule Database: 
+30.06.2024 14:55:54.581 Info [P:6788 T:14348] - TUniMainModule User_name:
+30.06.2024 14:55:54.612 Info [P:6788 T:14348] - TDM.dbConnect Begin
+30.06.2024 14:55:57.435 Info [P:8740 T:9104] - TDM.DataModuleCreate Begin
+30.06.2024 14:55:57.435 Info [P:8740 T:9104] - TDM.DataModuleCreate: D:\GitHub\Account\project\Win32\Debug\
+30.06.2024 14:55:57.435 Info [P:8740 T:9104] - TDM.DataModuleCreate End
+30.06.2024 14:56:00.885 Info [P:8740 T:9104] - TDM.dbConnect Begin
+30.06.2024 14:56:00.885 Info [P:8740 T:9104] - TUniMainModule Параметры подключения
+30.06.2024 14:56:00.885 Info [P:8740 T:9104] - TUniMainModule ConnectionDefFileName: D:\GitHub\Account\project\Win32\Debug\Connection.ini
+30.06.2024 14:56:00.885 Info [P:8740 T:9104] - TUniMainModule FDConnection DriverID: MSSQL
+30.06.2024 14:56:00.885 Info [P:8740 T:9104] - TUniMainModule DriverID: MSSQL
+30.06.2024 14:56:00.885 Info [P:8740 T:9104] - TUniMainModule Server: DESKTOP-5SNO83B
+30.06.2024 14:56:00.885 Info [P:8740 T:9104] - TUniMainModule Database: 
+30.06.2024 14:56:00.885 Info [P:8740 T:9104] - TUniMainModule User_name:
+30.06.2024 14:56:00.902 Info [P:8740 T:9104] - TDM.dbConnect Begin
+30.06.2024 14:56:27.513 Info [P:9792 T:14988] - TDM.DataModuleCreate Begin
+30.06.2024 14:56:27.513 Info [P:9792 T:14988] - TDM.DataModuleCreate: D:\GitHub\Account\project\Win32\Debug\
+30.06.2024 14:56:27.513 Info [P:9792 T:14988] - TDM.DataModuleCreate End
+30.06.2024 14:56:31.246 Info [P:9792 T:14988] - TDM.dbConnect Begin
+30.06.2024 14:56:31.246 Info [P:9792 T:14988] - TUniMainModule Параметры подключения
+30.06.2024 14:56:31.246 Info [P:9792 T:14988] - TUniMainModule ConnectionDefFileName: D:\GitHub\Account\project\Win32\Debug\Connection.ini
+30.06.2024 14:56:31.246 Info [P:9792 T:14988] - TUniMainModule FDConnection DriverID: MSSQL
+30.06.2024 14:56:31.246 Info [P:9792 T:14988] - TUniMainModule DriverID: MSSQL
+30.06.2024 14:56:31.246 Info [P:9792 T:14988] - TUniMainModule Server: DESKTOP-5SNO83B
+30.06.2024 14:56:31.246 Info [P:9792 T:14988] - TUniMainModule Database: 
+30.06.2024 14:56:31.246 Info [P:9792 T:14988] - TUniMainModule User_name:
+30.06.2024 14:56:31.262 Info [P:9792 T:14988] - TDM.dbConnect Begin
+30.06.2024 14:58:31.903 Info [P:14392 T:5284] - TDM.DataModuleCreate Begin
+30.06.2024 14:58:31.903 Info [P:14392 T:5284] - TDM.DataModuleCreate: D:\GitHub\Account\project\Win32\Debug\
+30.06.2024 14:58:31.903 Info [P:14392 T:5284] - TDM.DataModuleCreate End
+30.06.2024 14:58:36.167 Info [P:14392 T:5284] - TDM.dbConnect Begin
+30.06.2024 14:58:36.167 Info [P:14392 T:5284] - TUniMainModule Параметры подключения
+30.06.2024 14:58:36.167 Info [P:14392 T:5284] - TUniMainModule ConnectionDefFileName: D:\GitHub\Account\project\Win32\Debug\Connection.ini
+30.06.2024 14:58:36.167 Info [P:14392 T:5284] - TUniMainModule FDConnection DriverID: MSSQL
+30.06.2024 14:58:36.167 Info [P:14392 T:5284] - TUniMainModule DriverID: MSSQL
+30.06.2024 14:58:36.167 Info [P:14392 T:5284] - TUniMainModule Server: DESKTOP-5SNO83B
+30.06.2024 14:58:36.167 Info [P:14392 T:5284] - TUniMainModule Database: 
+30.06.2024 14:58:36.167 Info [P:14392 T:5284] - TUniMainModule User_name:
+30.06.2024 14:58:36.188 Info [P:14392 T:5284] - TDM.dbConnect Begin
+30.06.2024 15:00:10.609 Info [P:14440 T:14948] - TDM.DataModuleCreate Begin
+30.06.2024 15:00:10.609 Info [P:14440 T:14948] - TDM.DataModuleCreate: D:\GitHub\Account\project\Win32\Debug\
+30.06.2024 15:00:10.609 Info [P:14440 T:14948] - TDM.DataModuleCreate End
+30.06.2024 15:00:12.083 Info [P:14440 T:14948] - TDM.dbConnect Begin
+30.06.2024 15:00:12.083 Info [P:14440 T:14948] - TUniMainModule Параметры подключения
+30.06.2024 15:00:12.083 Info [P:14440 T:14948] - TUniMainModule ConnectionDefFileName: D:\GitHub\Account\project\Win32\Debug\Connection.ini
+30.06.2024 15:00:12.083 Info [P:14440 T:14948] - TUniMainModule FDConnection DriverID: MSSQL
+30.06.2024 15:00:12.083 Info [P:14440 T:14948] - TUniMainModule DriverID: MSSQL
+30.06.2024 15:00:12.083 Info [P:14440 T:14948] - TUniMainModule Server: DESKTOP-5SNO83B
+30.06.2024 15:00:12.083 Info [P:14440 T:14948] - TUniMainModule Database: 
+30.06.2024 15:00:12.083 Info [P:14440 T:14948] - TUniMainModule User_name:
+30.06.2024 15:00:12.114 Info [P:14440 T:14948] - TDM.dbConnect Begin
