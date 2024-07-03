@@ -4,13 +4,31 @@ uses
   Vcl.Forms,
   uDataModule in '..\source\uDataModule.pas' {DM: TDataModule},
   uMainForm in '..\source\uMainForm.pas' {MainForm},
-  MTLogger in '..\source\components\logger\MTLogger.pas',
-  MTUtils in '..\source\components\logger\MTUtils.pas',
-  TimeIntervals in '..\source\components\logger\TimeIntervals.pas',
   uLogin in '..\source\uLogin.pas' {LoginForm},
   uCommonType in '..\source\lib\uCommonType.pas',
   uSql in '..\source\lib\uSql.pas',
-  uVarUtils in '..\source\lib\uVarUtils.pas';
+  uVarUtils in '..\source\lib\uVarUtils.pas',
+  uBaseFormT in '..\source\application\uBaseFormT.pas' {BaseFormT},
+  uBaseFormDBT in '..\source\application\uBaseFormDBT.pas' {BaseFormDBT},
+  uExpenseGroupsT in '..\source\application\uExpenseGroupsT.pas' {ExpenseGroupsT},
+  uBaseFormF in '..\source\application\uBaseFormF.pas' {BaseFormF},
+  uBaseFormDBF in '..\source\application\uBaseFormDBF.pas' {BaseFormDBF},
+  uExpenseGroupsF in '..\source\application\uExpenseGroupsF.pas' {ExpenseGroupF},
+  uExpenseItemsT in '..\source\application\uExpenseItemsT.pas' {ExpenseItemsT},
+  uExpenseItemsF in '..\source\application\uExpenseItemsF.pas' {ExpenseItemsF},
+  MTLogger in '..\source\lib\logger\MTLogger.pas',
+  MTUtils in '..\source\lib\logger\MTUtils.pas',
+  TimeIntervals in '..\source\lib\logger\TimeIntervals.pas',
+  uImageModule in '..\source\application\uImageModule.pas' {IM: TDataModule},
+  uCreditTypesT in '..\source\application\uCreditTypesT.pas' {CreditTypesT},
+  uCreditTypesF in '..\source\application\uCreditTypesF.pas' {CreditTypesF},
+  uCreditsT in '..\source\application\uCreditsT.pas' {CreditsT},
+  uCreditsF in '..\source\application\uCreditsF.pas' {CreditsF},
+  uTasksT in '..\source\application\uTasksT.pas' {TasksT},
+  uTasksF in '..\source\application\uTasksF.pas' {TasksF},
+  uKontragentsT in '..\source\application\uKontragentsT.pas' {KontragentsT},
+  uClientF in '..\source\application\uClientF.pas' {ClientF},
+  uKontragentsChose in '..\source\application\uKontragentsChose.pas' {KontragentsChose};
 
 {$R *.res}
 
@@ -19,17 +37,24 @@ begin
   Application.MainFormOnTaskbar := True;
 
   Application.CreateForm(TDM, DM);
+  Application.CreateForm(TIM, IM);
+//  Application.CreateForm(TKontragentsChose, KontragentsChose);
+  //  Application.CreateForm(TClientF, ClientF);
   Application.Title := DM.FDManager.ConnectionDefs.FindConnectionDef('Connection').Params.Values['ApplicationName'];
 
-  var LoginForm: TLoginForm;
-
-  LoginForm := TLoginForm.Create(nil);
-
-  if LoginForm.ShowModal = 1 then
+//  var LoginForm: TLoginForm;
+//
+//  LoginForm := TLoginForm.Create(nil);
+//
+//  if LoginForm.ShowModal = 1 then
+  if 1=1 then
   begin
-    LoginForm.Free;
-    Application.CreateForm(TMainForm, MainForm);
+    //LoginForm.Free;
+//    Application.CreateForm(TExpenseItemsT, ExpenseItemsT);
+    Application.CreateForm(TKontragentsT, KontragentsT);
+// Application.CreateForm(TClientF, ClientF);
     Application.Run;
+
   end
   else
   begin

@@ -60,7 +60,6 @@ class function TSql.GetSetting(ASetting: String): Variant;
 var Query: TFDQuery;
 begin
   Query :=TFDQuery.Create(nil);
-//  Query.FetchOptions.AutoFetchAll := TFDAutoFetchAll.afAll;
   Query.FetchOptions.RowsetSize := 1000000;
   Try
     Query.Connection := FConnection;

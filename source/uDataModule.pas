@@ -19,7 +19,15 @@ type
     FDManager: TFDManager;
     FDGUIxWaitCursor: TFDGUIxWaitCursor;
     FDGUIxErrorDialog: TFDGUIxErrorDialog;
+    dsExpenseGroup: TDataSource;
+    qExpenseGroup: TFDQuery;
+    dsManager: TDataSource;
+    qManager: TFDQuery;
+    dsTaskStatus: TDataSource;
+    qTaskStatus: TFDQuery;
     procedure DataModuleCreate(Sender: TObject);
+    procedure FDConnectionAfterConnect(Sender: TObject);
+    procedure DataModuleDestroy(Sender: TObject);
   private
     { Private declarations }
   public
@@ -34,7 +42,7 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses MTLogger;
+uses MTLogger, uSql, uCommonType;
 
 {$R *.dfm}
 
@@ -118,6 +126,23 @@ begin
     result:=FDConnection.Connected;
     Logger.Info('TDM.dbConnect Begin');
   end;
+end;
+
+procedure TDM.FDConnectionAfterConnect(Sender: TObject);
+begin
+  tSql.Connection := FDConnection;
+  TRetVal.Connection := FDConnection;
+
+  qExpenseGroup.Open();
+  qManager.Open();
+  qTaskStatus.Open;
+end;
+
+procedure TDM.DataModuleDestroy(Sender: TObject);
+begin
+  qExpenseGroup.Close();
+  qManager.Close();
+  qTaskStatus.Close;
 end;
 
 end.

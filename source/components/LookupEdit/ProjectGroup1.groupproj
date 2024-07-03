@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{1ACE6C60-FA16-4032-966F-AD5D61059953}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="TestLookupEdit.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="LookupEdit.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="TestLookupEdit">
+        <MSBuild Projects="TestLookupEdit.dproj"/>
+    </Target>
+    <Target Name="TestLookupEdit:Clean">
+        <MSBuild Projects="TestLookupEdit.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TestLookupEdit:Make">
+        <MSBuild Projects="TestLookupEdit.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="LookupEdit">
+        <MSBuild Projects="LookupEdit.dproj"/>
+    </Target>
+    <Target Name="LookupEdit:Clean">
+        <MSBuild Projects="LookupEdit.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="LookupEdit:Make">
+        <MSBuild Projects="LookupEdit.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="TestLookupEdit;LookupEdit"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="TestLookupEdit:Clean;LookupEdit:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="TestLookupEdit:Make;LookupEdit:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
