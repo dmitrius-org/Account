@@ -25,6 +25,8 @@ type
     qManager: TFDQuery;
     dsTaskStatus: TDataSource;
     qTaskStatus: TFDQuery;
+    dsKontragent: TDataSource;
+    qKontragent: TFDQuery;
     procedure DataModuleCreate(Sender: TObject);
     procedure FDConnectionAfterConnect(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
@@ -136,6 +138,7 @@ begin
   qExpenseGroup.Open();
   qManager.Open();
   qTaskStatus.Open;
+  qKontragent.Open;
 end;
 
 procedure TDM.DataModuleDestroy(Sender: TObject);
@@ -143,6 +146,7 @@ begin
   qExpenseGroup.Close();
   qManager.Close();
   qTaskStatus.Close;
+  qKontragent.Close;
 end;
 
 end.

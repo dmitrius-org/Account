@@ -212,12 +212,12 @@
             <Form>KontragentsT</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="..\source\application\uClientF.pas">
-            <Form>ClientF</Form>
+        <DCCReference Include="..\source\application\uBuyerF.pas">
+            <Form>BuyerF</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="..\source\application\uKontragentsChose.pas">
-            <Form>KontragentsChose</Form>
+        <DCCReference Include="..\source\application\uClientF.pas">
+            <Form>ClientF</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">

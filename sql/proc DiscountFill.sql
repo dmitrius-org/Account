@@ -1,125 +1,121 @@
-if OBJECT_ID('ClientInsert') is not null
-    drop proc ClientInsert
+if OBJECT_ID('DiscountFill') is not null
+    drop proc DiscountFill
 /*
-  ClientInsert - добавление 
+  DiscountFill -  
+  @Mode
+  0 - to pContacts
+  1 - to tContacts
+
+  @ObjectTypeID
+  1 - Клиент
+  2 - Покупатель
+  3 - Поставщик
 */
 go
-create proc ClientInsert
-              @ClientID          numeric(15,0) output --  
-             ,@Name              varchar(256)  -- 
-             ,@Discount          Float
-	         ,@DiscountDate      DateTime  
+create proc DiscountFill
+              @ObjectTypeID      int 
+             ,@ObjectID          numeric(15, 0) 
+             ,@Mode              int
 as
   declare @r int = 0
+
+  select @Mode = isnull(@Mode, 0)
 
   DECLARE @ID TABLE (ID numeric(18,0));
 
-  if exists (select 1 
-               from tKontragents u (nolock)
-              where u.Name             = @Name
-                and u.KontragentTypeID = 1)
+  if @Mode = 0
   begin
-    set @r =  120 --  'Клиент с заданным наименование существует!'
-    goto exit_
+    delete pDiscounts from pDiscounts (rowlock) where Spid = @@Spid
+
+    insert pDiscounts
+          (
+           Spid
+          ,DiscountID    
+          ,ObjectTypeID 
+          ,ObjectID     
+          ,Discount        
+          ,DiscountDate         
+          ,Comment      
+          ,InDateTime   
+          ,UpDateTime
+          ,InUserID
+          ,UpUserID
+          )
+    select @@Spid   
+          ,DiscountID    
+          ,ObjectTypeID 
+          ,ObjectID     
+          ,Discount        
+          ,DiscountDate         
+          ,Comment      
+          ,InDateTime  
+          ,UpDateTime
+          ,InUserID
+          ,UpUserID 
+      from tDiscounts (nolock)
+     where ObjectTypeID = @ObjectTypeID
+       and ObjectID     = @ObjectID
+
   end
-
-  BEGIN TRY 
-      Begin tran
-
-		insert into tKontragents
-		      (KontragentTypeID, Name, Discount, DiscountDate, UserID)
-		OUTPUT INSERTED.KontragentTypeID INTO @ID
-		select 1
-              ,@Name     
-              ,@Discount  
-              ,@DiscountDate   
-              ,dbo.GetUserID()
-
-		Select @ClientID = ID from @ID	
-      
-      commit tran
-  END TRY  
-  BEGIN CATCH  
-      if @@TRANCOUNT > 0
-        rollback tran
- 
- goto exit_     
-  END CATCH  
-
-exit_:
-return @r
-go
-grant exec on ClientInsert to public
-go
-
-if OBJECT_ID('ClientEdit') is not null
-    drop proc ClientEdit
-/*
-  ClientEdit - Изменение 
-*/
-go
-create proc ClientEdit
-              @ClientID          numeric(15,0) --  
-             ,@Name              varchar(256)  -- 
-             ,@Discount          Float
-	         ,@DiscountDate      DateTime  
-as
-  declare @r int = 0
-
-  if exists (select 1 
-               from tKontragents u (nolock)
-              where u.Name             = @Name
-                and u.KontragentTypeID = 1
-                and u.KontragentID    <> @ClientID)
+  else
   begin
-    set @r =  120 --  'Клиент с заданным наименование существует!'
-    goto exit_
+    delete tDiscounts
+      from tDiscounts t (rowlock)
+     where t.ObjectTypeID = @ObjectTypeID
+       and t.ObjectID     = @ObjectID
+       and not exists (select 1
+                         from pDiscounts p (nolock)
+                        where p.Spid         = @@Spid
+                          and p.ObjectTypeID = t.ObjectTypeID
+                          and p.ObjectID     = t.ObjectID
+                          and p.DiscountID    = t.DiscountID)
+
+    insert tDiscounts
+          (
+           ObjectTypeID 
+          ,ObjectID     
+          ,Discount        
+          ,DiscountDate         
+          ,Comment      
+          ,InDateTime   
+          ,UpDateTime
+          ,InUserID
+          ,UpUserID    
+          )
+    select     
+           ObjectTypeID 
+          ,@ObjectID     
+          ,Discount        
+          ,DiscountDate         
+          ,Comment  
+          ,GetDate() 
+          ,GetDate()   
+          ,dbo.GetUserID()  
+          ,dbo.GetUserID() 
+      from pDiscounts (nolock)
+     where Spid         = @@Spid
+       and ObjectTypeID = @ObjectTypeID
+       --and ObjectID     = @ObjectID
+      and isnull(DiscountID, 0) = 0
+
+
+    Update t
+       set t.Discount   = p.Discount
+          ,t.DiscountDate    = p.DiscountDate
+          ,t.Comment = p.Comment
+          ,t.UpDateTime = GetDate()
+          ,UpUserID = dbo.GetUserID() 
+      from pDiscounts p (nolock)
+     inner join tDiscounts t (updlock)
+             on t.DiscountID = p.DiscountID
+     where p.Spid         = @@Spid
+       and p.ObjectTypeID = @ObjectTypeID
+       and p.ObjectID     = @ObjectID
+
   end
-
-  BEGIN TRY 
-		Update tKontragents
-		   set Name          = @Name    
-              ,Discount      = @Discount     
-              ,DiscountDate = @DiscountDate  
-		 where KontragentID=@ClientID
-  END TRY  
-  BEGIN CATCH  
-      goto exit_     
-  END CATCH  
-
+  
 exit_:
 return @r
 go
-grant exec on ClientEdit to public
-go
-
-
-if OBJECT_ID('ClientDelete') is not null
-    drop proc ClientDelete
-/*
-  ClientDelete - Удаление 
-*/
-go
-create proc ClientDelete
-              @ClientID            numeric(15,0) --    
-as
-  declare @r int = 0
-
-  BEGIN TRY 
-		delete 
-          from tKontragents
-		 where KontragentID=@ClientID
-  END TRY  
-  BEGIN CATCH  
-   
-      set @r = -1
-      insert tRetMessage(RetCode, Message) select @r,  ERROR_MESSAGE()  
-
-      goto exit_     
-  END CATCH  
-
-exit_:
-return @r
-go
-grant exec on ClientDelete to public
+grant exec on DiscountFill to public
 go

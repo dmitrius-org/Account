@@ -1,7 +1,9 @@
 inherited ExpenseItemsF: TExpenseItemsF
   Caption = #1057#1090#1072#1090#1100#1103' '#1088#1072#1089#1093#1086#1076#1086#1074
   ClientHeight = 197
+  ClientWidth = 611
   StyleElements = [seFont, seClient, seBorder]
+  ExplicitWidth = 627
   ExplicitHeight = 236
   TextHeight = 17
   object SkLabel1: TSkLabel [0]
@@ -26,15 +28,29 @@ inherited ExpenseItemsF: TExpenseItemsF
   end
   inherited Panel: TdxPanel
     Top = 151
+    Width = 611
+    TabOrder = 3
     ExplicitTop = 151
     inherited dxPanel1: TdxPanel
+      TabOrder = 0
       inherited edtInDate: TcxDateEdit
         Properties.DateButtons = []
         Properties.UseLeftAlignmentOnEditing = False
+        TabOrder = 1
+      end
+      inherited edtUser: ALookupEdit
+        TabOrder = 0
       end
     end
+    inherited btnCancel: TcxButton
+      Left = 408
+      ExplicitLeft = 390
+    end
     inherited btnOk: TcxButton
+      Left = 504
+      TabOrder = 2
       OnClick = btnOkClick
+      ExplicitLeft = 486
     end
   end
   object edtName: TcxTextEdit [3]
@@ -72,7 +88,7 @@ inherited ExpenseItemsF: TExpenseItemsF
       end>
     Properties.Images = IM.IL
     ShowHint = True
-    TabOrder = 3
+    TabOrder = 0
     TextHint = #1042#1099#1073#1077#1088#1080#1090#1077' '#1075#1088#1091#1087#1087#1091
     LookupConnection = DM.FDConnection
     LookupForm = 'TExpenseGroupsT'

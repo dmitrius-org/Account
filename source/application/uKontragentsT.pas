@@ -32,8 +32,20 @@ type
     TableViewDiscountDate: TcxGridDBColumn;
     TableViewPartnerName: TcxGridDBColumn;
     QueryKontragentTypeID: TFMTBCDField;
-    procedure actAddExecute(Sender: TObject);
+    AddMenu: TPopupMenu;
+    pmAddClient: TMenuItem;
+    pmAddBuyer: TMenuItem;
+    pmAddSupplier: TMenuItem;
+    N11: TMenuItem;
+    actAddBuyer: TAction;
+    actAddSupplier: TAction;
+    N8: TMenuItem;
+    N9: TMenuItem;
+    actAddClient: TAction;
     procedure actEditExecute(Sender: TObject);
+    procedure actAddBuyerExecute(Sender: TObject);
+    procedure actAddSupplierExecute(Sender: TObject);
+    procedure actAddClientExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -45,36 +57,23 @@ var
 
 implementation
 
-uses
-  uKontragentsChose;
-
 {$R *.dfm}
-procedure TKontragentsT.actAddExecute(Sender: TObject);
-var
-  KontragentsChose: TKontragentsChose;
-  result: TModalResult;
+procedure TKontragentsT.actAddBuyerExecute(Sender: TObject);
 begin
-  KontragentsChose:= TKontragentsChose.create(self);
+  EditFormClass := 'TBuyerF';
+  actAddExecute(Sender);
+end;
 
-  result := KontragentsChose.ShowModal;
+procedure TKontragentsT.actAddClientExecute(Sender: TObject);
+begin
+  EditFormClass := 'TClientF';
+  actAddExecute(Sender);
+end;
 
-  if result = mrOk then
-  begin
-
-    case KontragentsChose.KType.EditValue of
-      1:
-        EditFormClass := 'TClientF';
-      2:
-        EditFormClass := 'TClientF';
-      3:
-        EditFormClass := 'TClientF';
-    end;
-
-    inherited;
-  end;
-
-  KontragentsChose.free;
-
+procedure TKontragentsT.actAddSupplierExecute(Sender: TObject);
+begin
+  EditFormClass := 'TClientF';
+  actAddExecute(Sender);
 end;
 
 procedure TKontragentsT.actEditExecute(Sender: TObject);
@@ -83,7 +82,7 @@ begin
       1:
         EditFormClass := 'TClientF';
       2:
-        EditFormClass := 'TClientF';
+        EditFormClass := 'TBuyerF';
       3:
         EditFormClass := 'TClientF';
   end;

@@ -44,7 +44,6 @@ begin
     ,IsImport          bit
     ,Discount          Float
 	,DiscountDate      DateTime        
-    ,CreateDate        DateTime
     ,PartnerID         numeric(15, 0)
     ,IsPartner         bit
     ,Debts             float

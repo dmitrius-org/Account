@@ -37,7 +37,9 @@ as
           ,Mail         
           ,Comment      
           ,InDateTime   
-          ,UserID       
+          ,UpDateTime
+          ,InUserID
+          ,UpUserID  
           )
     select @@Spid   
           ,ContactID    
@@ -47,7 +49,9 @@ as
           ,Mail         
           ,Comment      
           ,InDateTime   
-          ,UserID  
+          ,UpDateTime
+          ,InUserID
+          ,UpUserID 
       from tContacts (nolock)
      where ObjectTypeID = @ObjectTypeID
        and ObjectID     = @ObjectID
@@ -74,7 +78,9 @@ as
           ,Mail         
           ,Comment      
           ,InDateTime   
-          ,UserID       
+          ,UpDateTime
+          ,InUserID
+          ,UpUserID      
           )
     select     
            ObjectTypeID 
@@ -83,7 +89,9 @@ as
           ,Mail         
           ,Comment      
           ,GetDate()   
+          ,GetDate() 
           ,dbo.GetUserID()   
+          ,dbo.GetUserID()
       from pContacts (nolock)
      where Spid         = @@Spid
        and ObjectTypeID = @ObjectTypeID
@@ -96,6 +104,7 @@ as
           ,t.Mail    = p.Mail
           ,t.Comment = p.Comment
           ,t.UpDateTime = GetDate()
+          ,t.UpUserID = dbo.GetUserID()
       from pContacts p (nolock)
      inner join tContacts t (updlock)
              on t.ContactID = p.ContactID

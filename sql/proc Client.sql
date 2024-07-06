@@ -24,7 +24,7 @@ as
   end
 
   BEGIN TRY 
-      Begin tran
+      Begin tran        
 
 		insert into tKontragents
 		      (KontragentTypeID, Name, Discount, DiscountDate, UserID)
@@ -36,12 +36,15 @@ as
               ,dbo.GetUserID()
 
 		Select @ClientID = ID from @ID
+
+        insert tDiscounts(ObjectTypeID, ObjectID, Discount, DiscountDate)
+        select 1, @ClientID, @Discount, @DiscountDate
         
         exec ContactFill
                 @ObjectTypeID = 1
                ,@ObjectID     = @ClientID
                ,@Mode         = 1
-      
+       
       commit tran
   END TRY  
   BEGIN CATCH  
@@ -82,6 +85,17 @@ as
   end
 
   BEGIN TRY 
+
+        if exists (select 1 
+                     from tKontragents u (nolock)
+                    where u.KontragentID     = @ClientID
+                      and u.KontragentTypeID = 1
+                      and u.discount <> @Discount or u.DiscountDate <> @DiscountDate)
+        begin
+            insert tDiscounts(ObjectTypeID, ObjectID, Discount, DiscountDate)
+            select 1, @ClientID, @Discount, @DiscountDate
+        end  
+
 		Update tKontragents
 		   set Name          = @Name    
               ,Discount      = @Discount     
@@ -125,6 +139,13 @@ as
            from tContacts (rowlock) 
           where ObjectTypeID = 1 
             and ObjectID     = @ClientID
+
+
+         delete tDiscounts 
+           from tDiscounts (rowlock) 
+          where ObjectTypeID = 1 
+            and ObjectID     = @ClientID
+            
   END TRY  
   BEGIN CATCH  
    

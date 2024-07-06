@@ -1,6 +1,10 @@
 inherited TasksF: TTasksF
   Caption = #1055#1086#1088#1091#1095#1077#1085#1080#1077
+  ClientHeight = 304
+  ClientWidth = 603
   StyleElements = [seFont, seClient, seBorder]
+  ExplicitWidth = 619
+  ExplicitHeight = 343
   TextHeight = 17
   object SkLabel1: TSkLabel [0]
     Left = 8
@@ -53,12 +57,25 @@ inherited TasksF: TTasksF
       end>
   end
   inherited Panel: TdxPanel
+    Top = 258
+    Width = 603
+    TabOrder = 5
+    inherited dxPanel1: TdxPanel
+      TabOrder = 0
+      inherited edtInDate: TcxDateEdit
+        TabOrder = 1
+      end
+      inherited edtUser: ALookupEdit
+        TabOrder = 0
+      end
+    end
     inherited btnCancel: TcxButton
-      Left = 388
+      Left = 398
       ExplicitLeft = 388
     end
     inherited btnOk: TcxButton
-      Left = 481
+      Left = 491
+      TabOrder = 2
       OnClick = btnOkClick
       ExplicitLeft = 481
     end
@@ -66,7 +83,7 @@ inherited TasksF: TTasksF
   object edtCreateDate: TcxDateEdit [6]
     Left = 134
     Top = 10
-    TabOrder = 1
+    TabOrder = 0
     Width = 121
   end
   object edtDueDate: TcxDateEdit [7]
@@ -79,7 +96,7 @@ inherited TasksF: TTasksF
     Left = 134
     Top = 162
     Properties.MaxLength = 512
-    TabOrder = 3
+    TabOrder = 4
     Height = 79
     Width = 451
   end
@@ -94,7 +111,7 @@ inherited TasksF: TTasksF
     Properties.ListOptions.ShowHeader = False
     Properties.ListSource = DM.dsManager
     Properties.MaxLength = 256
-    TabOrder = 4
+    TabOrder = 1
     Width = 451
   end
   object edtTaskStatus: TcxLookupComboBox [10]
@@ -108,7 +125,7 @@ inherited TasksF: TTasksF
     Properties.ListOptions.ShowHeader = False
     Properties.ListSource = DM.dsTaskStatus
     Properties.MaxLength = 256
-    TabOrder = 5
+    TabOrder = 3
     Width = 451
   end
   inherited FDQuery: TFDQuery

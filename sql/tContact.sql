@@ -14,7 +14,8 @@ begin
     ,Comment           varchar(256)  
 	,InDateTime        DateTime default getdate()   -- 
     ,UpDateTime        DateTime default getdate()  
-    ,UserID            numeric(15, 0) 
+    ,InUserID          numeric(15, 0)
+    ,UpUserID          numeric(15, 0) 
 	);
 
 	create index ao1 on tContacts(ContactID);
@@ -44,7 +45,8 @@ begin
     ,Comment           varchar(256)  
 	,InDateTime        DateTime default getdate()  
     ,UpDateTime        DateTime default getdate()  
-    ,UserID            numeric(15, 0) 
+    ,InUserID          numeric(15, 0)
+    ,UpUserID          numeric(15, 0) 
 	);
 
 	create index ao1 on pContacts(Spid, ContactID);

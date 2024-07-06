@@ -1,4 +1,4 @@
-unit uClientF;
+unit uBuyerF;
 
 interface
 
@@ -17,10 +17,10 @@ uses
   dxScrollbarAnnotations, cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
   System.Actions, Vcl.ActnList, System.ImageList, Vcl.ImgList, cxImageList,
-  Vcl.ToolWin;
+  Vcl.ToolWin, cxCheckBox, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox;
 
 type
-  TClientF = class(TBaseFormDBF)
+  TBuyerF = class(TBaseFormDBF)
     PageControl1: TPageControl;
     TabCommon: TTabSheet;
     SkLabel1: TSkLabel;
@@ -75,6 +75,22 @@ type
     qDiscountComment: TStringField;
     TableViewDiscountDiscount: TcxGridDBColumn;
     TableViewDiscountDiscountDate: TcxGridDBColumn;
+    edtSignPartner: TcxCheckBox;
+    edtINN: TcxTextEdit;
+    SkLabel4: TSkLabel;
+    edtPartner: TcxLookupComboBox;
+    SkLabel5: TSkLabel;
+    edtFullName: TcxTextEdit;
+    SkLabel6: TSkLabel;
+    edtlegalAaddress: TcxTextEdit;
+    edtPostAddress: TcxTextEdit;
+    SkLabel7: TSkLabel;
+    SkLabel8: TSkLabel;
+    edtEdo: TcxTextEdit;
+    edtEdoID: TcxTextEdit;
+    SkLabel9: TSkLabel;
+    edtEdoIDL: TSkLabel;
+    btnAuutoFillByInn: TcxButton;
     procedure btnOkClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure PageControl1DrawTab(Control: TCustomTabControl; TabIndex: Integer;
@@ -110,7 +126,7 @@ type
   end;
 
 var
-  ClientF: TClientF;
+  BuyerF: TBuyerF;
 
 implementation
 
@@ -121,32 +137,32 @@ uses
 
 { TClientF }
 
-procedure TClientF.acContactAddExecute(Sender: TObject);
+procedure TBuyerF.acContactAddExecute(Sender: TObject);
 begin
   qContact.Insert;
 end;
 
-procedure TClientF.acContactDeleteExecute(Sender: TObject);
+procedure TBuyerF.acContactDeleteExecute(Sender: TObject);
 begin
   qContact.Delete;
 end;
 
-procedure TClientF.acContactEditExecute(Sender: TObject);
+procedure TBuyerF.acContactEditExecute(Sender: TObject);
 begin
   qContact.Edit;
 end;
 
-procedure TClientF.acContactRefreshExecute(Sender: TObject);
+procedure TBuyerF.acContactRefreshExecute(Sender: TObject);
 begin
   ContactRefresh;
 end;
 
-procedure TClientF.acContactSaveExecute(Sender: TObject);
+procedure TBuyerF.acContactSaveExecute(Sender: TObject);
 begin
   qContact.Post;
 end;
 
-procedure TClientF.btnOkClick(Sender: TObject);
+procedure TBuyerF.btnOkClick(Sender: TObject);
 begin
   inherited;
   DataCheck;
@@ -156,22 +172,40 @@ begin
     acInsert:
     begin
       tSql.Open('''
-                  declare @R int = 0
-                            ,@ClientID numeric(15,0)
+                  declare @R       int = 0
+                         ,@BuyerID numeric(15,0)
 
-                  exec @R = ClientInsert
-                                @ClientID    = @ClientID out
-                               ,@Name        = :Name
-                               ,@Discount    = :Discount
-                               ,@DiscountDate= :DiscountDate
-
+                  exec @R = BuyerInsert
+                              @BuyerID      = @BuyerID out
+                             ,@Name    	    = :Name
+                             ,@FullName	    = :FullName
+                             ,@Inn	        = :Inn
+                             ,@PostAddress	= :PostAddress
+                             ,@LegalAddress	= :LegalAddress
+                             ,@Edo	        = :Edo
+                             ,@EdoID	      = :EdoID
+                             ,@Discount	    = :Discount
+                             ,@DiscountDate	= :DiscountDate
+                             ,@PartnerID  	= :PartnerID
+                             ,@IsPartner  	= :IsPartner
                   select @R as R
                 ''',
-               ['Name', 'DiscountDate', 'Discount'],
-               [edtName.Text ,
+               ['Name', 'FullName', 'Inn', 'PostAddress', 'LegalAddress', 'Edo',
+                'EdoID', 'Discount', 'DiscountDate', 'PartnerID', 'IsPartner'],
+               [edtName.Text,
+                edtFullName.Text,
+                edtINN.Text,
+                edtPostAddress.Text,
+                edtlegalAaddress.Text,
+                edtEdo.Text,
+                edtEdoID.Text,
+                edtDiscount.Value,
                 edtDiscountDate.Date,
-                edtDiscount.Value]
+                edtPartner.EditValue,
+                edtSignPartner.Checked
+                ]
                );
+
 
       tRetVal.Code := tSql.Q.FieldByName('R').Value;
     end;
@@ -180,18 +214,35 @@ begin
          tSql.Open('''
                   declare @R int = 0
 
-                  exec @R = ClientEdit
-                                @ClientID    = :ClientID
-                               ,@Name        = :Name
-                               ,@Discount    = :Discount
-                               ,@DiscountDate= :DiscountDate
+                  exec @R = BuyerEdit
+                              @BuyerID      = :BuyerID
+                             ,@Name    	    = :Name
+                             ,@FullName	    = :FullName
+                             ,@Inn	        = :Inn
+                             ,@PostAddress	= :PostAddress
+                             ,@LegalAddress	= :LegalAddress
+                             ,@Edo	        = :Edo
+                             ,@EdoID	      = :EdoID
+                             ,@Discount	    = :Discount
+                             ,@DiscountDate	= :DiscountDate
+                             ,@PartnerID  	= :PartnerID
+                             ,@IsPartner  	= :IsPartner
 
                   select @R as R
                 ''',
-               ['Name', 'DiscountDate', 'Discount', 'ClientID'],
-               [edtName.Text ,
-                edtDiscountDate.Date,
+               ['Name', 'FullName', 'Inn', 'PostAddress', 'LegalAddress', 'Edo',
+                'EdoID', 'Discount', 'DiscountDate', 'PartnerID', 'IsPartner', 'BuyerID'],
+               [edtName.Text,
+                edtFullName.Text,
+                edtINN.Text,
+                edtPostAddress.Text,
+                edtlegalAaddress.Text,
+                edtEdo.Text,
+                edtEdoID.Text,
                 edtDiscount.Value,
+                edtDiscountDate.Date,
+                edtPartner.EditValue,
+                edtSignPartner.Checked,
                 ID]
                );
 
@@ -225,13 +276,13 @@ begin
   end;
 end;
 
-procedure TClientF.ContactRefresh;
+procedure TBuyerF.ContactRefresh;
 begin
   qContact.Close;
   qContact.Open;
 end;
 
-procedure TClientF.DataCheck;
+procedure TBuyerF.DataCheck;
 begin
 
   tRetVal.Clear;
@@ -264,67 +315,86 @@ begin
   end;
 end;
 
-procedure TClientF.DataLoad;
+procedure TBuyerF.DataLoad;
 begin
   TSql.Open('''
 
               exec ContactFill
-                      @ObjectTypeID      = 1
+                      @ObjectTypeID      = 2
                      ,@ObjectID          = :KontragentID
                      ,@Mode              = 0
 
             exec DiscountFill
-                      @ObjectTypeID      = 1
+                      @ObjectTypeID      = 2
                      ,@ObjectID          = :KontragentID
                      ,@Mode              = 0
 
 
-              select
-                     k.Name
-                    ,k.Discount
-                    ,k.DiscountDate
-                    ,k.InDateTime
-                    ,k.UserID
-                from tKontragents k (nolock)
-               where k.KontragentID = :KontragentID
+              select Name
+                    ,FullName
+                    ,Inn
+                    ,PostAddress
+                    ,LegalAddress
+                    ,Edo
+                    ,EdoID
+                    ,Discount
+                    ,DiscountDate
+                    ,PartnerID
+                    ,IsPartner
+                    ,Debts
+                    ,InDateTime
+                    ,UserID
+                from tKontragents  (nolock)
+               where KontragentID = :KontragentID
             ''',
             ['KontragentID'],
             [ID]
             );
-
+  edtSignPartner.Checked := TSql.Q.FieldByName('IsPartner').AsBoolean;
+  edtINN.Text := TSql.Q.FieldByName('Inn').Value;
+  edtPartner.EditValue := TSql.Q.FieldByName('PartnerID').AsInteger;
   edtName.Text := TSql.Q.FieldByName('Name').Value;
+  edtFullName.Text := TSql.Q.FieldByName('FullName').Value;
+  edtPostAddress.Text := TSql.Q.FieldByName('PostAddress').Value;
+  edtlegalAaddress.Text := TSql.Q.FieldByName('LegalAddress').Value;
+  edtEdo.Text := TSql.Q.FieldByName('Edo').Value;
+  edtEdoID.Text := TSql.Q.FieldByName('EdoID').Value;
   edtDiscountDate.Date :=  TSql.Q.FieldByName('DiscountDate').Value;
   edtDiscount.Value := TSql.Q.FieldByName('Discount').Value;
 
   inherited;
 end;
 
-procedure TClientF.DiscountRefresh;
+procedure TBuyerF.DiscountRefresh;
 begin
   qDiscount.close;
   qDiscount.Open;
 end;
 
-procedure TClientF.FormShow(Sender: TObject);
+procedure TBuyerF.FormShow(Sender: TObject);
 begin
   inherited;
 
   case FormAction of
     acInsert, acReportCreate:
     begin
+      Self.Caption := 'Добавление покупателя';
       edtDiscountDate.date := Date();
       tSQl.Exec('delete pContacts from pContacts (rowlock) where Spid = @@Spid', [], []);
       tSQl.Exec('delete pDiscounts from pDiscounts (rowlock) where Spid = @@Spid', [], []);
     end;
-//    acUpdate, acReportEdit, acUserAction:
-//    begin
-//    end;
-//    acDelete:
-//    begin
-//    end;
-//    acShow:
-//    begin
-//    end;
+    acUpdate, acReportEdit, acUserAction:
+    begin
+      self.Caption := 'Изменение покупателя';
+    end;
+    acDelete:
+    begin
+      self.Caption := 'Удаление покупателя';
+    end;
+    acShow:
+    begin
+      self.Caption := 'Просмотр покупателя';
+    end;
   else
   end;
 
@@ -332,7 +402,7 @@ begin
   DiscountRefresh;
 end;
 
-procedure TClientF.PageControl1DrawTab(Control: TCustomTabControl;
+procedure TBuyerF.PageControl1DrawTab(Control: TCustomTabControl;
   TabIndex: Integer; const Rect: TRect; Active: Boolean);
 var
 y    : Integer;
@@ -356,7 +426,7 @@ begin
   Control.Canvas.TextOut(x,y,TTabControl(Control).Tabs[TabIndex]);
 end;
 
-procedure TClientF.TableViewDataControllerDataChanged(Sender: TObject);
+procedure TBuyerF.TableViewDataControllerDataChanged(Sender: TObject);
 begin
   inherited;
 
@@ -364,18 +434,18 @@ begin
   ContactEditButtonSetEnabled;
 end;
 
-procedure TClientF.ContactSaveButtonSetEnabled;
+procedure TBuyerF.ContactSaveButtonSetEnabled;
 begin
   acContactSave.Enabled := qContact.State in [dsEdit, dsNewValue, dsInsert];
 end;
 
-procedure TClientF.ContactEditButtonSetEnabled;
+procedure TBuyerF.ContactEditButtonSetEnabled;
 begin
   acContactEdit.Enabled:= qContact.RecordCount > 0;
   acContactDelete.Enabled:= qContact.RecordCount > 0;
 end;
 
-procedure TClientF.TableViewUpdateEdit(Sender: TcxCustomGridTableView;
+procedure TBuyerF.TableViewUpdateEdit(Sender: TcxCustomGridTableView;
   AItem: TcxCustomGridTableItem; AEdit: TcxCustomEdit);
 begin
   inherited;
@@ -383,5 +453,5 @@ begin
 end;
 
 initialization
-  RegisterClass(TClientF);
+  RegisterClass(TBuyerF);
 end.

@@ -27,8 +27,8 @@ uses
   uTasksT in '..\source\application\uTasksT.pas' {TasksT},
   uTasksF in '..\source\application\uTasksF.pas' {TasksF},
   uKontragentsT in '..\source\application\uKontragentsT.pas' {KontragentsT},
-  uClientF in '..\source\application\uClientF.pas' {ClientF},
-  uKontragentsChose in '..\source\application\uKontragentsChose.pas' {KontragentsChose};
+  uBuyerF in '..\source\application\uBuyerF.pas' {BuyerF},
+  uClientF in '..\source\application\uClientF.pas' {ClientF};
 
 {$R *.res}
 
@@ -38,7 +38,8 @@ begin
 
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TIM, IM);
-//  Application.CreateForm(TKontragentsChose, KontragentsChose);
+  //  Application.CreateForm(TClientF, ClientF);
+  //  Application.CreateForm(TKontragentsChose, KontragentsChose);
   //  Application.CreateForm(TClientF, ClientF);
   Application.Title := DM.FDManager.ConnectionDefs.FindConnectionDef('Connection').Params.Values['ApplicationName'];
 

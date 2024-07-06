@@ -1,30 +1,33 @@
-inherited ClientF: TClientF
-  Caption = #1050#1083#1080#1077#1085#1090
-  ClientHeight = 367
-  ClientWidth = 651
+inherited BuyerF: TBuyerF
+  Caption = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1100
+  ClientHeight = 411
+  ClientWidth = 654
   StyleElements = [seFont, seClient, seBorder]
-  ExplicitWidth = 667
-  ExplicitHeight = 406
+  ExplicitWidth = 670
+  ExplicitHeight = 450
   TextHeight = 17
   inherited Panel: TdxPanel
-    Top = 321
-    Width = 651
+    Top = 365
+    Width = 654
     Frame.Borders = []
+    TabOrder = 1
     ExplicitTop = 321
     ExplicitWidth = 651
     inherited dxPanel1: TdxPanel
       Height = 46
+      TabOrder = 0
       ExplicitHeight = 46
     end
     inherited btnCancel: TcxButton
-      Left = 448
+      Left = 451
       Height = 40
       ExplicitLeft = 448
       ExplicitHeight = 40
     end
     inherited btnOk: TcxButton
-      Left = 543
+      Left = 546
       Height = 40
+      TabOrder = 2
       OnClick = btnOkClick
       ExplicitLeft = 543
       ExplicitHeight = 40
@@ -33,17 +36,19 @@ inherited ClientF: TClientF
   object PageControl1: TPageControl [1]
     Left = 0
     Top = 0
-    Width = 651
-    Height = 321
+    Width = 654
+    Height = 365
     ActivePage = TabCommon
     Align = alClient
     DoubleBuffered = True
     OwnerDraw = True
     ParentDoubleBuffered = False
     TabHeight = 30
-    TabOrder = 1
+    TabOrder = 0
     TabWidth = 110
     OnDrawTab = PageControl1DrawTab
+    ExplicitWidth = 651
+    ExplicitHeight = 321
     object TabCommon: TTabSheet
       Margins.Left = 0
       Margins.Top = 0
@@ -52,11 +57,11 @@ inherited ClientF: TClientF
       Caption = #1043#1083#1072#1074#1085#1072#1103
       ImageIndex = 1
       DesignSize = (
-        643
-        281)
+        646
+        325)
       object SkLabel1: TSkLabel
-        Left = 8
-        Top = 24
+        Left = 6
+        Top = 97
         Width = 100
         Height = 19
         Words = <
@@ -65,8 +70,8 @@ inherited ClientF: TClientF
           end>
       end
       object SkLabel2: TSkLabel
-        Left = 8
-        Top = 72
+        Left = 6
+        Top = 163
         Width = 81
         Height = 19
         Words = <
@@ -75,8 +80,8 @@ inherited ClientF: TClientF
           end>
       end
       object SkLabel3: TSkLabel
-        Left = 8
-        Top = 124
+        Left = 306
+        Top = 163
         Width = 49
         Height = 19
         Words = <
@@ -84,27 +89,176 @@ inherited ClientF: TClientF
             Caption = #1057#1082#1080#1076#1082#1072':'
           end>
       end
+      object SkLabel4: TSkLabel
+        Left = 6
+        Top = 35
+        Width = 30
+        Height = 19
+        Words = <
+          item
+            Caption = #1048#1085#1085':'
+          end>
+      end
+      object SkLabel5: TSkLabel
+        Left = 6
+        Top = 66
+        Width = 58
+        Height = 19
+        Words = <
+          item
+            Caption = #1055#1072#1088#1090#1085#1077#1088':'
+          end>
+      end
+      object SkLabel6: TSkLabel
+        Left = 6
+        Top = 124
+        Width = 143
+        Height = 34
+        AutoSize = False
+        Words = <
+          item
+            Caption = #1055#1086#1083#1085#1086#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
+          end>
+      end
+      object SkLabel7: TSkLabel
+        Left = 6
+        Top = 196
+        Width = 72
+        Height = 19
+        Words = <
+          item
+            Caption = #1070#1088'. '#1040#1076#1088#1077#1089':'
+          end>
+      end
+      object SkLabel8: TSkLabel
+        Left = 6
+        Top = 220
+        Width = 143
+        Height = 37
+        AutoSize = False
+        Words = <
+          item
+            Caption = #1055#1086#1095#1090#1086#1074#1099#1081' '#1072#1076#1088#1077#1089':'
+          end>
+      end
+      object SkLabel9: TSkLabel
+        Left = 6
+        Top = 251
+        Width = 100
+        Height = 37
+        AutoSize = False
+        Words = <
+          item
+            Caption = #1069#1044#1054':'
+          end>
+      end
+      object edtEdoIDL: TSkLabel
+        Left = 3
+        Top = 278
+        Width = 143
+        Height = 37
+        AutoSize = False
+        Words = <
+          item
+            Caption = #1048#1076#1077#1085#1090#1080#1092#1080#1082#1072#1090#1086#1088' '#1069#1044#1054':'
+          end>
+      end
       object edtName: TcxTextEdit
-        Left = 114
-        Top = 24
+        Left = 155
+        Top = 97
         Anchors = [akLeft, akTop, akRight]
-        TabOrder = 0
-        TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077' '#1074#1080#1076#1072' '#1082#1088#1077#1076#1080#1090#1072
-        Width = 519
+        TabOrder = 4
+        TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
+        Width = 484
       end
       object edtDiscountDate: TcxDateEdit
-        Left = 114
-        Top = 72
+        Left = 155
+        Top = 160
         Properties.DateButtons = [btnClear, btnNow, btnToday]
-        TabOrder = 1
+        TabOrder = 6
         Width = 121
       end
       object edtDiscount: TcxCalcEdit
-        Left = 114
-        Top = 118
+        Left = 388
+        Top = 160
         EditValue = 0.000000000000000000
-        TabOrder = 2
+        TabOrder = 7
         Width = 121
+      end
+      object edtSignPartner: TcxCheckBox
+        Left = 155
+        Top = 6
+        Caption = #1055#1072#1088#1090#1085#1077#1088
+        Style.TransparentBorder = False
+        TabOrder = 0
+      end
+      object edtINN: TcxTextEdit
+        Left = 155
+        Top = 35
+        TabOrder = 1
+        TextHint = #1048#1085#1085
+        Width = 178
+      end
+      object edtPartner: TcxLookupComboBox
+        Left = 155
+        Top = 66
+        Anchors = [akLeft, akTop, akRight]
+        Properties.KeyFieldNames = 'KontragentID'
+        Properties.ListColumns = <
+          item
+            FieldName = 'Name'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DM.dsKontragent
+        Properties.MaxLength = 256
+        TabOrder = 3
+        ExplicitWidth = 528
+        Width = 484
+      end
+      object edtFullName: TcxTextEdit
+        Left = 155
+        Top = 128
+        Anchors = [akLeft, akTop, akRight]
+        TabOrder = 5
+        TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1087#1086#1083#1085#1086#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
+        Width = 484
+      end
+      object edtlegalAaddress: TcxTextEdit
+        Left = 155
+        Top = 193
+        Anchors = [akLeft, akTop, akRight]
+        TabOrder = 8
+        Width = 484
+      end
+      object edtPostAddress: TcxTextEdit
+        Left = 155
+        Top = 224
+        Anchors = [akLeft, akTop, akRight]
+        TabOrder = 9
+        Width = 484
+      end
+      object edtEdo: TcxTextEdit
+        Left = 155
+        Top = 255
+        Anchors = [akLeft, akTop, akRight]
+        TabOrder = 10
+        Width = 484
+      end
+      object edtEdoID: TcxTextEdit
+        Left = 155
+        Top = 286
+        Anchors = [akLeft, akTop, akRight]
+        TabOrder = 11
+        Width = 484
+      end
+      object btnAuutoFillByInn: TcxButton
+        Left = 388
+        Top = 35
+        Width = 251
+        Height = 25
+        Anchors = [akTop, akRight]
+        Caption = #1040#1074#1090#1086#1084#1072#1090#1080#1095#1077#1089#1082#1086#1077' '#1079#1072#1087#1086#1083#1085#1077#1085#1080#1077' '#1087#1086' '#1048#1053#1053
+        TabOrder = 2
       end
     end
     object TabContact: TTabSheet
@@ -113,10 +267,12 @@ inherited ClientF: TClientF
       object Grid: TcxGrid
         Left = 0
         Top = 37
-        Width = 643
-        Height = 244
+        Width = 646
+        Height = 288
         Align = alClient
         TabOrder = 1
+        ExplicitWidth = 643
+        ExplicitHeight = 244
         object TableView: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           ScrollbarAnnotations.CustomAnnotations = <>
@@ -151,7 +307,7 @@ inherited ClientF: TClientF
             Width = 200
           end
           object TableViewComment: TcxGridDBColumn
-            Caption = #1050#1086#1084#1084#1077#1085#1090#1072#1088#1080#1081
+            Caption = #1050#1086#1085#1090#1072#1082#1090#1085#1086#1077' '#1083#1080#1094#1086
             DataBinding.FieldName = 'Comment'
             HeaderAlignmentHorz = taCenter
             Width = 200
@@ -164,7 +320,7 @@ inherited ClientF: TClientF
       object ToolBar1: TToolBar
         Left = 0
         Top = 0
-        Width = 643
+        Width = 646
         Height = 37
         ButtonHeight = 40
         ButtonWidth = 70
@@ -172,6 +328,7 @@ inherited ClientF: TClientF
         Images = cxImageList
         ShowCaptions = True
         TabOrder = 0
+        ExplicitWidth = 643
         object ToolButton5: TToolButton
           Left = 0
           Top = 0
@@ -205,10 +362,12 @@ inherited ClientF: TClientF
       object GridDiscount: TcxGrid
         Left = 0
         Top = 0
-        Width = 643
-        Height = 281
+        Width = 646
+        Height = 325
         Align = alClient
         TabOrder = 0
+        ExplicitWidth = 643
+        ExplicitHeight = 281
         object TableViewDiscount: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           ScrollbarAnnotations.CustomAnnotations = <>
@@ -419,7 +578,7 @@ inherited ClientF: TClientF
   object cxImageList: TcxImageList
     SourceDPI = 96
     FormatVersion = 1
-    DesignInfo = 9699550
+    DesignInfo = 13893734
     ImageInfo = <
       item
         ImageClass = 'TdxSmartImage'
@@ -579,7 +738,7 @@ inherited ClientF: TClientF
   end
   object ActionList: TActionList
     Images = cxImageList
-    Left = 120
+    Left = 104
     Top = 150
     object acContactAdd: TAction
       Caption = #1044#1086#1073#1072#1074#1080#1090#1100
