@@ -11,17 +11,23 @@ inherited BuyerF: TBuyerF
     Width = 654
     Frame.Borders = []
     TabOrder = 1
-    ExplicitTop = 321
-    ExplicitWidth = 651
+    ExplicitTop = 365
+    ExplicitWidth = 654
     inherited dxPanel1: TdxPanel
       Height = 46
       TabOrder = 0
       ExplicitHeight = 46
+      inherited edtInDate: TcxDateEdit
+        TabOrder = 1
+      end
+      inherited edtUser: ALookupEdit
+        TabOrder = 0
+      end
     end
     inherited btnCancel: TcxButton
       Left = 451
       Height = 40
-      ExplicitLeft = 448
+      ExplicitLeft = 451
       ExplicitHeight = 40
     end
     inherited btnOk: TcxButton
@@ -29,7 +35,7 @@ inherited BuyerF: TBuyerF
       Height = 40
       TabOrder = 2
       OnClick = btnOkClick
-      ExplicitLeft = 543
+      ExplicitLeft = 546
       ExplicitHeight = 40
     end
   end
@@ -47,8 +53,6 @@ inherited BuyerF: TBuyerF
     TabOrder = 0
     TabWidth = 110
     OnDrawTab = PageControl1DrawTab
-    ExplicitWidth = 651
-    ExplicitHeight = 321
     object TabCommon: TTabSheet
       Margins.Left = 0
       Margins.Top = 0
@@ -178,17 +182,11 @@ inherited BuyerF: TBuyerF
         TabOrder = 6
         Width = 121
       end
-      object edtDiscount: TcxCalcEdit
-        Left = 388
-        Top = 160
-        EditValue = 0.000000000000000000
-        TabOrder = 7
-        Width = 121
-      end
       object edtSignPartner: TcxCheckBox
         Left = 155
         Top = 6
         Caption = #1055#1072#1088#1090#1085#1077#1088
+        Properties.OnChange = edtSignPartnerPropertiesChange
         Style.TransparentBorder = False
         TabOrder = 0
       end
@@ -212,7 +210,6 @@ inherited BuyerF: TBuyerF
         Properties.ListSource = DM.dsKontragent
         Properties.MaxLength = 256
         TabOrder = 3
-        ExplicitWidth = 528
         Width = 484
       end
       object edtFullName: TcxTextEdit
@@ -259,6 +256,14 @@ inherited BuyerF: TBuyerF
         Anchors = [akTop, akRight]
         Caption = #1040#1074#1090#1086#1084#1072#1090#1080#1095#1077#1089#1082#1086#1077' '#1079#1072#1087#1086#1083#1085#1077#1085#1080#1077' '#1087#1086' '#1048#1053#1053
         TabOrder = 2
+        OnClick = btnAuutoFillByInnClick
+      end
+      object edtDiscount: TcxCurrencyEdit
+        Left = 388
+        Top = 160
+        Properties.DisplayFormat = ',0.00 %;-,0.00 %'
+        TabOrder = 7
+        Width = 121
       end
     end
     object TabContact: TTabSheet
@@ -271,8 +276,6 @@ inherited BuyerF: TBuyerF
         Height = 288
         Align = alClient
         TabOrder = 1
-        ExplicitWidth = 643
-        ExplicitHeight = 244
         object TableView: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           ScrollbarAnnotations.CustomAnnotations = <>
@@ -328,7 +331,6 @@ inherited BuyerF: TBuyerF
         Images = cxImageList
         ShowCaptions = True
         TabOrder = 0
-        ExplicitWidth = 643
         object ToolButton5: TToolButton
           Left = 0
           Top = 0
@@ -366,8 +368,6 @@ inherited BuyerF: TBuyerF
         Height = 325
         Align = alClient
         TabOrder = 0
-        ExplicitWidth = 643
-        ExplicitHeight = 281
         object TableViewDiscount: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           ScrollbarAnnotations.CustomAnnotations = <>
@@ -497,7 +497,7 @@ inherited BuyerF: TBuyerF
       '          ,Comment      '
       '      from pDiscounts (nolock)'
       '     where Spid         = @@Spid'
-      '       and ObjectTypeID = 1          '
+      '       and ObjectTypeID = 2          '
       '     order by InDateTime desc'
       '       ')
     Left = 380
@@ -545,7 +545,7 @@ inherited BuyerF: TBuyerF
       '          ,Comment         '
       '          )'
       '    VALUES (@@Spid   '
-      '          ,1--ObjectTypeID '
+      '          ,2--ObjectTypeID '
       '          ,null --ObjectID     '
       '          ,:New_Phone        '
       '          ,:New_Mail         '

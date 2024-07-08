@@ -72,4 +72,12 @@ delete from tRetCode
 insert tRetCode (RetCode, Message) select 100,   'Вид кредита существует!'
 
 insert tRetCode (RetCode, Message) select 120,   'Клиент с заданным наименование существует!'
+
 insert tRetCode (RetCode, Message) select 140,   'Покупатель с заданным наименование существует!'
+insert tRetCode (RetCode, Message) select 141,   'Партнер с заданным наименование существует!'
+insert tRetCode (RetCode, Message) select 142,   'Покупатель с заданным ИНН существует!'
+
+insert tRetCode (RetCode, Message) select 160,   'Поставщик с заданным наименование существует!'
+insert tRetCode (RetCode, Message) select 161,   'Поставщик с заданным ИНН существует!'
+
+select * from tRetCode

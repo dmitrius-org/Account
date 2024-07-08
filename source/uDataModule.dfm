@@ -112,4 +112,18 @@ object DM: TDM
     Left = 484
     Top = 280
   end
+  object dsKontragentType: TDataSource
+    DataSet = qKontragentType
+    Left = 388
+    Top = 296
+  end
+  object qKontragentType: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      'select KontragentTypeID'
+      '      ,Name '
+      '  from tKontragentType kt (nolock)')
+    Left = 372
+    Top = 280
+  end
 end

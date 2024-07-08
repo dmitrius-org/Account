@@ -1,18 +1,18 @@
-inherited ClientF: TClientF
-  Caption = #1050#1083#1080#1077#1085#1090
-  ClientHeight = 367
-  ClientWidth = 651
+inherited SupplierF: TSupplierF
+  Caption = #1055#1086#1089#1090#1072#1074#1097#1080#1082
+  ClientHeight = 370
+  ClientWidth = 654
   StyleElements = [seFont, seClient, seBorder]
-  ExplicitWidth = 667
-  ExplicitHeight = 406
+  ExplicitWidth = 670
+  ExplicitHeight = 409
   TextHeight = 17
   inherited Panel: TdxPanel
-    Top = 321
-    Width = 651
+    Top = 324
+    Width = 654
     Frame.Borders = []
-    TabOrder = 2
-    ExplicitTop = 321
-    ExplicitWidth = 651
+    TabOrder = 1
+    ExplicitTop = 324
+    ExplicitWidth = 654
     inherited dxPanel1: TdxPanel
       Height = 46
       TabOrder = 0
@@ -25,25 +25,25 @@ inherited ClientF: TClientF
       end
     end
     inherited btnCancel: TcxButton
-      Left = 448
+      Left = 451
       Height = 40
-      ExplicitLeft = 448
+      ExplicitLeft = 451
       ExplicitHeight = 40
     end
     inherited btnOk: TcxButton
-      Left = 543
+      Left = 546
       Height = 40
       TabOrder = 2
       OnClick = btnOkClick
-      ExplicitLeft = 543
+      ExplicitLeft = 546
       ExplicitHeight = 40
     end
   end
   object PageControl1: TPageControl [1]
     Left = 0
     Top = 0
-    Width = 651
-    Height = 321
+    Width = 654
+    Height = 324
     ActivePage = TabCommon
     Align = alClient
     DoubleBuffered = True
@@ -61,11 +61,11 @@ inherited ClientF: TClientF
       Caption = #1043#1083#1072#1074#1085#1072#1103
       ImageIndex = 1
       DesignSize = (
-        643
-        281)
+        646
+        284)
       object SkLabel1: TSkLabel
-        Left = 8
-        Top = 24
+        Left = 6
+        Top = 68
         Width = 100
         Height = 19
         Words = <
@@ -73,40 +73,131 @@ inherited ClientF: TClientF
             Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
           end>
       end
-      object SkLabel2: TSkLabel
-        Left = 8
-        Top = 72
-        Width = 81
+      object SkLabel4: TSkLabel
+        Left = 6
+        Top = 35
+        Width = 30
         Height = 19
         Words = <
           item
-            Caption = #1044#1072#1090#1072' '#1089#1082#1080#1076#1082#1080':'
+            Caption = #1048#1085#1085':'
           end>
       end
-      object SkLabel3: TSkLabel
-        Left = 8
-        Top = 124
-        Width = 49
+      object SkLabel6: TSkLabel
+        Left = 6
+        Top = 95
+        Width = 143
+        Height = 34
+        AutoSize = False
+        Words = <
+          item
+            Caption = #1055#1086#1083#1085#1086#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
+          end>
+      end
+      object SkLabel7: TSkLabel
+        Left = 6
+        Top = 134
+        Width = 72
         Height = 19
         Words = <
           item
-            Caption = #1057#1082#1080#1076#1082#1072':'
+            Caption = #1070#1088'. '#1040#1076#1088#1077#1089':'
+          end>
+      end
+      object SkLabel8: TSkLabel
+        Left = 6
+        Top = 158
+        Width = 143
+        Height = 37
+        AutoSize = False
+        Words = <
+          item
+            Caption = #1055#1086#1095#1090#1086#1074#1099#1081' '#1072#1076#1088#1077#1089':'
+          end>
+      end
+      object SkLabel9: TSkLabel
+        Left = 6
+        Top = 189
+        Width = 100
+        Height = 37
+        AutoSize = False
+        Words = <
+          item
+            Caption = #1069#1044#1054':'
+          end>
+      end
+      object edtEdoIDL: TSkLabel
+        Left = 3
+        Top = 216
+        Width = 143
+        Height = 37
+        AutoSize = False
+        Words = <
+          item
+            Caption = #1048#1076#1077#1085#1090#1080#1092#1080#1082#1072#1090#1086#1088' '#1069#1044#1054':'
           end>
       end
       object edtName: TcxTextEdit
-        Left = 114
-        Top = 24
+        Left = 155
+        Top = 68
         Anchors = [akLeft, akTop, akRight]
-        TabOrder = 0
-        TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077' '#1074#1080#1076#1072' '#1082#1088#1077#1076#1080#1090#1072
-        Width = 519
+        TabOrder = 2
+        TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
+        Width = 484
       end
-      object edtDiscountDate: TcxDateEdit
-        Left = 114
-        Top = 72
-        Properties.DateButtons = [btnClear, btnNow, btnToday]
+      object edtINN: TcxTextEdit
+        Left = 155
+        Top = 35
+        TabOrder = 0
+        Text = '7730588444'
+        TextHint = #1048#1085#1085
+        Width = 178
+      end
+      object edtFullName: TcxTextEdit
+        Left = 155
+        Top = 99
+        Anchors = [akLeft, akTop, akRight]
+        TabOrder = 3
+        TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1087#1086#1083#1085#1086#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
+        Width = 484
+      end
+      object edtlegalAaddress: TcxTextEdit
+        Left = 155
+        Top = 131
+        Anchors = [akLeft, akTop, akRight]
+        TabOrder = 4
+        Width = 484
+      end
+      object edtPostAddress: TcxTextEdit
+        Left = 155
+        Top = 162
+        Anchors = [akLeft, akTop, akRight]
+        TabOrder = 5
+        Width = 484
+      end
+      object edtEdo: TcxTextEdit
+        Left = 155
+        Top = 193
+        Anchors = [akLeft, akTop, akRight]
+        TabOrder = 6
+        Width = 484
+      end
+      object edtEdoID: TcxTextEdit
+        Left = 155
+        Top = 224
+        Anchors = [akLeft, akTop, akRight]
+        TabOrder = 7
+        Width = 484
+      end
+      object btnAuutoFillByInn: TcxButton
+        Left = 388
+        Top = 35
+        Width = 251
+        Height = 25
+        Anchors = [akTop, akRight]
+        Caption = #1040#1074#1090#1086#1084#1072#1090#1080#1095#1077#1089#1082#1086#1077' '#1079#1072#1087#1086#1083#1085#1077#1085#1080#1077' '#1087#1086' '#1048#1053#1053
         TabOrder = 1
-        Width = 121
+        OnClick = btnAuutoFillByInnClick
       end
     end
     object TabContact: TTabSheet
@@ -115,8 +206,8 @@ inherited ClientF: TClientF
       object Grid: TcxGrid
         Left = 0
         Top = 37
-        Width = 643
-        Height = 244
+        Width = 646
+        Height = 247
         Align = alClient
         TabOrder = 1
         object TableView: TcxGridDBTableView
@@ -153,7 +244,7 @@ inherited ClientF: TClientF
             Width = 200
           end
           object TableViewComment: TcxGridDBColumn
-            Caption = #1050#1086#1084#1084#1077#1085#1090#1072#1088#1080#1081
+            Caption = #1050#1086#1085#1090#1072#1082#1090#1085#1086#1077' '#1083#1080#1094#1086
             DataBinding.FieldName = 'Comment'
             HeaderAlignmentHorz = taCenter
             Width = 200
@@ -166,7 +257,7 @@ inherited ClientF: TClientF
       object ToolBar1: TToolBar
         Left = 0
         Top = 0
-        Width = 643
+        Width = 646
         Height = 37
         ButtonHeight = 40
         ButtonWidth = 70
@@ -201,64 +292,6 @@ inherited ClientF: TClientF
         end
       end
     end
-    object TabDiscount: TTabSheet
-      Caption = #1048#1089#1090#1086#1088#1080#1103' '#1089#1082#1080#1076#1082#1080
-      ImageIndex = 2
-      object GridDiscount: TcxGrid
-        Left = 0
-        Top = 0
-        Width = 643
-        Height = 281
-        Align = alClient
-        TabOrder = 0
-        object TableViewDiscount: TcxGridDBTableView
-          Navigator.Buttons.CustomButtons = <>
-          ScrollbarAnnotations.CustomAnnotations = <>
-          DataController.DataSource = dsDiscount
-          DataController.Summary.DefaultGroupSummaryItems = <>
-          DataController.Summary.FooterSummaryItems = <>
-          DataController.Summary.SummaryGroups = <>
-          OptionsCustomize.ColumnHiding = True
-          OptionsCustomize.ColumnsQuickCustomization = True
-          OptionsCustomize.ColumnsQuickCustomizationSorted = True
-          OptionsData.CancelOnExit = False
-          OptionsData.Deleting = False
-          OptionsData.DeletingConfirmation = False
-          OptionsData.Editing = False
-          OptionsData.Inserting = False
-          OptionsSelection.CellSelect = False
-          OptionsSelection.HideSelection = True
-          OptionsView.NoDataToDisplayInfoText = #1053#1077#1090' '#1076#1072#1085#1085#1099#1093
-          OptionsView.DataRowHeight = 22
-          OptionsView.GroupByBox = False
-          OptionsView.HeaderHeight = 30
-          OptionsView.Indicator = True
-          OptionsView.RowSeparatorColor = clBlack
-          object TableViewDiscountDiscountDate: TcxGridDBColumn
-            Caption = #1044#1072#1090#1072' '#1089#1082#1080#1076#1082#1080
-            DataBinding.FieldName = 'DiscountDate'
-            HeaderAlignmentHorz = taCenter
-            Width = 128
-          end
-          object TableViewDiscountDiscount: TcxGridDBColumn
-            Caption = #1057#1082#1080#1076#1082#1072
-            DataBinding.FieldName = 'Discount'
-            HeaderAlignmentHorz = taCenter
-            Width = 189
-          end
-        end
-        object GridLevelDiscount: TcxGridLevel
-          GridView = TableViewDiscount
-        end
-      end
-    end
-  end
-  object edtDiscount: TcxCurrencyEdit [2]
-    Left = 118
-    Top = 154
-    Properties.DisplayFormat = ',0.00 %;-,0.00 %'
-    TabOrder = 1
-    Width = 121
   end
   inherited FDQuery: TFDQuery
     Left = 452
@@ -336,51 +369,6 @@ inherited ClientF: TClientF
       Origin = 'UpDateTime'
     end
   end
-  object qDiscount: TFDQuery
-    Connection = DM.FDConnection
-    SQL.Strings = (
-      '    select     '
-      '           ObjectTypeID '
-      '          ,ObjectID     '
-      '          ,Discount        '
-      '          ,DiscountDate         '
-      '          ,Comment      '
-      '      from pDiscounts (nolock)'
-      '     where Spid         = @@Spid'
-      '       and ObjectTypeID = 1          '
-      '     order by InDateTime desc'
-      '       ')
-    Left = 380
-    Top = 200
-    object qDiscountObjectTypeID: TIntegerField
-      FieldName = 'ObjectTypeID'
-      Origin = 'ObjectTypeID'
-    end
-    object qDiscountObjectID: TFMTBCDField
-      FieldName = 'ObjectID'
-      Origin = 'ObjectID'
-      Precision = 15
-      Size = 0
-    end
-    object qDiscountDiscount: TFloatField
-      FieldName = 'Discount'
-      Origin = 'Discount'
-    end
-    object qDiscountDiscountDate: TSQLTimeStampField
-      FieldName = 'DiscountDate'
-      Origin = 'DiscountDate'
-    end
-    object qDiscountComment: TStringField
-      FieldName = 'Comment'
-      Origin = 'Comment'
-      Size = 256
-    end
-  end
-  object dsDiscount: TDataSource
-    DataSet = qDiscount
-    Left = 308
-    Top = 200
-  end
   object qContactUpdate: TFDUpdateSQL
     Connection = DM.FDConnection
     ConnectionName = 'Connection'
@@ -395,7 +383,7 @@ inherited ClientF: TClientF
       '          ,Comment         '
       '          )'
       '    VALUES (@@Spid   '
-      '          ,1--ObjectTypeID '
+      '          ,3--ObjectTypeID '
       '          ,null --ObjectID     '
       '          ,:New_Phone        '
       '          ,:New_Mail         '
@@ -428,7 +416,7 @@ inherited ClientF: TClientF
   object cxImageList: TcxImageList
     SourceDPI = 96
     FormatVersion = 1
-    DesignInfo = 9699550
+    DesignInfo = 13893734
     ImageInfo = <
       item
         ImageClass = 'TdxSmartImage'
@@ -588,7 +576,7 @@ inherited ClientF: TClientF
   end
   object ActionList: TActionList
     Images = cxImageList
-    Left = 120
+    Left = 104
     Top = 150
     object acContactAdd: TAction
       Caption = #1044#1086#1073#1072#1074#1080#1090#1100

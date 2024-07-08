@@ -13,7 +13,7 @@ uses
   cxClasses, FireDAC.Comp.DataSet, FireDAC.Comp.Client, System.ImageList,
   Vcl.ImgList, cxImageList, Vcl.Menus, System.Actions, Vcl.ActnList,
   cxGridLevel, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
-  cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin;
+  cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, cxContainer, cxGroupBox;
 
 type
   TExpenseItemsT = class(TBaseFormDBT)

@@ -6,7 +6,6 @@ inherited ExpenseItemsT: TExpenseItemsT
   inherited ToolBar: TToolBar
     ButtonWidth = 111
     DoubleBuffered = True
-    ExplicitWidth = 810
     inherited tbShow: TToolButton
       ExplicitWidth = 111
     end
@@ -40,9 +39,6 @@ inherited ExpenseItemsT: TExpenseItemsT
     end
   end
   inherited Grid: TcxGrid
-    ExplicitLeft = 0
-    ExplicitTop = 62
-    ExplicitWidth = 816
     inherited TableView: TcxGridDBTableView
       DataController.KeyFieldNames = 'ExpenseItemID'
       object TableViewExpenseItemID: TcxGridDBColumn

@@ -3,15 +3,16 @@ inherited TasksT: TTasksT
   ClientWidth = 830
   StyleElements = [seFont, seClient, seBorder]
   OnCreate = FormCreate
-  ExplicitLeft = -150
   ExplicitWidth = 846
   TextHeight = 17
   inherited ToolBar: TToolBar
     Width = 824
     DoubleBuffered = True
+    ExplicitWidth = 824
   end
   inherited Grid: TcxGrid
     Width = 830
+    ExplicitWidth = 830
     inherited TableView: TcxGridDBTableView
       DataController.KeyFieldNames = 'TaskID'
       object TableViewCreateDate: TcxGridDBColumn
@@ -45,6 +46,10 @@ inherited TasksT: TTasksT
         Width = 133
       end
     end
+  end
+  inherited FilterPanel: TcxGroupBox
+    ExplicitWidth = 830
+    Width = 830
   end
   inherited cxImageList32: TcxImageList
     FormatVersion = 1

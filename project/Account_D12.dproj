@@ -212,14 +212,20 @@
             <Form>KontragentsT</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="..\source\application\uBuyerF.pas">
-            <Form>BuyerF</Form>
+        <DCCReference Include="..\source\application\uSupplierF.pas">
+            <Form>SupplierF</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\source\application\uClientF.pas">
             <Form>ClientF</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="..\source\lib\uComboBox.pas"/>
+        <DCCReference Include="..\source\application\uBuyerF.pas">
+            <Form>BuyerF</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\source\lib\uGetKontragentData.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

@@ -25,17 +25,40 @@ as
 
   select @KontragentTypeID  = 2
 
+  if @IsPartner =1
+  begin
+    select @Inn          = null
+          ,@PostAddress	 = null
+          ,@LegalAddress = null
+          ,@Edo	         = null
+          ,@EdoID	     = null
+          ,@IsImport	 = null   
+          ,@Discount	 = null   
+          ,@DiscountDate = null
+          ,@PartnerID	 = null
+  end
+
   DECLARE @ID TABLE (ID numeric(18,0));
 
   if exists (select 1 
                from tKontragents u (nolock)
               where u.Name             = @Name
-                and u.KontragentTypeID = @KontragentTypeID)
+                and u.KontragentTypeID = @KontragentTypeID
+                and u.PartnerID        = @PartnerID)
   begin
-    if @IsImport > 0
-       set @r =  141 -- 140,   'Партнер с заданным наименование существует!'
+    if @IsPartner > 0
+       set @r =  141 -- 141,   'Партнер с заданным наименование существует!'
     else
        set @r =  140 -- 140,   'Покупатель с заданным наименование существует!'
+    goto exit_
+  end
+
+  if @IsPartner = 0 and exists (select 1 
+                                 from tKontragents u (nolock)
+                                where u.INN              = @Inn
+                                  and u.KontragentTypeID = @KontragentTypeID) 
+  begin
+    set @r =  142--  'Покупатель с заданным ИНН существует!'
     goto exit_
   end
 
@@ -127,13 +150,40 @@ as
 
   select @KontragentTypeID  = 2
 
+  if @IsPartner =1
+  begin
+    select @Inn          = null
+          ,@PostAddress	 = null
+          ,@LegalAddress = null
+          ,@Edo	         = null
+          ,@EdoID	     = null
+          ,@IsImport	 = null   
+          ,@Discount	 = null   
+          ,@DiscountDate = null
+          ,@PartnerID	 = null
+  end
+
   if exists (select 1 
                from tKontragents u (nolock)
               where u.Name             = @Name
                 and u.KontragentTypeID = @KontragentTypeID
-                and u.KontragentID    <> @BuyerID)
+                and u.KontragentID    <> @BuyerID
+                and u.IsPartner       = @IsPartner)
   begin
-    set @r =  120 --  'Клиент с заданным наименование существует!'
+    if @IsPartner > 0
+       set @r =  141 -- 141,   'Партнер с заданным наименование существует!'
+    else
+       set @r =  140 -- 140,   'Покупатель с заданным наименование существует!'
+    goto exit_
+  end
+
+  if @IsPartner = 0 and exists (select 1 
+                                 from tKontragents u (nolock)
+                                where u.INN              = @Inn
+                                  and u.KontragentTypeID = @KontragentTypeID
+                                  and u.KontragentID    <> @BuyerID) 
+  begin
+    set @r =  142--  'Покупатель с заданным ИНН существует!'
     goto exit_
   end
 
@@ -146,24 +196,24 @@ as
                       and (u.discount <> @Discount or u.DiscountDate <> @DiscountDate))
         begin
             insert tDiscounts(ObjectTypeID, ObjectID, Discount, DiscountDate)
-            select 1, @BuyerID, @Discount, @DiscountDate
+            select @KontragentTypeID, @BuyerID, @Discount, @DiscountDate
         end  
 
 		Update tKontragents
 		   set 
-               @Name    	    = @Name    	    
-              ,@FullName	    = @FullName	    
-              ,@Inn	            = @Inn	        
-              ,@Program	        = @Program	    
-              ,@PostAddress	    = @PostAddress	
-              ,@LegalAddress	= @LegalAddress	
-              ,@Edo	            = @Edo	        
-              ,@EdoID	        = @EdoID	    
-              ,@IsImport	    = @IsImport	    
-              ,@Discount	    = @Discount	    
-              ,@DiscountDate	= @DiscountDate	
-              ,@PartnerID	    = @PartnerID	
-              ,@IsPartner	    = @IsPartner	
+               Name    	    = @Name    	    
+              ,FullName	    = @FullName	    
+              ,Inn	        = @Inn	        
+              ,Program	    = @Program	    
+              ,PostAddress	= @PostAddress	
+              ,LegalAddress	= @LegalAddress	
+              ,Edo	        = @Edo	        
+              ,EdoID	    = @EdoID	    
+              ,IsImport	    = @IsImport	    
+              ,Discount	    = @Discount	    
+              ,DiscountDate	= @DiscountDate	
+              ,PartnerID	= @PartnerID	
+              ,IsPartner	= @IsPartner	
 		 where KontragentID  = @BuyerID
 
         exec ContactFill

@@ -17,7 +17,7 @@ uses
   dxScrollbarAnnotations, cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
   System.Actions, Vcl.ActnList, System.ImageList, Vcl.ImgList, cxImageList,
-  Vcl.ToolWin;
+  Vcl.ToolWin, cxCurrencyEdit;
 
 type
   TClientF = class(TBaseFormDBF)
@@ -28,7 +28,6 @@ type
     SkLabel3: TSkLabel;
     edtName: TcxTextEdit;
     edtDiscountDate: TcxDateEdit;
-    edtDiscount: TcxCalcEdit;
     TabContact: TTabSheet;
     TabDiscount: TTabSheet;
     dsContact: TDataSource;
@@ -75,6 +74,7 @@ type
     qDiscountComment: TStringField;
     TableViewDiscountDiscount: TcxGridDBColumn;
     TableViewDiscountDiscountDate: TcxGridDBColumn;
+    edtDiscount: TcxCurrencyEdit;
     procedure btnOkClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure PageControl1DrawTab(Control: TCustomTabControl; TabIndex: Integer;
@@ -312,19 +312,23 @@ begin
   case FormAction of
     acInsert, acReportCreate:
     begin
+      Self.Caption := 'Добавление клиента';
       edtDiscountDate.date := Date();
       tSQl.Exec('delete pContacts from pContacts (rowlock) where Spid = @@Spid', [], []);
       tSQl.Exec('delete pDiscounts from pDiscounts (rowlock) where Spid = @@Spid', [], []);
     end;
-//    acUpdate, acReportEdit, acUserAction:
-//    begin
-//    end;
-//    acDelete:
-//    begin
-//    end;
-//    acShow:
-//    begin
-//    end;
+    acUpdate, acReportEdit, acUserAction:
+    begin
+      self.Caption := 'Изменение клиента ' +  edtName.Text;
+    end;
+    acDelete:
+    begin
+      self.Caption := 'Удаление клиента ' + edtName.Text;
+    end;
+    acShow:
+    begin
+      self.Caption := 'Просмотр клиента ' +  edtName.Text;
+    end;
   else
   end;
 

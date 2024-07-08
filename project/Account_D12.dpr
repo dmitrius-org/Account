@@ -27,8 +27,11 @@ uses
   uTasksT in '..\source\application\uTasksT.pas' {TasksT},
   uTasksF in '..\source\application\uTasksF.pas' {TasksF},
   uKontragentsT in '..\source\application\uKontragentsT.pas' {KontragentsT},
+  uSupplierF in '..\source\application\uSupplierF.pas' {SupplierF},
+  uClientF in '..\source\application\uClientF.pas' {ClientF},
+  uComboBox in '..\source\lib\uComboBox.pas',
   uBuyerF in '..\source\application\uBuyerF.pas' {BuyerF},
-  uClientF in '..\source\application\uClientF.pas' {ClientF};
+  uGetKontragentData in '..\source\lib\uGetKontragentData.pas';
 
 {$R *.res}
 
@@ -38,9 +41,6 @@ begin
 
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TIM, IM);
-  //  Application.CreateForm(TClientF, ClientF);
-  //  Application.CreateForm(TKontragentsChose, KontragentsChose);
-  //  Application.CreateForm(TClientF, ClientF);
   Application.Title := DM.FDManager.ConnectionDefs.FindConnectionDef('Connection').Params.Values['ApplicationName'];
 
 //  var LoginForm: TLoginForm;
