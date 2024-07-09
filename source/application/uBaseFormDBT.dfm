@@ -10,12 +10,9 @@ inherited BaseFormDBT: TBaseFormDBT
   ExplicitHeight = 529
   TextHeight = 17
   inherited ToolBar: TToolBar
-    AlignWithMargins = True
-    Left = 3
-    Top = 3
-    Width = 810
-    Height = 56
-    ButtonHeight = 56
+    Width = 816
+    Height = 40
+    ButtonHeight = 40
     ButtonWidth = 87
     Color = 14671839
     Ctl3D = False
@@ -27,43 +24,39 @@ inherited BaseFormDBT: TBaseFormDBT
     ParentColor = False
     ParentDoubleBuffered = False
     StyleElements = []
-    ExplicitLeft = 3
-    ExplicitTop = 3
-    ExplicitWidth = 810
-    ExplicitHeight = 56
+    ExplicitWidth = 816
+    ExplicitHeight = 40
     inherited tbShow: TToolButton
       ExplicitWidth = 87
-      ExplicitHeight = 56
+      ExplicitHeight = 40
     end
     inherited tbAdd: TToolButton
       Left = 87
       ExplicitLeft = 87
       ExplicitWidth = 87
-      ExplicitHeight = 56
+      ExplicitHeight = 40
     end
     inherited tbEdit: TToolButton
       Left = 174
       ExplicitLeft = 174
       ExplicitWidth = 87
-      ExplicitHeight = 56
+      ExplicitHeight = 40
     end
     inherited tbDelete: TToolButton
       Left = 261
       ExplicitLeft = 261
       ExplicitWidth = 87
-      ExplicitHeight = 56
+      ExplicitHeight = 40
     end
   end
   object Grid: TcxGrid [1]
     Left = 0
-    Top = 121
+    Top = 99
     Width = 816
-    Height = 369
+    Height = 391
     Align = alClient
     PopupMenu = PopupMenu
-    TabOrder = 1
-    ExplicitTop = 62
-    ExplicitHeight = 350
+    TabOrder = 2
     object TableView: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       ScrollbarAnnotations.CustomAnnotations = <>
@@ -98,11 +91,19 @@ inherited BaseFormDBT: TBaseFormDBT
   end
   object FilterPanel: TcxGroupBox [2]
     Left = 0
-    Top = 62
+    Top = 40
     Align = alTop
+    BiDiMode = bdLeftToRight
     Caption = #1060#1080#1083#1100#1090#1088
-    Style.Color = clBtnFace
-    TabOrder = 2
+    ParentBiDiMode = False
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -13
+    Style.Font.Name = 'Segoe UI'
+    Style.Font.Style = []
+    Style.IsFontAssigned = True
+    TabOrder = 1
     Visible = False
     Height = 59
     Width = 816

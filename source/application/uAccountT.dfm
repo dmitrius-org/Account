@@ -1,102 +1,487 @@
-object BaseFormT: TBaseFormT
-  Left = 0
-  Top = 0
-  ClientHeight = 424
-  ClientWidth = 947
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -12
-  Font.Name = 'Segoe UI'
-  Font.Style = []
-  Position = poDesktopCenter
-  TextHeight = 15
-  object ToolBar: TToolBar
-    Left = 0
-    Top = 0
-    Width = 947
-    Height = 38
-    AutoSize = True
-    ButtonHeight = 38
-    ButtonWidth = 81
-    Caption = 'ToolBar'
-    Images = cxImageList16
-    ParentShowHint = False
-    ShowCaptions = True
-    ShowHint = True
-    TabOrder = 0
-    object tbShow: TToolButton
-      Left = 0
+inherited AccountT: TAccountT
+  Caption = #1057#1095#1077#1090#1072
+  ClientHeight = 507
+  ClientWidth = 1019
+  StyleElements = [seFont, seClient, seBorder]
+  OnCreate = FormCreate
+  ExplicitWidth = 1035
+  ExplicitHeight = 546
+  TextHeight = 17
+  inherited ToolBar: TToolBar
+    Width = 1019
+    DoubleBuffered = True
+    ExplicitLeft = 8
+    ExplicitTop = -19
+    ExplicitWidth = 1019
+    inherited tbAdd: TToolButton
+      Action = nil
+      DropdownMenu = AddMenu
+      Style = tbsWholeDropDown
+      OnClick = nil
+    end
+    object ToolButton1: TToolButton
+      Left = 348
       Top = 0
-      Action = actShow
-    end
-    object tbAdd: TToolButton
-      Left = 81
-      Top = 0
-      Action = actAdd
-    end
-    object tbEdit: TToolButton
-      Left = 162
-      Top = 0
-      Action = actEdit
-    end
-    object tbDelete: TToolButton
-      Left = 243
-      Top = 0
-      Action = actDelete
-    end
-  end
-  object ActionList: TActionList
-    Images = cxImageList16
-    Left = 704
-    Top = 104
-    object actShow: TAction
-      Caption = #1055#1088#1086#1089#1084#1086#1090#1088#1077#1090#1100
-      ImageIndex = 3
-    end
-    object actAdd: TAction
-      Caption = #1044#1086#1073#1072#1074#1080#1090#1100
-      ImageIndex = 0
-    end
-    object actEdit: TAction
-      Caption = #1048#1079#1084#1077#1085#1080#1090#1100
+      Width = 8
+      Caption = 'ToolButton1'
       ImageIndex = 2
+      Style = tbsSeparator
     end
-    object actDelete: TAction
-      Caption = #1059#1076#1072#1083#1080#1090#1100
-      ImageIndex = 1
-    end
-    object actLookup: TAction
-      Caption = #1042#1099#1073#1088#1072#1090#1100
-      ImageIndex = 4
+    object ToolButton2: TToolButton
+      Left = 356
+      Top = 0
+      Action = actontragent
     end
   end
-  object PopupMenu: TPopupMenu
-    Images = cxImageList16
-    Left = 704
-    Top = 160
-    object N6: TMenuItem
-      Action = actLookup
-    end
-    object N1: TMenuItem
-      Action = actShow
-    end
-    object N2: TMenuItem
-      Action = actAdd
-    end
-    object N3: TMenuItem
-      Action = actEdit
-    end
-    object N4: TMenuItem
-      Action = actDelete
+  inherited Grid: TcxGrid
+    Top = 181
+    Width = 1019
+    Height = 326
+    ExplicitWidth = 1019
+    ExplicitHeight = 408
+    inherited TableView: TcxGridDBTableView
+      OnCustomDrawCell = TableViewCustomDrawCell
+      DataController.KeyFieldNames = 'AccountID'
+      Styles.OnGetContentStyle = TableViewStylesGetContentStyle
+      object TableViewAccountID: TcxGridDBColumn
+        Caption = #1048#1076#1077#1085#1090#1080#1092#1080#1082#1072#1090#1086#1088
+        DataBinding.FieldName = 'AccountID'
+        Visible = False
+        HeaderAlignmentHorz = taCenter
+      end
+      object TableViewPaymentDate: TcxGridDBColumn
+        Caption = #1044#1072#1090#1072' '#1086#1087#1083#1072#1090#1099
+        DataBinding.FieldName = 'PaymentDate'
+        HeaderAlignmentHorz = taCenter
+        Width = 112
+      end
+      object TableViewAccountNumber: TcxGridDBColumn
+        Caption = #8470' '#1057#1095#1077#1090#1072
+        DataBinding.FieldName = 'AccountNumber'
+        HeaderAlignmentHorz = taCenter
+        Width = 105
+      end
+      object TableViewPaymentAmount: TcxGridDBColumn
+        Caption = #1057#1091#1084#1084#1072
+        DataBinding.FieldName = 'PaymentAmount'
+        HeaderAlignmentHorz = taCenter
+      end
+      object TableViewBuyerName: TcxGridDBColumn
+        Caption = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1100
+        DataBinding.FieldName = 'BuyerName'
+        DateTimeGrouping = dtgRelativeToToday
+        HeaderAlignmentHorz = taCenter
+        Width = 200
+      end
+      object TableViewBuyerDiscount: TcxGridDBColumn
+        Caption = #1057#1082#1080#1076#1082#1072
+        DataBinding.FieldName = 'BuyerDiscount'
+        HeaderAlignmentHorz = taCenter
+        HeaderHint = #1057#1082#1080#1076#1082#1072' '#1087#1086#1082#1091#1087#1072#1090#1077#1083#1103
+      end
+      object TableViewClientName: TcxGridDBColumn
+        Caption = #1050#1083#1080#1077#1085#1090
+        DataBinding.FieldName = 'ClientName'
+        HeaderAlignmentHorz = taCenter
+        Width = 200
+      end
+      object TableViewClientDiscount: TcxGridDBColumn
+        Caption = #1057#1082#1080#1076#1082#1072
+        DataBinding.FieldName = 'ClientDiscount'
+        HeaderAlignmentHorz = taCenter
+        HeaderHint = #1057#1082#1080#1076#1082#1072' '#1082#1083#1080#1077#1085#1090#1072
+      end
+      object TableViewSupplieName: TcxGridDBColumn
+        Caption = #1055#1086#1089#1090#1072#1074#1097#1080#1082
+        DataBinding.FieldName = 'SupplieName'
+        HeaderAlignmentHorz = taCenter
+        Width = 200
+      end
+      object TableViewAccountStatusID: TcxGridDBColumn
+        DataBinding.FieldName = 'AccountStatusID'
+        Visible = False
+        HeaderAlignmentHorz = taCenter
+        VisibleForCustomization = False
+      end
+      object TableViewStatusName: TcxGridDBColumn
+        Caption = #1057#1090#1072#1090#1091#1089
+        DataBinding.FieldName = 'StatusName'
+        HeaderAlignmentHorz = taCenter
+      end
     end
   end
-  object cxImageList32: TcxImageList
-    SourceDPI = 96
-    Height = 32
-    Width = 32
+  inherited FilterPanel: TcxGroupBox
+    Visible = True
+    ExplicitLeft = -8
+    ExplicitTop = 68
+    ExplicitWidth = 1019
+    ExplicitHeight = 141
+    Height = 141
+    Width = 1019
+    object SkLabel1: TSkLabel
+      Left = 7
+      Top = 18
+      Width = 53
+      Height = 19
+      Words = <
+        item
+          Caption = #1057#1095#1077#1090' '#8470':'
+        end>
+    end
+    object SkLabel2: TSkLabel
+      Left = 7
+      Top = 49
+      Width = 47
+      Height = 19
+      Words = <
+        item
+          Caption = #1055#1055' '#8470' :'
+        end>
+    end
+    object SkLabel3: TSkLabel
+      Left = 211
+      Top = 49
+      Width = 17
+      Height = 19
+      Words = <
+        item
+          Caption = #1086#1090':'
+        end>
+    end
+    object SkLabel5: TSkLabel
+      Left = 211
+      Top = 18
+      Width = 17
+      Height = 19
+      Words = <
+        item
+          Caption = #1086#1090':'
+        end>
+    end
+    object SkLabel7: TSkLabel
+      Left = 7
+      Top = 80
+      Width = 94
+      Height = 19
+      Words = <
+        item
+          Caption = #1044#1072#1090#1072' '#1086#1087#1083#1072#1090#1099' '#1089':'
+        end>
+    end
+    object SkLabel4: TSkLabel
+      Left = 211
+      Top = 80
+      Width = 20
+      Height = 19
+      Words = <
+        item
+          Caption = #1087#1086':'
+        end>
+    end
+    object SkLabel6: TSkLabel
+      Left = 664
+      Top = 18
+      Width = 44
+      Height = 19
+      Words = <
+        item
+          Caption = #1057#1090#1072#1090#1091#1089':'
+        end>
+    end
+    object SkLabel11: TSkLabel
+      Left = 664
+      Top = 49
+      Width = 27
+      Height = 19
+      Words = <
+        item
+          Caption = #1058#1080#1087':'
+        end>
+    end
+    object SkLabel8: TSkLabel
+      Left = 340
+      Top = 18
+      Width = 78
+      Height = 19
+      Words = <
+        item
+          Caption = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1100':'
+        end>
+    end
+    object SkLabel12: TSkLabel
+      Left = 340
+      Top = 49
+      Width = 75
+      Height = 19
+      Words = <
+        item
+          Caption = #1055#1086#1089#1090#1072#1074#1097#1080#1082':'
+        end>
+    end
+    object SkLabel13: TSkLabel
+      Left = 340
+      Top = 80
+      Width = 48
+      Height = 19
+      Words = <
+        item
+          Caption = #1050#1083#1080#1077#1085#1090':'
+        end>
+    end
+    object edtAccountNumber: TcxTextEdit
+      Left = 103
+      Top = 16
+      TabOrder = 1
+      OnKeyDown = edtAccountNumberKeyDown
+      Width = 104
+    end
+    object edtPayNumber: TcxTextEdit
+      Left = 103
+      Top = 47
+      TabOrder = 6
+      OnKeyDown = edtAccountNumberKeyDown
+      Width = 104
+    end
+    object edtAccountDate: TcxDateEdit
+      Left = 231
+      Top = 16
+      Properties.DateButtons = [btnClear, btnNow, btnToday]
+      TabOrder = 2
+      OnKeyDown = edtAccountNumberKeyDown
+      Width = 104
+    end
+    object edtPayDate: TcxDateEdit
+      Left = 231
+      Top = 47
+      Properties.DateButtons = [btnClear, btnNow, btnToday]
+      Properties.UseNullString = True
+      TabOrder = 7
+      OnKeyDown = edtAccountNumberKeyDown
+      Width = 104
+    end
+    object edtPaymentDate: TcxDateEdit
+      Left = 103
+      Top = 78
+      Properties.DateButtons = [btnClear, btnNow, btnToday]
+      Properties.UseNullString = True
+      TabOrder = 11
+      OnKeyDown = edtAccountNumberKeyDown
+      Width = 104
+    end
+    object edtPaymentDateE: TcxDateEdit
+      Left = 231
+      Top = 78
+      Properties.DateButtons = [btnClear, btnNow, btnToday]
+      Properties.UseNullString = True
+      TabOrder = 12
+      OnKeyDown = edtAccountNumberKeyDown
+      Width = 104
+    end
+    object edtAccountStatus: TcxLookupComboBox
+      Left = 714
+      Top = 16
+      Properties.KeyFieldNames = 'AccountStatusID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'Name'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = dsAccountStatus
+      Properties.MaxLength = 256
+      TabOrder = 4
+      OnKeyDown = edtAccountNumberKeyDown
+      Width = 146
+    end
+    object edtType: TcxComboBox
+      Left = 714
+      Top = 47
+      Properties.Items.Strings = (
+        #1042#1086#1079#1074#1088#1072#1090#1099)
+      TabOrder = 9
+      OnKeyDown = edtAccountNumberKeyDown
+      Width = 146
+    end
+    object edtBuyer: ALookupEdit
+      Left = 424
+      Top = 16
+      ParentShowHint = False
+      Properties.Buttons = <
+        item
+          Caption = '...'
+          Default = True
+          ImageIndex = 0
+          Hint = #1042#1099#1073#1088#1072#1090#1100' '#1080#1079' '#1089#1087#1088#1072#1074#1086#1095#1085#1080#1082#1072
+          Kind = bkText
+          Width = 25
+        end
+        item
+          ImageIndex = 4
+          Hint = #1054#1095#1080#1089#1090#1080#1090#1100' '#1087#1086#1083#1077
+          Kind = bkGlyph
+        end>
+      Properties.Images = IM.IL
+      Properties.OnButtonClick = edtBuyerPropertiesButtonClick
+      ShowHint = True
+      TabOrder = 3
+      OnKeyDown = edtAccountNumberKeyDown
+      LookupConnection = DM.FDConnection
+      LookupForm = 'TKontragentsT'
+      LookupSQL = 'Select Name from tKontragents (nolock) where KontragentID = :ID'
+      LookupKey = 0
+      LookupFilter = 'and k.KontragentTypeID = 2'
+      ShowDelButton = False
+      Width = 234
+    end
+    object edtSupplier: ALookupEdit
+      Left = 424
+      Top = 47
+      ParentShowHint = False
+      Properties.Buttons = <
+        item
+          Caption = '...'
+          Default = True
+          ImageIndex = 0
+          Hint = #1042#1099#1073#1088#1072#1090#1100' '#1080#1079' '#1089#1087#1088#1072#1074#1086#1095#1085#1080#1082#1072
+          Kind = bkText
+          Width = 25
+        end
+        item
+          ImageIndex = 4
+          Hint = #1054#1095#1080#1089#1090#1080#1090#1100' '#1087#1086#1083#1077
+          Kind = bkGlyph
+        end>
+      Properties.Images = IM.IL
+      Properties.OnButtonClick = edtBuyerPropertiesButtonClick
+      ShowHint = True
+      TabOrder = 8
+      OnKeyDown = edtAccountNumberKeyDown
+      LookupConnection = DM.FDConnection
+      LookupForm = 'TKontragentsT'
+      LookupSQL = 'Select Name from tKontragents (nolock) where KontragentID = :ID'
+      LookupKey = 0
+      LookupFilter = 'and k.KontragentTypeID = 3'
+      ShowDelButton = False
+      Width = 234
+    end
+    object edtClient: ALookupEdit
+      Left = 424
+      Top = 78
+      ParentShowHint = False
+      Properties.Buttons = <
+        item
+          Caption = '...'
+          Default = True
+          ImageIndex = 0
+          Hint = #1042#1099#1073#1088#1072#1090#1100' '#1080#1079' '#1089#1087#1088#1072#1074#1086#1095#1085#1080#1082#1072
+          Kind = bkText
+          Width = 25
+        end
+        item
+          ImageIndex = 4
+          Hint = #1054#1095#1080#1089#1090#1080#1090#1100' '#1087#1086#1083#1077
+          Kind = bkGlyph
+        end>
+      Properties.Images = IM.IL
+      Properties.OnButtonClick = edtBuyerPropertiesButtonClick
+      ShowHint = True
+      TabOrder = 13
+      OnKeyDown = edtAccountNumberKeyDown
+      LookupConnection = DM.FDConnection
+      LookupForm = 'TKontragentsT'
+      LookupSQL = 'Select Name from tKontragents (nolock) where KontragentID = :ID'
+      LookupKey = 0
+      LookupFilter = 'and k.KontragentTypeID = 1'
+      ShowDelButton = False
+      Width = 234
+    end
+    object btnFilterOk: TcxButton
+      Left = 866
+      Top = 16
+      Width = 99
+      Height = 25
+      Hint = #1055#1088#1080#1084#1077#1085#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
+      Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
+      OptionsImage.ImageIndex = 5
+      OptionsImage.Images = IM.IL
+      TabOrder = 5
+      OnClick = btnFilterOkClick
+    end
+    object btnFilterClear: TcxButton
+      Left = 866
+      Top = 47
+      Width = 99
+      Height = 25
+      Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
+      Caption = #1054#1090#1084#1077#1085#1080#1090#1100
+      OptionsImage.ImageIndex = 2
+      OptionsImage.Images = IM.IL
+      TabOrder = 10
+      OnClick = btnFilterClearClick
+    end
+    object cxButton1: TcxButton
+      Left = 207
+      Top = 15
+      Width = 24
+      Height = 27
+      Hint = #1055#1088#1080#1084#1077#1085#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
+      OptionsImage.ImageIndex = 4
+      OptionsImage.Images = IM.IL
+      TabOrder = 0
+      Visible = False
+      OnClick = btnFilterOkClick
+    end
+  end
+  inherited ActionList: TActionList
+    Left = 574
+    Top = 142
+    object actClone: TAction
+      Tag = 1
+      Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1087#1086' '#1086#1073#1088#1072#1079#1094#1091
+      ImageIndex = 6
+      OnExecute = actCloneExecute
+    end
+    object actRefund: TAction
+      Tag = 1
+      Caption = #1042#1086#1079#1074#1088#1072#1090
+      ImageIndex = 8
+      OnExecute = actRefundExecute
+    end
+    object actRefundFromAccount: TAction
+      Tag = 1
+      Caption = #1042#1086#1079#1074#1088#1072#1090' '#1087#1086' '#1089#1095#1077#1090#1091
+      ImageIndex = 7
+      OnExecute = actRefundFromAccountExecute
+    end
+    object actontragent: TAction
+      Caption = #1050#1086#1085#1090#1088#1072#1075#1077#1085#1090#1099
+      ImageIndex = 9
+      OnExecute = actontragentExecute
+    end
+  end
+  inherited PopupMenu: TPopupMenu
+    inherited N2: TMenuItem
+      Action = nil
+      OnClick = nil
+      object N8: TMenuItem
+        Action = actAdd
+      end
+      object N13: TMenuItem
+        Action = actClone
+      end
+      object N14: TMenuItem
+        Caption = '-'
+      end
+      object N15: TMenuItem
+        Action = actRefund
+      end
+      object N16: TMenuItem
+        Action = actRefundFromAccount
+      end
+    end
+  end
+  inherited cxImageList32: TcxImageList
     FormatVersion = 1
-    DesignInfo = 4194348
+    DesignInfo = 13041719
     ImageInfo = <
       item
         ImageClass = 'TdxSmartImage'
@@ -465,12 +850,170 @@ object BaseFormT: TBaseFormT
           E9A3F1D1BE0B01E00FE5DFFF3B6B594FDCD6290000000049454E44AE426082}
         FileName = 'Images\Actions\Refresh_32x32.png'
         Keywords = 'Actions;Refresh'
+      end
+      item
+        ImageClass = 'TdxSmartImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+          F40000002E744558745469746C6500416464506172616772617068546F546162
+          6C654F66436F6E74656E74733B5061726167726170683B03D2CAD8000005A149
+          444154785E95576D885655107EEEF55D4A2DB7C28430426DD375DB02AD34D7AD
+          0C09DD3453140AFA21486ADBAEBBA59542D29F4AF1236BFDA8D5C25C30CC3F2A
+          659062A1617EA0FD28F3AD252182120D59D8767D3FEE3D67A67B8773389C7777
+          DFD50BC3CC39E7E5CE3333CF9CB96F8699110401CC931AA1D17613656CBB6623
+          1A00895DE66176C799122761DBE13F8E05613883CD2B196C35D85BCB8B44C040
+          44C0DA45D5C300C400F49B1D1798344369824E64FB2B933D103E0027218270C6
+          8A8671B8D9E79DFD9DD8F9EDA5DCF2D95529086C5AFC907E69E34909F5B6E1B7
+          A6EA860004363B5A8CC065411E1BB9B19C92286BEEBD1D2B779E3DBA65F9D459
+          00A22FDEAA17104AD1E0006CDD5D7D7CA17E08C08E0002E0E1B1778218F5EA93
+          D347B7364EB320D4E22D67F8C6332021F951F60DD8F201B0781531460CAB40ED
+          983BA079EC74BDFDD4911DCD75B301A063E5E342CE1B2C017BD1EDF8A6D30060
+          D10C46601CDB2A353654432B2D4086DD9241F57D9598373D01D176F2487B6B7D
+          038002000580060540E4D7FBD539E35D06D82AF7039B8958B1E18E80C084D195
+          78AE6E5CDDF883D9EE950B6AEE0290331D42837000009CB3ED877F374B060B7E
+          AF15E5699E5B83AA7B8663E9B673D27644044D2CC2892C6B3BDDB5AB755AA5BD
+          27CA9780C83901D034A7DAE2E927138E2F4B67DD8FAEAE6BE8E9ED858A1562A5
+          A012C915227C7EB413002A24C8414BC0F0DA6BEB57BF19AA975E44C206B3CF25
+          4465AC78BE56D6B982C2C85F25A810D64910940340362AF1DB326FA260613251
+          0740601D2230CEAD67B30E00D19AA51C53AA475A5F430C19B90C09FD3EFFF0D0
+          45DB7636E9CE9685D1D6294BBAD09264E0BD638DC85E390F62E0991DB59749D1
+          89EF5AB333677C3451333188B83F1292ABB964E041D77C803717DC2862908090
+          0C206040698D8B89F3834B8F43738C980A58D8DEF0148070CF923D3AA23C967C
+          BAACBF12B0BBF9240317E06AEFEAEFD20FC06A0B8E2403E9B9383FDBD58EDE42
+          B7EC0308C78C982AD1D46DA8E2BE00347B6DF8DAFC5AAF246E12FAAD28CEA405
+          13CD245DC062478829111D8341B61BC4C3A9D597B84F0908F0DAF0DA9A37409A
+          A049275A279A206BAD4588524DA8DAB91BEB8E3521FBEF7910014C24A01415A1
+          558CCC908CECD76F7AA027D5C4048AE98701EF011BDAC8F59B41EC060F39C659
+          2EC83A8E6364AF9EC70153F33472C54501A0285927D234FF69D4543620AD7F2E
+          EAC1AA8E754FF601A04BAEE22BAB5A6DE412B1CD84A45B6C92B371BB3A24425B
+          73A5E34422C4C6B92205D20A3F5F3B04628D7C5400130F3C0BD8C8A8CD6DFE64
+          647F1A8A304B06982965BB102E4ED39EC98873AD1572C55EE106496948B2474C
+          037F0F58077FB734DA5ABBA8251BA28D3026ECDE8B89A31EC3A2F606309B39C0
+          2C69275292A5CFBE3E2325643923E888BFEF27032406310BA2D16D1F7B806CEB
+          595618BC026CCDCC6DD2FF9A095131C292FD4FA435376927717C6EED9F779BF1
+          CC00545F0EB0CF81F55FFE64AE65F640B847D6FECD0846F3BC5A3093108E588B
+          6DAEF90840DE4E450B20705DE00358FDC223C6A9DBB54E831496DB0199053123
+          9FCF838985ED4238C8D56BE3A2BDD966DEB8EF405F0E68ED7F86ADDF77CEA5DD
+          0C258061DDB3EB4F50605949787DE124D48C9A92B4DAFBE91252F3229F30C308
+          1BF61D0438F000C09B0526DF6B5E7C145C926E7354FA9DE0CD0AA534DE7EB61D
+          5DDD799CCD5E46D382C99300FC65BE8AF8C2BBFFF4FFBFC0CE02A3BCBBDE9825
+          007CC3962B0C87A0A222C4D0A1C0F15FAEC2D4BD084097FB200151E98BFD88C9
+          D9DE80603103FFF741904868272997FD6B66C9C106416F3EF62F1D034C0B00C7
+          1A7288C0B0DD1288ED1DF8DF83030228E4AEFFF7E3CB1F9C984E16299BE88841
+          90A5DB73E3D8D8EEDCEDA72FED3E0320570E001B84D7F7AE9D3B1FC050373611
+          7A9D7273360CE9AE03E8313EB85C068AA64D7A9CE3B212943F76C10D5482FF01
+          70F7A29765703AAD0000000049454E44AE426082}
+        FileName = 'Images\RichEdit\AddParagraphToTableOfContents_32x32.png'
+        Keywords = 'RichEdit;AddParagraphToTableOfContents'
+      end
+      item
+        ImageClass = 'TdxSmartImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+          F400000011744558745469746C650052657365743B556E646F3B138116FF0000
+          012349444154785EEDD53D2F045114C7E1339188A030211291E8140AFB49D0A9
+          A8B650282844E225B13241A1A554ECC7D0A844A35388448846140A4A26597BFC
+          4A39C924CEB5734731C553FF7FC57D1155ADD4FF0AA803EA80F9ECBCC81C3EA1
+          3FB4204E41018BC8CDF83E2446C0323A663C83C40858C197193F80C4085843D7
+          8C1F4162046C411D72BCE1111738C10206430232688FBC630F439E8063688FDD
+          62CA73060E4B88B8C180E710B6A0C60EA4403F52CCA0892BA8B1E1BD86DB8E08
+          2B41DB04DCF90280CD3F444CC2BE23A3BE00601DDDC088171330EB0F00560323
+          9E4D40C31F106E02F61F198F1590E0CC8C3F40CA08E8438A3134D0C425D4D82D
+          23407FE91EC355053C611A123BE003A71881941D90E315D7686309A9E33BAE4E
+          1D50077C03DA5FBD090AF74E5B0000000049454E44AE426082}
+        FileName = 'Images\Actions\Reset_32x32.png'
+        Keywords = 'Actions;Reset'
+      end
+      item
+        ImageClass = 'TdxSmartImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+          F400000016744558745469746C6500556E646F3B4172726F773B456469743BCB
+          5CF1270000068949444154785EED977B5094D719C637A0556BE265D2AA631AFF
+          A8ADD6D414AD62D0D458711CC78A8E686C6284B5B54EB09A445D8922D4A8B008
+          024A45968BBB2BA265918B06024120E07271777597E56AA254E42697BD2028B0
+          DCF1E97B3EBEA52056DA6446FFE99979E6BC73BEC3FC9EF739DF65110078A9FA
+          BF81FF75BCF2947EF8F04D2CE674E24A89C0F70AAB994AD86CD520D83D3C7DAA
+          38A130549C58DC47001B764DCCA948204EB0AA98930FD53EF12436B3F578267E
+          8DAFD9E0165A81676968C7B65FC4DCFCC8FF6A8931FF9E09DEF185606BEC1ADB
+          F77D74FCB29EE3B3E279705B0FA9F2ADA3315A65ACEA3E1A3B7BF018C0B1D802
+          B6612CC986EDFB3E46BE88D10D18384AC533C0361F884EBDE619ADF60B4E29EB
+          B96D68050160EC7F82CA9E7E1CF9878E6D1CCF9B18C3A761C3F4DF9AF1BAA8E5
+          F8AC1806268D1185676F3C16A3AB4E2FAD470B419B9F00155DFD28B3F4E21ECD
+          9ED137E1794153EF7141537848AE4E7597E6FAEC0EBCB298E03FE20D8D9A8C47
+          9486E30F03EFF455FCE2A05C952CFBE60E6ADBBAB8B86BBAFB51D2D68BE256A6
+          1E9477F4A19A0CD55BBA516E6E47414D3352F4B508BA5A8CCF65AA07FBC2B2C5
+          4E1F1F9FCED279DE7DE22E530D1AB09DBBD87102FDA1A7385667D1563D1C88BB
+          F709CA08AC7FD443EA46414B3774BCB4CDDDD0D37C9B4CDDB5F4A18A4C1AC854
+          35994ED6D5C0EBBCA665CFDFD30F2C5CF9FE246B224F1BD81F913F40DF1598EC
+          288ACCBB73455385A69E3E2EEE3B0466905B0F0774B3A98B93C64C3275424D52
+          916E183B91CF64E8446E6307BEA96947615337AA3B7AA1C8BB87FD61CAC2756E
+          E2D9EC689EBE3F3E93E40E18F854928B8A660BD77555671F6E11486D2699BA78
+          08C9C0201DC823482E534307721A2C50D65B70BDCE826B556D50943C4494DE8C
+          A88226C41435414F868B1A1FC343A6327FE0217724D4B8A147B23BE4FA800167
+          F72827D7E34995616965D09A3A58771C2487204A2B84944DA0AC07EDC8AA6DE7
+          3ACDA86943D23F1F2186C0E77526C8B566C84852AD09E76E1A714E6344C2B7CD
+          F8EE51277C15DAEECD0722563113D624DC4E6709AC63EC5C07E7D79D3E95FBED
+          F4FBAA4B41479147C0CCEA76641224A3BA0D69F75B9152D18A6402C6DD6EC6A5
+          6206654013A4B718D084488246A88D08571B10A63240A26A44E88D46C86E9951
+          606C87282CC7B4729BD73CEB71EC08C8E0F1FC13401AEFB0D973C19A3DF26C51
+          6816E2F506C49512A8C00C397548DD71B0E4EF5A90F46D0BAE929138EA3E96E2
+          BEA83713C8485003CEE6372224AF1167F21A7026B701C12466329F9E963FF9A6
+          16BFF9AB777EC29A1EFC96ACFDECE2E05B8F77F7EAB2AD7E7F5EBBE7BCC12746
+          8784D281882335D49DC680C4B266B88AD3F0AE6B2836ECBF04E7CF15700B4A87
+          4F5C21A2D40D9053120C7E4A598FA0EB7508CCAE4340561D14456648AEDD86F3
+          810B9EC498C8F1D858BD2B6AC48B8834E18D5FAF7A63E9D6C0882D0763FB43D2
+          CB114D49B0582F53C75B8FA5E04D3BA7C5F31C3F596DB7EEB070D126DFD34B3E
+          3C7D77F9760984DEC93895760F92BC0602D7C22FF3014E64D4E244662D322B1F
+          41284E7D3CFBB76B66B16639E6EF779E1BFA7C8E488320CBEDFF784AFFB17F2A
+          226FD4239AD2D8F2B724B6F1A77C2713D83ED294D90E1F2D2433C1EFBA9C6DFD
+          8BFFD708CAA824130FE09D5683E369D50856D6419A75174E7BA34258D21CE777
+          DBC319788486A6419A327FADE7BEF784671F1F92A9E17CF82ADB3075C807C996
+          AFC79326FD6CFE9A39F65BFCA357EC08EF1149D5F0A7EE8F7C55C544476AC6C6
+          8309E657A7CE98C635B9745BE8689F631B6B1AD3E738CE79DBC95BB1C13D11D6
+          0E86EF1D6EFAAD559F382D134ACCBB82AEC13BA50A87BFAC442025B25FA2C40A
+          17DFCD04F8B1C0FEC333CF82FFA76319C7834923DF6EACB61AE113796DD682F5
+          0B96BA8494FE35E06B1CE54CDC47507209D6EE3E17C1D2122CDA123C1C387A1A
+          B64C56F8283F64C630B35366CEFBB9C3B6D0B20367B370E8CB0ABA49CBB16EEF
+          45F631785DB07053D008D8A846788DB677A889590B37DA2F1346184FC6E9E19F
+          5681F5A2D83A5A9F26B0DB18C0003F5CA39B983C6785DBA6F776CA7AA4395570
+          12C5B5D1DA0CC1DB1B4E32C08B30318E75BCE8FD008557640E19486017660AE6
+          AFF77B51066C4913A7FD72F96F960A659675A2780B9780C37699E01D21899BE5
+          8225AC769553CD66B6C6AFB39AB46498A4FFAE5DA4027B9AED5D58CD66768DD6
+          F89A37319634D5CEF964D01FF65EAE65B5E0050EEB53348E348934997F71095E
+          8609DBC11FAF2F69BCC2EBE5FF73FA2F6249027F98C24C4D0000000049454E44
+          AE426082}
+        FileName = 'Images\History\Undo_32x32.png'
+        Keywords = 'History;Undo'
+      end
+      item
+        ImageClass = 'TdxSmartImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+          F4000000097048597300000B1000000B1001AD23BD7500000012744558745469
+          746C65004E65773B4E65774974656D3B1B7C503C000001F149444154785EEDD7
+          CF4BDB601CC7F11E0461971D06A2FFC08E3B781FEC2E0EF6E3A0DB41507407F1
+          B27F40A90D4A1D0E9D20E2453CB8836348D9C16A7F90A0948A436C05112C14BA
+          B5A2A45A250AB6C9C76F0E0F1493F4497C1ADC610FBCA0A7E4CDF77992920080
+          47F5EF0784422188E2067407D71D9901024B3C805DC8701940D18C70C073B2FC
+          2E18611744DFD724A6D73228AA9AEF012FC815819D9E700CA5B2E66BC00F8246
+          6622595FCFC0292FE0D39CE26B00783E7E49D4DFC48E5040B9891370D42840E6
+          054CAEEE799980052FE0332F20B1FF176E9624493097A2288CAB80A7E4C42960
+          88C65FADE95E0E21E32A80E922B5FB01EF273671583877BBCF42012CE20F0B18
+          989591CDABF0B83C6F41279921FD843D2E2CB4850492992216A387C8952A969B
+          707E730346894E402AA4DD662A6D1FA6E2A010BC1E8F62453E6E5AC008C13D09
+          F2A42EA095C408EA45D279E8BA8E743A6D465858CF8435A0A3C19FCF0E79455E
+          926D02BB837956B941A150B09B80AB803102114BB123689AF6E0805DD180E1F9
+          2D1886E130767EC0A568C01B69C30C701A3BF7105E8806BC150CF8291A10FCFE
+          DB7C129CB680FB227A4616488E94C9AD9B91F786E318FCA660EED7012EAF6FA1
+          AAAAC87B800F36AB5AAD82AD542AE56F00DB4B59964D6CA41E5903DC6201A2C4
+          029A8505FCFF3ABE033AEC99B5AECEF5AD0000000049454E44AE426082}
+        FileName = 'DevAV\Actions\NewItem_32x32.png'
+        Keywords = 'Actions;NewItem'
       end>
   end
-  object cxImageList16: TcxImageList
-    SourceDPI = 96
+  inherited cxImageList16: TcxImageList
     FormatVersion = 1
-    DesignInfo = 8912936
     ImageInfo = <
       item
         ImageClass = 'TdxSmartImage'
@@ -643,6 +1186,305 @@ object BaseFormT: TBaseFormT
           10230000000049454E44AE426082}
         FileName = 'Images\Actions\Refresh_16x16.png'
         Keywords = 'Actions;Refresh'
+      end
+      item
+        ImageClass = 'TdxSmartImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+          610000002E744558745469746C6500416464506172616772617068546F546162
+          6C654F66436F6E74656E74733B5061726167726170683B03D2CAD80000021B49
+          444154785EA5534D68134114FED6A6AD1E95825441A468150B9ED422551035A2
+          82288878D1831E5ADA7A926E51243D5468D49C02ADD19EEC45F0A65E0C858A46
+          410CE8418B62F1070F2D3D88825AB3C9CE9B31F3CD6012BC087EF078F3D837DF
+          FBDE7EBB81310657EF7F9A31C05EA30D6CAD8DCD7067ED6B66D60FD3A7B6EC83
+          079BD2773F9A7FC5F0D4AC4DF0810400325B44B106E0A6F36458FE51548E0522
+          1A752001E5592C450AE3D30B968204B59534C223EB217EA53A342860F3E08176
+          E6D6E6042880D303DBC3E8DEBC0A41102C03DCE3460200D9FCBC7F79DA65BFEB
+          F0D10E8C4DF7E3CD6211BB339B669E84EFF6EFBCB2411C81DB8B8DE7926BB8C2
+          F2966647E05588D2BC3CD997C699F1700F80D66717DEC73505CCC0CFD4104409
+          BE8A4044A13D7B13A30F7A31BB50841683B9EF055ADA3DD6B1A42AFAA9575023
+          58319A81315641822E88082F4FF6A631F7A38072FC0B03277A10C525E4EE3CDF
+          4502D1B515BE0C0D4029A9868216C1BA1BB7D0B57A07CE4E84B470F0640FB2B7
+          0B744345F2E8AF15566626989D0243EBC2E47554CA114E4F6D47542941B4C1CB
+          91CF6DD679A740BC02185CBBF781BED77DCE8C8BC736A2B36D9B950DA94EB697
+          B7A6D6464E8106D152F5FED2F14E771160D660415BCF277328BE5D44DFE1AE43
+          002AAF2ECFA3E11D94CACA7B0F06A77380CB4D4D093C7EFDCDF644F0F00426DF
+          9F7B71D068408CA64D9653F34C155400479A471DF83BFF0F7E03C130D63A7821
+          85870000000049454E44AE426082}
+        FileName = 'Images\RichEdit\AddParagraphToTableOfContents_16x16.png'
+        Keywords = 'RichEdit;AddParagraphToTableOfContents'
+      end
+      item
+        ImageClass = 'TdxSmartImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+          6100000011744558745469746C650052657365743B556E646F3B138116FF0000
+          00CB49444154785EA5D3310AC2301480E12C820E76A883B8084A2FE02A387800
+          EFE05284827807AF21DE41C1C145410441477170AB8283ABD8518CBF60E00DB5
+          A4EDF00DE1F5FD904294D63A17D51B2FA52266D078630495441ECA5889E500CA
+          36E0622F967D28DB400D27E80411AE58208023036BE894EEE898401DE70C9108
+          9EB94B154768BCD0878254400B5B1199CA0F5C1CC48F1C40C56888C0C50C0C07
+          1B1119C645E435C4C09A2702619A40055DEC44606213D07F3CD1CC1AB8A10D65
+          1B7820C41C3E4A669EFB397F009A8D113DBE0329980000000049454E44AE4260
+          82}
+        FileName = 'Images\Actions\Reset_16x16.png'
+        Keywords = 'Actions;Reset'
+      end
+      item
+        ImageClass = 'TdxSmartImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+          6100000016744558745469746C6500556E646F3B4172726F773B456469743BCB
+          5CF1270000025C49444154785EB5936F48535F18C7BF77D7692BB1561626134D
+          63B319230D86FDF951146868BEB0041B2EFB372367D01FEA45FBC1828CD4CA32
+          FF65D60BC3B48282B0863175B6B5325A83A814B360D82B11493252B776EFD3BD
+          372FAC17BD920E7C38700E9F2F0FCF730E4344F8574B21C00A307F15E4CBB3F7
+          FC20020840A569BD28B0275A7A8A793EBA36F0DEADCDD8B0638A40206204688E
+          8814DB1D1FBEF03C44F1E0F9CE55A76E3D7FDCDA3F4296DA5E02B04840295733
+          323B0399A3D75FFC5189D2DAE0B4DA3B7C537D81090A703C992A9F5045B367F4
+          485D6FCFFEEAAEE359397B97018892832C75EEDF7269E57DBDB5D1EDBDE11AA1
+          E199107D0C71F46186A3518EA3B7933FC8F9699CEA9F0E51D9D5FEB1DD673A4A
+          01C4889EB9BA4FEA015B56F76CACB8401F9F90A8C66C9891BA1726603AC44B84
+          391E6A9560D14F74BB3EE3B56FD8EEB85C720940500C5064159DD3A996689A75
+          86B4ADD9DB32A18C66C18BD982480078024004250B68E315E8720C62C0EBDFE7
+          B9597E9789189932A3B0C6A25E9150BD29D7189BA2D3C0D1E1C1F4F76F58BC34
+          0E49698948D5A740C13058AD2634B478C7075D6D99929D5E784D6E649426DBA2
+          D3EEACE9CEB33DA2ED27BB2839BBD4B826DF5E6228AAEDDC7CF876F058E73B6A
+          F47F255BFB1B5A676AF85F0A48CDBB288F46AE46A5D972FAD0C6F287130016CE
+          755E956434AFCDD875C579A0E9253579026430B7BD92029273AB2459461EABC0
+          020136E29C15884B2FA86AB3B60E50FA9EF609460AC8A99294C8474102B1CB93
+          C10427E557279D0D3DA8508857DAFC0BF59C6AE57FCC3CFE498CB8CFFB372A30
+          CFF50B153D09AADDB2FD980000000049454E44AE426082}
+        FileName = 'Images\History\Undo_16x16.png'
+        Keywords = 'History;Undo'
+      end
+      item
+        ImageClass = 'TdxSmartImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+          6100000012744558745469746C65004E65773B4E65774974656D3B1B7C503C00
+          00010349444154785E95D0314A034114C6F19CC0437802F10C6905B5D8266023
+          D858798530164288080B163669526D0ACBC4429945B41245042D0421EAAAABB2
+          4A924D36293EBF428661967990073FB6DA3FEF4D65A5DEF5524AC1875301D981
+          050AE9953E29CC8B19CA036FA04D70B4EC00A362604A708C3D1B1876E0C70DD4
+          1AA7D209A540E406F63A37E6078B37B06C9FB1AA7A784C7EC181D6DAFDBA0123
+          D8689E8110DFBD816302246E10509F16F13FEF598ECD038DCB870F13F20596A8
+          20D075F23DC2CBD710DB87E760106BBB27E8A70331101124FBC7B7E21BA40409
+          DFC404A814782248B6C258DCA04A57347103EBBC7FE7E802F7CF99B88181F9A6
+          1C6011F3FA034B86D14364A788140000000049454E44AE426082}
+        FileName = 'DevAV\Actions\NewItem_16x16.png'
+        Keywords = 'Actions;NewItem'
       end>
+  end
+  inherited Query: TFDQuery
+    SQL.Strings = (
+      'Select a.AccountID'
+      '      ,a.PaymentDate      '
+      '      ,a.AccountNumber'
+      '      ,isnull(a.PaymentAmount, a.AccountAmount) PaymentAmount'
+      '      ,kb.Name        BuyerName'
+      '      ,a.BuyerDiscount'
+      '      ,kC.Name        ClientName'
+      '      ,a.ClientDiscount'
+      '      ,ks.Name        SupplieName'
+      '      ,st.AccountStatusID'
+      '      ,st.Name StatusName'
+      '  from tAccounts a (nolock)'
+      '  left join tKontragents kb (nolock)'
+      '         on kb.KontragentID = a.BuyerID'
+      '  left join tKontragents kC (nolock)'
+      '         on kC.KontragentID = a.ClientID'
+      '  left join tKontragents ks (nolock)'
+      '         on ks.KontragentID = a.SupplierID'
+      '  left join tAccountStatus st (nolock)'
+      '         on st.AccountStatusID = a.AccountStatusID'
+      ' where 1=1'
+      ' '
+      ' !AccountStatus'
+      ' '
+      ' !IsRefund'
+      ''
+      ' !Buyer'
+      ' '
+      ' !Supplier'
+      ' '
+      ' !Client'
+      ' '
+      ' !AccountNumber'
+      ' '
+      ' !PayNumber'
+      ' '
+      ' !AccountDate'
+      ' '
+      ' !PayDate'
+      ' '
+      ' !PaymentDateB'
+      ' !PaymentDateE')
+    Left = 764
+    Top = 160
+    MacroData = <
+      item
+        Value = Null
+        Name = 'ACCOUNTSTATUS'
+      end
+      item
+        Value = Null
+        Name = 'ISREFUND'
+      end
+      item
+        Value = Null
+        Name = 'BUYER'
+      end
+      item
+        Value = Null
+        Name = 'SUPPLIER'
+      end
+      item
+        Value = Null
+        Name = 'CLIENT'
+      end
+      item
+        Value = Null
+        Name = 'ACCOUNTNUMBER'
+      end
+      item
+        Value = Null
+        Name = 'PAYNUMBER'
+      end
+      item
+        Value = Null
+        Name = 'ACCOUNTDATE'
+      end
+      item
+        Value = Null
+        Name = 'PAYDATE'
+      end
+      item
+        Value = Null
+        Name = 'PAYMENTDATEB'
+      end
+      item
+        Value = Null
+        Name = 'PAYMENTDATEE'
+      end>
+    object QueryPaymentDate: TSQLTimeStampField
+      FieldName = 'PaymentDate'
+      Origin = 'PaymentDate'
+    end
+    object QueryAccountNumber: TStringField
+      FieldName = 'AccountNumber'
+      Origin = 'AccountNumber'
+      Size = 256
+    end
+    object QueryPaymentAmount: TIntegerField
+      FieldName = 'PaymentAmount'
+      Origin = 'PaymentAmount'
+      ReadOnly = True
+      DisplayFormat = '###,##0'
+    end
+    object QueryBuyerName: TStringField
+      FieldName = 'BuyerName'
+      Origin = 'BuyerName'
+      Size = 256
+    end
+    object QueryBuyerDiscount: TCurrencyField
+      Alignment = taCenter
+      FieldName = 'BuyerDiscount'
+      Origin = 'BuyerDiscount'
+      DisplayFormat = '##0.00%'
+    end
+    object QueryClientName: TStringField
+      FieldName = 'ClientName'
+      Origin = 'ClientName'
+      Size = 256
+    end
+    object QueryClientDiscount: TCurrencyField
+      Alignment = taCenter
+      FieldName = 'ClientDiscount'
+      Origin = 'ClientDiscount'
+      DisplayFormat = '##0.00%'
+    end
+    object QuerySupplieName: TStringField
+      FieldName = 'SupplieName'
+      Origin = 'SupplieName'
+      Size = 256
+    end
+    object QueryAccountStatusID: TFMTBCDField
+      FieldName = 'AccountStatusID'
+      Origin = 'AccountStatusID'
+      Precision = 15
+      Size = 0
+    end
+    object QueryStatusName: TStringField
+      FieldName = 'StatusName'
+      Origin = 'StatusName'
+      Size = 32
+    end
+    object QueryAccountID: TFMTBCDField
+      AutoGenerateValue = arAutoInc
+      FieldName = 'AccountID'
+      Origin = 'AccountID'
+      ProviderFlags = [pfInWhere]
+      ReadOnly = True
+      Precision = 15
+      Size = 0
+    end
+  end
+  inherited cxStyleRepository: TcxStyleRepository
+    Left = 154
+    Top = 160
+    PixelsPerInch = 96
+    object StylePaid: TcxStyle
+      AssignedValues = [svFont]
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGreen
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+    end
+    object StylePartPaid: TcxStyle
+      AssignedValues = [svFont, svTextColor]
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      TextColor = clFuchsia
+    end
+  end
+  object AddMenu: TPopupMenu
+    Images = cxImageList32
+    Left = 144
+    Top = 264
+    object pmAddClient: TMenuItem
+      Action = actAdd
+    end
+    object N10: TMenuItem
+      Action = actClone
+    end
+    object N9: TMenuItem
+      Caption = '-'
+    end
+    object N11: TMenuItem
+      Action = actRefund
+    end
+    object N12: TMenuItem
+      Action = actRefundFromAccount
+    end
+  end
+  object qAccountStatus: TFDQuery
+    Connection = DM.FDConnection
+    SQL.Strings = (
+      ''
+      'select AccountStatusID'
+      '      ,Name'
+      ' from tAccountStatus (nolock)')
+    Left = 376
+    Top = 325
+  end
+  object dsAccountStatus: TDataSource
+    DataSet = qAccountStatus
+    Left = 392
+    Top = 341
   end
 end

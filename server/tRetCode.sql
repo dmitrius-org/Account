@@ -72,12 +72,18 @@ delete from tRetCode
 insert tRetCode (RetCode, Message) select 100,   'Вид кредита существует!'
 
 insert tRetCode (RetCode, Message) select 120,   'Клиент с заданным наименование существует!'
+insert tRetCode (RetCode, Message) select 121,   'Ошибка! Клиент используется в справочнике "Счета"'
 
 insert tRetCode (RetCode, Message) select 140,   'Покупатель с заданным наименование существует!'
 insert tRetCode (RetCode, Message) select 141,   'Партнер с заданным наименование существует!'
 insert tRetCode (RetCode, Message) select 142,   'Покупатель с заданным ИНН существует!'
+insert tRetCode (RetCode, Message) select 143,   'Ошибка! Покупатель используется в справочнике "Счета"'
 
 insert tRetCode (RetCode, Message) select 160,   'Поставщик с заданным наименование существует!'
 insert tRetCode (RetCode, Message) select 161,   'Поставщик с заданным ИНН существует!'
+insert tRetCode (RetCode, Message) select 162,   'Ошибка! Поставщик используется в справочнике "Счета"'
+
+insert tRetCode (RetCode, Message) select 181,   'Ошибка! Счет заданным номером существует.'
+
 
 select * from tRetCode

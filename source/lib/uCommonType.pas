@@ -49,6 +49,8 @@ Type
   ,acMessage       = 24
   ,acOn            = 25
   ,acOff           = 26
+  ,acClone         = 27
+  ,acResetAcc      = 28
   );
 
    /// <summary> Типы объектов системы </summary>

@@ -31,7 +31,9 @@ uses
   uClientF in '..\source\application\uClientF.pas' {ClientF},
   uComboBox in '..\source\lib\uComboBox.pas',
   uBuyerF in '..\source\application\uBuyerF.pas' {BuyerF},
-  uGetKontragentData in '..\source\lib\uGetKontragentData.pas';
+  uGetKontragentData in '..\source\lib\uGetKontragentData.pas',
+  uAccountT in '..\source\application\uAccountT.pas' {AccountT},
+  uAccountF in '..\source\application\uAccountF.pas' {AccountF};
 
 {$R *.res}
 
@@ -41,6 +43,7 @@ begin
 
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TIM, IM);
+
   Application.Title := DM.FDManager.ConnectionDefs.FindConnectionDef('Connection').Params.Values['ApplicationName'];
 
 //  var LoginForm: TLoginForm;
@@ -52,7 +55,7 @@ begin
   begin
     //LoginForm.Free;
 //    Application.CreateForm(TExpenseItemsT, ExpenseItemsT);
-    Application.CreateForm(TKontragentsT, KontragentsT);
+    Application.CreateForm(TAccountT, AccountT);
 // Application.CreateForm(TClientF, ClientF);
     Application.Run;
 

@@ -32,13 +32,15 @@ type
   private
     FFormAction: TFormAction;
     FID: Integer;
+    FLookupFilter: string;
     procedure SetFormAction(const Value: TFormAction);
     procedure SetID(const Value: Integer);
     { Private declarations }
   public
     { Public declarations }
-    property  ID: Integer read FID write SetID;
-    property  FormAction: TFormAction  read FFormAction write SetFormAction;
+    property ID: Integer read FID write SetID;
+    property FormAction: TFormAction  read FFormAction write SetFormAction;
+    property LookupFilter:string       read FLookupFilter   write FLookupFilter;
   end;
 
 var

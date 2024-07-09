@@ -58,6 +58,9 @@ type
     cxButton1: TcxButton;
     cxButton2: TcxButton;
     cxButton3: TcxButton;
+    SkLabel3: TSkLabel;
+    edtINN: TcxTextEdit;
+    btnINN: TcxButton;
     procedure actEditExecute(Sender: TObject);
     procedure actAddBuyerExecute(Sender: TObject);
     procedure actAddSupplierExecute(Sender: TObject);
@@ -72,6 +75,7 @@ type
       Shift: TShiftState);
     procedure actDeleteExecute(Sender: TObject);
     procedure actShowExecute(Sender: TObject);
+    procedure btnINNClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -79,6 +83,8 @@ type
 
     procedure GridFilter;
     procedure setKontragentType();
+
+    procedure DataLoad(); override;
   end;
 
 var
@@ -87,7 +93,7 @@ var
 implementation
 
 uses
-  uDataModule, uComboBox, MTLogger;
+  uDataModule, uComboBox, MTLogger, uCommonType;
 
 {$R *.dfm}
 procedure TKontragentsT.actAddBuyerExecute(Sender: TObject);
@@ -131,11 +137,18 @@ begin
   edtName.Clear;
   edtPartner.Clear;
   edtKontragentType.Clear;
+  edtINN.Clear;
   GridFilter;
 end;
 
 procedure TKontragentsT.btnFilterOkClick(Sender: TObject);
 begin
+  GridFilter;
+end;
+
+procedure TKontragentsT.btnINNClick(Sender: TObject);
+begin
+  edtINN.Clear;
   GridFilter;
 end;
 
@@ -157,6 +170,13 @@ begin
   GridFilter;
 end;
 
+procedure TKontragentsT.DataLoad;
+begin
+  GridFilter;
+
+  inherited;
+end;
+
 procedure TKontragentsT.edtKontragentTypeKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
@@ -166,13 +186,20 @@ end;
 procedure TKontragentsT.FormShow(Sender: TObject);
 begin
   inherited;
+
   ComboBoxFill(edtKontragentType,
   '''
     select KontragentTypeID as ID
           ,Name
       from tKontragentType kt (nolock)
     '''
-  )
+  );
+
+
+  edtKontragentType.Enabled := not (FormAction = acLookup);
+
+
+  logger.Info(LookupFilter);
 end;
 
 procedure TKontragentsT.GridFilter;
@@ -191,15 +218,26 @@ begin
       Query.MacroByName('KontragentType').Value := '';
 
     if edtName.Text <> '' then
-      Query.MacroByName('edtName').Value := ' and (k.name like '''   + edtName.Text + ''' or k.inn like ''' + edtName.Text + ''')'
+      Query.MacroByName('edtName').Value := ' and k.name like ''%'   + edtName.Text + '%'''
     else
       Query.MacroByName('edtName').Value := '';
+
+
+    if edtINN.Text <> '' then
+      Query.MacroByName('INN').Value := ' and k.Inn like ''%'   + edtINN.Text + '%'''
+    else
+      Query.MacroByName('INN').Value := '';
 
 
     if edtPartner.Text <> '' then
       Query.MacroByName('Partner').Value := 'and  k.PartnerID = ' + edtPartner.EditValue
     else
       Query.MacroByName('Partner').Value := '';
+
+    if FormAction = acLookup then
+      Query.MacroByName('LookupFilter').Value := LookupFilter
+    else
+      Query.MacroByName('LookupFilter').Value := '';
 
     Query.Open();
 

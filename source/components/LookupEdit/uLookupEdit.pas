@@ -18,6 +18,7 @@ private
   FLookupSQL      : string;
   FShowDelButton  : Boolean;
   FLookupKey      : Integer;
+  FLookupFilter: string;
 
   function  ACallModeLookup:Integer;
   procedure SetLookupKey(const Value: Integer);
@@ -36,6 +37,7 @@ published
   property LookupForm:string         read FLookupForm     write FLookupForm;
   property LookupSQL:string          read FLookupSQL      write FLookupSQL;
   property LookupKey:Integer         read FLookupKey      write SetLookupKey;
+  property LookupFilter:string       read FLookupFilter   write FLookupFilter;
 
   property ShowDelButton:Boolean     read FShowDelButton  write SetShowDelButton;
 
@@ -105,7 +107,8 @@ begin
   Application.CreateForm(fc, obj);
 
   obj.FormAction:= TFormAction.acLookup;
-  obj.ID:=Properties.Buttons[0].Tag;
+  obj.ID:=FLookupKey; //Properties.Buttons[0].Tag;
+  obj.LookupFilter := LookupFilter;
   obj.Position:=poDesktopCenter;
   obj.ShowModal;
 

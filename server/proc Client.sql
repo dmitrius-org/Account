@@ -130,21 +130,29 @@ create proc ClientDelete
 as
   declare @r int = 0
 
+  if exists (select 1 
+                  from tAccounts u (nolock)
+              where u.ClientID  = @ClientID)
+  begin
+      set @r = 121--   'Ошибка! Клиент используется в справочнике "Счета"'
+      goto exit_
+  end
+
   BEGIN TRY 
-		delete 
-          from tKontragents
-		 where KontragentID=@ClientID
+	delete 
+        from tKontragents
+		where KontragentID=@ClientID
 
-         delete tContacts 
-           from tContacts (rowlock) 
-          where ObjectTypeID = 1 
-            and ObjectID     = @ClientID
+        delete tContacts 
+        from tContacts (rowlock) 
+        where ObjectTypeID = 1 
+        and ObjectID     = @ClientID
 
 
-         delete tDiscounts 
-           from tDiscounts (rowlock) 
-          where ObjectTypeID = 1 
-            and ObjectID     = @ClientID
+        delete tDiscounts 
+        from tDiscounts (rowlock) 
+        where ObjectTypeID = 1 
+        and ObjectID     = @ClientID
             
   END TRY  
   BEGIN CATCH  

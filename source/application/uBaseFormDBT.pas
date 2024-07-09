@@ -42,9 +42,9 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
 
-    procedure DataLoad();
 
-    procedure EditForm(AFormAction: TFormAction);
+
+
 
     /// <summary>
     ///  SaveGridState - сохранение настроек таблицы
@@ -54,13 +54,15 @@ type
     ///  RestoreGridState - восстановление настроек таблицы
     ///</summary>
     procedure RestoreGridState();
+  protected
 
   public
     { Public declarations }
     var EditFormClass: String;
+    procedure EditForm(AFormAction: TFormAction);
 
-
-    procedure SetActionEnabled();
+    procedure DataLoad(); dynamic;
+    procedure SetActionEnabled(); dynamic;
   end;
 
 var
@@ -69,7 +71,7 @@ var
 implementation
 
 uses
-  uDataModule, uBaseFormF;
+  uDataModule, uBaseFormF, MTLogger;
 
 {$R *.dfm}
 
@@ -114,9 +116,7 @@ end;
 
 procedure TBaseFormDBT.DataLoad;
 begin
-  Query.Close;
-  Query.Open;
-
+  logger.Info('TBaseFormDBT.DataLoad');
   SetActionEnabled;
 end;
 
@@ -126,7 +126,7 @@ var editform : TBaseFormF;
 begin
   editform := TFormClass(FindClass(EditFormClass)).Create(self) as TBaseFormF;
 
-  if AFormAction in [acShow, acUpdate, acDelete] then
+  if AFormAction in [acShow, acUpdate, acDelete, acClone, acResetAcc] then
   begin
     editform.id := Query.FieldByName(TableView.DataController.KeyFieldNames).Value;
   end;
@@ -188,6 +188,7 @@ end;
 
 procedure TBaseFormDBT.SetActionEnabled;
 begin
+  logger.Info('TBaseFormDBT.SetActionEnabled');
   actAdd.Enabled := (actAdd.Tag = 1);
   actShow.Enabled := (actShow.Tag = 1) and (Query.RecordCount > 0);
   actEdit.Enabled := (actEdit.Tag = 1) and (Query.RecordCount > 0);

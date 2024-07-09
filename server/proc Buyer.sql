@@ -188,38 +188,37 @@ as
   end
 
   BEGIN TRY 
+    if exists (select 1 
+                    from tKontragents u (nolock)
+                where u.KontragentID     = @BuyerID
+                    and u.KontragentTypeID = @KontragentTypeID
+                    and (u.discount <> @Discount or u.DiscountDate <> @DiscountDate))
+    begin
+        insert tDiscounts(ObjectTypeID, ObjectID, Discount, DiscountDate)
+        select @KontragentTypeID, @BuyerID, @Discount, @DiscountDate
+    end  
 
-        if exists (select 1 
-                     from tKontragents u (nolock)
-                    where u.KontragentID     = @BuyerID
-                      and u.KontragentTypeID = @KontragentTypeID
-                      and (u.discount <> @Discount or u.DiscountDate <> @DiscountDate))
-        begin
-            insert tDiscounts(ObjectTypeID, ObjectID, Discount, DiscountDate)
-            select @KontragentTypeID, @BuyerID, @Discount, @DiscountDate
-        end  
+	Update tKontragents
+		set 
+            Name    	    = @Name    	    
+            ,FullName	    = @FullName	    
+            ,Inn	        = @Inn	        
+            ,Program	    = @Program	    
+            ,PostAddress	= @PostAddress	
+            ,LegalAddress	= @LegalAddress	
+            ,Edo	        = @Edo	        
+            ,EdoID	    = @EdoID	    
+            ,IsImport	    = @IsImport	    
+            ,Discount	    = @Discount	    
+            ,DiscountDate	= @DiscountDate	
+            ,PartnerID	= @PartnerID	
+            ,IsPartner	= @IsPartner	
+		where KontragentID  = @BuyerID
 
-		Update tKontragents
-		   set 
-               Name    	    = @Name    	    
-              ,FullName	    = @FullName	    
-              ,Inn	        = @Inn	        
-              ,Program	    = @Program	    
-              ,PostAddress	= @PostAddress	
-              ,LegalAddress	= @LegalAddress	
-              ,Edo	        = @Edo	        
-              ,EdoID	    = @EdoID	    
-              ,IsImport	    = @IsImport	    
-              ,Discount	    = @Discount	    
-              ,DiscountDate	= @DiscountDate	
-              ,PartnerID	= @PartnerID	
-              ,IsPartner	= @IsPartner	
-		 where KontragentID  = @BuyerID
-
-        exec ContactFill
-                @ObjectTypeID = @KontragentTypeID
-               ,@ObjectID     = @BuyerID
-               ,@Mode         = 1
+    exec ContactFill
+            @ObjectTypeID = @KontragentTypeID
+            ,@ObjectID     = @BuyerID
+            ,@Mode         = 1
 
   END TRY  
   BEGIN CATCH  
@@ -246,6 +245,14 @@ as
          ,@KontragentTypeID  numeric(15,0)
 
   select @KontragentTypeID  = 2
+
+  if exists (select 1 
+               from tAccounts u (nolock)
+              where u.BuyerID = @BuyerID)
+  begin
+    set @r = 143-- 'Ошибка! Покупатель используется в справочнике "Счета"'
+    goto exit_
+  end
 
   BEGIN TRY 
 		delete 

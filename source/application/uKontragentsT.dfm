@@ -7,9 +7,9 @@ inherited KontragentsT: TKontragentsT
   ExplicitHeight = 585
   TextHeight = 17
   inherited ToolBar: TToolBar
-    Width = 908
+    Width = 914
     DoubleBuffered = True
-    ExplicitWidth = 908
+    ExplicitWidth = 914
     inherited tbAdd: TToolButton
       Action = nil
       DropdownMenu = AddMenu
@@ -18,12 +18,12 @@ inherited KontragentsT: TKontragentsT
     end
   end
   inherited Grid: TcxGrid
-    Top = 141
+    Top = 119
     Width = 914
-    Height = 405
-    ExplicitTop = 149
+    Height = 427
+    ExplicitTop = 119
     ExplicitWidth = 914
-    ExplicitHeight = 397
+    ExplicitHeight = 427
     inherited TableView: TcxGridDBTableView
       DataController.KeyFieldNames = 'KontragentID'
       object TableViewKontragentID: TcxGridDBColumn
@@ -72,14 +72,13 @@ inherited KontragentsT: TKontragentsT
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
-    ExplicitTop = 70
     ExplicitWidth = 914
     ExplicitHeight = 79
     Height = 79
     Width = 914
     object SkLabel2: TSkLabel
-      Left = 322
-      Top = 18
+      Left = 16
+      Top = 47
       Width = 58
       Height = 19
       Words = <
@@ -88,8 +87,8 @@ inherited KontragentsT: TKontragentsT
         end>
     end
     object SkLabel1: TSkLabel
-      Left = 280
-      Top = 46
+      Left = 333
+      Top = 47
       Width = 100
       Height = 19
       Words = <
@@ -97,47 +96,19 @@ inherited KontragentsT: TKontragentsT
           Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
         end>
     end
-    object cxLabel1: TcxLabel
-      Left = 16
-      Top = 16
-      Caption = #1058#1080#1087':'
-    end
-    object edtName: TcxTextEdit
-      Left = 386
-      Top = 44
-      Properties.MaxLength = 255
-      TabOrder = 5
-      TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077' '#1080#1083#1080' '#1048#1053#1053
-      OnKeyDown = edtKontragentTypeKeyDown
-      Width = 279
-    end
-    object btnFilterOk: TcxButton
-      Left = 712
-      Top = 15
-      Width = 120
-      Height = 25
-      Hint = #1055#1088#1080#1084#1077#1085#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
-      Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
-      OptionsImage.ImageIndex = 9
-      OptionsImage.Images = cxImageList16
-      TabOrder = 2
-      OnClick = btnFilterOkClick
-    end
-    object btnFilterClear: TcxButton
-      Left = 712
-      Top = 44
-      Width = 120
-      Height = 25
-      Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
-      Caption = #1054#1090#1084#1077#1085#1080#1090#1100
-      OptionsImage.ImageIndex = 10
-      OptionsImage.Images = cxImageList16
-      TabOrder = 7
-      OnClick = btnFilterClearClick
+    object SkLabel3: TSkLabel
+      Left = 333
+      Top = 19
+      Width = 34
+      Height = 19
+      Words = <
+        item
+          Caption = #1048#1053#1053':'
+        end>
     end
     object edtPartner: TcxLookupComboBox
-      Left = 386
-      Top = 15
+      Left = 80
+      Top = 44
       Properties.KeyFieldNames = 'KontragentID'
       Properties.ListColumns = <
         item
@@ -146,18 +117,56 @@ inherited KontragentsT: TKontragentsT
       Properties.ListOptions.ShowHeader = False
       Properties.ListSource = DM.dsKontragent
       Properties.MaxLength = 256
-      TabOrder = 0
+      TabOrder = 5
+      OnKeyDown = edtKontragentTypeKeyDown
+      Width = 216
+    end
+    object cxLabel1: TcxLabel
+      Left = 16
+      Top = 16
+      Caption = #1058#1080#1087':'
+    end
+    object edtName: TcxTextEdit
+      Left = 439
+      Top = 44
+      Properties.MaxLength = 255
+      TabOrder = 7
+      TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
       OnKeyDown = edtKontragentTypeKeyDown
       Width = 279
     end
+    object btnFilterOk: TcxButton
+      Left = 764
+      Top = 15
+      Width = 120
+      Height = 25
+      Hint = #1055#1088#1080#1084#1077#1085#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
+      Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
+      OptionsImage.ImageIndex = 9
+      OptionsImage.Images = cxImageList16
+      TabOrder = 0
+      OnClick = btnFilterOkClick
+    end
+    object btnFilterClear: TcxButton
+      Left = 764
+      Top = 46
+      Width = 120
+      Height = 25
+      Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
+      Caption = #1054#1090#1084#1077#1085#1080#1090#1100
+      OptionsImage.ImageIndex = 10
+      OptionsImage.Images = cxImageList16
+      TabOrder = 9
+      OnClick = btnFilterClearClick
+    end
     object pnKontragent: TdxPanel
-      Left = 55
+      Left = 80
       Top = 16
-      Width = 203
+      Width = 247
       Height = 25
       Frame.Borders = []
       UseDockManager = False
-      TabOrder = 4
+      TabOrder = 2
       object edtKontragentType: TcxCheckComboBox
         Left = 0
         Top = 0
@@ -168,10 +177,10 @@ inherited KontragentsT: TKontragentsT
         Style.ButtonStyle = btsFlat
         TabOrder = 0
         OnKeyDown = edtKontragentTypeKeyDown
-        Width = 171
+        Width = 215
       end
       object cxButton1: TcxButton
-        Left = 171
+        Left = 215
         Top = 0
         Width = 32
         Height = 25
@@ -191,9 +200,9 @@ inherited KontragentsT: TKontragentsT
         OnClick = cxButton1Click
       end
     end
-    object cxButton2: TcxButton
-      Left = 662
-      Top = 15
+    object cxButton3: TcxButton
+      Left = 715
+      Top = 44
       Width = 32
       Height = 25
       Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
@@ -207,11 +216,39 @@ inherited KontragentsT: TKontragentsT
       PaintStyle = bpsGlyph
       SpeedButtonOptions.Flat = True
       SpeedButtonOptions.Transparent = True
-      TabOrder = 1
-      OnClick = cxButton2Click
+      TabOrder = 8
+      OnClick = cxButton3Click
     end
-    object cxButton3: TcxButton
-      Left = 662
+    object edtINN: TcxTextEdit
+      Left = 439
+      Top = 16
+      Properties.MaxLength = 255
+      TabOrder = 3
+      TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1048#1053#1053
+      OnKeyDown = edtKontragentTypeKeyDown
+      Width = 279
+    end
+    object btnINN: TcxButton
+      Left = 715
+      Top = 16
+      Width = 32
+      Height = 25
+      Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Margins.Bottom = 0
+      LookAndFeel.NativeStyle = False
+      OptionsImage.ImageIndex = 10
+      OptionsImage.Images = cxImageList16
+      PaintStyle = bpsGlyph
+      SpeedButtonOptions.Flat = True
+      SpeedButtonOptions.Transparent = True
+      TabOrder = 4
+      OnClick = btnINNClick
+    end
+    object cxButton2: TcxButton
+      Left = 295
       Top = 44
       Width = 32
       Height = 25
@@ -227,7 +264,7 @@ inherited KontragentsT: TKontragentsT
       SpeedButtonOptions.Flat = True
       SpeedButtonOptions.Transparent = True
       TabOrder = 6
-      OnClick = cxButton3Click
+      OnClick = cxButton2Click
     end
   end
   inherited ActionList: TActionList
@@ -259,7 +296,6 @@ inherited KontragentsT: TKontragentsT
   inherited PopupMenu: TPopupMenu
     inherited N2: TMenuItem
       Action = nil
-      ImageIndex = -1
       OnClick = nil
       object N11: TMenuItem
         Action = actAddClient
@@ -1201,6 +1237,10 @@ inherited KontragentsT: TKontragentsT
       '  !KontragentType '
       '  !edtName   '
       '  !Partner '
+      '  !INN'
+      '  '
+      '  '
+      '  !LookupFilter'
       '       '
       ' order by k.KontragentTypeID, k.Name ')
     Left = 631
@@ -1217,6 +1257,14 @@ inherited KontragentsT: TKontragentsT
       item
         Value = Null
         Name = 'PARTNER'
+      end
+      item
+        Value = Null
+        Name = 'INN'
+      end
+      item
+        Value = Null
+        Name = 'LOOKUPFILTER'
       end>
     object QueryKontragentID: TFMTBCDField
       AutoGenerateValue = arAutoInc

@@ -182,6 +182,14 @@ as
 
   select @KontragentTypeID  = 3
 
+  if exists (select 1 
+               from tAccounts u (nolock)
+              where u.SupplierID = @SupplierID)
+  begin
+      set @r = 162--  'Ошибка! Поставщик используется в справочнике "Счета"'
+      goto exit_
+  end
+
   BEGIN TRY 
 		delete 
           from tKontragents

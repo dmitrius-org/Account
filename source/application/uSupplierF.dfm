@@ -149,7 +149,6 @@ inherited SupplierF: TSupplierF
         Left = 155
         Top = 35
         TabOrder = 0
-        Text = '7730588444'
         TextHint = #1048#1085#1085
         Width = 178
       end
