@@ -1,4 +1,4 @@
-unit uBaseFormDBF;
+п»їunit uBaseFormDBF;
 
 interface
 
@@ -37,7 +37,7 @@ type
 
 
     /// <summary>
-    ///  DataLoad - получение данных с сервера, для отображения на форме
+    ///  DataLoad - РїРѕР»СѓС‡РµРЅРёРµ РґР°РЅРЅС‹С… СЃ СЃРµСЂРІРµСЂР°, РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РЅР° С„РѕСЂРјРµ
     ///</summary>
     procedure DataLoad(); virtual;
   end;
@@ -57,38 +57,39 @@ uses
 
 procedure TBaseFormDBF.DataLoad;
 begin
-  edtUser.LookupKey := TSql.Q.FieldByName('UserID').AsInteger;
-  edtInDate.Date := TSql.Q.FieldByName('InDateTime').AsDateTime;
+  edtUser.LookupKey := FDQuery.FieldByName('UserID').AsInteger;
+  edtInDate.Date    := FDQuery.FieldByName('InDateTime').AsDateTime;
+  FDQuery.Close;
 end;
 
 procedure TBaseFormDBF.FormShow(Sender: TObject);
 begin
   inherited;
   case FormAction of
-    acInsert, acReportCreate:
+    acInsert, acReportCreate, acAddDebet:
     begin
-      btnOk.Caption := ' Добавить';
+      btnOk.Caption := ' Р”РѕР±Р°РІРёС‚СЊ';
     end;
     acUpdate, acReportEdit, acUserAction:
     begin
-      btnOk.Caption := ' Сохранить';
+      btnOk.Caption := ' РЎРѕС…СЂР°РЅРёС‚СЊ';
 
     end;
     acDelete:
     begin
-      btnOk.Caption := ' Удалить';
+      btnOk.Caption := ' РЈРґР°Р»РёС‚СЊ';
     end;
     acShow:
     begin
 
-      btnOk.Caption := ' Закрыть';
+      btnOk.Caption := ' Р—Р°РєСЂС‹С‚СЊ';
     end;
 
   else
-    btnOk.Caption := ' Выполнить';
+    btnOk.Caption := ' Р’С‹РїРѕР»РЅРёС‚СЊ';
   end;
 
-  // начитываем данные с базы
+  // РЅР°С‡РёС‚С‹РІР°РµРј РґР°РЅРЅС‹Рµ СЃ Р±Р°Р·С‹
   case FormAction of
     acUpdate, acReportEdit, acUserAction, acDelete, acShow, acMessage:
     begin

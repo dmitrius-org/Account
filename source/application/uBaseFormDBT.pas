@@ -1,4 +1,4 @@
-unit uBaseFormDBT;
+﻿unit uBaseFormDBT;
 
 interface
 
@@ -14,7 +14,7 @@ uses
   cxDataStorage, cxEdit, cxNavigator, dxDateRanges, dxScrollbarAnnotations,
   cxDBData, cxGridLevel, cxClasses, cxGridCustomView, cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxGrid, uCommonType, dxSkinBasic,
-  cxContainer, cxGroupBox;
+  cxContainer, cxGroupBox, uBaseFormF;
 
 type
   TBaseFormDBT = class(TBaseFormT)
@@ -40,18 +40,22 @@ type
     procedure actRefreshExecute(Sender: TObject);
     procedure actLookupExecute(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure TableViewGetStoredProperties(Sender: TcxCustomGridView;
+      AProperties: TStrings);
+    procedure TableViewSetStoredPropertyValue(Sender: TcxCustomGridView;
+      const AName: string; const AValue: Variant);
+    procedure TableViewGetStoredPropertyValue(Sender: TcxCustomGridView;
+      const AName: string; var AValue: Variant);
+    procedure TableViewCellDblClick(Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
   private
-
-
-
-
-
     /// <summary>
-    ///  SaveGridState - ���������� �������� �������
+    ///  SaveGridState - сохранение настроек таблицы
     ///</summary>
     procedure SaveGridState();
     /// <summary>
-    ///  RestoreGridState - �������������� �������� �������
+    ///  RestoreGridState - восстановление настроек таблицы
     ///</summary>
     procedure RestoreGridState();
   protected
@@ -63,6 +67,13 @@ type
 
     procedure DataLoad(); dynamic;
     procedure SetActionEnabled(); dynamic;
+    /// <summary>
+    ///  EditFormData - передача дополнительных параметров для формы редактирования
+    ///</summary>
+    procedure EditFormData(AEditform : TBaseFormF); dynamic;
+
+
+    procedure SelectLookupKey();
   end;
 
 var
@@ -71,7 +82,7 @@ var
 implementation
 
 uses
-  uDataModule, uBaseFormF, MTLogger;
+  uDataModule, MTLogger;
 
 {$R *.dfm}
 
@@ -98,8 +109,8 @@ end;
 procedure TBaseFormDBT.actLookupExecute(Sender: TObject);
 begin
   inherited;
-  ID := Query.FieldByName(TableView.DataController.KeyFieldNames).Value;
-  Self.Close;
+
+  SelectLookupKey
 end;
 
 procedure TBaseFormDBT.actRefreshExecute(Sender: TObject);
@@ -130,7 +141,10 @@ begin
   begin
     editform.id := Query.FieldByName(TableView.DataController.KeyFieldNames).Value;
   end;
+
   editform.FormAction := AFormAction;
+
+  EditFormData(editform);
 
   mr := editform.ShowModal;
 
@@ -138,6 +152,11 @@ begin
   begin
      DataLoad();
   end;
+
+end;
+
+procedure TBaseFormDBT.EditFormData(AEditform: TBaseFormF);
+begin
 
 end;
 
@@ -186,6 +205,12 @@ begin
   TableView.StoreToRegistry(AStoreKey, True, AOptions, ASaveViewName);
 end;
 
+procedure TBaseFormDBT.SelectLookupKey;
+begin
+  ID := Query.FieldByName(TableView.DataController.KeyFieldNames).Value;
+  Self.Close;
+end;
+
 procedure TBaseFormDBT.SetActionEnabled;
 begin
   logger.Info('TBaseFormDBT.SetActionEnabled');
@@ -197,6 +222,58 @@ begin
   actRefresh.Enabled := (actRefresh.Tag = 1);
 
   actLookup.Visible := FormAction = acLookup;
+end;
+
+procedure TBaseFormDBT.TableViewCellDblClick(Sender: TcxCustomGridTableView;
+  ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+  AShift: TShiftState; var AHandled: Boolean);
+begin
+  if FormAction = acLookup then
+    SelectLookupKey
+end;
+
+procedure TBaseFormDBT.TableViewGetStoredProperties(Sender: TcxCustomGridView;
+  AProperties: TStrings);
+begin
+   AProperties.Add('FormWidth');
+   AProperties.Add('FormHeight');
+end;
+
+procedure TBaseFormDBT.TableViewGetStoredPropertyValue(
+  Sender: TcxCustomGridView; const AName: string; var AValue: Variant);
+begin
+  if AName = 'FormWidth' then
+    if Sender is TcxCustomGridView then
+    begin
+      AValue := Self.Width;
+      Exit;
+    end;
+
+  if AName = 'FormHeight' then
+    if Sender is TcxCustomGridView then
+    begin
+      AValue := Self.Height;
+      Exit;
+    end;
+end;
+
+procedure TBaseFormDBT.TableViewSetStoredPropertyValue(
+  Sender: TcxCustomGridView; const AName: string; const AValue: Variant);
+begin
+  inherited;
+  if AName = 'FormWidth' then
+    if Sender is TcxCustomGridView then
+    begin
+      Self.Width := AValue;
+      Exit;
+    end;
+
+  if AName = 'FormHeight' then
+    if Sender is TcxCustomGridView then
+    begin
+      Self.Height := AValue;
+      Exit;
+    end;
 end;
 
 end.

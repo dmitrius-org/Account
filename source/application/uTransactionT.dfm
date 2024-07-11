@@ -1,105 +1,286 @@
-object BaseFormT: TBaseFormT
-  Left = 0
-  Top = 0
-  ClientHeight = 424
-  ClientWidth = 947
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -12
-  Font.Name = 'Segoe UI'
-  Font.Style = []
-  Position = poDesktopCenter
-  TextHeight = 15
-  object ToolBar: TToolBar
-    Left = 0
-    Top = 0
-    Width = 947
-    Height = 38
-    AutoSize = True
-    ButtonHeight = 38
-    ButtonWidth = 81
-    Caption = 'ToolBar'
-    Color = 14079702
-    GradientStartColor = 14079702
-    Images = cxImageList16
-    ParentColor = False
-    ParentShowHint = False
-    ShowCaptions = True
-    ShowHint = True
-    TabOrder = 0
-    object tbShow: TToolButton
-      Left = 0
+inherited TransactionT: TTransactionT
+  Caption = #1050#1072#1089#1089#1072
+  ClientHeight = 469
+  ClientWidth = 982
+  StyleElements = [seFont, seClient, seBorder]
+  OnCreate = FormCreate
+  ExplicitWidth = 998
+  ExplicitHeight = 508
+  TextHeight = 17
+  inherited ToolBar: TToolBar
+    Width = 982
+    DoubleBuffered = True
+    HideClippedButtons = True
+    TabStop = True
+    StyleElements = [seFont, seClient, seBorder]
+    OnCustomDrawButton = ToolBarCustomDrawButton
+    ExplicitWidth = 1010
+    object tbAdd2: TToolButton [1]
+      Left = 87
       Top = 0
-      Action = actShow
+      Action = actAddDebet
+      Caption = '  '
+      Style = tbsTextButton
     end
-    object tbAdd: TToolButton
-      Left = 81
-      Top = 0
-      Action = actAdd
+    inherited tbAdd: TToolButton
+      Left = 174
+      Caption = '  '
+      Style = tbsTextButton
+      ExplicitLeft = 174
     end
-    object tbEdit: TToolButton
-      Left = 162
-      Top = 0
-      Action = actEdit
+    inherited tbEdit: TToolButton
+      Left = 261
+      ExplicitLeft = 261
     end
-    object tbDelete: TToolButton
-      Left = 243
-      Top = 0
-      Action = actDelete
+    inherited tbDelete: TToolButton
+      Left = 348
+      ExplicitLeft = 348
     end
   end
-  object ActionList: TActionList
-    Images = cxImageList16
-    Left = 704
-    Top = 104
-    object actShow: TAction
-      Caption = #1055#1088#1086#1089#1084#1086#1090#1088#1077#1090#1100
-      ImageIndex = 3
-    end
-    object actAdd: TAction
-      Caption = #1044#1086#1073#1072#1074#1080#1090#1100
-      ImageIndex = 0
-    end
-    object actEdit: TAction
-      Caption = #1048#1079#1084#1077#1085#1080#1090#1100
-      ImageIndex = 2
-    end
-    object actDelete: TAction
-      Caption = #1059#1076#1072#1083#1080#1090#1100
-      ImageIndex = 1
-    end
-    object actLookup: TAction
-      Caption = #1042#1099#1073#1088#1072#1090#1100
-      ImageIndex = 4
+  inherited Grid: TcxGrid
+    Top = 126
+    Width = 982
+    Height = 343
+    inherited TableView: TcxGridDBTableView
+      DataController.KeyFieldNames = 'TransactionID'
+      DataController.Summary.DefaultGroupSummaryItems = <
+        item
+          Kind = skSum
+          Position = spFooter
+          FieldName = 'Debet'
+          Column = TableViewCredit
+        end>
+      object TableViewTransactionID: TcxGridDBColumn
+        Caption = #1048#1076#1077#1085#1090#1080#1092#1080#1082#1072#1090#1086#1088
+        DataBinding.FieldName = 'TransactionID'
+        Visible = False
+      end
+      object TableViewTranType: TcxGridDBColumn
+        Caption = #1058#1080#1087
+        DataBinding.FieldName = 'TranType'
+        HeaderAlignmentHorz = taCenter
+        Width = 30
+      end
+      object TableViewOperationName: TcxGridDBColumn
+        Caption = #1054#1087#1077#1088#1072#1094#1080#1103
+        DataBinding.FieldName = 'OperationName'
+        HeaderAlignmentHorz = taCenter
+        Width = 120
+      end
+      object TableViewOperDate: TcxGridDBColumn
+        Caption = #1044#1072#1090#1072
+        DataBinding.FieldName = 'OperDate'
+        HeaderAlignmentHorz = taCenter
+        Width = 101
+      end
+      object TableViewKontragentName: TcxGridDBColumn
+        Caption = #1050#1086#1085#1090#1088#1072#1075#1077#1085#1090
+        DataBinding.FieldName = 'KontragentName'
+        HeaderAlignmentHorz = taCenter
+        Width = 217
+      end
+      object TableViewDebet: TcxGridDBColumn
+        Caption = #1055#1088#1080#1093#1086#1076
+        DataBinding.FieldName = 'Debet'
+        HeaderAlignmentHorz = taCenter
+        Width = 119
+      end
+      object TableViewCredit: TcxGridDBColumn
+        Caption = #1056#1072#1089#1093#1086#1076
+        DataBinding.FieldName = 'Credit'
+        HeaderAlignmentHorz = taCenter
+        Width = 122
+      end
+      object TableViewbalance: TcxGridDBColumn
+        Caption = #1054#1089#1090#1072#1090#1086#1082
+        DataBinding.FieldName = 'balance'
+        HeaderAlignmentHorz = taCenter
+        Width = 119
+      end
+      object TableViewKassa: TcxGridDBColumn
+        Caption = #1050#1072#1089#1089#1072
+        DataBinding.FieldName = 'Kassa'
+        HeaderAlignmentHorz = taCenter
+        Width = 112
+      end
     end
   end
-  object PopupMenu: TPopupMenu
-    Images = cxImageList16
-    Left = 704
-    Top = 160
-    object N6: TMenuItem
-      Action = actLookup
+  inherited FilterPanel: TcxGroupBox
+    Visible = True
+    ExplicitWidth = 1010
+    ExplicitHeight = 86
+    Height = 86
+    Width = 982
+    object SkLabel4: TSkLabel
+      Left = 373
+      Top = 18
+      Width = 20
+      Height = 19
+      Words = <
+        item
+          Caption = #1087#1086':'
+        end>
     end
-    object N1: TMenuItem
-      Action = actShow
+    object SkLabel7: TSkLabel
+      Left = 216
+      Top = 18
+      Width = 44
+      Height = 19
+      Words = <
+        item
+          Caption = #1044#1072#1090#1072' '#1089':'
+        end>
     end
-    object N2: TMenuItem
-      Action = actAdd
+    object SkLabel6: TSkLabel
+      Left = 7
+      Top = 16
+      Width = 39
+      Height = 19
+      Words = <
+        item
+          Caption = #1050#1072#1089#1089#1072':'
+        end>
     end
-    object N3: TMenuItem
-      Action = actEdit
+    object edtPaymentDateE: TcxDateEdit
+      Left = 395
+      Top = 16
+      Properties.ClearKey = 46
+      Properties.DateButtons = [btnClear, btnNow, btnToday]
+      Properties.UseNullString = True
+      TabOrder = 2
+      OnKeyDown = edKassaKeyDown
+      Width = 104
     end
-    object N4: TMenuItem
-      Action = actDelete
+    object edtPaymentDate: TcxDateEdit
+      Left = 265
+      Top = 16
+      Properties.ClearKey = 46
+      Properties.DateButtons = [btnClear, btnNow, btnToday]
+      Properties.UseNullString = True
+      TabOrder = 1
+      OnKeyDown = edKassaKeyDown
+      Width = 104
+    end
+    object edKassa: TcxLookupComboBox
+      Left = 74
+      Top = 16
+      Properties.ClearKey = 46
+      Properties.KeyFieldNames = 'KassaID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'Name'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = dsKassa
+      Properties.MaxLength = 256
+      TabOrder = 0
+      OnKeyDown = edKassaKeyDown
+      Width = 133
+    end
+    object btnFilterOk: TcxButton
+      Left = 505
+      Top = 16
+      Width = 99
+      Height = 25
+      Hint = #1055#1088#1080#1084#1077#1085#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
+      Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
+      OptionsImage.ImageIndex = 5
+      OptionsImage.Images = IM.IL
+      TabOrder = 3
+      OnClick = btnFilterOkClick
+    end
+    object btnFilterClear: TcxButton
+      Left = 610
+      Top = 16
+      Width = 99
+      Height = 25
+      Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
+      Caption = #1054#1090#1084#1077#1085#1080#1090#1100
+      OptionsImage.ImageIndex = 2
+      OptionsImage.Images = IM.IL
+      TabOrder = 4
+      OnClick = btnFilterClearClick
+    end
+    object edtSum: TcxCurrencyEdit
+      Left = 817
+      Top = 55
+      Anchors = [akTop, akRight]
+      ParentFont = False
+      Properties.Alignment.Horz = taCenter
+      Properties.DecimalPlaces = 0
+      Properties.DisplayFormat = ',0 '#8381';-,0 '#8381
+      Properties.ReadOnly = True
+      Style.Color = clLightsalmon
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -16
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = []
+      Style.ReadOnly = True
+      Style.IsFontAssigned = True
+      TabOrder = 7
+      Width = 136
+    end
+    object edtSumC: TcxCurrencyEdit
+      Left = 690
+      Top = 55
+      Anchors = [akTop, akRight]
+      ParentFont = False
+      Properties.Alignment.Horz = taCenter
+      Properties.DecimalPlaces = 0
+      Properties.DisplayFormat = ',0 '#8381';-,0 '#8381
+      Properties.ReadOnly = True
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -16
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = []
+      Style.ReadOnly = True
+      Style.IsFontAssigned = True
+      TabOrder = 6
+      Width = 121
+    end
+    object edtSumD: TcxCurrencyEdit
+      Left = 563
+      Top = 55
+      Anchors = [akTop, akRight]
+      ParentFont = False
+      Properties.Alignment.Horz = taCenter
+      Properties.DecimalPlaces = 0
+      Properties.DisplayFormat = ',0 '#8381';-,0 '#8381
+      Properties.ReadOnly = True
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -16
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = []
+      Style.ReadOnly = True
+      Style.IsFontAssigned = True
+      TabOrder = 5
+      Width = 121
     end
   end
-  object cxImageList32: TcxImageList
-    SourceDPI = 96
-    Height = 32
-    Width = 32
+  inherited ActionList: TActionList
+    Left = 580
+    Top = 137
+    object actAddDebet: TAction [1]
+      Tag = 1
+      Caption = #1055#1088#1080#1093#1086#1076
+      ImageIndex = 6
+      OnExecute = actAddDebetExecute
+    end
+    inherited actAdd: TAction
+      Caption = #1056#1072#1089#1093#1086#1076
+    end
+  end
+  inherited PopupMenu: TPopupMenu
+    object N8: TMenuItem [2]
+      Action = actAddDebet
+    end
+  end
+  inherited cxImageList32: TcxImageList
     FormatVersion = 1
-    DesignInfo = 4194348
+    DesignInfo = 13893654
     ImageInfo = <
       item
         ImageClass = 'TdxSmartImage'
@@ -468,12 +649,59 @@ object BaseFormT: TBaseFormT
           E9A3F1D1BE0B01E00FE5DFFF3B6B594FDCD6290000000049454E44AE426082}
         FileName = 'Images\Actions\Refresh_32x32.png'
         Keywords = 'Actions;Refresh'
+      end
+      item
+        ImageClass = 'TdxSmartImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+          F40000001B744558745469746C6500466F6F7465723B41646420466F6F746572
+          3B416464444DED1E000004FD49444154785E9D564D685D5510FECEBD094DA4A8
+          A860248B22224517420B6D69298134FE2C4204374AA5B155FCA1D18558DBEA42
+          B05674E34A4D6294D0602328C445DD98DA1F51DAA8451722560B0A8D45284929
+          FD4149DFBD67C6C7DC396F1C5E7DAF789270E7E4DCB9F3CDF7CDCCBD01D50AF2
+          E797DFB73F630024D7168BD91F770008FB667E3812B2D00F06380081F529CC08
+          0860F991A862C9AFDE2B062C2CAB6FDA3070F499CD6B07E09707505FFD5B1F5A
+          85FFB50C835F0AF9FD8F4F6C926D2B00C93F463672B9B259D2D4CCEDB94D41F3
+          0064596677262F62B40560297023B65D13D7466DE084C2C2950C6460E4199C24
+          91A83D00D2889CB048F2CA86060930DB18F17A9791046C9E2B602BBAA0DB6600
+          EAEC2A74ECA36F2DFBE4C9BE92D37145860496CDE2B98BD8FBE26003841290B9
+          0E6966C0D7CEF647D7A9692DE18B4D5931F51C23452439EDC833300B825C8EDA
+          01608632F01D1864DA337BFAC54ED858CE93EFC2E205ECD93188A224E45986C8
+          9CE2C4FFEE0222CB0B15039E945488360D7CFBFB2E719512C5CA5B15A16A6F1C
+          8D4D7F6319DB5002BB0EE1869FED43BD062EE0B57A0DA80B88C84DDA961290A2
+          DFBE65BD06B46512A82CBE283C386B5D101A00D04A02CD5219D83F67AC30CC76
+          D760AC244998B1506760EFCEA1040354A23D0062B2000118A93320EE2E2BAD01
+          036AB61C35CB0495A03D00F22F93D10F8F376BCDC16AC2D786BB2E2ED66B60D7
+          50430ABE46099CAE23C31BACCD60016173C1BFF560369C740045BE9622F4FDFD
+          EED4B1B44FC15DC6E4184857B649B8FBC12420C846B18D640F20A1E4C6887D6E
+          EB4675D4E5756F0E1C7C2DE459407757073AF30C3B9EEEC79E17DA49C0EC2478
+          BBCE8040A2A4A4D10EB0C993FCCC576AE09DD71FC6D8811FF1EB99F360623CF5
+          D6A10522FA7272D70303DBDE9C95E42812A65F194C12440DC8E05031C0C1021A
+          0321192651B073E8D75396013FCF9FC3F0E67549194C4E1DEB0780C7B6AC97FD
+          07935F190331B253882CADE671CB6A71331884D43140518B88C438357F59FC8A
+          42E844492C006A4534005CD920759E3C38E468B741636D49AC8C31D07BCBDDE8
+          BB67183D37DDA950BB50941131322291DC5B16650520B2F895FF06401435E334
+          BF191BD6ACD29C49033298C56EF477E546D870FBCB18FDF40C4E9E3E2105CD12
+          94255B09C81040433B67687CEC308800263A0A60E0AA6D1823A1A41ACE5E3CA5
+          01D319811D0B72823C74E3A7DFCEE3F16D1B6160255B05C0D878FF6ADCD1BB1C
+          44558213E38736C118D0205AE1654928620D251390A86EF4BFB52B51F2008A22
+          0AF093A72FE9AC48402DB15FE62FE9F360127806823825003776F50A2C22A53C
+          49C05CD9A8E80E2143599655C644604AC52C60F5B966131865340021922215DC
+          01458D30F3C9F720D22C34534E7BCD22D1BDB6E72CEE5A7103C6C70F439E452C
+          B5D037B8A602C28C2307E64064D211F1AC9300D08706E0F947BEB0AA77D3BECA
+          04C19F2DEBCCF1EA932B916536F0EE1D99C68A5B97E3F73F2F57F55046CCED7B
+          227BEFF81F1C09989A3868A3984938BBFA978F43A1A61065DF054BB588A52B11
+          1C5832B8EDE66E91B15692C8420280C4BF56B2B0247B0540A908AFBFAED3CD79
+          1B3806C486A3015556EC633548C6F2611A95F61815404188CC8864008AA52B7F
+          7FBDFB8DCFFA82CBDEDEFD9E0DF7EAB50948C6D24BCFDE87D52B7B3039FA3924
+          0C49D10AE7FB2766DD8B2EC8D802BA012C0390B77877FBFFB5BF87F5537C09C0
+          5F00AE081466E7F00F0E25AB36079C20E80000000049454E44AE426082}
+        FileName = 'Images\Reports\AddFooter_32x32.png'
+        Keywords = 'Reports;AddFooter'
       end>
   end
-  object cxImageList16: TcxImageList
-    SourceDPI = 96
+  inherited cxImageList16: TcxImageList
     FormatVersion = 1
-    DesignInfo = 8912936
     ImageInfo = <
       item
         ImageClass = 'TdxSmartImage'
@@ -646,6 +874,162 @@ object BaseFormT: TBaseFormT
           10230000000049454E44AE426082}
         FileName = 'Images\Actions\Refresh_16x16.png'
         Keywords = 'Actions;Refresh'
+      end
+      item
+        ImageClass = 'TdxSmartImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+          610000001B744558745469746C6500466F6F7465723B41646420466F6F746572
+          3B416464444DED1E0000022349444154785E75934D48945D14C77FF79949825A
+          0541BBD6211258460BCDAF4C246813180941DF16528B1661F1AE841681AD0ADB
+          B488CA5C44C9A4A0050D04921951A32E5A58AD0A0241A2E4B599E7DEF30F662E
+          0E0C762FDC73E070CEFF77CEE13A2019795C789524499B1000082445B7FA4860
+          DEBFBE7CB2A9535200C8020E68EB3FD600509B14C3D562771E7E6C053240B540
+          0806C0BD27058430814C9889F235F17B758DABE75AF0DE88A244020806028EF6
+          D4E3A2B2705502000943040BAC9F2A410A82B1897964B157091469449960F0C2
+          817F100400D17BB8A1121128028043123890C0FB0D087C1A10303A5E58579484
+          044891E07FAE0FB493A61B1094E2108F1FD95D5174355B8804C1840FB5048079
+          0F8207CF0A51510890552C120327F63192FBC0F7F40F7D43B9A9BEA189B610AC
+          D2429A1A024EF736026056DD7C369BB07573964D19C7C2E765FACFB470FB6EBE
+          B5A3BB91A9E77371062120C1A3C55D584C1402C1F9A6770C8F7D61F1EB322188
+          F9A59F148B9EC9F1B7F23EE4E3160C10290602194800624BDD760A4BB35CBAD8
+          CEFB4F2B14D34073D71E64E2456EB6A3D2423024585D0104410E3321397EADFD
+          A07EE7366EDE9A2E0B3577ED253F3957F67DB0E9384443C095CE251008617248
+          4642C27FA77690383838304AB11428A59E969EFD2E9F9BC1017567079F4E6732
+          75EDB16FCCC03901808101C3D70E71E3FE0C6F16BE117C7829E836331C9000D9
+          EACF84686B8F030478A024C900FE02076661D4056BDB3A0000000049454E44AE
+          426082}
+        FileName = 'Images\Reports\AddFooter_16x16.png'
+        Keywords = 'Reports;AddFooter'
       end>
+  end
+  inherited Query: TFDQuery
+    SQL.Strings = (
+      'Select t.TransactionID '
+      '      ,t.TranTypeID '
+      '      ,tt.Brief       as TranType'
+      '      ,ot.Name        as OperationName'
+      '      ,t.OperDate'
+      '      ,k.Name         as KontragentName'
+      '      ,iif(t.TranTypeID = 1, t.Amount, 0) as Debet'
+      '      ,iif(t.TranTypeID = 2, t.Amount, 0) as Credit'
+      '      ,ks.Name        as Kassa'
+      
+        '      ,(Select sum(IIf(t2.TranTypeID=1, 1, -1) * t2.Amount )    ' +
+        '      '
+      '          from tTransaction t2 (nolock)         '
+      '         where t2.InDateTime <= t.InDateTime '
+      '        ) AS balance'
+      '  from tTransaction t (nolock)'
+      ' inner join tTranType tt (nolock)'
+      '         on tt.TranTypeID = t.TranTypeID'
+      '         '
+      ' Inner join tKassa ks (nolock)'
+      '         on ks.KassaID = t.KassaID'
+      '                  '
+      ' left join tKontragents k (nolock)'
+      '         on k.KontragentID = t.KontragentID'
+      ''
+      '  left join tOperation o (nolock)'
+      '         on o.OperationID = t.OperationID'
+      '  left join tOperationType ot (nolock)'
+      '         on ot.OperationTypeID = o.OperationTypeID'
+      'where 1=1'
+      ''
+      '!Kassa'
+      ''
+      '!DateB'
+      ''
+      '!DateE')
+    Left = 710
+    Top = 151
+    MacroData = <
+      item
+        Value = Null
+        Name = 'KASSA'
+      end
+      item
+        Value = Null
+        Name = 'DATEB'
+      end
+      item
+        Value = Null
+        Name = 'DATEE'
+      end>
+    object QueryTranTypeID: TFMTBCDField
+      FieldName = 'TranTypeID'
+      Origin = 'TranTypeID'
+      Precision = 15
+      Size = 0
+    end
+    object QueryTranType: TStringField
+      FieldName = 'TranType'
+      Origin = 'TranType'
+      Size = 10
+    end
+    object QueryOperationName: TStringField
+      FieldName = 'OperationName'
+      Origin = 'OperationName'
+      Size = 32
+    end
+    object QueryOperDate: TSQLTimeStampField
+      FieldName = 'OperDate'
+      Origin = 'OperDate'
+    end
+    object QueryKontragentName: TStringField
+      FieldName = 'KontragentName'
+      Origin = 'KontragentName'
+      Size = 256
+    end
+    object QueryDebet: TCurrencyField
+      FieldName = 'Debet'
+      Origin = 'Debet'
+      ReadOnly = True
+    end
+    object QueryCredit: TCurrencyField
+      FieldName = 'Credit'
+      Origin = 'Credit'
+      ReadOnly = True
+    end
+    object QueryKassa: TStringField
+      FieldName = 'Kassa'
+      Origin = 'Kassa'
+      Size = 32
+    end
+    object Querybalance: TCurrencyField
+      FieldName = 'balance'
+      Origin = 'balance'
+      ReadOnly = True
+    end
+    object QueryTransactionID: TFMTBCDField
+      AutoGenerateValue = arAutoInc
+      FieldName = 'TransactionID'
+      Origin = 'TransactionID'
+      ProviderFlags = [pfInWhere]
+      ReadOnly = True
+      Precision = 15
+      Size = 0
+    end
+  end
+  inherited DataSource: TDataSource
+    Left = 687
+    Top = 170
+  end
+  inherited cxStyleRepository: TcxStyleRepository
+    Left = 133
+    Top = 181
+    PixelsPerInch = 96
+  end
+  object dsKassa: TDataSource
+    DataSet = qKassa
+    Left = 392
+    Top = 341
+  end
+  object qKassa: TFDQuery
+    Connection = DM.FDConnection
+    SQL.Strings = (
+      'exec UserKassaList')
+    Left = 341
+    Top = 308
   end
 end

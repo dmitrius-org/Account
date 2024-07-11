@@ -33,7 +33,9 @@ uses
   uBuyerF in '..\source\application\uBuyerF.pas' {BuyerF},
   uGetKontragentData in '..\source\lib\uGetKontragentData.pas',
   uAccountT in '..\source\application\uAccountT.pas' {AccountT},
-  uAccountF in '..\source\application\uAccountF.pas' {AccountF};
+  uAccountF in '..\source\application\uAccountF.pas' {AccountF},
+  uTransactionT in '..\source\application\uTransactionT.pas' {TransactionT},
+  uTransactionF in '..\source\application\uTransactionF.pas' {TransactionF};
 
 {$R *.res}
 
@@ -43,7 +45,7 @@ begin
 
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TIM, IM);
-
+//  Application.CreateForm(TTransactionF, TransactionF);
   Application.Title := DM.FDManager.ConnectionDefs.FindConnectionDef('Connection').Params.Values['ApplicationName'];
 
 //  var LoginForm: TLoginForm;
@@ -55,8 +57,9 @@ begin
   begin
     //LoginForm.Free;
 //    Application.CreateForm(TExpenseItemsT, ExpenseItemsT);
-    Application.CreateForm(TAccountT, AccountT);
+//    Application.CreateForm(TAccountT, AccountT);
 // Application.CreateForm(TClientF, ClientF);
+    Application.CreateForm(TTransactionT, TransactionT);
     Application.Run;
 
   end

@@ -185,7 +185,9 @@ end;
 
 procedure TTasksF.DataLoad;
 begin
-  TSql.Open('''
+  FDQuery.Close;
+  FDQuery.sql.text :=
+  '''
             Select t.CreateDate
                   ,t.Comment
                   ,t.DueDate
@@ -196,16 +198,15 @@ begin
               from tTasks t (nolock)
 
              where t.TaskID = :TaskID
-            ''',
-            ['TaskID'],
-            [ID]
-            );
+  ''';
+  FDQuery.ParamByName('ExpenseItemID').AsInteger := ID;
+  FDQuery.Open;
 
-  edtCreateDate.Date := TSql.Q.FieldByName('CreateDate').Value;
-  edtManager.EditValue :=  TSql.Q.FieldByName('ManagerID').Value;
-  edtDueDate.Date := TSql.Q.FieldByName('DueDate').Value;
-  edtTaskStatus.EditValue :=  TSql.Q.FieldByName('TaskStatusID').Value;
-  edtComment.text := TSql.Q.FieldByName('Comment').AsString;
+  edtCreateDate.Date := FDQuery.FieldByName('CreateDate').Value;
+  edtManager.EditValue :=  FDQuery.FieldByName('ManagerID').Value;
+  edtDueDate.Date := FDQuery.FieldByName('DueDate').Value;
+  edtTaskStatus.EditValue :=  FDQuery.FieldByName('TaskStatusID').Value;
+  edtComment.text := FDQuery.FieldByName('Comment').AsString;
 
   inherited;
 end;

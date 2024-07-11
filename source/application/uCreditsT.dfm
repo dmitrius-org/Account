@@ -5,11 +5,13 @@ inherited CreditsT: TCreditsT
   ExplicitWidth = 960
   TextHeight = 17
   inherited ToolBar: TToolBar
-    Width = 938
+    Width = 944
     DoubleBuffered = True
+    ExplicitWidth = 944
   end
   inherited Grid: TcxGrid
     Width = 944
+    ExplicitWidth = 944
     inherited TableView: TcxGridDBTableView
       object TableViewCreditID: TcxGridDBColumn
         Caption = #1048#1076#1077#1085#1090#1080#1092#1080#1082#1072#1090#1086#1088
@@ -54,6 +56,10 @@ inherited CreditsT: TCreditsT
         Width = 245
       end
     end
+  end
+  inherited FilterPanel: TcxGroupBox
+    ExplicitWidth = 944
+    Width = 944
   end
   inherited cxImageList32: TcxImageList
     FormatVersion = 1

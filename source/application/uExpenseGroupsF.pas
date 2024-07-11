@@ -69,19 +69,21 @@ end;
 
 procedure TExpenseGroupF.DataLoad;
 begin
-  TSql.Open('''
+  FDQuery.Close;
+  FDQuery.sql.text :=
+  '''
                select Name
                      ,isActive
                      ,InDateTime
                      ,UserID
                  from tExpenseGroups (nolock)
                where ExpenseGroupID = :ExpenseGroupID
-            ''',
-            ['ExpenseGroupID'],
-            [ID]);
+  ''';
+  FDQuery.ParamByName('ExpenseGroupID').AsInteger := ID;
+  FDQuery.Open;
 
-  edtName.text := TSql.Q.FieldByName('Name').AsString;
-  cbIsActive.Checked := TSql.Q.FieldByName('Name').AsBoolean;
+  edtName.text := FDQuery.FieldByName('Name').AsString;
+  cbIsActive.Checked := FDQuery.FieldByName('Name').AsBoolean;
   inherited;
 end;
 

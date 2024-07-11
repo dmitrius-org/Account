@@ -13,7 +13,7 @@ uses
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, System.ImageList, Vcl.ImgList,
   cxImageList, Vcl.Menus, System.Actions, Vcl.ActnList, cxGridLevel, cxClasses,
   cxGridCustomView, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
-  cxGrid, Vcl.ComCtrls, Vcl.ToolWin, dxSkinBasic;
+  cxGrid, Vcl.ComCtrls, Vcl.ToolWin, dxSkinBasic, cxContainer, cxGroupBox;
 
 type
   TExpenseGroupsT = class(TBaseFormDBT)
@@ -28,7 +28,8 @@ type
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
-   // Public declarations }
+  Public
+    procedure DataLoad(); override;
   end;
 
 var
@@ -37,6 +38,13 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TExpenseGroupsT.DataLoad;
+begin
+  Query.Close;
+  Query.Open();
+  inherited;
+end;
 
 procedure TExpenseGroupsT.FormCreate(Sender: TObject);
 begin

@@ -60,6 +60,8 @@ inherited TasksF: TTasksF
     Top = 258
     Width = 603
     TabOrder = 5
+    ExplicitTop = 258
+    ExplicitWidth = 603
     inherited dxPanel1: TdxPanel
       TabOrder = 0
       inherited edtInDate: TcxDateEdit
@@ -71,13 +73,13 @@ inherited TasksF: TTasksF
     end
     inherited btnCancel: TcxButton
       Left = 398
-      ExplicitLeft = 388
+      ExplicitLeft = 398
     end
     inherited btnOk: TcxButton
       Left = 491
       TabOrder = 2
       OnClick = btnOkClick
-      ExplicitLeft = 481
+      ExplicitLeft = 491
     end
   end
   object edtCreateDate: TcxDateEdit [6]

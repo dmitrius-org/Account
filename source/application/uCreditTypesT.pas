@@ -13,7 +13,7 @@ uses
   cxClasses, FireDAC.Comp.DataSet, FireDAC.Comp.Client, System.ImageList,
   Vcl.ImgList, cxImageList, Vcl.Menus, System.Actions, Vcl.ActnList,
   cxGridLevel, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
-  cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin;
+  cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, cxContainer, cxGroupBox;
 
 type
   TCreditTypesT = class(TBaseFormDBT)
@@ -29,6 +29,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+    procedure DataLoad(); override;
   end;
 
 var
@@ -37,6 +38,13 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TCreditTypesT.DataLoad;
+begin
+  Query.Close;
+  Query.Open();
+  inherited;
+end;
 
 procedure TCreditTypesT.FormCreate(Sender: TObject);
 begin

@@ -2,6 +2,7 @@ inherited CreditTypesF: TCreditTypesF
   Caption = #1042#1080#1076' '#1082#1088#1077#1076#1080#1090#1072
   ClientHeight = 171
   ClientWidth = 590
+  StyleElements = [seFont, seClient, seBorder]
   ExplicitWidth = 606
   ExplicitHeight = 210
   TextHeight = 17
@@ -18,6 +19,7 @@ inherited CreditTypesF: TCreditTypesF
   inherited Panel: TdxPanel
     Top = 125
     Width = 590
+    ExplicitTop = 125
     ExplicitWidth = 590
     inherited btnCancel: TcxButton
       Left = 387

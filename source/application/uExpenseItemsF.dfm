@@ -31,6 +31,7 @@ inherited ExpenseItemsF: TExpenseItemsF
     Width = 611
     TabOrder = 3
     ExplicitTop = 151
+    ExplicitWidth = 611
     inherited dxPanel1: TdxPanel
       TabOrder = 0
       inherited edtInDate: TcxDateEdit
@@ -44,13 +45,13 @@ inherited ExpenseItemsF: TExpenseItemsF
     end
     inherited btnCancel: TcxButton
       Left = 408
-      ExplicitLeft = 390
+      ExplicitLeft = 408
     end
     inherited btnOk: TcxButton
       Left = 504
       TabOrder = 2
       OnClick = btnOkClick
-      ExplicitLeft = 486
+      ExplicitLeft = 504
     end
   end
   object edtName: TcxTextEdit [3]
@@ -71,6 +72,12 @@ inherited ExpenseItemsF: TExpenseItemsF
   object edtExpenseGroup: ALookupEdit [5]
     Left = 122
     Top = 16
+    LookupConnection = DM.FDConnection
+    LookupForm = 'TExpenseGroupsT'
+    LookupSQL = 
+      '  Select Name from tExpenseGroups (nolock) where ExpenseGroupID ' +
+      '= :ID'
+    LookupKey = 0
     ParentShowHint = False
     Properties.Buttons = <
       item
@@ -90,13 +97,6 @@ inherited ExpenseItemsF: TExpenseItemsF
     ShowHint = True
     TabOrder = 0
     TextHint = #1042#1099#1073#1077#1088#1080#1090#1077' '#1075#1088#1091#1087#1087#1091
-    LookupConnection = DM.FDConnection
-    LookupForm = 'TExpenseGroupsT'
-    LookupSQL = 
-      '  Select Name from tExpenseGroups (nolock) where ExpenseGroupID ' +
-      '= :ID'
-    LookupKey = 0
-    ShowDelButton = False
     Width = 473
   end
   inherited FDQuery: TFDQuery

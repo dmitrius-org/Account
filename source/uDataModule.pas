@@ -1,4 +1,4 @@
-unit uDataModule;
+п»їunit uDataModule;
 
 interface
 
@@ -52,7 +52,7 @@ uses MTLogger, uSql, uCommonType;
 
 procedure TDM.DataModuleCreate(Sender: TObject);
 begin
-  // настройки  логирования
+  // РЅР°СЃС‚СЂРѕР№РєРё  Р»РѕРіРёСЂРѕРІР°РЅРёСЏ
   CreateDefLogger(ExtractFilePath(ParamStr(0)) +'' + FormatDateTime('ddmmyyyy', Now) +'.log');
   Logger.isActive := true;
   Logger.Info('TDM.DataModuleCreate Begin');
@@ -85,8 +85,8 @@ begin
         FDConnection.Params.Add('Password='  + APass);
       end;
 
-      // параметры подключения из ini файла
-      Logger.Info('TUniMainModule Параметры подключения');
+      // РїР°СЂР°РјРµС‚СЂС‹ РїРѕРґРєР»СЋС‡РµРЅРёСЏ РёР· ini С„Р°Р№Р»Р°
+      Logger.Info('TUniMainModule РџР°СЂР°РјРµС‚СЂС‹ РїРѕРґРєР»СЋС‡РµРЅРёСЏ');
       Logger.Info('TUniMainModule ConnectionDefFileName: '+ FDManager.ConnectionDefFileName);
       Logger.Info('TUniMainModule FDConnection DriverID: ' + FDConnection.Params.Values['DriverID']);
       Logger.Info('TUniMainModule DriverID: ' + FDManager.ConnectionDefs.FindConnectionDef(FDConnection.ConnectionDefName).Params.Values['DriverID']);
@@ -102,7 +102,7 @@ begin
 //      if Sql.Q.RecordCount > 0 then
 //      begin
 //        logger.isActive := Sql.Q.FindField('AppClientLog').Value;
-//        logger.Info('Программа запущена');
+//        logger.Info('РџСЂРѕРіСЂР°РјРјР° Р·Р°РїСѓС‰РµРЅР°');
 //
 //        FDMoniFlatFileClientLink.FileName := + '\log\' + AUserName + '_sql_' + FormatDateTime('ddmmyyyy', Now) +'.log';
 //        FDMoniFlatFileClientLink.Tracing := Sql.Q.FindField('AppSqlLog').Value;
@@ -113,17 +113,17 @@ begin
       case E.Kind of
         ekUserPwdInvalid:
         begin
-           raise Exception.Create('Имя пользователя или пароль неверны!'{+ #13#10+#13#10+E.ClassName+' Поднята ошибка, с сообщением: '+E.Message});
+           raise Exception.Create('РРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РёР»Рё РїР°СЂРѕР»СЊ РЅРµРІРµСЂРЅС‹!'{+ #13#10+#13#10+E.ClassName+' РџРѕРґРЅСЏС‚Р° РѕС€РёР±РєР°, СЃ СЃРѕРѕР±С‰РµРЅРёРµРј: '+E.Message});
         end;
         ekUserPwdExpired:
-          raise Exception.Create('Ошибка подключения к БД. Срок действия пароля пользователя истек!' {+#13#10+#13#10+E.ClassName+' Поднята ошибка, с сообщением: '+E.Message});
+          raise Exception.Create('РћС€РёР±РєР° РїРѕРґРєР»СЋС‡РµРЅРёСЏ Рє Р‘Р”. РЎСЂРѕРє РґРµР№СЃС‚РІРёСЏ РїР°СЂРѕР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РёСЃС‚РµРє!' {+#13#10+#13#10+E.ClassName+' РџРѕРґРЅСЏС‚Р° РѕС€РёР±РєР°, СЃ СЃРѕРѕР±С‰РµРЅРёРµРј: '+E.Message});
         ekServerGone:
-          raise Exception.Create('Ошибка соединения с базой данных. СУБД недоступна по какой-то причине!' {+#13#10+#13#10+E.ClassName+' Поднята ошибка, с сообщением: '+E.Message});
+          raise Exception.Create('РћС€РёР±РєР° СЃРѕРµРґРёРЅРµРЅРёСЏ СЃ Р±Р°Р·РѕР№ РґР°РЅРЅС‹С…. РЎРЈР‘Р” РЅРµРґРѕСЃС‚СѓРїРЅР° РїРѕ РєР°РєРѕР№-С‚Рѕ РїСЂРёС‡РёРЅРµ!' {+#13#10+#13#10+E.ClassName+' РџРѕРґРЅСЏС‚Р° РѕС€РёР±РєР°, СЃ СЃРѕРѕР±С‰РµРЅРёРµРј: '+E.Message});
       else // other issues
-        raise Exception.Create('Ошибка соединения с базой данных. Неизвестная ошибка!' {+#13#10+#13#10+E.ClassName+' Поднята ошибка, с сообщением: '+E.Message});
+        raise Exception.Create('РћС€РёР±РєР° СЃРѕРµРґРёРЅРµРЅРёСЏ СЃ Р±Р°Р·РѕР№ РґР°РЅРЅС‹С…. РќРµРёР·РІРµСЃС‚РЅР°СЏ РѕС€РёР±РєР°!' {+#13#10+#13#10+E.ClassName+' РџРѕРґРЅСЏС‚Р° РѕС€РёР±РєР°, СЃ СЃРѕРѕР±С‰РµРЅРёРµРј: '+E.Message});
       end;
       on E : Exception do
-        raise Exception.Create(E.ClassName+' поднята ошибка, с сообщением: '+#13#10+#13#10+E.Message);
+        raise Exception.Create(E.ClassName+' РїРѕРґРЅСЏС‚Р° РѕС€РёР±РєР°, СЃ СЃРѕРѕР±С‰РµРЅРёРµРј: '+#13#10+#13#10+E.Message);
     end;
 
   finally

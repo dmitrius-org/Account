@@ -266,9 +266,10 @@ end;
 
 procedure TClientF.DataLoad;
 begin
-  TSql.Open('''
-
-              exec ContactFill
+  FDQuery.Close;
+  FDQuery.sql.text :=
+  '''
+            exec ContactFill
                       @ObjectTypeID      = 1
                      ,@ObjectID          = :KontragentID
                      ,@Mode              = 0
@@ -287,14 +288,13 @@ begin
                     ,k.UserID
                 from tKontragents k (nolock)
                where k.KontragentID = :KontragentID
-            ''',
-            ['KontragentID'],
-            [ID]
-            );
+            ''';
+  FDQuery.ParamByName('KontragentID').AsInteger := ID;
+  FDQuery.Open;
 
-  edtName.Text := TSql.Q.FieldByName('Name').Value;
-  edtDiscountDate.Date :=  TSql.Q.FieldByName('DiscountDate').Value;
-  edtDiscount.Value := TSql.Q.FieldByName('Discount').Value;
+  edtName.Text := FDQuery.FieldByName('Name').Value;
+  edtDiscountDate.Date :=  FDQuery.FieldByName('DiscountDate').Value;
+  edtDiscount.Value := FDQuery.FieldByName('Discount').Value;
 
   inherited;
 end;

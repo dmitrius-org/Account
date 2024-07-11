@@ -14,14 +14,12 @@ inherited BaseFormDBT: TBaseFormDBT
     Height = 40
     ButtonHeight = 40
     ButtonWidth = 87
-    Color = 14671839
     Ctl3D = False
     Customizable = True
     DoubleBuffered = True
     DockSite = True
     GradientEndColor = 12566463
     GradientStartColor = 12566463
-    ParentColor = False
     ParentDoubleBuffered = False
     StyleElements = []
     ExplicitWidth = 816
@@ -58,8 +56,12 @@ inherited BaseFormDBT: TBaseFormDBT
     PopupMenu = PopupMenu
     TabOrder = 2
     object TableView: TcxGridDBTableView
+      OnGetStoredProperties = TableViewGetStoredProperties
+      OnGetStoredPropertyValue = TableViewGetStoredPropertyValue
+      OnSetStoredPropertyValue = TableViewSetStoredPropertyValue
       Navigator.Buttons.CustomButtons = <>
       ScrollbarAnnotations.CustomAnnotations = <>
+      OnCellDblClick = TableViewCellDblClick
       DataController.DataSource = DataSource
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <>
@@ -77,6 +79,7 @@ inherited BaseFormDBT: TBaseFormDBT
       OptionsView.NoDataToDisplayInfoText = #1053#1077#1090' '#1076#1072#1085#1085#1099#1093
       OptionsView.DataRowHeight = 22
       OptionsView.GroupByBox = False
+      OptionsView.GroupFooterMultiSummaries = True
       OptionsView.HeaderHeight = 30
       OptionsView.Indicator = True
       OptionsView.RowSeparatorColor = clBlack
@@ -95,8 +98,11 @@ inherited BaseFormDBT: TBaseFormDBT
     Align = alTop
     BiDiMode = bdLeftToRight
     Caption = #1060#1080#1083#1100#1090#1088
+    ParentBackground = False
     ParentBiDiMode = False
+    ParentColor = False
     ParentFont = False
+    Style.Color = clBtnFace
     Style.Font.Charset = DEFAULT_CHARSET
     Style.Font.Color = clWindowText
     Style.Font.Height = -13

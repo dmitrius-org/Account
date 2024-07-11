@@ -140,19 +140,21 @@ end;
 
 procedure TCreditTypesF.DataLoad;
 begin
-
-  TSql.Open('''
-               select Name
+  FDQuery.Close;
+  FDQuery.sql.text :=
+  '''
+           select Name
                      ,isActive
                      ,InDateTime
                      ,UserID
                  from tCreditTypes (nolock)
                where CreditTypeID = :CreditTypeID
-            ''',
-            ['CreditTypeID'],
-            [ID]);
+  ''';
+  FDQuery.ParamByName('CreditTypeID').AsInteger := ID;
+  FDQuery.Open;
 
-  edtName.text := TSql.Q.FieldByName('Name').AsString;
+  edtName.text := FDQuery.FieldByName('Name').AsString;
+
   inherited;
 end;
 

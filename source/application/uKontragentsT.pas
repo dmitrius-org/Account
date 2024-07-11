@@ -93,7 +93,7 @@ var
 implementation
 
 uses
-  uDataModule, uComboBox, MTLogger, uCommonType;
+  uDataModule, uComboBox, MTLogger, uCommonType, uImageModule;
 
 {$R *.dfm}
 procedure TKontragentsT.actAddBuyerExecute(Sender: TObject);

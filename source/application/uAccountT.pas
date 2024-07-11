@@ -1,4 +1,4 @@
-unit uAccountT;
+п»їunit uAccountT;
 
 interface
 
@@ -92,20 +92,15 @@ type
     procedure actCloneExecute(Sender: TObject);
     procedure actRefundExecute(Sender: TObject);
     procedure actRefundFromAccountExecute(Sender: TObject);
-    procedure TableViewCustomDrawCell(Sender: TcxCustomGridTableView;
-      ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo;
-      var ADone: Boolean);
-    procedure TableViewStylesGetContentStyle(Sender: TcxCustomGridTableView;
-      ARecord: TcxCustomGridRecord; AItem: TcxCustomGridTableItem;
-      var AStyle: TcxStyle);
+    procedure TableViewCustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+    procedure TableViewStylesGetContentStyle(Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord; AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
     procedure FormShow(Sender: TObject);
     procedure btnFilterOkClick(Sender: TObject);
     procedure btnFilterClearClick(Sender: TObject);
+    procedure edtAccountNumberKeyDown(Sender: TObject; var Key: Word;   Shift: TShiftState);
+    procedure actontragentExecute(Sender: TObject);
     procedure edtBuyerPropertiesButtonClick(Sender: TObject;
       AButtonIndex: Integer);
-    procedure edtAccountNumberKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
-    procedure actontragentExecute(Sender: TObject);
   private
     { Private declarations }
   protected
@@ -124,7 +119,7 @@ var
 implementation
 
 uses
-  uCommonType, MTLogger, uImageModule, uKontragentsT;
+  uCommonType, MTLogger, uKontragentsT, uImageModule;
 
 {$R *.dfm}
 
@@ -253,10 +248,8 @@ begin
   if Key = 13 then DataLoad;
 end;
 
-procedure TAccountT.edtBuyerPropertiesButtonClick(Sender: TObject;
-  AButtonIndex: Integer);
+procedure TAccountT.edtBuyerPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
 begin
-  inherited;
   if AButtonIndex = 1 then
   begin
     DataLoad;
@@ -265,7 +258,6 @@ end;
 
 procedure TAccountT.FormCreate(Sender: TObject);
 begin
-  inherited;
   EditFormClass := 'TAccountF';
 end;
 
@@ -302,11 +294,11 @@ procedure TAccountT.TableViewStylesGetContentStyle(
   AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
 begin
 //  if AItem = nil then exit;
-//  if ARecord.Values[TableViewStatusName.Index] = 'Оплачен' then
+//  if ARecord.Values[TableViewStatusName.Index] = 'РћРїР»Р°С‡РµРЅ' then
 //
 //    AStyle := StylePaid
 //  else
-//  if ARecord.Values[TableViewStatusName.Index] = 'Оплачен частично' then
+//  if ARecord.Values[TableViewStatusName.Index] = 'РћРїР»Р°С‡РµРЅ С‡Р°СЃС‚РёС‡РЅРѕ' then
 //   AStyle := StylePartPaid;
 
 end;

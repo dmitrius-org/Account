@@ -119,7 +119,7 @@ inherited KontragentsT: TKontragentsT
       Properties.MaxLength = 256
       TabOrder = 5
       OnKeyDown = edtKontragentTypeKeyDown
-      Width = 216
+      Width = 223
     end
     object cxLabel1: TcxLabel
       Left = 16
@@ -136,9 +136,9 @@ inherited KontragentsT: TKontragentsT
       Width = 279
     end
     object btnFilterOk: TcxButton
-      Left = 764
+      Left = 748
       Top = 15
-      Width = 120
+      Width = 102
       Height = 25
       Hint = #1055#1088#1080#1084#1077#1085#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
       Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
@@ -148,9 +148,9 @@ inherited KontragentsT: TKontragentsT
       OnClick = btnFilterOkClick
     end
     object btnFilterClear: TcxButton
-      Left = 764
+      Left = 748
       Top = 46
-      Width = 120
+      Width = 102
       Height = 25
       Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
       Caption = #1054#1090#1084#1077#1085#1080#1090#1100
@@ -177,12 +177,12 @@ inherited KontragentsT: TKontragentsT
         Style.ButtonStyle = btsFlat
         TabOrder = 0
         OnKeyDown = edtKontragentTypeKeyDown
-        Width = 215
+        Width = 222
       end
       object cxButton1: TcxButton
-        Left = 215
+        Left = 222
         Top = 0
-        Width = 32
+        Width = 25
         Height = 25
         Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
         Margins.Left = 0
@@ -191,8 +191,8 @@ inherited KontragentsT: TKontragentsT
         Margins.Bottom = 0
         Align = alRight
         LookAndFeel.NativeStyle = False
-        OptionsImage.ImageIndex = 10
-        OptionsImage.Images = cxImageList16
+        OptionsImage.ImageIndex = 4
+        OptionsImage.Images = IM.IL
         PaintStyle = bpsGlyph
         SpeedButtonOptions.Flat = True
         SpeedButtonOptions.Transparent = True
@@ -203,7 +203,7 @@ inherited KontragentsT: TKontragentsT
     object cxButton3: TcxButton
       Left = 715
       Top = 44
-      Width = 32
+      Width = 25
       Height = 25
       Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
       Margins.Left = 0
@@ -211,8 +211,8 @@ inherited KontragentsT: TKontragentsT
       Margins.Right = 0
       Margins.Bottom = 0
       LookAndFeel.NativeStyle = False
-      OptionsImage.ImageIndex = 10
-      OptionsImage.Images = cxImageList16
+      OptionsImage.ImageIndex = 4
+      OptionsImage.Images = IM.IL
       PaintStyle = bpsGlyph
       SpeedButtonOptions.Flat = True
       SpeedButtonOptions.Transparent = True
@@ -231,7 +231,7 @@ inherited KontragentsT: TKontragentsT
     object btnINN: TcxButton
       Left = 715
       Top = 16
-      Width = 32
+      Width = 25
       Height = 25
       Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
       Margins.Left = 0
@@ -239,8 +239,8 @@ inherited KontragentsT: TKontragentsT
       Margins.Right = 0
       Margins.Bottom = 0
       LookAndFeel.NativeStyle = False
-      OptionsImage.ImageIndex = 10
-      OptionsImage.Images = cxImageList16
+      OptionsImage.ImageIndex = 4
+      OptionsImage.Images = IM.IL
       PaintStyle = bpsGlyph
       SpeedButtonOptions.Flat = True
       SpeedButtonOptions.Transparent = True
@@ -248,9 +248,9 @@ inherited KontragentsT: TKontragentsT
       OnClick = btnINNClick
     end
     object cxButton2: TcxButton
-      Left = 295
+      Left = 302
       Top = 44
-      Width = 32
+      Width = 25
       Height = 25
       Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
       Margins.Left = 0
@@ -258,8 +258,8 @@ inherited KontragentsT: TKontragentsT
       Margins.Right = 0
       Margins.Bottom = 0
       LookAndFeel.NativeStyle = False
-      OptionsImage.ImageIndex = 10
-      OptionsImage.Images = cxImageList16
+      OptionsImage.ImageIndex = 4
+      OptionsImage.Images = IM.IL
       PaintStyle = bpsGlyph
       SpeedButtonOptions.Flat = True
       SpeedButtonOptions.Transparent = True
@@ -296,6 +296,7 @@ inherited KontragentsT: TKontragentsT
   inherited PopupMenu: TPopupMenu
     inherited N2: TMenuItem
       Action = nil
+      ImageIndex = -1
       OnClick = nil
       object N11: TMenuItem
         Action = actAddClient

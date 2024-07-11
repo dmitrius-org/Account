@@ -10,8 +10,6 @@ inherited AccountT: TAccountT
   inherited ToolBar: TToolBar
     Width = 1019
     DoubleBuffered = True
-    ExplicitLeft = 8
-    ExplicitTop = -19
     ExplicitWidth = 1019
     inherited tbAdd: TToolButton
       Action = nil
@@ -34,11 +32,12 @@ inherited AccountT: TAccountT
     end
   end
   inherited Grid: TcxGrid
-    Top = 181
+    Top = 152
     Width = 1019
-    Height = 326
+    Height = 355
+    ExplicitTop = 181
     ExplicitWidth = 1019
-    ExplicitHeight = 408
+    ExplicitHeight = 326
     inherited TableView: TcxGridDBTableView
       OnCustomDrawCell = TableViewCustomDrawCell
       DataController.KeyFieldNames = 'AccountID'
@@ -112,11 +111,9 @@ inherited AccountT: TAccountT
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
-    ExplicitLeft = -8
-    ExplicitTop = 68
     ExplicitWidth = 1019
-    ExplicitHeight = 141
-    Height = 141
+    ExplicitHeight = 112
+    Height = 112
     Width = 1019
     object SkLabel1: TSkLabel
       Left = 7
@@ -304,6 +301,11 @@ inherited AccountT: TAccountT
     object edtBuyer: ALookupEdit
       Left = 424
       Top = 16
+      LookupConnection = DM.FDConnection
+      LookupForm = 'TKontragentsT'
+      LookupSQL = 'Select Name from tKontragents (nolock) where KontragentID = :ID'
+      LookupKey = 0
+      LookupFilter = 'and k.KontragentTypeID = 2'
       ParentShowHint = False
       Properties.Buttons = <
         item
@@ -324,17 +326,16 @@ inherited AccountT: TAccountT
       ShowHint = True
       TabOrder = 3
       OnKeyDown = edtAccountNumberKeyDown
-      LookupConnection = DM.FDConnection
-      LookupForm = 'TKontragentsT'
-      LookupSQL = 'Select Name from tKontragents (nolock) where KontragentID = :ID'
-      LookupKey = 0
-      LookupFilter = 'and k.KontragentTypeID = 2'
-      ShowDelButton = False
       Width = 234
     end
     object edtSupplier: ALookupEdit
       Left = 424
       Top = 47
+      LookupConnection = DM.FDConnection
+      LookupForm = 'TKontragentsT'
+      LookupSQL = 'Select Name from tKontragents (nolock) where KontragentID = :ID'
+      LookupKey = 0
+      LookupFilter = 'and k.KontragentTypeID = 3'
       ParentShowHint = False
       Properties.Buttons = <
         item
@@ -355,17 +356,16 @@ inherited AccountT: TAccountT
       ShowHint = True
       TabOrder = 8
       OnKeyDown = edtAccountNumberKeyDown
-      LookupConnection = DM.FDConnection
-      LookupForm = 'TKontragentsT'
-      LookupSQL = 'Select Name from tKontragents (nolock) where KontragentID = :ID'
-      LookupKey = 0
-      LookupFilter = 'and k.KontragentTypeID = 3'
-      ShowDelButton = False
       Width = 234
     end
     object edtClient: ALookupEdit
       Left = 424
       Top = 78
+      LookupConnection = DM.FDConnection
+      LookupForm = 'TKontragentsT'
+      LookupSQL = 'Select Name from tKontragents (nolock) where KontragentID = :ID'
+      LookupKey = 0
+      LookupFilter = 'and k.KontragentTypeID = 1'
       ParentShowHint = False
       Properties.Buttons = <
         item
@@ -386,12 +386,6 @@ inherited AccountT: TAccountT
       ShowHint = True
       TabOrder = 13
       OnKeyDown = edtAccountNumberKeyDown
-      LookupConnection = DM.FDConnection
-      LookupForm = 'TKontragentsT'
-      LookupSQL = 'Select Name from tKontragents (nolock) where KontragentID = :ID'
-      LookupKey = 0
-      LookupFilter = 'and k.KontragentTypeID = 1'
-      ShowDelButton = False
       Width = 234
     end
     object btnFilterOk: TcxButton
@@ -425,7 +419,6 @@ inherited AccountT: TAccountT
       Height = 27
       Hint = #1055#1088#1080#1084#1077#1085#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
       OptionsImage.ImageIndex = 4
-      OptionsImage.Images = IM.IL
       TabOrder = 0
       Visible = False
       OnClick = btnFilterOkClick

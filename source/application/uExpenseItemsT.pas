@@ -35,6 +35,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+    procedure DataLoad(); override;
   end;
 
 var
@@ -56,10 +57,18 @@ begin
   Group.Free;
 end;
 
+procedure TExpenseItemsT.DataLoad;
+begin
+  Query.Close;
+  Query.Open();
+  inherited;
+end;
+
 procedure TExpenseItemsT.FormCreate(Sender: TObject);
 begin
   inherited;
   EditFormClass := 'TExpenseItemsF';
 end;
-
+initialization
+  RegisterClass(TExpenseItemsT);
 end.

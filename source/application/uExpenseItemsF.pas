@@ -209,7 +209,9 @@ end;
 
 procedure TExpenseItemsF.DataLoad;
 begin
-  TSql.Open('''
+  FDQuery.Close;
+  FDQuery.sql.text :=
+  '''
             select e.ExpenseItemID
                   ,g.Name ExpenseGroup
                   ,e.ExpenseGroupID
@@ -221,13 +223,13 @@ begin
               left join tExpenseGroups g (nolock)
                      on g.ExpenseGroupID = e.ExpenseGroupID
               where e.ExpenseItemID=:ExpenseItemID
-            ''',
-            ['ExpenseItemID'],
-            [ID]);
+  ''';
+  FDQuery.ParamByName('ExpenseItemID').AsInteger := ID;
+  FDQuery.Open;
 
-  edtName.text := TSql.Q.FieldByName('Name').AsString;
-  edtExpenseGroup.LookupKey := TSql.Q.FieldByName('ExpenseGroupID').AsInteger;
-  cbIsActive.Checked := TSql.Q.FieldByName('Name').AsBoolean;
+  edtName.text := FDQuery.FieldByName('Name').AsString;
+  edtExpenseGroup.LookupKey := FDQuery.FieldByName('ExpenseGroupID').AsInteger;
+  cbIsActive.Checked := FDQuery.FieldByName('Name').AsBoolean;
   inherited;
 end;
 

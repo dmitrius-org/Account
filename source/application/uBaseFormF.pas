@@ -11,6 +11,7 @@ type
   private
     FID: Integer;
     FFormAction: TFormAction;
+
     procedure SetID(const Value: Integer);
     procedure SetFormAction(const Value: TFormAction);
     { Private declarations }

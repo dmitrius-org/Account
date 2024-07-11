@@ -1,4 +1,4 @@
-unit uAccountF;
+п»їunit uAccountF;
 
 interface
 
@@ -65,14 +65,14 @@ type
     procedure SetStatus();
   public
     /// <summary>
-    ///  DataLoad - получение данных с сервера, для отображения на форме
+    ///  DataLoad - РїРѕР»СѓС‡РµРЅРёРµ РґР°РЅРЅС‹С… СЃ СЃРµСЂРІРµСЂР°, РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РЅР° С„РѕСЂРјРµ
     ///</summary>
     procedure DataLoad(); override;
 
     procedure DataClone();
 
     /// <summary>
-    ///  DataCheck - проверка заполнения обязательных полей
+    ///  DataCheck - РїСЂРѕРІРµСЂРєР° Р·Р°РїРѕР»РЅРµРЅРёСЏ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹С… РїРѕР»РµР№
     ///</summary>
     procedure DataCheck();
   end;
@@ -90,7 +90,7 @@ uses
 
 procedure TAccountF.btnOkClick(Sender: TObject);
 begin
- inherited;
+  inherited;
   DataCheck;
 
   if tRetVal.Code = 0 then
@@ -246,7 +246,7 @@ begin
       if edtAccountNumber.text = '' then
       begin
         tRetVal.Code := 1;
-        tRetVal.Message := 'Поле [Счет №] обязательно к заполнению!';
+        tRetVal.Message := 'РџРѕР»Рµ [РЎС‡РµС‚ в„–] РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ Рє Р·Р°РїРѕР»РЅРµРЅРёСЋ!';
         edtAccountNumber.SetFocus;
         Exit();
       end;
@@ -254,7 +254,7 @@ begin
       if edtAccountDate.text = '' then
       begin
         tRetVal.Code := 1;
-        tRetVal.Message := 'Поле [Дата счета] обязательно к заполнению!';
+        tRetVal.Message := 'РџРѕР»Рµ [Р”Р°С‚Р° СЃС‡РµС‚Р°] РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ Рє Р·Р°РїРѕР»РЅРµРЅРёСЋ!';
         edtAccountDate.SetFocus;
         Exit();
       end;
@@ -262,7 +262,7 @@ begin
       if edtAccountAmount.Value = 0 then
       begin
         tRetVal.Code := 1;
-        tRetVal.Message := 'Поле [Сумма счета] обязательно к заполнению!';
+        tRetVal.Message := 'РџРѕР»Рµ [РЎСѓРјРјР° СЃС‡РµС‚Р°] РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ Рє Р·Р°РїРѕР»РЅРµРЅРёСЋ!';
         edtAccountAmount.SetFocus;
         Exit();
       end;
@@ -271,21 +271,21 @@ begin
       if edtBuyer.LookupKey = 0 then
       begin
         tRetVal.Code := 1;
-        tRetVal.Message := 'Поле [Покупатель] обязательно к заполнению!';
+        tRetVal.Message := 'РџРѕР»Рµ [РџРѕРєСѓРїР°С‚РµР»СЊ] РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ Рє Р·Р°РїРѕР»РЅРµРЅРёСЋ!';
         edtBuyer.SetFocus;
         Exit();
       end;
       if edtSupplier.LookupKey = 0 then
       begin
         tRetVal.Code := 1;
-        tRetVal.Message := 'Поле [Поставщик] обязательно к заполнению!';
+        tRetVal.Message := 'РџРѕР»Рµ [РџРѕСЃС‚Р°РІС‰РёРє] РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ Рє Р·Р°РїРѕР»РЅРµРЅРёСЋ!';
         edtSupplier.SetFocus;
         Exit();
       end;
       if edtClient.LookupKey = 0 then
       begin
         tRetVal.Code := 1;
-        tRetVal.Message := 'Поле [Клиент] обязательно к заполнению!';
+        tRetVal.Message := 'РџРѕР»Рµ [РљР»РёРµРЅС‚] РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ Рє Р·Р°РїРѕР»РЅРµРЅРёСЋ!';
         edtClient.SetFocus;
         Exit();
       end;
@@ -294,14 +294,14 @@ begin
       if edtBuyerDiscount.Value = 0 then
       begin
         tRetVal.Code := 1;
-        tRetVal.Message := 'Поле [Скидка %] обязательно к заполнению!';
+        tRetVal.Message := 'РџРѕР»Рµ [РЎРєРёРґРєР° %] РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ Рє Р·Р°РїРѕР»РЅРµРЅРёСЋ!';
         edtBuyerDiscount.SetFocus;
         Exit();
       end;
       if edtClientDiscount.Value = 0 then
       begin
         tRetVal.Code := 1;
-        tRetVal.Message := 'Поле [Скидка %] обязательно к заполнению!';
+        tRetVal.Message := 'РџРѕР»Рµ [РЎРєРёРґРєР° %] РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ Рє Р·Р°РїРѕР»РЅРµРЅРёСЋ!';
         edtClientDiscount.SetFocus;
         Exit();
       end;
@@ -309,7 +309,7 @@ begin
       if edtAccountStatus.EditValue = 0 then
       begin
         tRetVal.Code := 1;
-        tRetVal.Message := 'Поле [Статус] обязательно к заполнению!';
+        tRetVal.Message := 'РџРѕР»Рµ [РЎС‚Р°С‚СѓСЃ] РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ Рє Р·Р°РїРѕР»РЅРµРЅРёСЋ!';
         edtAccountStatus.SetFocus;
         Exit();
       end;
@@ -354,7 +354,9 @@ end;
 
 procedure TAccountF.DataLoad;
 begin
-  TSql.Open('''
+  FDQuery.Close;
+  FDQuery.sql.text :=
+  '''
               Select  AccountID
                      ,PaymentDate
                      ,PaymentAmount
@@ -379,28 +381,27 @@ begin
 
                  from tAccounts (nolock)
                 where AccountID = :AccountID
-            ''',
-            ['AccountID'],
-            [ID]
-            );
+            ''';
+  FDQuery.ParamByName('AccountID').AsInteger := ID;
+  FDQuery.Open;
 
-  edtAccountNumber.Text  := TSql.Q.FieldByName('AccountNumber').AsString;
-  edtPayNumber.Text      := TSql.Q.FieldByName('PayNumber').AsString;
-  edtAccountDate.date    := TSql.Q.FieldByName('AccountDate').AsDateTime;
-  edtPayDate.Text        := TSql.Q.FieldByName('PayDate').AsString;
-  edtPaymentDate.Text    := TSql.Q.FieldByName('PaymentDate').AsString;
-  edtAccountAmount.Value := TSql.Q.FieldByName('AccountAmount').AsInteger;
-  edtPaymentAmount.Value := TSql.Q.FieldByName('PaymentAmount').AsInteger;
-  edtBuyerDiscount.Value := TSql.Q.FieldByName('BuyerDiscount').AsFloat;
-  edtClientDiscount.Value:= TSql.Q.FieldByName('ClientDiscount').AsFloat;
-  edtPhone.Text          := TSql.Q.FieldByName('Phone').AsString;
-  edtMail.Text           := TSql.Q.FieldByName('Mail').AsString;
-  edtComment.Text        := TSql.Q.FieldByName('Comment').AsString;
-  edtAccountStatus.EditValue := TSql.Q.FieldByName('AccountStatusID').AsInteger;
+  edtAccountNumber.Text  := FDQuery.FieldByName('AccountNumber').AsString;
+  edtPayNumber.Text      := FDQuery.FieldByName('PayNumber').AsString;
+  edtAccountDate.date    := FDQuery.FieldByName('AccountDate').AsDateTime;
+  edtPayDate.Text        := FDQuery.FieldByName('PayDate').AsString;
+  edtPaymentDate.Text    := FDQuery.FieldByName('PaymentDate').AsString;
+  edtAccountAmount.Value := FDQuery.FieldByName('AccountAmount').AsInteger;
+  edtPaymentAmount.Value := FDQuery.FieldByName('PaymentAmount').AsInteger;
+  edtBuyerDiscount.Value := FDQuery.FieldByName('BuyerDiscount').AsFloat;
+  edtClientDiscount.Value:= FDQuery.FieldByName('ClientDiscount').AsFloat;
+  edtPhone.Text          := FDQuery.FieldByName('Phone').AsString;
+  edtMail.Text           := FDQuery.FieldByName('Mail').AsString;
+  edtComment.Text        := FDQuery.FieldByName('Comment').AsString;
+  edtAccountStatus.EditValue := FDQuery.FieldByName('AccountStatusID').AsInteger;
 
-  edtBuyer.LookupKey     :=  TSql.Q.FieldByName('BuyerID').AsInteger;
-  edtSupplier.LookupKey  :=  TSql.Q.FieldByName('SupplierID').AsInteger;
-  edtClient.LookupKey    :=  TSql.Q.FieldByName('ClientID').AsInteger;
+  edtBuyer.LookupKey     :=  FDQuery.FieldByName('BuyerID').AsInteger;
+  edtSupplier.LookupKey  :=  FDQuery.FieldByName('SupplierID').AsInteger;
+  edtClient.LookupKey    :=  FDQuery.FieldByName('ClientID').AsInteger;
   inherited;
 end;
 
@@ -432,80 +433,80 @@ begin
   case FormAction of
     acInsert, acReportCreate:
     begin
-      Self.Caption := 'Добавление счета';
+      Self.Caption := 'Р”РѕР±Р°РІР»РµРЅРёРµ СЃС‡РµС‚Р°';
       edtAccountDate.date := Date();
       edtPaymentDate.date := Date();
     end;
     acReset:
     begin
-      Self.Caption := 'Добавление возврата';
+      Self.Caption := 'Р”РѕР±Р°РІР»РµРЅРёРµ РІРѕР·РІСЂР°С‚Р°';
       edtAccountDate.date := Date();
       edtPaymentDate.date := Date();
       FIsRefund := True;
     end;
     acUpdate, acReportEdit, acUserAction:
     begin
-      self.Caption := 'Изменение счета ' +  edtAccountNumber.Text + ' от: ' + edtAccountDate.text;
+      self.Caption := 'РР·РјРµРЅРµРЅРёРµ СЃС‡РµС‚Р° ' +  edtAccountNumber.Text + ' РѕС‚: ' + edtAccountDate.text;
     end;
     acDelete:
     begin
-      self.Caption := 'Удаление счета ' + edtAccountNumber.Text + ' от: ' + edtAccountDate.text;
+      self.Caption := 'РЈРґР°Р»РµРЅРёРµ СЃС‡РµС‚Р° ' + edtAccountNumber.Text + ' РѕС‚: ' + edtAccountDate.text;
     end;
     acShow:
     begin
-      self.Caption := 'Просмотр покупателя ' +  edtAccountNumber.Text + ' от: ' + edtAccountDate.text;
+      self.Caption := 'РџСЂРѕСЃРјРѕС‚СЂ РїРѕРєСѓРїР°С‚РµР»СЏ ' +  edtAccountNumber.Text + ' РѕС‚: ' + edtAccountDate.text;
     end;
     acClone:
     begin
       DataClone;
-      Self.Caption := 'Добавление счета на основе' +  TSql.Q.FieldByName('AccountNumber').AsString +
-                      ' от: ' + TSql.Q.FieldByName('AccountDate').AsString;
+      Self.Caption := 'Р”РѕР±Р°РІР»РµРЅРёРµ СЃС‡РµС‚Р° РЅР° РѕСЃРЅРѕРІРµ' +  FDQuery.FieldByName('AccountNumber').AsString +
+                      ' РѕС‚: ' + FDQuery.FieldByName('AccountDate').AsString;
 
 
-      edtAccountNumber.Text  := TSql.Q.FieldByName('AccountNumber').AsString;
-      edtPayNumber.Text      := TSql.Q.FieldByName('PayNumber').AsString;
-      edtAccountDate.date    := TSql.Q.FieldByName('AccountDate').AsDateTime;
-      //edtPayDate.Text        := TSql.Q.FieldByName('PayDate').AsString;
-      //edtPaymentDate.Text    := TSql.Q.FieldByName('PaymentDate').AsString;
-      edtAccountAmount.Value := TSql.Q.FieldByName('AccountAmount').AsInteger;
-      edtPaymentAmount.Value := TSql.Q.FieldByName('PaymentAmount').AsInteger;
-      edtBuyerDiscount.Value := TSql.Q.FieldByName('BuyerDiscount').AsFloat;
-      edtClientDiscount.Value:= TSql.Q.FieldByName('ClientDiscount').AsFloat;
-      edtPhone.Text          := TSql.Q.FieldByName('Phone').AsString;
-      edtMail.Text           := TSql.Q.FieldByName('Mail').AsString;
-      edtComment.Text        := TSql.Q.FieldByName('Comment').AsString;
-      //edtAccountStatus.EditValue := TSql.Q.FieldByName('AccountStatusID').AsInteger;
+      edtAccountNumber.Text  := FDQuery.FieldByName('AccountNumber').AsString;
+      edtPayNumber.Text      := FDQuery.FieldByName('PayNumber').AsString;
+      edtAccountDate.date    := FDQuery.FieldByName('AccountDate').AsDateTime;
+      //edtPayDate.Text        := FDQuery.FieldByName('PayDate').AsString;
+      //edtPaymentDate.Text    := FDQuery.FieldByName('PaymentDate').AsString;
+      edtAccountAmount.Value := FDQuery.FieldByName('AccountAmount').AsInteger;
+      edtPaymentAmount.Value := FDQuery.FieldByName('PaymentAmount').AsInteger;
+      edtBuyerDiscount.Value := FDQuery.FieldByName('BuyerDiscount').AsFloat;
+      edtClientDiscount.Value:= FDQuery.FieldByName('ClientDiscount').AsFloat;
+      edtPhone.Text          := FDQuery.FieldByName('Phone').AsString;
+      edtMail.Text           := FDQuery.FieldByName('Mail').AsString;
+      edtComment.Text        := FDQuery.FieldByName('Comment').AsString;
+      //edtAccountStatus.EditValue := FDQuery.FieldByName('AccountStatusID').AsInteger;
 
-      edtBuyer.LookupKey     :=  TSql.Q.FieldByName('BuyerID').AsInteger;
-      edtSupplier.LookupKey  :=  TSql.Q.FieldByName('SupplierID').AsInteger;
-      edtClient.LookupKey    :=  TSql.Q.FieldByName('ClientID').AsInteger;
+      edtBuyer.LookupKey     :=  FDQuery.FieldByName('BuyerID').AsInteger;
+      edtSupplier.LookupKey  :=  FDQuery.FieldByName('SupplierID').AsInteger;
+      edtClient.LookupKey    :=  FDQuery.FieldByName('ClientID').AsInteger;
     end;
 
 
     acResetAcc:
     begin
       DataClone;
-      Self.Caption := 'Добавление возврата на основе' +  TSql.Q.FieldByName('AccountNumber').AsString +
-                      ' от: ' + TSql.Q.FieldByName('AccountDate').AsString;
+      Self.Caption := 'Р”РѕР±Р°РІР»РµРЅРёРµ РІРѕР·РІСЂР°С‚Р° РЅР° РѕСЃРЅРѕРІРµ' +  FDQuery.FieldByName('AccountNumber').AsString +
+                      ' РѕС‚: ' + FDQuery.FieldByName('AccountDate').AsString;
 
 
-      edtAccountNumber.Text  := TSql.Q.FieldByName('AccountNumber').AsString;
-      edtPayNumber.Text      := TSql.Q.FieldByName('PayNumber').AsString;
-      edtAccountDate.date    := TSql.Q.FieldByName('AccountDate').AsDateTime;
-      //edtPayDate.Text        := TSql.Q.FieldByName('PayDate').AsString;
-      //edtPaymentDate.Text    := TSql.Q.FieldByName('PaymentDate').AsString;
-      edtAccountAmount.Value := TSql.Q.FieldByName('AccountAmount').AsInteger;
-      edtPaymentAmount.Value := TSql.Q.FieldByName('PaymentAmount').AsInteger;
-      edtBuyerDiscount.Value := TSql.Q.FieldByName('BuyerDiscount').AsFloat;
-      edtClientDiscount.Value:= TSql.Q.FieldByName('ClientDiscount').AsFloat;
-      edtPhone.Text          := TSql.Q.FieldByName('Phone').AsString;
-      edtMail.Text           := TSql.Q.FieldByName('Mail').AsString;
-      edtComment.Text        := TSql.Q.FieldByName('Comment').AsString;
-      //edtAccountStatus.EditValue := TSql.Q.FieldByName('AccountStatusID').AsInteger;
+      edtAccountNumber.Text  := FDQuery.FieldByName('AccountNumber').AsString;
+      edtPayNumber.Text      := FDQuery.FieldByName('PayNumber').AsString;
+      edtAccountDate.date    := FDQuery.FieldByName('AccountDate').AsDateTime;
+      //edtPayDate.Text        := FDQuery.FieldByName('PayDate').AsString;
+      //edtPaymentDate.Text    := FDQuery.FieldByName('PaymentDate').AsString;
+      edtAccountAmount.Value := FDQuery.FieldByName('AccountAmount').AsInteger;
+      edtPaymentAmount.Value := FDQuery.FieldByName('PaymentAmount').AsInteger;
+      edtBuyerDiscount.Value := FDQuery.FieldByName('BuyerDiscount').AsFloat;
+      edtClientDiscount.Value:= FDQuery.FieldByName('ClientDiscount').AsFloat;
+      edtPhone.Text          := FDQuery.FieldByName('Phone').AsString;
+      edtMail.Text           := FDQuery.FieldByName('Mail').AsString;
+      edtComment.Text        := FDQuery.FieldByName('Comment').AsString;
+      //edtAccountStatus.EditValue := FDQuery.FieldByName('AccountStatusID').AsInteger;
 
-      edtBuyer.LookupKey     :=  TSql.Q.FieldByName('BuyerID').AsInteger;
-      edtSupplier.LookupKey  :=  TSql.Q.FieldByName('SupplierID').AsInteger;
-      edtClient.LookupKey    :=  TSql.Q.FieldByName('ClientID').AsInteger;
+      edtBuyer.LookupKey     :=  FDQuery.FieldByName('BuyerID').AsInteger;
+      edtSupplier.LookupKey  :=  FDQuery.FieldByName('SupplierID').AsInteger;
+      edtClient.LookupKey    :=  FDQuery.FieldByName('ClientID').AsInteger;
 
       FIsRefund := True;
       FParentID := ID;
@@ -519,7 +520,7 @@ end;
 
 procedure TAccountF.SetStatus;
 begin
-  lblDoplata.Caption := 'Сумма доплаты: ' +FloatToStr(edtAccountAmount.Value - edtPaymentAmount.Value);
+  lblDoplata.Caption := 'РЎСѓРјРјР° РґРѕРїР»Р°С‚С‹: ' +FloatToStr(edtAccountAmount.Value - edtPaymentAmount.Value);
 
   if edtPaymentAmount.Value = 0 then
     edtAccountStatus.EditValue := 3

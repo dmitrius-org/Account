@@ -234,6 +234,14 @@
             <Form>AccountF</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="..\source\application\uTransactionT.pas">
+            <Form>TransactionT</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\source\application\uTransactionF.pas">
+            <Form>TransactionF</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

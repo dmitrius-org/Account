@@ -18,7 +18,6 @@ inherited BaseFormDBF: TBaseFormDBF
     Frame.Borders = [bTop]
     Color = 12566463
     TabOrder = 0
-    ExplicitWidth = 603
     DesignSize = (
       593
       45)
@@ -60,6 +59,9 @@ inherited BaseFormDBF: TBaseFormDBF
         Left = 3
         Top = 2
         Hint = #1055#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1100' '#1089#1086#1079#1076#1072#1074#1096#1080#1081' '#1086#1073#1098#1077#1082#1090
+        LookupConnection = DM.FDConnection
+        LookupSQL = 'select Name from tUser (nolock) where userid = :ID'
+        LookupKey = 0
         ParentColor = True
         ParentFont = False
         ParentShowHint = False
@@ -74,10 +76,6 @@ inherited BaseFormDBF: TBaseFormDBF
         Style.Font.Style = []
         Style.IsFontAssigned = True
         TabOrder = 1
-        LookupConnection = DM.FDConnection
-        LookupSQL = 'select Name from tUser (nolock) where userid = :ID'
-        LookupKey = 0
-        ShowDelButton = False
         Width = 294
       end
     end
@@ -90,7 +88,6 @@ inherited BaseFormDBF: TBaseFormDBF
       Caption = #1047#1072#1082#1088#1099#1090#1100
       ModalResult = 2
       OptionsImage.ImageIndex = 1
-      OptionsImage.Images = IM.IL
       TabOrder = 1
       ExplicitLeft = 400
     end
@@ -102,7 +99,6 @@ inherited BaseFormDBF: TBaseFormDBF
       Anchors = [akTop, akRight, akBottom]
       Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100
       OptionsImage.ImageIndex = 0
-      OptionsImage.Images = IM.IL
       TabOrder = 0
       ExplicitLeft = 496
     end

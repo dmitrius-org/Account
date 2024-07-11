@@ -259,64 +259,38 @@ inherited AccountF: TAccountF
   object edtBuyer: ALookupEdit [25]
     Left = 100
     Top = 144
-    ParentShowHint = False
-    Properties.Buttons = <
-      item
-        Caption = '...'
-        Default = True
-        ImageIndex = 0
-        Hint = #1042#1099#1073#1088#1072#1090#1100' '#1080#1079' '#1089#1087#1088#1072#1074#1086#1095#1085#1080#1082#1072
-        Kind = bkText
-        Width = 25
-      end
-      item
-        ImageIndex = 4
-        Hint = #1054#1095#1080#1089#1090#1080#1090#1100' '#1087#1086#1083#1077
-        Kind = bkGlyph
-      end>
-    Properties.Images = IM.IL
-    ShowHint = True
-    TabOrder = 9
     LookupConnection = DM.FDConnection
     LookupForm = 'TKontragentsT'
     LookupSQL = 'Select Name from tKontragents (nolock) where KontragentID = :ID'
     LookupKey = 0
     LookupFilter = 'and k.KontragentTypeID = 2'
-    ShowDelButton = False
+    ParentShowHint = False
+    Properties.Buttons = <
+      item
+        Caption = '...'
+        Default = True
+        ImageIndex = 0
+        Hint = #1042#1099#1073#1088#1072#1090#1100' '#1080#1079' '#1089#1087#1088#1072#1074#1086#1095#1085#1080#1082#1072
+        Kind = bkText
+        Width = 25
+      end
+      item
+        ImageIndex = 4
+        Hint = #1054#1095#1080#1089#1090#1080#1090#1100' '#1087#1086#1083#1077
+        Kind = bkGlyph
+      end>
+    ShowHint = True
+    TabOrder = 9
     Width = 285
   end
   object edtSupplier: ALookupEdit [26]
     Left = 100
     Top = 175
-    ParentShowHint = False
-    Properties.Buttons = <
-      item
-        Caption = '...'
-        Default = True
-        ImageIndex = 0
-        Hint = #1042#1099#1073#1088#1072#1090#1100' '#1080#1079' '#1089#1087#1088#1072#1074#1086#1095#1085#1080#1082#1072
-        Kind = bkText
-        Width = 25
-      end
-      item
-        ImageIndex = 4
-        Hint = #1054#1095#1080#1089#1090#1080#1090#1100' '#1087#1086#1083#1077
-        Kind = bkGlyph
-      end>
-    Properties.Images = IM.IL
-    ShowHint = True
-    TabOrder = 11
     LookupConnection = DM.FDConnection
     LookupForm = 'TKontragentsT'
     LookupSQL = 'Select Name from tKontragents (nolock) where KontragentID = :ID'
     LookupKey = 0
     LookupFilter = 'and k.KontragentTypeID = 3'
-    ShowDelButton = False
-    Width = 285
-  end
-  object edtClient: ALookupEdit [27]
-    Left = 100
-    Top = 206
     ParentShowHint = False
     Properties.Buttons = <
       item
@@ -332,15 +306,35 @@ inherited AccountF: TAccountF
         Hint = #1054#1095#1080#1089#1090#1080#1090#1100' '#1087#1086#1083#1077
         Kind = bkGlyph
       end>
-    Properties.Images = IM.IL
     ShowHint = True
-    TabOrder = 12
+    TabOrder = 11
+    Width = 285
+  end
+  object edtClient: ALookupEdit [27]
+    Left = 100
+    Top = 206
     LookupConnection = DM.FDConnection
     LookupForm = 'TKontragentsT'
     LookupSQL = 'Select Name from tKontragents (nolock) where KontragentID = :ID'
     LookupKey = 0
     LookupFilter = 'and k.KontragentTypeID = 1'
-    ShowDelButton = False
+    ParentShowHint = False
+    Properties.Buttons = <
+      item
+        Caption = '...'
+        Default = True
+        ImageIndex = 0
+        Hint = #1042#1099#1073#1088#1072#1090#1100' '#1080#1079' '#1089#1087#1088#1072#1074#1086#1095#1085#1080#1082#1072
+        Kind = bkText
+        Width = 25
+      end
+      item
+        ImageIndex = 4
+        Hint = #1054#1095#1080#1089#1090#1080#1090#1100' '#1087#1086#1083#1077
+        Kind = bkGlyph
+      end>
+    ShowHint = True
+    TabOrder = 12
     Width = 285
   end
   object edtComment: TcxMemo [28]

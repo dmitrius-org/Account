@@ -51,6 +51,7 @@ Type
   ,acOff           = 26
   ,acClone         = 27
   ,acResetAcc      = 28
+  ,acAddDebet      = 29
   );
 
    /// <summary> Типы объектов системы </summary>

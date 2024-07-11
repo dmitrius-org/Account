@@ -355,8 +355,9 @@ end;
 
 procedure TBuyerF.DataLoad;
 begin
-  TSql.Open('''
-
+  FDQuery.Close;
+  FDQuery.sql.text :=
+  '''
               exec ContactFill
                       @ObjectTypeID      = 2
                      ,@ObjectID          = :KontragentID
@@ -384,25 +385,25 @@ begin
                     ,UserID
                 from tKontragents  (nolock)
                where KontragentID = :KontragentID
-            ''',
-            ['KontragentID'],
-            [ID]
-            );
-  edtSignPartner.Checked := TSql.Q.FieldByName('IsPartner').AsBoolean;
-  edtINN.Text := TSql.Q.FieldByName('Inn').AsString;
-  edtPartner.EditValue := TSql.Q.FieldByName('PartnerID').AsInteger;
-  edtName.Text := TSql.Q.FieldByName('Name').AsString;
-  edtFullName.Text := TSql.Q.FieldByName('FullName').AsString;
-  edtPostAddress.Text := TSql.Q.FieldByName('PostAddress').AsString;
-  edtlegalAaddress.Text := TSql.Q.FieldByName('LegalAddress').AsString;
-  edtEdo.Text := TSql.Q.FieldByName('Edo').AsString;
-  edtEdoID.Text := TSql.Q.FieldByName('EdoID').AsString;
+            ''';
+  FDQuery.ParamByName('KontragentID').AsInteger := ID;
+  FDQuery.Open;
 
-  if TSql.Q.FieldByName('DiscountDate').IsNull then
+  edtSignPartner.Checked := FDQuery.FieldByName('IsPartner').AsBoolean;
+  edtINN.Text := FDQuery.FieldByName('Inn').AsString;
+  edtPartner.EditValue := FDQuery.FieldByName('PartnerID').AsInteger;
+  edtName.Text := FDQuery.FieldByName('Name').AsString;
+  edtFullName.Text := FDQuery.FieldByName('FullName').AsString;
+  edtPostAddress.Text := FDQuery.FieldByName('PostAddress').AsString;
+  edtlegalAaddress.Text := FDQuery.FieldByName('LegalAddress').AsString;
+  edtEdo.Text := FDQuery.FieldByName('Edo').AsString;
+  edtEdoID.Text := FDQuery.FieldByName('EdoID').AsString;
+
+  if FDQuery.FieldByName('DiscountDate').IsNull then
     edtDiscountDate.Text:=''
   else
-    edtDiscountDate.Date :=  TSql.Q.FieldByName('DiscountDate').Value;
-  edtDiscount.Value := TSql.Q.FieldByName('Discount').AsCurrency;
+    edtDiscountDate.Date :=  FDQuery.FieldByName('DiscountDate').Value;
+  edtDiscount.Value := FDQuery.FieldByName('Discount').AsCurrency;
 
   inherited;
 end;

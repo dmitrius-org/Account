@@ -8,20 +8,19 @@ inherited ExpenseGroupsT: TExpenseGroupsT
   ExplicitHeight = 409
   TextHeight = 17
   inherited ToolBar: TToolBar
-    Width = 799
+    Width = 805
     DoubleBuffered = True
     ParentFont = False
-    ExplicitWidth = 799
+    ExplicitWidth = 805
   end
   inherited Grid: TcxGrid
     Width = 805
-    Height = 308
+    Height = 271
     ExplicitWidth = 805
-    ExplicitHeight = 308
+    ExplicitHeight = 271
     inherited TableView: TcxGridDBTableView
       DataController.KeyFieldNames = 'ExpenseGroupID'
       OptionsCustomize.ColumnExpressionEditing = True
-      OptionsCustomize.ColumnsQuickCustomization = True
       object TableViewExpenseGroupID: TcxGridDBColumn
         Caption = #1048#1076#1077#1085#1090#1080#1092#1080#1082#1072#1090#1086#1088
         DataBinding.FieldName = 'ExpenseGroupID'
@@ -46,6 +45,10 @@ inherited ExpenseGroupsT: TExpenseGroupsT
         Width = 159
       end
     end
+  end
+  inherited FilterPanel: TcxGroupBox
+    ExplicitWidth = 805
+    Width = 805
   end
   inherited ActionList: TActionList
     Left = 616
@@ -109,7 +112,6 @@ inherited ExpenseGroupsT: TExpenseGroupsT
     end
   end
   inherited DataSource: TDataSource
-    Left = 696
     Top = 184
   end
   inherited cxStyleRepository: TcxStyleRepository
