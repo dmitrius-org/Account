@@ -85,5 +85,6 @@ insert tRetCode (RetCode, Message) select 162,   'Ошибка! Поставщи
 
 insert tRetCode (RetCode, Message) select 181,   'Ошибка! Счет заданным номером существует.'
 
+insert tRetCode (RetCode, Message) select 200,   'Удаление запрещено! По кредиту имеются платежи.'
 
 select * from tRetCode

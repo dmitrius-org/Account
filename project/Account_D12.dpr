@@ -35,7 +35,9 @@ uses
   uAccountT in '..\source\application\uAccountT.pas' {AccountT},
   uAccountF in '..\source\application\uAccountF.pas' {AccountF},
   uTransactionT in '..\source\application\uTransactionT.pas' {TransactionT},
-  uTransactionF in '..\source\application\uTransactionF.pas' {TransactionF};
+  uTransactionF in '..\source\application\uTransactionF.pas' {TransactionF},
+  uDocumentRequestT in '..\source\application\uDocumentRequestT.pas' {DocumentRequestT},
+  uDocumentRequestF in '..\source\application\uDocumentRequestF.pas' {DocumentRequestF};
 
 {$R *.res}
 
@@ -45,7 +47,9 @@ begin
 
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TIM, IM);
-//  Application.CreateForm(TTransactionF, TransactionF);
+  //Application.CreateForm(TDocumentRequestT, DocumentRequestT);
+  //Application.CreateForm(TDocumentRequestF, DocumentRequestF);
+  //  Application.CreateForm(TTransactionF, TransactionF);
   Application.Title := DM.FDManager.ConnectionDefs.FindConnectionDef('Connection').Params.Values['ApplicationName'];
 
 //  var LoginForm: TLoginForm;
@@ -56,10 +60,8 @@ begin
   if 1=1 then
   begin
     //LoginForm.Free;
-//    Application.CreateForm(TExpenseItemsT, ExpenseItemsT);
-//    Application.CreateForm(TAccountT, AccountT);
-// Application.CreateForm(TClientF, ClientF);
-    Application.CreateForm(TTransactionT, TransactionT);
+//    Application.CreateForm(TMainForm, MainForm);
+    Application.CreateForm(TDocumentRequestT, DocumentRequestT);
     Application.Run;
 
   end

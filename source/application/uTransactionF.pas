@@ -102,7 +102,7 @@ begin
                                 ,@OperationID   = :OperationID
                                 ,@OperDate      = :OperDate
                                 ,@ExpenseItemID = :ExpenseItemID
-                                ,@CreditD       = :CreditD
+                                ,@CreditID      = :CreditID
                                 ,@Amount        = :Amount
                                 ,@Comment       = :Comment
                                 ,@KassaID       = :KassaID
@@ -113,7 +113,7 @@ begin
 
                   select @R as R
                 ''',
-               ['TranTypeID', 'OperationID', 'OperDate', 'ExpenseItemID', 'CreditD', 'Amount',
+               ['TranTypeID', 'OperationID', 'OperDate', 'ExpenseItemID', 'CreditID', 'Amount',
                 'Comment', 'KassaID', 'KontragentID', 'Discount', 'ParentID'],
                [
                  edtTranType.EditValue
@@ -145,7 +145,7 @@ begin
                                 ,@OperationID   = :OperationID
                                 ,@OperDate      = :OperDate
                                 ,@ExpenseItemID = :ExpenseItemID
-                                ,@CreditD       = :CreditD
+                                ,@CreditID      = :CreditID
                                 ,@Amount        = :Amount
                                 ,@Comment       = :Comment
                                 --,@KassaID       = :KassaID
@@ -156,7 +156,7 @@ begin
 
                   select @R as R
                 ''',
-               ['TranTypeID', 'OperationID', 'OperDate', 'ExpenseItemID', 'CreditD', 'Amount',
+               ['TranTypeID', 'OperationID', 'OperDate', 'ExpenseItemID', 'CreditID', 'Amount',
                 'Comment', {'KassaID',} 'KontragentID', 'Discount', 'ParentID', 'TransactionID'],
                [
                  edtTranType.EditValue
@@ -280,7 +280,6 @@ begin
 
     end;
   end;
- 
 end;
 
 procedure TTransactionF.DataLoad;
@@ -293,7 +292,7 @@ begin
                      ,t.OperationID
                      ,t.OperDate
                      ,t.ExpenseItemID
-                     ,t.CreditD
+                     ,t.CreditID
                      ,t.Amount
                      ,t.Comment
                      ,t.KassaID
@@ -317,7 +316,7 @@ begin
   edtComment.Text             := FDQuery.FieldByName('Comment').AsString;
 
   edtKontragent.LookupKey     := FDQuery.FieldByName('KontragentID').AsInteger;
-  edtCreditD.LookupKey        := FDQuery.FieldByName('ExpenseItemID').AsInteger;
+  edtCreditD.LookupKey        := FDQuery.FieldByName('CreditID').AsInteger;
   edtExpenseItem.LookupKey    := FDQuery.FieldByName('ExpenseItemID').AsInteger;
 
   inherited;
@@ -343,7 +342,6 @@ end;
 
 procedure TTransactionF.FormShow(Sender: TObject);
 begin
-
   qTranType.Open;
 
   inherited;
@@ -381,13 +379,11 @@ begin
   end;
 
   CurrentCashBalance;
-
 end;
 
 procedure TTransactionF.SetKassaID(const Value: Integer);
 begin
   FKassaID := Value;
-
 
   TSql.Open(
   '''

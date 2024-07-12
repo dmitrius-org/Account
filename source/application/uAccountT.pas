@@ -80,7 +80,6 @@ type
     btnFilterClear: TcxButton;
     qAccountStatus: TFDQuery;
     dsAccountStatus: TDataSource;
-    cxButton1: TcxButton;
     actontragent: TAction;
     ToolButton1: TToolButton;
     ToolButton2: TToolButton;

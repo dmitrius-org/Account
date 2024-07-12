@@ -36,6 +36,8 @@ type
     { Private declarations }
   public
     { Public declarations }
+    OpenFormList: TStringList;
+
     function dbConnect(AUser: string; APass: string): Boolean;
   end;
 
@@ -68,6 +70,8 @@ begin
 
   FDConnection.ConnectionDefName:='Connection';
   FDConnection.Params.Values['DriverID'] :=FDManager.ConnectionDefs.FindConnectionDef('Connection').Params.Values['DriverID'];
+
+  OpenFormList:= TStringList.Create;
 
   Logger.Info('TDM.DataModuleCreate End');
 end;
@@ -152,6 +156,8 @@ begin
   qKontragent.Close();
 
   qKontragentType.Close();
+
+  OpenFormList.Free;
 end;
 
 end.

@@ -164,6 +164,11 @@ procedure TBaseFormDBT.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   inherited;
   SaveGridState;
+
+  if Self.FormStyle = fsMDIChild then
+   DM.OpenFormList.Delete(DM.OpenFormList.IndexOf(Self.ClassName));
+
+  Action := caFree;
 end;
 
 procedure TBaseFormDBT.FormShow(Sender: TObject);
@@ -245,14 +250,17 @@ begin
   if AName = 'FormWidth' then
     if Sender is TcxCustomGridView then
     begin
-      AValue := Self.Width;
+      if Self.WindowState = wsNormal then
+        AValue := Self.Width;
       Exit;
     end;
 
   if AName = 'FormHeight' then
     if Sender is TcxCustomGridView then
     begin
-      AValue := Self.Height;
+      if Self.WindowState = wsNormal then
+        AValue := Self.Height;
+
       Exit;
     end;
 end;

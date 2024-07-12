@@ -15,7 +15,6 @@ inherited BaseFormDBT: TBaseFormDBT
     ButtonHeight = 40
     ButtonWidth = 87
     Ctl3D = False
-    Customizable = True
     DoubleBuffered = True
     DockSite = True
     GradientEndColor = 12566463

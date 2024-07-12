@@ -1,46 +1,39 @@
 inherited TransactionT: TTransactionT
   Caption = #1050#1072#1089#1089#1072
   ClientHeight = 469
-  ClientWidth = 982
+  ClientWidth = 925
   StyleElements = [seFont, seClient, seBorder]
   OnCreate = FormCreate
-  ExplicitWidth = 998
+  ExplicitWidth = 941
   ExplicitHeight = 508
   TextHeight = 17
   inherited ToolBar: TToolBar
-    Width = 982
+    Width = 925
     DoubleBuffered = True
     HideClippedButtons = True
     TabStop = True
     StyleElements = [seFont, seClient, seBorder]
     OnCustomDrawButton = ToolBarCustomDrawButton
-    ExplicitWidth = 1010
-    object tbAdd2: TToolButton [1]
-      Left = 87
+    ExplicitWidth = 982
+    inherited tbAdd: TToolButton
+      Caption = '  '
+      Style = tbsTextButton
+    end
+    object tbAdd2: TToolButton
+      Left = 348
       Top = 0
       Action = actAddDebet
       Caption = '  '
       Style = tbsTextButton
     end
-    inherited tbAdd: TToolButton
-      Left = 174
-      Caption = '  '
-      Style = tbsTextButton
-      ExplicitLeft = 174
-    end
-    inherited tbEdit: TToolButton
-      Left = 261
-      ExplicitLeft = 261
-    end
-    inherited tbDelete: TToolButton
-      Left = 348
-      ExplicitLeft = 348
-    end
   end
   inherited Grid: TcxGrid
     Top = 126
-    Width = 982
+    Width = 925
     Height = 343
+    ExplicitTop = 126
+    ExplicitWidth = 982
+    ExplicitHeight = 343
     inherited TableView: TcxGridDBTableView
       DataController.KeyFieldNames = 'TransactionID'
       DataController.Summary.DefaultGroupSummaryItems = <
@@ -77,40 +70,40 @@ inherited TransactionT: TTransactionT
         Caption = #1050#1086#1085#1090#1088#1072#1075#1077#1085#1090
         DataBinding.FieldName = 'KontragentName'
         HeaderAlignmentHorz = taCenter
-        Width = 217
+        Width = 212
       end
       object TableViewDebet: TcxGridDBColumn
         Caption = #1055#1088#1080#1093#1086#1076
         DataBinding.FieldName = 'Debet'
         HeaderAlignmentHorz = taCenter
-        Width = 119
+        Width = 122
       end
       object TableViewCredit: TcxGridDBColumn
         Caption = #1056#1072#1089#1093#1086#1076
         DataBinding.FieldName = 'Credit'
         HeaderAlignmentHorz = taCenter
-        Width = 122
+        Width = 123
       end
       object TableViewbalance: TcxGridDBColumn
         Caption = #1054#1089#1090#1072#1090#1086#1082
         DataBinding.FieldName = 'balance'
         HeaderAlignmentHorz = taCenter
-        Width = 119
+        Width = 124
       end
       object TableViewKassa: TcxGridDBColumn
         Caption = #1050#1072#1089#1089#1072
         DataBinding.FieldName = 'Kassa'
         HeaderAlignmentHorz = taCenter
-        Width = 112
+        Width = 67
       end
     end
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
-    ExplicitWidth = 1010
+    ExplicitWidth = 982
     ExplicitHeight = 86
     Height = 86
-    Width = 982
+    Width = 925
     object SkLabel4: TSkLabel
       Left = 373
       Top = 18
@@ -202,7 +195,7 @@ inherited TransactionT: TTransactionT
       OnClick = btnFilterClearClick
     end
     object edtSum: TcxCurrencyEdit
-      Left = 817
+      Left = 724
       Top = 55
       Anchors = [akTop, akRight]
       ParentFont = False
@@ -222,7 +215,7 @@ inherited TransactionT: TTransactionT
       Width = 136
     end
     object edtSumC: TcxCurrencyEdit
-      Left = 690
+      Left = 599
       Top = 55
       Anchors = [akTop, akRight]
       ParentFont = False
@@ -241,7 +234,7 @@ inherited TransactionT: TTransactionT
       Width = 121
     end
     object edtSumD: TcxCurrencyEdit
-      Left = 563
+      Left = 475
       Top = 55
       Anchors = [akTop, akRight]
       ParentFont = False

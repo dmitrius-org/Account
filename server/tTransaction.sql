@@ -129,7 +129,7 @@ begin
     ,OperationID        numeric(15, 0)
 	,OperDate           datetime 
     ,ExpenseItemID      numeric(15, 0)
-    ,CreditD            numeric(15, 0)
+    ,CreditID           numeric(15, 0)
     ,Amount             money
     ,Comment            varchar(256)
     ,KassaID            numeric(15, 0)   

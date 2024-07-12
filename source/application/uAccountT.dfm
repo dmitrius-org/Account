@@ -35,9 +35,9 @@ inherited AccountT: TAccountT
     Top = 152
     Width = 1019
     Height = 355
-    ExplicitTop = 181
+    ExplicitTop = 152
     ExplicitWidth = 1019
-    ExplicitHeight = 326
+    ExplicitHeight = 355
     inherited TableView: TcxGridDBTableView
       OnCustomDrawCell = TableViewCustomDrawCell
       DataController.KeyFieldNames = 'AccountID'
@@ -228,14 +228,14 @@ inherited AccountT: TAccountT
     object edtAccountNumber: TcxTextEdit
       Left = 103
       Top = 16
-      TabOrder = 1
+      TabOrder = 0
       OnKeyDown = edtAccountNumberKeyDown
       Width = 104
     end
     object edtPayNumber: TcxTextEdit
       Left = 103
       Top = 47
-      TabOrder = 6
+      TabOrder = 5
       OnKeyDown = edtAccountNumberKeyDown
       Width = 104
     end
@@ -243,7 +243,7 @@ inherited AccountT: TAccountT
       Left = 231
       Top = 16
       Properties.DateButtons = [btnClear, btnNow, btnToday]
-      TabOrder = 2
+      TabOrder = 1
       OnKeyDown = edtAccountNumberKeyDown
       Width = 104
     end
@@ -252,7 +252,7 @@ inherited AccountT: TAccountT
       Top = 47
       Properties.DateButtons = [btnClear, btnNow, btnToday]
       Properties.UseNullString = True
-      TabOrder = 7
+      TabOrder = 6
       OnKeyDown = edtAccountNumberKeyDown
       Width = 104
     end
@@ -261,7 +261,7 @@ inherited AccountT: TAccountT
       Top = 78
       Properties.DateButtons = [btnClear, btnNow, btnToday]
       Properties.UseNullString = True
-      TabOrder = 11
+      TabOrder = 10
       OnKeyDown = edtAccountNumberKeyDown
       Width = 104
     end
@@ -270,7 +270,7 @@ inherited AccountT: TAccountT
       Top = 78
       Properties.DateButtons = [btnClear, btnNow, btnToday]
       Properties.UseNullString = True
-      TabOrder = 12
+      TabOrder = 11
       OnKeyDown = edtAccountNumberKeyDown
       Width = 104
     end
@@ -285,7 +285,7 @@ inherited AccountT: TAccountT
       Properties.ListOptions.ShowHeader = False
       Properties.ListSource = dsAccountStatus
       Properties.MaxLength = 256
-      TabOrder = 4
+      TabOrder = 3
       OnKeyDown = edtAccountNumberKeyDown
       Width = 146
     end
@@ -294,7 +294,7 @@ inherited AccountT: TAccountT
       Top = 47
       Properties.Items.Strings = (
         #1042#1086#1079#1074#1088#1072#1090#1099)
-      TabOrder = 9
+      TabOrder = 8
       OnKeyDown = edtAccountNumberKeyDown
       Width = 146
     end
@@ -324,7 +324,7 @@ inherited AccountT: TAccountT
       Properties.Images = IM.IL
       Properties.OnButtonClick = edtBuyerPropertiesButtonClick
       ShowHint = True
-      TabOrder = 3
+      TabOrder = 2
       OnKeyDown = edtAccountNumberKeyDown
       Width = 234
     end
@@ -354,7 +354,7 @@ inherited AccountT: TAccountT
       Properties.Images = IM.IL
       Properties.OnButtonClick = edtBuyerPropertiesButtonClick
       ShowHint = True
-      TabOrder = 8
+      TabOrder = 7
       OnKeyDown = edtAccountNumberKeyDown
       Width = 234
     end
@@ -384,7 +384,7 @@ inherited AccountT: TAccountT
       Properties.Images = IM.IL
       Properties.OnButtonClick = edtBuyerPropertiesButtonClick
       ShowHint = True
-      TabOrder = 13
+      TabOrder = 12
       OnKeyDown = edtAccountNumberKeyDown
       Width = 234
     end
@@ -397,7 +397,7 @@ inherited AccountT: TAccountT
       Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
       OptionsImage.ImageIndex = 5
       OptionsImage.Images = IM.IL
-      TabOrder = 5
+      TabOrder = 4
       OnClick = btnFilterOkClick
     end
     object btnFilterClear: TcxButton
@@ -409,19 +409,8 @@ inherited AccountT: TAccountT
       Caption = #1054#1090#1084#1077#1085#1080#1090#1100
       OptionsImage.ImageIndex = 2
       OptionsImage.Images = IM.IL
-      TabOrder = 10
+      TabOrder = 9
       OnClick = btnFilterClearClick
-    end
-    object cxButton1: TcxButton
-      Left = 207
-      Top = 15
-      Width = 24
-      Height = 27
-      Hint = #1055#1088#1080#1084#1077#1085#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
-      OptionsImage.ImageIndex = 4
-      TabOrder = 0
-      Visible = False
-      OnClick = btnFilterOkClick
     end
   end
   inherited ActionList: TActionList

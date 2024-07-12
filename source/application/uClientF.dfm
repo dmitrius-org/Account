@@ -588,8 +588,8 @@ inherited ClientF: TClientF
   end
   object ActionList: TActionList
     Images = cxImageList
-    Left = 120
-    Top = 150
+    Left = 153
+    Top = 140
     object acContactAdd: TAction
       Caption = #1044#1086#1073#1072#1074#1080#1090#1100
       ImageIndex = 1

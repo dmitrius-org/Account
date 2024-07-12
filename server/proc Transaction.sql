@@ -10,7 +10,7 @@ create proc TransactionAdd
              ,@OperationID        numeric(15, 0)
 	         ,@OperDate           datetime 
              ,@ExpenseItemID      numeric(15, 0) = null
-             ,@CreditD            numeric(15, 0) = null
+             ,@CreditID           numeric(15, 0) = null
              ,@Amount             money
              ,@Comment            varchar(256)
              ,@KassaID            numeric(15, 0)   
@@ -43,7 +43,7 @@ as
               ,OperationID   
               ,OperDate      
               ,ExpenseItemID 
-              ,CreditD       
+              ,CreditID       
               ,Amount        
               ,Comment       
               ,KassaID       
@@ -58,7 +58,7 @@ as
               ,@OperationID    
               ,@OperDate       
               ,@ExpenseItemID  
-              ,@CreditD        
+              ,@CreditID        
               ,@Amount         
               ,@Comment        
               ,@KassaID        
@@ -89,7 +89,7 @@ as
                   ,OperationID   
                   ,OperDate      
                   ,ExpenseItemID 
-                  ,CreditD       
+                  ,CreditID       
                   ,Amount        
                   ,Comment       
                   ,KassaID       
@@ -104,7 +104,7 @@ as
                   ,@OperationID    
                   ,@OperDate       
                   ,@ExpenseItemID  
-                  ,@CreditD        
+                  ,@CreditID        
                   ,@Amount         
                   ,@Comment        
                   ,@KassaID        
@@ -149,7 +149,7 @@ create proc TransactionEdit
              ,@OperationID        numeric(15, 0)
 	         ,@OperDate           datetime 
              ,@ExpenseItemID      numeric(15, 0) = null
-             ,@CreditD            numeric(15, 0) = null
+             ,@CreditID           numeric(15, 0) = null
              ,@Amount             money
              ,@Comment            varchar(256)
             --,@KassaID            numeric(15, 0)   
@@ -173,7 +173,7 @@ as
            ,OperationID     = @OperationID     
            ,OperDate        = @OperDate        
            ,ExpenseItemID   = @ExpenseItemID   
-           ,CreditD         = @CreditD         
+           ,CreditID        = @CreditID         
            ,Amount          = @Amount          
            ,Comment         = @Comment         
            --,KassaID         = @KassaID         

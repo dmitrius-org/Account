@@ -44,7 +44,7 @@ inherited BuyerF: TBuyerF
     Top = 0
     Width = 654
     Height = 365
-    ActivePage = TabCommon
+    ActivePage = TabContact
     Align = alClient
     DoubleBuffered = True
     OwnerDraw = True
