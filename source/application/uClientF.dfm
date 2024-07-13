@@ -44,7 +44,7 @@ inherited ClientF: TClientF
     Top = 0
     Width = 651
     Height = 321
-    ActivePage = TabCommon
+    ActivePage = TabContact
     Align = alClient
     DoubleBuffered = True
     OwnerDraw = True

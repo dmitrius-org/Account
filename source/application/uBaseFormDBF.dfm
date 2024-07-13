@@ -30,7 +30,7 @@ inherited BaseFormDBF: TBaseFormDBF
       Frame.Borders = []
       Color = 12566463
       ParentColor = True
-      TabOrder = 2
+      TabOrder = 0
       object edtInDate: TcxDateEdit
         Left = 3
         Top = 21
@@ -52,7 +52,7 @@ inherited BaseFormDBF: TBaseFormDBF
         Style.ReadOnly = True
         Style.ButtonStyle = btsFlat
         Style.IsFontAssigned = True
-        TabOrder = 0
+        TabOrder = 1
         Width = 126
       end
       object edtUser: ALookupEdit
@@ -75,7 +75,7 @@ inherited BaseFormDBF: TBaseFormDBF
         Style.Font.Name = 'Segoe UI'
         Style.Font.Style = []
         Style.IsFontAssigned = True
-        TabOrder = 1
+        TabOrder = 0
         Width = 294
       end
     end
@@ -88,8 +88,8 @@ inherited BaseFormDBF: TBaseFormDBF
       Caption = #1047#1072#1082#1088#1099#1090#1100
       ModalResult = 2
       OptionsImage.ImageIndex = 1
+      OptionsImage.Images = IM.IL
       TabOrder = 1
-      ExplicitLeft = 400
     end
     object btnOk: TcxButton
       Left = 486
@@ -99,8 +99,8 @@ inherited BaseFormDBF: TBaseFormDBF
       Anchors = [akTop, akRight, akBottom]
       Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100
       OptionsImage.ImageIndex = 0
-      TabOrder = 0
-      ExplicitLeft = 496
+      OptionsImage.Images = IM.IL
+      TabOrder = 2
     end
   end
   object FDQuery: TFDQuery

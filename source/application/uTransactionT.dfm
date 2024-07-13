@@ -14,7 +14,7 @@ inherited TransactionT: TTransactionT
     TabStop = True
     StyleElements = [seFont, seClient, seBorder]
     OnCustomDrawButton = ToolBarCustomDrawButton
-    ExplicitWidth = 982
+    ExplicitWidth = 925
     inherited tbAdd: TToolButton
       Caption = '  '
       Style = tbsTextButton
@@ -32,7 +32,7 @@ inherited TransactionT: TTransactionT
     Width = 925
     Height = 343
     ExplicitTop = 126
-    ExplicitWidth = 982
+    ExplicitWidth = 925
     ExplicitHeight = 343
     inherited TableView: TcxGridDBTableView
       DataController.KeyFieldNames = 'TransactionID'
@@ -100,7 +100,7 @@ inherited TransactionT: TTransactionT
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
-    ExplicitWidth = 982
+    ExplicitWidth = 925
     ExplicitHeight = 86
     Height = 86
     Width = 925
@@ -223,6 +223,7 @@ inherited TransactionT: TTransactionT
       Properties.DecimalPlaces = 0
       Properties.DisplayFormat = ',0 '#8381';-,0 '#8381
       Properties.ReadOnly = True
+      Style.Color = clLightblue
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -16
@@ -234,14 +235,15 @@ inherited TransactionT: TTransactionT
       Width = 121
     end
     object edtSumD: TcxCurrencyEdit
-      Left = 475
-      Top = 55
+      Left = 472
+      Top = 54
       Anchors = [akTop, akRight]
       ParentFont = False
       Properties.Alignment.Horz = taCenter
       Properties.DecimalPlaces = 0
       Properties.DisplayFormat = ',0 '#8381';-,0 '#8381
       Properties.ReadOnly = True
+      Style.Color = clLightblue
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -16

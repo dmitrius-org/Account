@@ -250,6 +250,10 @@
             <Form>DocumentRequestF</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="..\source\application\uCreditPaymentT.pas">
+            <Form>CreditPaymentT</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

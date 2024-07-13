@@ -42,15 +42,24 @@ type
     edtCredit: ALookupEdit;
     edtCreditL: TSkLabel;
     edtState: TcxRadioGroup;
+    actCreditPayment: TAction;
+    ToolButton1: TToolButton;
+    ToolButton2: TToolButton;
+    actCredit: TAction;
+    ToolButton3: TToolButton;
     procedure FormCreate(Sender: TObject);
     procedure edtDateBKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure edtStatePropertiesEditValueChanged(Sender: TObject);
+    procedure actCreditPaymentExecute(Sender: TObject);
+    procedure btnFilterClearClick(Sender: TObject);
+    procedure actCreditExecute(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
     procedure DataLoad(); override;
+     procedure SetActionEnabled(); override;
   end;
 
 var
@@ -58,8 +67,40 @@ var
 
 implementation
 
+uses
+  uCreditPaymentT, MTLogger, uCreditTypesT;
+
 {$R *.dfm}
 
+
+procedure TCreditsT.actCreditExecute(Sender: TObject);
+var CreditTypesT:TCreditTypesT;
+begin
+  inherited;
+  CreditTypesT  := TCreditTypesT.Create(self);
+  CreditTypesT.ShowModal;
+  CreditTypesT.Free;
+end;
+
+procedure TCreditsT.actCreditPaymentExecute(Sender: TObject);
+var CreditPaymentT: TCreditPaymentT;
+begin
+  inherited;
+  CreditPaymentT := TCreditPaymentT.create(Self);
+  CreditPaymentT.CreditID := TableViewCreditID.EditValue;
+  CreditPaymentT.showModal;
+  CreditPaymentT.free;
+end;
+
+procedure TCreditsT.btnFilterClearClick(Sender: TObject);
+begin
+  edtDateB.Clear;
+  edtDateE.Clear;
+  edtCredit.Clear;
+  edtState.EditValue := 1;
+
+  DataLoad;
+end;
 
 procedure TCreditsT.DataLoad;
 begin
@@ -108,6 +149,13 @@ procedure TCreditsT.FormCreate(Sender: TObject);
 begin
   inherited;
   EditFormClass := 'TCreditsF';
+end;
+
+procedure TCreditsT.SetActionEnabled;
+begin
+  inherited;
+  logger.Info('TCreditsT.SetActionEnabled');
+  actCreditPayment.Enabled := (actCreditPayment.Tag = 1) and (Query.RecordCount > 0);
 end;
 
 initialization

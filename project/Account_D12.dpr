@@ -37,7 +37,8 @@ uses
   uTransactionT in '..\source\application\uTransactionT.pas' {TransactionT},
   uTransactionF in '..\source\application\uTransactionF.pas' {TransactionF},
   uDocumentRequestT in '..\source\application\uDocumentRequestT.pas' {DocumentRequestT},
-  uDocumentRequestF in '..\source\application\uDocumentRequestF.pas' {DocumentRequestF};
+  uDocumentRequestF in '..\source\application\uDocumentRequestF.pas' {DocumentRequestF},
+  uCreditPaymentT in '..\source\application\uCreditPaymentT.pas' {CreditPaymentT};
 
 {$R *.res}
 
@@ -47,6 +48,7 @@ begin
 
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TIM, IM);
+
   //Application.CreateForm(TDocumentRequestT, DocumentRequestT);
   //Application.CreateForm(TDocumentRequestF, DocumentRequestF);
   //  Application.CreateForm(TTransactionF, TransactionF);
@@ -60,8 +62,10 @@ begin
   if 1=1 then
   begin
     //LoginForm.Free;
-//    Application.CreateForm(TMainForm, MainForm);
-    Application.CreateForm(TDocumentRequestT, DocumentRequestT);
+    Application.CreateForm(TMainForm, MainForm);
+//    Application.CreateForm(TDocumentRequestT, DocumentRequestT);
+//Application.CreateForm(TCreditPaymentT, CreditPaymentT);
+//Application.CreateForm(TCreditsT, CreditsT);
     Application.Run;
 
   end

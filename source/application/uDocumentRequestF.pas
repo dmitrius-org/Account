@@ -123,7 +123,7 @@ end;
 
 procedure TDocumentRequestF.acCommentRefreshExecute(Sender: TObject);
 begin
-  CommentRefresh
+  CommentRefresh;
 end;
 
 procedure TDocumentRequestF.acCommentSaveExecute(Sender: TObject);
@@ -230,7 +230,8 @@ end;
 
 procedure TDocumentRequestF.CommentEditButtonSetEnabled;
 begin
-  acCommentSave.Enabled := qComment.State in [dsEdit, dsNewValue, dsInsert];
+  acCommentEdit.Enabled:= qComment.RecordCount > 0;
+  acCommentDelete.Enabled:= qComment.RecordCount > 0;
 end;
 
 procedure TDocumentRequestF.CommentRefresh;
@@ -241,8 +242,7 @@ end;
 
 procedure TDocumentRequestF.CommentSaveButtonSetEnabled;
 begin
-  acCommentEdit.Enabled:= qComment.RecordCount > 0;
-  acCommentDelete.Enabled:= qComment.RecordCount > 0;
+   acCommentSave.Enabled := qComment.State in [dsEdit, dsNewValue, dsInsert];
 end;
 
 procedure TDocumentRequestF.DataCheck;

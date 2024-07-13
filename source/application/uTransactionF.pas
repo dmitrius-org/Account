@@ -47,12 +47,18 @@ type
     procedure edtTranTypePropertiesEditValueChanged(Sender: TObject);
   private
     FKassaID: Integer;
+    FIsCredit: Boolean;
+    FCreditID: Integer;
     procedure SetKassaID(const Value: Integer);
+    procedure SetIsCredit(const Value: Boolean);
+    procedure SetCreditID(const Value: Integer);
     { Private declarations }
   public
     { Public declarations }
     property  KassaID: Integer read FKassaID write SetKassaID;
 
+    property  CreditID: Integer read FCreditID write SetCreditID;
+    property  IsCredit: Boolean read FIsCredit write SetIsCredit;
 
     /// <summary>
     ///  DataLoad - получение данных с сервера, для отображения на форме
@@ -312,7 +318,7 @@ begin
   edtTranType.EditValue       := FDQuery.FieldByName('TranTypeID').AsInteger;
   edtOperation.EditValue      := FDQuery.FieldByName('OperationID').AsInteger;
   edtOperDate.Text            := FDQuery.FieldByName('OperDate').AsString;
-  edtAmount.Value              := FDQuery.FieldByName('Amount').AsVariant;
+  edtAmount.Value              := FDQuery.FieldByName('Amount').AsFloat;
   edtComment.Text             := FDQuery.FieldByName('Comment').AsString;
 
   edtKontragent.LookupKey     := FDQuery.FieldByName('KontragentID').AsInteger;
@@ -349,23 +355,65 @@ begin
   case FormAction of
     acInsert, acReportCreate:
     begin
-      Self.Caption := 'Добавление расходного документа';
+
       edtOperDate.date := Date();
-      edtTranType.EditValue := 2;
-      edtTranType.Enabled := False;
-      edtOperation.EditValue := 6;
+
+      if FIsCredit then
+      begin
+        Self.Caption := 'Добавление выплаты по кредиту';
+        edtTranType.Enabled := False;
+        edtTranType.EditValue := 2;
+        edtOperation.Enabled := False;
+        edtOperation.EditValue:=9;
+
+        edtCreditD.LookupKey := CreditID;
+        edtCreditD.Enabled := False;
+
+      end
+      else
+      begin
+        Self.Caption := 'Добавление расходного документа';
+        edtTranType.EditValue := 2;
+        edtTranType.Enabled := False;
+        edtOperation.EditValue := 6;
+      end;
     end;
     acAddDebet:
     begin
-      Self.Caption := 'Добавление приходного документа';
+
       edtOperDate.date := Date();
-      edtTranType.EditValue := 1;
-      edtTranType.Enabled := False;
-      edtOperation.EditValue := 1;
+
+      if FIsCredit then
+      begin
+        Self.Caption := 'Добавление приходного документа';
+        edtTranType.Enabled := False;
+        edtTranType.EditValue := 2;
+        edtOperation.Enabled := False;
+        edtOperation.EditValue:=9;
+
+        edtCreditD.LookupKey := CreditID;
+        edtCreditD.Enabled := False;
+      end
+      else
+      begin
+        Self.Caption := 'Добавление приходного документа';
+        edtTranType.EditValue := 1;
+        edtTranType.Enabled := False;
+        edtOperation.EditValue := 1;
+      end;
     end;
     acUpdate, acReportEdit, acUserAction:
     begin
       self.Caption := 'Изменение документа ';
+
+      if FIsCredit then
+      begin
+        Self.Caption := 'Изменение выплаты по кредиту';
+        edtTranType.Enabled := False;
+        edtOperation.Enabled := False;
+        edtCreditD.Enabled := False;
+      end
+
     end;
     acDelete:
     begin
@@ -379,6 +427,16 @@ begin
   end;
 
   CurrentCashBalance;
+end;
+
+procedure TTransactionF.SetCreditID(const Value: Integer);
+begin
+  FCreditID := Value;
+end;
+
+procedure TTransactionF.SetIsCredit(const Value: Boolean);
+begin
+  FIsCredit := Value;
 end;
 
 procedure TTransactionF.SetKassaID(const Value: Integer);

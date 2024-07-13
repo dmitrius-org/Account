@@ -107,14 +107,13 @@ create proc CreditTypeDelete
 as
   declare @r int = 0
 
-  --if exists (select 1 
-  --             from tCreditTypes u (nolock)
-  --            where u.Name = @Name
-  --              and u.CreditTypeID <> @CreditTypeID)
-  --begin
-  --  set @r =  100--'ид кредита существует!'
-  --  goto exit_
-  --end
+  if exists (select 1 
+               from tCredits c (nolock)
+              where c.CreditTypeID <> @CreditTypeID)
+  begin
+    set @r =  220 --   'Удаление запрещено! Вид кредита используется!'
+    goto exit_
+  end
 
   BEGIN TRY 
       --Begin tran

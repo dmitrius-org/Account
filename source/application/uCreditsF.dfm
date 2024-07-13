@@ -79,6 +79,7 @@ inherited CreditsF: TCreditsF
   inherited Panel: TdxPanel
     Top = 304
     TabOrder = 7
+    ExplicitTop = 304
     inherited dxPanel1: TdxPanel
       TabOrder = 0
       inherited edtInDate: TcxDateEdit
@@ -169,7 +170,7 @@ inherited CreditsF: TCreditsF
   object edtPayAmount: TcxCurrencyEdit [13]
     Left = 146
     Top = 140
-    Properties.DisplayFormat = ',0.00 %;-,0.00 %'
+    Properties.DisplayFormat = ',0.00 '#8381';-,0.00 '#8381
     TabOrder = 4
     Width = 142
   end

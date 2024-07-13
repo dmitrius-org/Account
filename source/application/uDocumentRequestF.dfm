@@ -194,8 +194,6 @@ inherited DocumentRequestF: TDocumentRequestF
       List = True
       ShowCaptions = True
       TabOrder = 0
-      ExplicitWidth = 183
-      ExplicitHeight = 69
       object ToolButton1: TToolButton
         Left = 0
         Top = 0
@@ -229,10 +227,6 @@ inherited DocumentRequestF: TDocumentRequestF
       Height = 195
       Align = alClient
       TabOrder = 1
-      ExplicitLeft = -50
-      ExplicitTop = 47
-      ExplicitWidth = 459
-      ExplicitHeight = 199
       object TableView: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         ScrollbarAnnotations.CustomAnnotations = <>
@@ -471,6 +465,7 @@ inherited DocumentRequestF: TDocumentRequestF
     Connection = DM.FDConnection
     UpdateOptions.KeyFields = 'ID'
     UpdateOptions.AutoIncFields = 'ID'
+    UpdateObject = qCommentUpdate
     SQL.Strings = (
       'select *'
       '  from pComments (nolock)'
@@ -552,10 +547,11 @@ inherited DocumentRequestF: TDocumentRequestF
       '          ,ObjectID          '
       '          ,Comment         '
       '          )'
-      '    VALUES (@@Spid   '
-      '          ,4--ObjectTypeID '
-      '          ,null --ObjectID          '
-      '          ,:New_Comment      '
+      '    VALUES ('
+      '           @@Spid   '
+      '          ,4'
+      '          ,null '
+      '          ,:New_Comment     '
       '          )'
       ''
       ''

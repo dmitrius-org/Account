@@ -240,7 +240,11 @@ inherited TransactionF: TTransactionF
     Top = 102
     LookupConnection = DM.FDConnection
     LookupForm = 'TCreditsT'
-    LookupSQL = 'SELECT ct.Name'
+    LookupSQL = 
+      '            select t.Name     '#13#10'              from tCredits c (n' +
+      'olock)'#13#10'              left join tCreditTypes t (nolock)'#13#10'       ' +
+      '              on t.CreditTypeID = c.CreditTypeID '#13#10'            w' +
+      'here c.CreditID = :ID'
     LookupKey = 0
     ParentShowHint = False
     Properties.Buttons = <
