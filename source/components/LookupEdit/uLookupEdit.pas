@@ -163,6 +163,7 @@ type
     procedure Execute;
 
     procedure DoButtonClick(AButtonVisibleIndex: Integer); override;
+    procedure Clear;  override;
 
   published
 
@@ -327,6 +328,12 @@ begin
   end;
 
   obj.Free;
+end;
+
+procedure ALookupEdit.Clear;
+begin
+  inherited;
+  LookupKey:=0;
 end;
 
 constructor ALookupEdit.Create(AOwner: TComponent);

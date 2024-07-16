@@ -14,8 +14,9 @@ inherited ExpenseGroupsT: TExpenseGroupsT
     ExplicitWidth = 805
   end
   inherited Grid: TcxGrid
+    Top = 87
     Width = 805
-    Height = 271
+    Height = 283
     ExplicitWidth = 805
     ExplicitHeight = 271
     inherited TableView: TcxGridDBTableView
@@ -47,8 +48,78 @@ inherited ExpenseGroupsT: TExpenseGroupsT
     end
   end
   inherited FilterPanel: TcxGroupBox
+    Visible = True
     ExplicitWidth = 805
+    ExplicitHeight = 47
+    Height = 47
     Width = 805
+    object SkLabel1: TSkLabel
+      Left = 161
+      Top = 18
+      Width = 100
+      Height = 19
+      Anchors = [akTop, akRight]
+      Words = <
+        item
+          Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
+        end>
+    end
+    object edtName: TcxTextEdit
+      Left = 267
+      Top = 15
+      Anchors = [akTop, akRight]
+      Properties.MaxLength = 255
+      TabOrder = 0
+      TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
+      OnKeyDown = edtNameKeyDown
+      Width = 298
+    end
+    object cxButton3: TcxButton
+      Left = 566
+      Top = 15
+      Width = 25
+      Height = 25
+      Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Margins.Bottom = 0
+      Anchors = [akTop, akRight]
+      LookAndFeel.NativeStyle = False
+      OptionsImage.ImageIndex = 4
+      OptionsImage.Images = IM.IL
+      PaintStyle = bpsGlyph
+      SpeedButtonOptions.Flat = True
+      SpeedButtonOptions.Transparent = True
+      TabOrder = 1
+      OnClick = cxButton3Click
+    end
+    object btnFilterOk: TcxButton
+      Left = 597
+      Top = 15
+      Width = 102
+      Height = 25
+      Hint = #1055#1088#1080#1084#1077#1085#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
+      Anchors = [akTop, akRight]
+      Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
+      OptionsImage.ImageIndex = 5
+      OptionsImage.Images = IM.IL
+      TabOrder = 2
+      OnClick = btnFilterOkClick
+    end
+    object btnFilterClear: TcxButton
+      Left = 699
+      Top = 15
+      Width = 102
+      Height = 25
+      Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
+      Anchors = [akTop, akRight]
+      Caption = #1054#1090#1084#1077#1085#1080#1090#1100
+      OptionsImage.ImageIndex = 2
+      OptionsImage.Images = IM.IL
+      TabOrder = 3
+      OnClick = btnFilterClearClick
+    end
   end
   inherited ActionList: TActionList
     Left = 616
@@ -63,7 +134,6 @@ inherited ExpenseGroupsT: TExpenseGroupsT
     FormatVersion = 1
   end
   inherited Query: TFDQuery
-    Active = True
     UpdateOptions.AssignedValues = [uvEDelete, uvEInsert, uvEUpdate]
     UpdateOptions.EnableDelete = False
     UpdateOptions.EnableInsert = False
@@ -75,9 +145,16 @@ inherited ExpenseGroupsT: TExpenseGroupsT
       '      ,InDateTime'
       '      ,UserID'
       '  from tExpenseGroups (nolock)'
+      ' where 1=1'
+      '   !Name'
       ''
       'order by ExpenseGroupID')
     Left = 696
+    MacroData = <
+      item
+        Value = Null
+        Name = 'NAME'
+      end>
     object QueryExpenseGroupID: TFMTBCDField
       AutoGenerateValue = arAutoInc
       FieldName = 'ExpenseGroupID'

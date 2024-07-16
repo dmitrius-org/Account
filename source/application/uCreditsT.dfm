@@ -54,9 +54,9 @@ inherited CreditsT: TCreditsT
     end
   end
   inherited Grid: TcxGrid
-    Top = 131
+    Top = 157
     Width = 944
-    Height = 359
+    Height = 333
     ExplicitTop = 131
     ExplicitWidth = 944
     ExplicitHeight = 359
@@ -109,8 +109,8 @@ inherited CreditsT: TCreditsT
   inherited FilterPanel: TcxGroupBox
     Visible = True
     ExplicitWidth = 944
-    ExplicitHeight = 91
-    Height = 91
+    ExplicitHeight = 117
+    Height = 117
     Width = 944
     object SkLabel7: TSkLabel
       Left = 11
@@ -141,6 +141,17 @@ inherited CreditsT: TCreditsT
       Words = <
         item
           Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077' '#1082#1088#1077#1076#1080#1090#1072':'
+        end>
+    end
+    object lblCount: TSkLabel
+      Left = 12
+      Top = 93
+      Width = 110
+      Height = 19
+      TextSettings.Font.Weight = Bold
+      Words = <
+        item
+          Caption = #1042#1089#1077#1075#1086' '#1082#1088#1077#1076#1080#1090#1086#1074':'
         end>
     end
     object edtDateB: TcxDateEdit
@@ -240,6 +251,66 @@ inherited CreditsT: TCreditsT
       TabOrder = 5
       Height = 51
       Width = 283
+    end
+    object edtSum: TcxCurrencyEdit
+      Left = 547
+      Top = 88
+      Anchors = [akTop, akRight]
+      ParentFont = False
+      Properties.Alignment.Horz = taCenter
+      Properties.DecimalPlaces = 0
+      Properties.DisplayFormat = ',0 '#8381';-,0 '#8381
+      Properties.ReadOnly = True
+      Style.Color = clLightsalmon
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = [fsBold]
+      Style.ReadOnly = True
+      Style.IsFontAssigned = True
+      TabOrder = 8
+      Width = 122
+    end
+    object edtSumT: TcxCurrencyEdit
+      Left = 434
+      Top = 88
+      Anchors = [akTop, akRight]
+      ParentFont = False
+      Properties.Alignment.Horz = taCenter
+      Properties.DecimalPlaces = 0
+      Properties.DisplayFormat = ',0 '#8381';-,0 '#8381
+      Properties.ReadOnly = True
+      Style.Color = clLightblue
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = [fsBold]
+      Style.ReadOnly = True
+      Style.IsFontAssigned = True
+      TabOrder = 7
+      Width = 112
+    end
+    object edtAVG: TcxCurrencyEdit
+      Left = 326
+      Top = 88
+      Anchors = [akTop, akRight]
+      ParentFont = False
+      Properties.Alignment.Horz = taCenter
+      Properties.DecimalPlaces = 0
+      Properties.DisplayFormat = ',0 '#8381';-,0 '#8381
+      Properties.ReadOnly = True
+      Style.Color = clLightblue
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = [fsBold]
+      Style.ReadOnly = True
+      Style.IsFontAssigned = True
+      TabOrder = 6
+      Width = 107
     end
   end
   inherited ActionList: TActionList

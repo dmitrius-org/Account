@@ -13,7 +13,9 @@ uses
   cxClasses, FireDAC.Comp.DataSet, FireDAC.Comp.Client, System.ImageList,
   Vcl.ImgList, cxImageList, Vcl.Menus, System.Actions, Vcl.ActnList,
   cxGridLevel, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
-  cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, cxContainer, cxGroupBox;
+  cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, cxContainer, cxGroupBox,
+  System.Skia, Vcl.StdCtrls, cxButtons, cxTextEdit, Vcl.Skia, cxMaskEdit,
+  uLookupEdit;
 
 type
   TExpenseItemsT = class(TBaseFormDBT)
@@ -29,8 +31,22 @@ type
     actGroup: TAction;
     ToolButton1: TToolButton;
     ToolButton2: TToolButton;
+    SkLabel1: TSkLabel;
+    edtName: TcxTextEdit;
+    cxButton3: TcxButton;
+    btnFilterOk: TcxButton;
+    btnFilterClear: TcxButton;
+    edtExpenseGroup: ALookupEdit;
+    SkLabel2: TSkLabel;
     procedure FormCreate(Sender: TObject);
     procedure actGroupExecute(Sender: TObject);
+    procedure btnFilterOkClick(Sender: TObject);
+    procedure edtNameKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure cxButton3Click(Sender: TObject);
+    procedure btnFilterClearClick(Sender: TObject);
+    procedure edtExpenseGroupPropertiesButtonClick(Sender: TObject;
+      AButtonIndex: Integer);
   private
     { Private declarations }
   public
@@ -44,7 +60,7 @@ var
 implementation
 
 uses
-  uExpenseGroupsT;
+  uExpenseGroupsT, uImageModule;
 
 {$R *.dfm}
 
@@ -57,11 +73,58 @@ begin
   Group.Free;
 end;
 
+procedure TExpenseItemsT.btnFilterClearClick(Sender: TObject);
+begin
+  inherited;
+  edtName.Clear;
+  DataLoad;
+end;
+
+procedure TExpenseItemsT.btnFilterOkClick(Sender: TObject);
+begin
+  inherited;
+  DataLoad
+end;
+
+procedure TExpenseItemsT.cxButton3Click(Sender: TObject);
+begin
+  inherited;
+  edtName.Clear;
+  DataLoad;
+end;
+
 procedure TExpenseItemsT.DataLoad;
 begin
   Query.Close;
+
+  if edtName.Text <> '' then
+    Query.MacroByName('Name').Value := ' and e.name like ''%'   + edtName.Text + '%'''
+  else
+    Query.MacroByName('Name').Value := '';
+
+  if edtExpenseGroup.LookupKey > 0 then
+    Query.MacroByName('ExpenseGroup').Value := ' and e.ExpenseGroupID = ' + edtExpenseGroup.LookupKey.ToString
+  else
+    Query.MacroByName('ExpenseGroup').Value := '';
+
   Query.Open();
   inherited;
+end;
+
+procedure TExpenseItemsT.edtExpenseGroupPropertiesButtonClick(Sender: TObject;
+  AButtonIndex: Integer);
+begin
+  if AButtonIndex = 1 then
+  begin
+    DataLoad;
+  end;
+end;
+
+procedure TExpenseItemsT.edtNameKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  inherited;
+    if Key = 13 then DataLoad;
 end;
 
 procedure TExpenseItemsT.FormCreate(Sender: TObject);

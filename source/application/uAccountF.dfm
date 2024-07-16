@@ -170,25 +170,15 @@ inherited AccountF: TAccountF
   inherited Panel: TdxPanel
     Top = 331
     Width = 827
-    TabOrder = 17
+    TabOrder = 18
     ExplicitTop = 331
     ExplicitWidth = 827
-    inherited dxPanel1: TdxPanel
-      TabOrder = 0
-      inherited edtInDate: TcxDateEdit
-        TabOrder = 1
-      end
-      inherited edtUser: ALookupEdit
-        TabOrder = 0
-      end
-    end
     inherited btnCancel: TcxButton
       Left = 624
       ExplicitLeft = 624
     end
     inherited btnOk: TcxButton
       Left = 715
-      TabOrder = 2
       OnClick = btnOkClick
       ExplicitLeft = 715
     end
@@ -209,13 +199,13 @@ inherited AccountF: TAccountF
   object edtPhone: TcxTextEdit [19]
     Left = 617
     Top = 244
-    TabOrder = 15
+    TabOrder = 16
     Width = 201
   end
   object edtMail: TcxTextEdit [20]
     Left = 617
     Top = 300
-    TabOrder = 16
+    TabOrder = 17
     Width = 202
   end
   object edtAccountDate: TcxDateEdit [21]
@@ -280,7 +270,7 @@ inherited AccountF: TAccountF
         Kind = bkGlyph
       end>
     ShowHint = True
-    TabOrder = 9
+    TabOrder = 10
     Width = 285
   end
   object edtSupplier: ALookupEdit [26]
@@ -307,7 +297,7 @@ inherited AccountF: TAccountF
         Kind = bkGlyph
       end>
     ShowHint = True
-    TabOrder = 11
+    TabOrder = 12
     Width = 285
   end
   object edtClient: ALookupEdit [27]
@@ -334,14 +324,14 @@ inherited AccountF: TAccountF
         Kind = bkGlyph
       end>
     ShowHint = True
-    TabOrder = 12
+    TabOrder = 13
     Width = 285
   end
   object edtComment: TcxMemo [28]
     Left = 100
     Top = 244
     Properties.MaxLength = 256
-    TabOrder = 14
+    TabOrder = 15
     Height = 81
     Width = 511
   end
@@ -366,14 +356,14 @@ inherited AccountF: TAccountF
     Left = 508
     Top = 144
     Properties.DisplayFormat = ',0.00 %;-,0.00 %'
-    TabOrder = 10
+    TabOrder = 11
     Width = 102
   end
   object edtClientDiscount: TcxCurrencyEdit [32]
     Left = 508
     Top = 206
     Properties.DisplayFormat = ',0.00 %;-,0.00 %'
-    TabOrder = 13
+    TabOrder = 14
     Width = 102
   end
   object dxPanel2: TdxPanel [33]
@@ -402,6 +392,17 @@ inherited AccountF: TAccountF
       ExplicitWidth = 64
       ExplicitHeight = 19
     end
+  end
+  object btnCopy: TcxButton [34]
+    Left = 616
+    Top = 104
+    Width = 44
+    Height = 25
+    Hint = #1057#1082#1086#1087#1080#1088#1086#1074#1072#1090#1100' '#1089#1091#1084#1084#1091' '#1089#1095#1077#1090#1072
+    OptionsImage.ImageIndex = 6
+    OptionsImage.Images = IM.IL
+    TabOrder = 9
+    OnClick = btnCopyClick
   end
   inherited FDQuery: TFDQuery
     Top = 318

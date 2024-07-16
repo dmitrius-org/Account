@@ -53,11 +53,13 @@ type
     edtClientDiscount: TcxCurrencyEdit;
     dxPanel2: TdxPanel;
     lblDoplata: TSkLabel;
+    btnCopy: TcxButton;
     procedure btnOkClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure edtAccountNumberPropertiesChange(Sender: TObject);
     procedure edtPaymentDatePropertiesChange(Sender: TObject);
     procedure edtPaymentAmountPropertiesChange(Sender: TObject);
+    procedure btnCopyClick(Sender: TObject);
   private
     { Private declarations }
     FIsRefund: Boolean;
@@ -87,6 +89,12 @@ uses
 
 {$R *.dfm}
 { TAccountF }
+
+procedure TAccountF.btnCopyClick(Sender: TObject);
+begin
+  inherited;
+  edtPaymentAmount.Value := edtAccountAmount.Value;
+end;
 
 procedure TAccountF.btnOkClick(Sender: TObject);
 begin

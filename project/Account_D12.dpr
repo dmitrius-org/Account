@@ -38,7 +38,8 @@ uses
   uTransactionF in '..\source\application\uTransactionF.pas' {TransactionF},
   uDocumentRequestT in '..\source\application\uDocumentRequestT.pas' {DocumentRequestT},
   uDocumentRequestF in '..\source\application\uDocumentRequestF.pas' {DocumentRequestF},
-  uCreditPaymentT in '..\source\application\uCreditPaymentT.pas' {CreditPaymentT};
+  uCreditPaymentT in '..\source\application\uCreditPaymentT.pas' {CreditPaymentT},
+  uProfit_T in '..\source\application\uProfit_T.pas' {Profit_T};
 
 {$R *.res}
 
@@ -48,7 +49,7 @@ begin
 
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TIM, IM);
-
+//  Application.CreateForm(TProfit_T, Profit_T);
   //Application.CreateForm(TDocumentRequestT, DocumentRequestT);
   //Application.CreateForm(TDocumentRequestF, DocumentRequestF);
   //  Application.CreateForm(TTransactionF, TransactionF);
@@ -63,6 +64,7 @@ begin
   begin
     //LoginForm.Free;
     Application.CreateForm(TMainForm, MainForm);
+// Application.CreateForm(TProfit_T, Profit_T);
 //    Application.CreateForm(TDocumentRequestT, DocumentRequestT);
 //Application.CreateForm(TCreditPaymentT, CreditPaymentT);
 //Application.CreateForm(TCreditsT, CreditsT);

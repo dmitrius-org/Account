@@ -15,7 +15,8 @@ uses
   cxGridLevel, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, cxContainer, cxGroupBox,
   System.Skia, dxCore, cxDateUtils, Vcl.StdCtrls, cxButtons, cxTextEdit,
-  cxMaskEdit, cxDropDownEdit, cxCalendar, Vcl.Skia, cxRadioGroup, uLookupEdit;
+  cxMaskEdit, cxDropDownEdit, cxCalendar, Vcl.Skia, cxRadioGroup, uLookupEdit,
+  cxCurrencyEdit;
 
 type
   TCreditsT = class(TBaseFormDBT)
@@ -47,6 +48,10 @@ type
     ToolButton2: TToolButton;
     actCredit: TAction;
     ToolButton3: TToolButton;
+    edtSum: TcxCurrencyEdit;
+    edtSumT: TcxCurrencyEdit;
+    edtAVG: TcxCurrencyEdit;
+    lblCount: TSkLabel;
     procedure FormCreate(Sender: TObject);
     procedure edtDateBKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -56,10 +61,11 @@ type
     procedure actCreditExecute(Sender: TObject);
   private
     { Private declarations }
+    procedure Summ();
   public
     { Public declarations }
     procedure DataLoad(); override;
-     procedure SetActionEnabled(); override;
+    procedure SetActionEnabled(); override;
   end;
 
 var
@@ -68,7 +74,7 @@ var
 implementation
 
 uses
-  uCreditPaymentT, MTLogger, uCreditTypesT;
+  uCreditPaymentT, MTLogger, uCreditTypesT, uSql;
 
 {$R *.dfm}
 
@@ -130,6 +136,8 @@ begin
     Query.MacroByName('CloseDate').Value := ' ';
 
   Query.Open();
+
+  Summ;
   inherited;
 end;
 
@@ -156,6 +164,60 @@ begin
   inherited;
   logger.Info('TCreditsT.SetActionEnabled');
   actCreditPayment.Enabled := (actCreditPayment.Tag = 1) and (Query.RecordCount > 0);
+end;
+
+procedure TCreditsT.Summ;
+begin
+  TSQL.Q.Close;
+  TSQL.Q.SQL.Text :=
+  '''
+            select count(*) CNT
+                  ,Sum(c.Amount)   Amount
+                  ,Sum(c.PayAmount) PayAmount
+                  ,Sum(0.00) as Rest
+
+              from tCredits c (nolock)
+             where 1=1
+
+             !Credit
+
+             !DateB
+
+             !DateE
+
+             !CloseDate
+  ''';
+
+  if edtCredit.LookupKey > 0 then
+    TSQL.Q.MacroByName('Credit').Value := ' and c.CreditID = ' + edtCredit.LookupKey.ToString
+  else
+    TSQL.Q.MacroByName('Credit').Value := '';
+
+  if edtDateB.Text <> '' then
+    TSQL.Q.MacroByName('DateB').Value := ' and c.CreditDate >= '''   + edtDateB.Text + ''''
+  else
+    TSQL.Q.MacroByName('DateB').Value := '';
+
+  if edtDateE.Text <> '' then
+    TSQL.Q.MacroByName('DateE').Value := ' and c.CreditDate <= '''   + edtDateB.Text + ''''
+  else
+    TSQL.Q.MacroByName('DateE').Value := '';
+//
+  if edtState.EditValue = 1  then
+    TSQL.Q.MacroByName('CloseDate').Value := ' and isnull(c.CloseDate, '''') = '''''
+  else
+  if edtState.EditValue = 2  then
+    TSQL.Q.MacroByName('CloseDate').Value := ' and isnull(c.CloseDate, '''') <> '''''
+  else
+    TSQL.Q.MacroByName('CloseDate').Value := ' ';
+
+
+  TSQL.Q.Open;
+
+  lblCount.Caption := 'Всего кредитов: ' + TSQL.Q.FieldByName('CNT').asString;;
+  edtAVG.Value := TSQL.Q.FieldByName('Amount').AsFloat;
+  edtSumT.Value := TSQL.Q.FieldByName('PayAmount').AsFloat;
+  edtSum.Value := TSQL.Q.FieldByName('Rest').AsFloat;
 end;
 
 initialization

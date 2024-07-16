@@ -13,7 +13,8 @@ uses
   cxClasses, FireDAC.Comp.DataSet, FireDAC.Comp.Client, System.ImageList,
   Vcl.ImgList, cxImageList, Vcl.Menus, System.Actions, Vcl.ActnList,
   cxGridLevel, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
-  cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, cxContainer, cxGroupBox;
+  cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, cxContainer, cxGroupBox,
+  System.Skia, Vcl.StdCtrls, cxButtons, cxTextEdit, Vcl.Skia;
 
 type
   TTasksT = class(TBaseFormDBT)
@@ -28,11 +29,23 @@ type
     TableViewDueDate: TcxGridDBColumn;
     TableViewTaskStatus: TcxGridDBColumn;
     QueryTaskID: TFMTBCDField;
+    SkLabel1: TSkLabel;
+    edtComment: TcxTextEdit;
+    cxButton3: TcxButton;
+    btnFilterOk: TcxButton;
+    btnFilterClear: TcxButton;
     procedure FormCreate(Sender: TObject);
+    procedure btnFilterOkClick(Sender: TObject);
+    procedure edtCommentKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure cxButton3Click(Sender: TObject);
+    procedure btnFilterClearClick(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+    procedure DataLoad(); override;
+
   end;
 
 var
@@ -40,7 +53,50 @@ var
 
 implementation
 
+uses
+  uImageModule;
+
 {$R *.dfm}
+procedure TTasksT.btnFilterClearClick(Sender: TObject);
+begin
+  inherited;
+  edtComment.Clear;
+  DataLoad;
+end;
+
+procedure TTasksT.btnFilterOkClick(Sender: TObject);
+begin
+  inherited;
+  DataLoad
+end;
+
+procedure TTasksT.cxButton3Click(Sender: TObject);
+begin
+  inherited;
+  edtComment.Clear;
+    DataLoad;
+end;
+
+procedure TTasksT.DataLoad;
+begin
+  Query.Close;
+
+  if edtComment.Text <> '' then
+    Query.MacroByName('Comment').Value := ' and t.Comment like ''%'   + edtComment.Text + '%'''
+  else
+    Query.MacroByName('Comment').Value := '';
+
+  Query.Open();
+  inherited;
+end;
+
+procedure TTasksT.edtCommentKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  inherited;
+    if Key = 13 then DataLoad;
+end;
+
 procedure TTasksT.FormCreate(Sender: TObject);
 begin
   inherited;

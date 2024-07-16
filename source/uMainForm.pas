@@ -26,7 +26,6 @@ type
     actKontragent: TAction;
     ToolButton2: TToolButton;
     ToolButton3: TToolButton;
-    Action1: TAction;
     ToolButton4: TToolButton;
     actDocumentRequest: TAction;
     ToolButton5: TToolButton;
@@ -37,6 +36,9 @@ type
     ToolButton8: TToolButton;
     actExpenseItems: TAction;
     ToolButton9: TToolButton;
+    actProfit: TAction;
+    ToolButton10: TToolButton;
+    ToolButton11: TToolButton;
     procedure FormCreate(Sender: TObject);
     procedure actAccountExecute(Sender: TObject);
     procedure FormTabsBar1AcceptForm(AForm: TForm; var AAccept: Boolean);
@@ -46,6 +48,7 @@ type
     procedure actCreditExecute(Sender: TObject);
     procedure actExpenseItemsExecute(Sender: TObject);
     procedure actKassaExecute(Sender: TObject);
+    procedure actProfitExecute(Sender: TObject);
   private
     { Private declarations }
 
@@ -91,6 +94,11 @@ end;
 procedure TMainForm.actKontragentExecute(Sender: TObject);
 begin
   CreateMDIChild('TKontragentsT');
+end;
+
+procedure TMainForm.actProfitExecute(Sender: TObject);
+begin
+  CreateMDIChild('TProfit_T');
 end;
 
 procedure TMainForm.actTaskExecute(Sender: TObject);

@@ -39,6 +39,8 @@ inherited ExpenseItemsT: TExpenseItemsT
     end
   end
   inherited Grid: TcxGrid
+    Top = 114
+    Height = 376
     inherited TableView: TcxGridDBTableView
       DataController.KeyFieldNames = 'ExpenseItemID'
       object TableViewExpenseItemID: TcxGridDBColumn
@@ -58,6 +60,119 @@ inherited ExpenseItemsT: TExpenseItemsT
         HeaderAlignmentHorz = taCenter
         Width = 488
       end
+    end
+  end
+  inherited FilterPanel: TcxGroupBox
+    Visible = True
+    ExplicitHeight = 74
+    Height = 74
+    object SkLabel1: TSkLabel
+      Left = 145
+      Top = 18
+      Width = 100
+      Height = 19
+      Anchors = [akTop, akRight]
+      Words = <
+        item
+          Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
+        end>
+    end
+    object SkLabel2: TSkLabel
+      Left = 145
+      Top = 47
+      Width = 48
+      Height = 19
+      Words = <
+        item
+          Caption = #1043#1088#1091#1087#1087#1072':'
+        end>
+    end
+    object edtName: TcxTextEdit
+      Left = 251
+      Top = 15
+      Anchors = [akTop, akRight]
+      Properties.MaxLength = 255
+      TabOrder = 0
+      TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
+      OnKeyDown = edtNameKeyDown
+      Width = 298
+    end
+    object cxButton3: TcxButton
+      Left = 550
+      Top = 15
+      Width = 25
+      Height = 25
+      Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Margins.Bottom = 0
+      Anchors = [akTop, akRight]
+      LookAndFeel.NativeStyle = False
+      OptionsImage.ImageIndex = 4
+      OptionsImage.Images = IM.IL
+      PaintStyle = bpsGlyph
+      SpeedButtonOptions.Flat = True
+      SpeedButtonOptions.Transparent = True
+      TabOrder = 1
+      OnClick = cxButton3Click
+    end
+    object btnFilterOk: TcxButton
+      Left = 610
+      Top = 15
+      Width = 102
+      Height = 25
+      Hint = #1055#1088#1080#1084#1077#1085#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
+      Anchors = [akTop, akRight]
+      Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
+      OptionsImage.ImageIndex = 5
+      OptionsImage.Images = IM.IL
+      TabOrder = 2
+      OnClick = btnFilterOkClick
+    end
+    object btnFilterClear: TcxButton
+      Left = 711
+      Top = 15
+      Width = 102
+      Height = 25
+      Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
+      Anchors = [akTop, akRight]
+      Caption = #1054#1090#1084#1077#1085#1080#1090#1100
+      OptionsImage.ImageIndex = 2
+      OptionsImage.Images = IM.IL
+      TabOrder = 3
+      OnClick = btnFilterClearClick
+    end
+    object edtExpenseGroup: ALookupEdit
+      Left = 251
+      Top = 43
+      LookupConnection = DM.FDConnection
+      LookupForm = 'TExpenseGroupsT'
+      LookupSQL = 
+        '  Select Name from tExpenseGroups (nolock) where ExpenseGroupID ' +
+        '= :ID'
+      LookupKey = 0
+      ParentShowHint = False
+      Properties.Buttons = <
+        item
+          Caption = '...'
+          Default = True
+          ImageIndex = 0
+          Hint = #1042#1099#1073#1088#1072#1090#1100' '#1080#1079' '#1089#1087#1088#1072#1074#1086#1095#1085#1080#1082#1072
+          Kind = bkText
+          Width = 25
+        end
+        item
+          ImageIndex = 4
+          Hint = #1054#1095#1080#1089#1090#1080#1090#1100' '#1087#1086#1083#1077
+          Kind = bkGlyph
+        end>
+      Properties.Images = IM.IL
+      Properties.OnButtonClick = edtExpenseGroupPropertiesButtonClick
+      ShowHint = True
+      TabOrder = 4
+      TextHint = #1042#1099#1073#1077#1088#1080#1090#1077' '#1075#1088#1091#1087#1087#1091
+      Width = 324
     end
   end
   inherited ActionList: TActionList
@@ -704,8 +819,25 @@ inherited ExpenseItemsT: TExpenseItemsT
       '  from tExpenseItems e (nolock)'
       '  left join tExpenseGroups g (nolock)'
       '         on g.ExpenseGroupID = e.ExpenseGroupID'
+      '         '
+      ' where 1=1'
+      '  '
+      '   !Name        '
+      '   '
+      '   !ExpenseGroup '
       ''
       'order by e.ExpenseItemID')
+    Left = 711
+    Top = 135
+    MacroData = <
+      item
+        Value = Null
+        Name = 'NAME'
+      end
+      item
+        Value = Null
+        Name = 'EXPENSEGROUP'
+      end>
     object QueryExpenseItemID: TFMTBCDField
       AutoGenerateValue = arAutoInc
       FieldName = 'ExpenseItemID'

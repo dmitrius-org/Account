@@ -254,6 +254,10 @@
             <Form>CreditPaymentT</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="..\source\application\uProfit_T.pas">
+            <Form>Profit_T</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
