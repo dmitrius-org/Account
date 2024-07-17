@@ -178,10 +178,11 @@ end;
 procedure TTransactionT.FormShow(Sender: TObject);
 begin
   inherited;
-  qKassa.Open;
 
   edtPaymentDate.Date := Date();
   edtPaymentDateE.Date := Date();
+
+  DataLoad;
 end;
 
 procedure TTransactionT.Summ;

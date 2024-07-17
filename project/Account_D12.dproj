@@ -258,6 +258,17 @@
             <Form>Profit_T</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="..\source\application\uDebsHistoryClientT.pas">
+            <Form>DebsHistoryClientT</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\source\application\uDolgT.pas">
+            <Form>DolgT</Form>
+        </DCCReference>
+        <DCCReference Include="..\source\application\uDebsHistoryBuyerT.pas">
+            <Form>DebsHistoryBuyerT</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

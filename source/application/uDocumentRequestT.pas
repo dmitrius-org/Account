@@ -53,6 +53,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure edtAccountNumberKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure btnFilterOkClick(Sender: TObject);
+    procedure btnFilterClearClick(Sender: TObject);
   private
     { Private declarations }
     procedure DataLoad(); override;
@@ -67,6 +69,22 @@ implementation
 
 {$R *.dfm}
 
+
+procedure TDocumentRequestT.btnFilterClearClick(Sender: TObject);
+begin
+  edtAccountNumber.Clear;
+  edtAccountDate.Clear;
+  edtPhone.Clear;
+  edtBuyer.Clear;
+  edtSupplier.Clear;
+
+  DataLoad;
+end;
+
+procedure TDocumentRequestT.btnFilterOkClick(Sender: TObject);
+begin
+  DataLoad;
+end;
 
 procedure TDocumentRequestT.DataLoad;
 begin

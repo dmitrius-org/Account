@@ -39,7 +39,10 @@ uses
   uDocumentRequestT in '..\source\application\uDocumentRequestT.pas' {DocumentRequestT},
   uDocumentRequestF in '..\source\application\uDocumentRequestF.pas' {DocumentRequestF},
   uCreditPaymentT in '..\source\application\uCreditPaymentT.pas' {CreditPaymentT},
-  uProfit_T in '..\source\application\uProfit_T.pas' {Profit_T};
+  uProfit_T in '..\source\application\uProfit_T.pas' {Profit_T},
+  uDebsHistoryClientT in '..\source\application\uDebsHistoryClientT.pas' {DebsHistoryClientT},
+  uDolgT in '..\source\application\uDolgT.pas' {DolgT},
+  uDebsHistoryBuyerT in '..\source\application\uDebsHistoryBuyerT.pas' {DebsHistoryBuyerT};
 
 {$R *.res}
 
@@ -49,7 +52,9 @@ begin
 
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TIM, IM);
-//  Application.CreateForm(TProfit_T, Profit_T);
+//  Application.CreateForm(TDebsHistoryBuyerT, DebsHistoryBuyerT);
+  //Application.CreateForm(TDebsHistoryBuyerT, DebsHistoryBuyerT);
+  //  Application.CreateForm(TProfit_T, Profit_T);
   //Application.CreateForm(TDocumentRequestT, DocumentRequestT);
   //Application.CreateForm(TDocumentRequestF, DocumentRequestF);
   //  Application.CreateForm(TTransactionF, TransactionF);
@@ -63,7 +68,9 @@ begin
   if 1=1 then
   begin
     //LoginForm.Free;
-    Application.CreateForm(TMainForm, MainForm);
+    Application.CreateForm(TDolgT, DolgT);
+  // Application.CreateForm(TMainForm, MainForm);
+
 // Application.CreateForm(TProfit_T, Profit_T);
 //    Application.CreateForm(TDocumentRequestT, DocumentRequestT);
 //Application.CreateForm(TCreditPaymentT, CreditPaymentT);

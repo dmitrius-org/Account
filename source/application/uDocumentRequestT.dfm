@@ -21,7 +21,7 @@ inherited DocumentRequestT: TDocumentRequestT
     Top = 122
     Width = 930
     Height = 413
-    ExplicitTop = 128
+    ExplicitTop = 122
     ExplicitWidth = 930
     ExplicitHeight = 413
     inherited TableView: TcxGridDBTableView
@@ -86,10 +86,11 @@ inherited DocumentRequestT: TDocumentRequestT
   inherited ToolBar: TToolBar [2]
     Width = 930
     DoubleBuffered = True
+    ExplicitWidth = 930
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
-    ExplicitWidth = 913
+    ExplicitWidth = 930
     ExplicitHeight = 82
     Height = 82
     Width = 930
@@ -165,7 +166,7 @@ inherited DocumentRequestT: TDocumentRequestT
       LookupForm = 'TKontragentsT'
       LookupSQL = 'Select Name from tKontragents (nolock) where KontragentID = :ID'
       LookupKey = 0
-      LookupFilter = 'and k.KontragentTypeID = 2'
+      LookupFilter = 'and k.KontragentTypeID = 2 and isnull(k.IsPartner, 0) = 0'
       ParentShowHint = False
       Properties.Buttons = <
         item
@@ -226,6 +227,7 @@ inherited DocumentRequestT: TDocumentRequestT
       OptionsImage.ImageIndex = 5
       OptionsImage.Images = IM.IL
       TabOrder = 3
+      OnClick = btnFilterOkClick
     end
     object btnFilterClear: TcxButton
       Left = 705
@@ -237,9 +239,10 @@ inherited DocumentRequestT: TDocumentRequestT
       OptionsImage.ImageIndex = 2
       OptionsImage.Images = IM.IL
       TabOrder = 6
+      OnClick = btnFilterClearClick
     end
     object edtPhone: TcxTextEdit
-      Left = 77
+      Left = 72
       Top = 47
       TabOrder = 4
       OnKeyDown = edtAccountNumberKeyDown
