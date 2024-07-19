@@ -24,7 +24,6 @@ type
     QueryName: TStringField;
     QueryisActive: TBooleanField;
     QueryInDateTime: TSQLTimeStampField;
-    QueryUserID: TFMTBCDField;
     TableViewExpenseItemID: TcxGridDBColumn;
     TableViewExpenseGroup: TcxGridDBColumn;
     TableViewName: TcxGridDBColumn;
@@ -52,6 +51,8 @@ type
   public
     { Public declarations }
     procedure DataLoad(); override;
+    procedure SetActionEnabled(); override;
+
   end;
 
 var
@@ -67,7 +68,6 @@ uses
 procedure TExpenseItemsT.actGroupExecute(Sender: TObject);
 var Group:TExpenseGroupsT;
 begin
-  inherited;
   Group := TExpenseGroupsT.Create(self);
   Group.ShowModal;
   Group.Free;
@@ -132,6 +132,12 @@ begin
   inherited;
   EditFormClass := 'TExpenseItemsF';
 end;
+procedure TExpenseItemsT.SetActionEnabled;
+begin
+  inherited;
+  actGroup.Enabled := (actGroup.Tag = 1);
+end;
+
 initialization
   RegisterClass(TExpenseItemsT);
 end.

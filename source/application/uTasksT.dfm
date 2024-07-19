@@ -2,7 +2,6 @@ inherited TasksT: TTasksT
   Caption = #1055#1086#1088#1091#1095#1077#1085#1080#1103
   ClientWidth = 830
   StyleElements = [seFont, seClient, seBorder]
-  OnCreate = FormCreate
   ExplicitWidth = 846
   TextHeight = 17
   inherited ToolBar: TToolBar
@@ -14,7 +13,9 @@ inherited TasksT: TTasksT
     Top = 88
     Width = 830
     Height = 402
+    ExplicitTop = 88
     ExplicitWidth = 830
+    ExplicitHeight = 402
     inherited TableView: TcxGridDBTableView
       DataController.KeyFieldNames = 'TaskID'
       object TableViewCreateDate: TcxGridDBColumn
@@ -57,7 +58,7 @@ inherited TasksT: TTasksT
     Width = 830
     object SkLabel1: TSkLabel
       Left = 186
-      Top = 15
+      Top = 18
       Width = 75
       Height = 19
       Anchors = [akTop, akRight]
@@ -122,6 +123,9 @@ inherited TasksT: TTasksT
       TabOrder = 3
       OnClick = btnFilterClearClick
     end
+  end
+  inherited ActionList: TActionList
+    Tag = 80
   end
   inherited cxImageList32: TcxImageList
     FormatVersion = 1

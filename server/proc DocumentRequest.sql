@@ -34,7 +34,8 @@ as
               ,Comment
               ,Phone
               ,Mail       
-              ,UserID        
+              ,InUserID
+              ,UpUserID        
               )
 		OUTPUT INSERTED.DocumentRequestID INTO @ID
 		select 
@@ -46,6 +47,7 @@ as
               ,@Comment	      
               ,@Phone	      
               ,@Mail	                   
+              ,dbo.GetUserID()
               ,dbo.GetUserID()
 
 		Select @DocumentRequestID = ID from @ID
@@ -98,14 +100,16 @@ as
   BEGIN TRY 
 
 	Update tDocumentRequest
-	   set @PayDate       = @PayDate          
-          ,@AccountNumber = @AccountNumber	
-          ,@SupplierID	  = @SupplierID	    
-          ,@BuyerID	      = @BuyerID	          
-          ,@Comment	      = @Comment	          
-          ,@Phone	      = @Phone	        
-          ,@Mail	      = @Mail	              
-          ,@AccountID     = @AccountID        
+	   set PayDate       = @PayDate          
+          ,AccountNumber = @AccountNumber	
+          ,SupplierID	 = @SupplierID	    
+          ,BuyerID	     = @BuyerID	          
+          ,Comment	     = @Comment	          
+          ,Phone	     = @Phone	        
+          ,Mail	         = @Mail	              
+          ,AccountID     = @AccountID    
+          ,UpUserID      = dbo.GetUserID()
+          ,UpDatetime    = GetDate()
 	 where DocumentRequestID  = @DocumentRequestID  
      
     exec CommentFill

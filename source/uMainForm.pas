@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, System.Actions, Vcl.ActnList,
   System.ImageList, Vcl.ImgList, Vcl.VirtualImageList, Vcl.StdActns,
   Vcl.FormTabsBar, Vcl.ComCtrls, Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls,
-  Vcl.ActnMenus, cxImageList, cxGraphics;
+  Vcl.ActnMenus, cxImageList, cxGraphics, uGrantUtils;
 
 type
   TMainForm = class(TForm)
@@ -39,6 +39,11 @@ type
     actProfit: TAction;
     ToolButton10: TToolButton;
     ToolButton11: TToolButton;
+    actDebs: TAction;
+    ToolButton12: TToolButton;
+    ToolButton13: TToolButton;
+    ToolButton14: TToolButton;
+    actUser: TAction;
     procedure FormCreate(Sender: TObject);
     procedure actAccountExecute(Sender: TObject);
     procedure FormTabsBar1AcceptForm(AForm: TForm; var AAccept: Boolean);
@@ -49,16 +54,23 @@ type
     procedure actExpenseItemsExecute(Sender: TObject);
     procedure actKassaExecute(Sender: TObject);
     procedure actProfitExecute(Sender: TObject);
+    procedure actDebsExecute(Sender: TObject);
+    procedure actUserExecute(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
+    FGrant: TAccess;
 
   public
     { Public declarations }
     procedure CreateMDIChild(const FormClassName: string);
+
+    procedure SetActionEnabled();
   end;
 
 var
   MainForm: TMainForm;
+
 
 implementation
 
@@ -74,6 +86,11 @@ end;
 procedure TMainForm.actCreditExecute(Sender: TObject);
 begin
   CreateMDIChild('TCreditsT');
+end;
+
+procedure TMainForm.actDebsExecute(Sender: TObject);
+begin
+  CreateMDIChild('TDolgT');
 end;
 
 procedure TMainForm.actDocumentRequestExecute(Sender: TObject);
@@ -106,6 +123,11 @@ begin
   CreateMDIChild('TTasksT');
 end;
 
+procedure TMainForm.actUserExecute(Sender: TObject);
+begin
+  CreateMDIChild('TUserT');
+end;
+
 procedure TMainForm.CreateMDIChild(const FormClassName: string);
 var form : TBaseFormT;
     mr : TModalResult;
@@ -125,9 +147,35 @@ begin
 
 end;
 
+procedure TMainForm.FormShow(Sender: TObject);
+begin
+  //{$IFDEF Debug}
+  //TAccess.GrantTemplateCreate(self);
+  //{$ENDIF}
+
+  TAccess.UserGrantLoad;
+
+  TAccess.SetGrant(self, ActionList);
+
+  SetActionEnabled;
+end;
+
 procedure TMainForm.FormTabsBar1AcceptForm(AForm: TForm; var AAccept: Boolean);
 begin
   logger.Info('FormTabsBar1AcceptForm ' + AForm.Name);
+end;
+
+procedure TMainForm.SetActionEnabled;
+begin
+  actAccount.Visible := actAccount.Tag=1;
+  actKassa.Visible := actKassa.Tag=1;
+  actKontragent.Visible := actKontragent.Tag=1;
+  actDocumentRequest.Visible := actDocumentRequest.Tag=1;
+  actCredit.Visible := actCredit.Tag=1;
+  actTask.Visible := actTask.Tag=1;
+  actExpenseItems.Visible := actExpenseItems.Tag=1;
+  actProfit.Visible := actProfit.Tag=1;
+  actUser.Visible := actUser.Tag=1;
 end;
 
 end.

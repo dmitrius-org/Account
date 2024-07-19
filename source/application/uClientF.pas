@@ -281,11 +281,7 @@ begin
 
 
               select
-                     k.Name
-                    ,k.Discount
-                    ,k.DiscountDate
-                    ,k.InDateTime
-                    ,k.UserID
+                     k.*
                 from tKontragents k (nolock)
                where k.KontragentID = :KontragentID
             ''';

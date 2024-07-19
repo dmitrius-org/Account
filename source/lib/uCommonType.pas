@@ -52,6 +52,7 @@ Type
   ,acClone         = 27
   ,acResetAcc      = 28
   ,acAddDebet      = 29
+  ,acRequest       = 30
   );
 
    /// <summary> Типы объектов системы </summary>

@@ -15,14 +15,7 @@ inherited SupplierF: TSupplierF
     ExplicitWidth = 654
     inherited dxPanel1: TdxPanel
       Height = 46
-      TabOrder = 0
       ExplicitHeight = 46
-      inherited edtInDate: TcxDateEdit
-        TabOrder = 1
-      end
-      inherited edtUser: ALookupEdit
-        TabOrder = 0
-      end
     end
     inherited btnCancel: TcxButton
       Left = 451
@@ -33,7 +26,6 @@ inherited SupplierF: TSupplierF
     inherited btnOk: TcxButton
       Left = 546
       Height = 40
-      TabOrder = 2
       OnClick = btnOkClick
       ExplicitLeft = 546
       ExplicitHeight = 40

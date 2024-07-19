@@ -269,6 +269,8 @@ inherited AccountF: TAccountF
         Hint = #1054#1095#1080#1089#1090#1080#1090#1100' '#1087#1086#1083#1077
         Kind = bkGlyph
       end>
+    Properties.Images = IM.IL
+    Properties.OnButtonClick = edtBuyerPropertiesButtonClick
     ShowHint = True
     TabOrder = 10
     Width = 285
@@ -296,6 +298,7 @@ inherited AccountF: TAccountF
         Hint = #1054#1095#1080#1089#1090#1080#1090#1100' '#1087#1086#1083#1077
         Kind = bkGlyph
       end>
+    Properties.Images = IM.IL
     ShowHint = True
     TabOrder = 12
     Width = 285
@@ -323,6 +326,8 @@ inherited AccountF: TAccountF
         Hint = #1054#1095#1080#1089#1090#1080#1090#1100' '#1087#1086#1083#1077
         Kind = bkGlyph
       end>
+    Properties.Images = IM.IL
+    Properties.OnButtonClick = edtClientPropertiesButtonClick
     ShowHint = True
     TabOrder = 13
     Width = 285

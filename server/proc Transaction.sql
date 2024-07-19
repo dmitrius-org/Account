@@ -50,7 +50,8 @@ as
               ,KontragentID  
               ,Discount      
               ,ParentID        
-              ,UserID        
+              ,InUserID  
+              ,UpUserID
               )
 		OUTPUT INSERTED.TransactionID INTO @ID
 		select 
@@ -65,6 +66,7 @@ as
               ,@KontragentID   
               ,@Discount       
               ,@ParentID         
+              ,dbo.GetUserID()
               ,dbo.GetUserID()
 
 		Select @TransactionID = ID from @ID
@@ -96,7 +98,8 @@ as
                   ,KontragentID  
                   ,Discount      
                   ,ParentID        
-                  ,UserID        
+                  ,InUserID   
+                  ,UpUserID
                   )
 		    OUTPUT INSERTED.TransactionID INTO @ID
 		    select 
@@ -111,6 +114,7 @@ as
                   ,@KontragentID   
                   ,@Discount       
                   ,@TransactionID         
+                  ,dbo.GetUserID()
                   ,dbo.GetUserID()
 
          if @r = 0 goto next_
@@ -169,17 +173,19 @@ as
   BEGIN TRY 
 
 	Update tTransaction
-	   set  TranTypeID      = @TranTypeID      
-           ,OperationID     = @OperationID     
-           ,OperDate        = @OperDate        
-           ,ExpenseItemID   = @ExpenseItemID   
-           ,CreditID        = @CreditID         
-           ,Amount          = @Amount          
-           ,Comment         = @Comment         
-           --,KassaID         = @KassaID         
-           ,KontragentID    = @KontragentID    
-           ,Discount        = @Discount        
-           ,ParentID        = @ParentID             
+	   set  TranTypeID    = @TranTypeID      
+           ,OperationID   = @OperationID     
+           ,OperDate      = @OperDate        
+           ,ExpenseItemID = @ExpenseItemID   
+           ,CreditID      = @CreditID         
+           ,Amount        = @Amount          
+           ,Comment       = @Comment         
+           --,KassaID       = @KassaID         
+           ,KontragentID  = @KontragentID    
+           ,Discount      = @Discount        
+           ,ParentID      = @ParentID  
+           ,UpUserID      = dbo.GetUserID()
+           ,UpDatetime    = GetDate()
 	  where TransactionID  = @TransactionID       
 
   END TRY  
@@ -272,4 +278,46 @@ exit_:
 return @r
 go
 grant exec on UserKassaList to public
+go
+
+
+
+if OBJECT_ID('vTransaction') is not null
+    drop view vTransaction
+/*
+  vTransaction - 
+*/
+go
+create view vTransaction
+as
+Select t.TransactionID 
+      ,t.TranTypeID 
+      ,tt.Brief       as TranType
+      ,ot.Name        as OperationName
+      ,t.OperDate
+      ,k.Name         as KontragentName
+      ,iif(t.TranTypeID = 1, t.Amount, 0) as Debet
+      ,iif(t.TranTypeID in (2, 3), t.Amount, 0) as Credit
+      ,ks.Name        as Kassa
+      ,(Select sum(IIf(t2.TranTypeID=1, 1, -1) * t2.Amount )          
+          from tTransaction t2 (nolock)         
+         where t2.InDateTime <= t.InDateTime 
+        ) AS balance
+  from tTransaction t (nolock)
+ inner join tTranType tt (nolock)
+         on tt.TranTypeID = t.TranTypeID
+         
+ Inner join tKassa ks (nolock)
+         on ks.KassaID = t.KassaID
+                  
+ left join tKontragents k (nolock)
+         on k.KontragentID = t.KontragentID
+
+  left join tOperation o (nolock)
+         on o.OperationID = t.OperationID
+  left join tOperationType ot (nolock)
+         on ot.OperationTypeID = o.OperationTypeID
+
+go
+grant all on vTransaction to public
 go

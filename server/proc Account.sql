@@ -62,7 +62,8 @@ as
               ,Mail            
               ,PayNumber       
               ,PayDate             
-              ,UserID             
+              ,InUserID  
+              ,UpUserID
               )
 		OUTPUT INSERTED.AccountID INTO @ID
 		select nullif(@PaymentDate, '19000101')       
@@ -83,6 +84,7 @@ as
               ,@Mail            
               ,@PayNumber       
               ,nullif(@PayDate, '19000101')    	    
+              ,dbo.GetUserID()
               ,dbo.GetUserID()
 
 		Select @AccountID = ID from @ID
@@ -159,25 +161,27 @@ as
 
 	Update tAccounts
 	   set    
-           PaymentDate         =  nullif(@PaymentDate  , '19000101')      
-          ,PaymentAmount       = @PaymentAmount  
-          ,AccountNumber       = @AccountNumber  
-          ,AccountDate         = nullif(@AccountDate  , '19000101')     
-          ,AccountAmount       = @AccountAmount  
-          ,BuyerID             = @BuyerID        
-          ,BuyerDiscount       = @BuyerDiscount  
-          ,SupplierID          = @SupplierID     
-          ,ClientID            = @ClientID       
-          ,ClientDiscount      = @ClientDiscount 
-          ,ParentID            = @ParentID       
-          ,IsRefund            = isnull(@IsRefund, IsRefund)      
-          ,AccountStatusID     = @AccountStatusID
-          ,Comment             = @Comment        
-          ,Phone               = @Phone          
-          ,Mail                = @Mail           
-          ,PayNumber           = @PayNumber      
-          ,PayDate             = nullif(@PayDate  , '19000101')        
-	where AccountID  = @AccountID
+           PaymentDate     =  nullif(@PaymentDate  , '19000101')      
+          ,PaymentAmount   = @PaymentAmount  
+          ,AccountNumber   = @AccountNumber  
+          ,AccountDate     = nullif(@AccountDate  , '19000101')     
+          ,AccountAmount   = @AccountAmount  
+          ,BuyerID         = @BuyerID        
+          ,BuyerDiscount   = @BuyerDiscount  
+          ,SupplierID      = @SupplierID     
+          ,ClientID        = @ClientID       
+          ,ClientDiscount  = @ClientDiscount 
+          ,ParentID        = @ParentID       
+          ,IsRefund        = isnull(@IsRefund, IsRefund)      
+          ,AccountStatusID = @AccountStatusID
+          ,Comment         = @Comment        
+          ,Phone           = @Phone          
+          ,Mail            = @Mail           
+          ,PayNumber       = @PayNumber      
+          ,PayDate         = nullif(@PayDate  , '19000101')    
+          ,UpUserID        = dbo.GetUserID()
+          ,UpDatetime      = GetDate()
+	 where AccountID  = @AccountID
     
 
     if isnull(@SupplierID, 0) > 0

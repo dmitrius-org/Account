@@ -298,8 +298,9 @@ end;
 
 procedure TSupplierF.DataLoad;
 begin
-  TSql.Open('''
-
+  FDQuery.Close;
+  FDQuery.sql.text :=
+  '''
               exec ContactFill
                       @ObjectTypeID      = 3
                      ,@ObjectID          = :KontragentID
@@ -313,22 +314,21 @@ begin
                     ,Edo
                     ,EdoID
                     ,Debts
-                    ,InDateTime
-                    ,UserID
+                    ,upDateTime
+                    ,UpUserID
                 from tKontragents  (nolock)
                where KontragentID = :KontragentID
-            ''',
-            ['KontragentID'],
-            [ID]
-            );
+  ''';
+  FDQuery.ParamByName('KontragentID').AsInteger := ID;
+  FDQuery.Open;
 
-  edtINN.Text := TSql.Q.FieldByName('Inn').Value;
-  edtName.Text := TSql.Q.FieldByName('Name').Value;
-  edtFullName.Text := TSql.Q.FieldByName('FullName').Value;
-  edtPostAddress.Text := TSql.Q.FieldByName('PostAddress').Value;
-  edtlegalAaddress.Text := TSql.Q.FieldByName('LegalAddress').Value;
-  edtEdo.Text := TSql.Q.FieldByName('Edo').Value;
-  edtEdoID.Text := TSql.Q.FieldByName('EdoID').Value;
+  edtINN.Text           := FDQuery.FieldByName('Inn').Value;
+  edtName.Text          := FDQuery.FieldByName('Name').Value;
+  edtFullName.Text      := FDQuery.FieldByName('FullName').Value;
+  edtPostAddress.Text   := FDQuery.FieldByName('PostAddress').Value;
+  edtlegalAaddress.Text := FDQuery.FieldByName('LegalAddress').Value;
+  edtEdo.Text           := FDQuery.FieldByName('Edo').Value;
+  edtEdoID.Text         := FDQuery.FieldByName('EdoID').Value;
 
   inherited;
 end;

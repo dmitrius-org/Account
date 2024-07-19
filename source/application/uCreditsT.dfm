@@ -2,7 +2,6 @@ inherited CreditsT: TCreditsT
   Caption = #1050#1088#1077#1076#1080#1090#1099
   ClientWidth = 944
   StyleElements = [seFont, seClient, seBorder]
-  OnCreate = FormCreate
   ExplicitWidth = 960
   TextHeight = 17
   inherited ToolBar: TToolBar
@@ -43,7 +42,7 @@ inherited CreditsT: TCreditsT
     object ToolButton3: TToolButton
       Left = 295
       Top = 0
-      Action = actCredit
+      Action = actCreditType
       AutoSize = True
     end
     object ToolButton2: TToolButton
@@ -57,9 +56,9 @@ inherited CreditsT: TCreditsT
     Top = 157
     Width = 944
     Height = 333
-    ExplicitTop = 131
+    ExplicitTop = 157
     ExplicitWidth = 944
-    ExplicitHeight = 359
+    ExplicitHeight = 333
     inherited TableView: TcxGridDBTableView
       DataController.KeyFieldNames = 'CreditID'
       object TableViewCreditID: TcxGridDBColumn
@@ -314,16 +313,17 @@ inherited CreditsT: TCreditsT
     end
   end
   inherited ActionList: TActionList
+    Tag = 40
     object actCreditPayment: TAction
       Tag = 1
       Caption = #1042#1099#1087#1083#1072#1090#1099' '#1087#1086' '#1082#1088#1077#1076#1080#1090#1091
       ImageIndex = 6
       OnExecute = actCreditPaymentExecute
     end
-    object actCredit: TAction
+    object actCreditType: TAction
       Caption = #1042#1080#1076#1099' '#1082#1088#1077#1076#1080#1090#1086#1074
       ImageIndex = 7
-      OnExecute = actCreditExecute
+      OnExecute = actCreditTypeExecute
     end
   end
   inherited cxImageList32: TcxImageList

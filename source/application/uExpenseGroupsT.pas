@@ -25,7 +25,6 @@ type
     QueryName: TStringField;
     QueryisActive: TBooleanField;
     QueryInDateTime: TSQLTimeStampField;
-    QueryUserID: TFMTBCDField;
     SkLabel1: TSkLabel;
     edtName: TcxTextEdit;
     cxButton3: TcxButton;

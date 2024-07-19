@@ -23,7 +23,11 @@ select 3, 'Не оплачен'      --  union all
 --select 4, 'Отменен' 
 
 if OBJECT_ID('tAccounts') is null
---  drop table tAccounts
+/*begin
+  ALTER TABLE tAccounts SET ( SYSTEM_VERSIONING = OFF )
+  drop table tAccounts
+  DROP TABLE hAccounts
+end */
 /* **********************************************************
 tAccounts - 
 ********************************************************** */
@@ -49,9 +53,22 @@ begin
     ,Mail              varchar(256)
     ,PayNumber         varchar(256)
     ,PayDate           datetime
+
+     --
+    ,InUserID          numeric(15, 0)
 	,InDateTime        DateTime default getdate()   -- 
-    ,UserID            numeric(15, 0) 
-	);
+
+    ,UpUserID          numeric(15, 0) 
+    ,UpDateTime        DateTime default getdate()  
+     --
+    ,[ValidFrom] DATETIME2 GENERATED ALWAYS AS ROW START
+    ,[ValidTo] DATETIME2 GENERATED ALWAYS AS ROW END
+
+    ,PERIOD FOR SYSTEM_TIME (ValidFrom, ValidTo)
+
+    ,CONSTRAINT PK_tAccounts_AccountID PRIMARY KEY NONCLUSTERED (AccountID)
+	)
+    WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = dbo.hAccounts));
 
 	create index ao1 on tAccounts(AccountID);
 

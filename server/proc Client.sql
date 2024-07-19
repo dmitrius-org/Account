@@ -27,12 +27,13 @@ as
       Begin tran        
 
 		insert into tKontragents
-		      (KontragentTypeID, Name, Discount, DiscountDate, UserID)
+		      (KontragentTypeID, Name, Discount, DiscountDate, InUserID, UpUserID)
 		OUTPUT INSERTED.KontragentID INTO @ID
 		select 1
               ,@Name     
               ,@Discount  
               ,@DiscountDate   
+              ,dbo.GetUserID()
               ,dbo.GetUserID()
 
 		Select @ClientID = ID from @ID
@@ -100,6 +101,8 @@ as
 		   set Name          = @Name    
               ,Discount      = @Discount     
               ,DiscountDate  = @DiscountDate  
+              ,UpUserID      = dbo.GetUserID()
+              ,UpDatetime    = GetDate()
 		 where KontragentID  = @ClientID
 
         exec ContactFill

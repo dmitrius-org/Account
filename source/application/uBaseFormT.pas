@@ -29,6 +29,7 @@ type
     tbDelete: TToolButton;
     actLookup: TAction;
     N6: TMenuItem;
+    procedure FormCreate(Sender: TObject);
   private
     FFormAction: TFormAction;
     FID: Integer;
@@ -48,10 +49,21 @@ var
 
 implementation
 
+uses
+  uGrantUtils;
+
 
 {$R *.dfm}
 
 { TBaseFormT }
+
+procedure TBaseFormT.FormCreate(Sender: TObject);
+begin
+  {$IFDEF Debug}
+  TAccess.GrantTemplateCreate(self);
+  {$ENDIF}
+  TAccess.SetGrant(self, ActionList);
+end;
 
 procedure TBaseFormT.SetFormAction(const Value: TFormAction);
 begin

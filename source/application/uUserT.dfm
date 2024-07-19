@@ -1,108 +1,189 @@
-object BaseFormT: TBaseFormT
-  Left = 0
-  Top = 0
-  ClientHeight = 424
-  ClientWidth = 947
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -12
-  Font.Name = 'Segoe UI'
-  Font.Style = []
-  Position = poDesktopCenter
-  OnCreate = FormCreate
-  TextHeight = 15
-  object ToolBar: TToolBar
-    Left = 0
-    Top = 0
-    Width = 947
-    Height = 38
-    AutoSize = True
-    ButtonHeight = 38
-    ButtonWidth = 81
-    Caption = 'ToolBar'
-    Color = 14079702
-    GradientStartColor = 14079702
-    Images = cxImageList16
-    ParentColor = False
-    ParentShowHint = False
-    ShowCaptions = True
-    ShowHint = True
-    TabOrder = 0
-    object tbShow: TToolButton
-      Left = 0
+inherited UserT: TUserT
+  Caption = #1055#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1080
+  ClientHeight = 454
+  ClientWidth = 678
+  StyleElements = [seFont, seClient, seBorder]
+  ExplicitWidth = 694
+  ExplicitHeight = 493
+  TextHeight = 17
+  inherited ToolBar: TToolBar
+    Width = 678
+    ButtonWidth = 95
+    DoubleBuffered = True
+    ExplicitWidth = 678
+    inherited tbShow: TToolButton
+      AutoSize = True
+      ExplicitWidth = 91
+    end
+    inherited tbAdd: TToolButton
+      Left = 91
+      AutoSize = True
+      ExplicitLeft = 91
+      ExplicitWidth = 69
+    end
+    inherited tbEdit: TToolButton
+      Left = 160
+      AutoSize = True
+      ExplicitLeft = 160
+      ExplicitWidth = 69
+    end
+    inherited tbDelete: TToolButton
+      Left = 229
+      AutoSize = True
+      ExplicitLeft = 229
+      ExplicitWidth = 58
+    end
+    object ToolButton1: TToolButton
+      Left = 287
       Top = 0
-      Action = actShow
-    end
-    object tbAdd: TToolButton
-      Left = 81
-      Top = 0
-      Action = actAdd
-    end
-    object tbEdit: TToolButton
-      Left = 162
-      Top = 0
-      Action = actEdit
-    end
-    object tbDelete: TToolButton
-      Left = 243
-      Top = 0
-      Action = actDelete
-    end
-  end
-  object ActionList: TActionList
-    Tag = -1
-    Images = cxImageList16
-    Left = 704
-    Top = 104
-    object actShow: TAction
-      Caption = #1055#1088#1086#1089#1084#1086#1090#1088#1077#1090#1100
-      ImageIndex = 3
-    end
-    object actAdd: TAction
-      Caption = #1044#1086#1073#1072#1074#1080#1090#1100
-      ImageIndex = 0
-    end
-    object actEdit: TAction
-      Caption = #1048#1079#1084#1077#1085#1080#1090#1100
+      Width = 8
+      Caption = 'ToolButton1'
       ImageIndex = 2
+      Style = tbsSeparator
     end
-    object actDelete: TAction
-      Caption = #1059#1076#1072#1083#1080#1090#1100
-      ImageIndex = 1
-    end
-    object actLookup: TAction
-      Tag = -1
-      Caption = #1042#1099#1073#1088#1072#1090#1100
-      ImageIndex = 4
+    object ToolButton2: TToolButton
+      Left = 295
+      Top = 0
+      Action = actAccess
+      AutoSize = True
     end
   end
-  object PopupMenu: TPopupMenu
-    Images = cxImageList16
-    Left = 704
-    Top = 160
-    object N6: TMenuItem
-      Action = actLookup
-    end
-    object N1: TMenuItem
-      Action = actShow
-    end
-    object N2: TMenuItem
-      Action = actAdd
-    end
-    object N3: TMenuItem
-      Action = actEdit
-    end
-    object N4: TMenuItem
-      Action = actDelete
+  inherited Grid: TcxGrid
+    Width = 678
+    Height = 355
+    ExplicitWidth = 678
+    ExplicitHeight = 355
+    inherited TableView: TcxGridDBTableView
+      DataController.KeyFieldNames = 'UserID'
+      object TableViewUserID: TcxGridDBColumn
+        AlternateCaption = #1048#1044
+        Caption = #1048#1076#1077#1085#1090#1080#1092#1080#1082#1072#1090#1086#1088
+        DataBinding.FieldName = 'UserID'
+        Visible = False
+        HeaderAlignmentHorz = taCenter
+      end
+      object TableViewBrief: TcxGridDBColumn
+        Caption = #1051#1086#1075#1080#1085
+        DataBinding.FieldName = 'Brief'
+        HeaderAlignmentHorz = taCenter
+        Width = 154
+      end
+      object TableViewName: TcxGridDBColumn
+        Caption = #1053#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
+        DataBinding.FieldName = 'Name'
+        HeaderAlignmentHorz = taCenter
+        Width = 303
+      end
+      object TableViewisAdmin: TcxGridDBColumn
+        Caption = #1040#1076#1084#1080#1085
+        DataBinding.FieldName = 'isAdmin'
+        HeaderAlignmentHorz = taCenter
+        Width = 79
+      end
+      object TableViewisBlock: TcxGridDBColumn
+        Caption = #1047#1072#1073#1083#1086#1082#1080#1088#1086#1074#1072#1085
+        DataBinding.FieldName = 'isBlock'
+        HeaderAlignmentHorz = taCenter
+        Width = 97
+      end
     end
   end
-  object cxImageList32: TcxImageList
-    SourceDPI = 96
-    Height = 32
-    Width = 32
+  inherited FilterPanel: TcxGroupBox
+    Visible = True
+    ExplicitWidth = 678
+    Width = 678
+    object SkLabel1: TSkLabel
+      Left = 94
+      Top = 18
+      Width = 43
+      Height = 19
+      Anchors = [akTop, akRight]
+      Words = <
+        item
+          Caption = #1051#1086#1075#1080#1085':'
+        end>
+      ExplicitLeft = 232
+    end
+    object edtLogin: TcxTextEdit
+      Left = 143
+      Top = 15
+      Anchors = [akTop, akRight]
+      Properties.MaxLength = 255
+      TabOrder = 0
+      TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1083#1086#1075#1080#1085
+      OnKeyDown = edtLoginKeyDown
+      Width = 298
+    end
+    object cxButton3: TcxButton
+      Left = 442
+      Top = 15
+      Width = 25
+      Height = 25
+      Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Margins.Bottom = 0
+      Anchors = [akTop, akRight]
+      LookAndFeel.NativeStyle = False
+      OptionsImage.ImageIndex = 4
+      OptionsImage.Images = IM.IL
+      PaintStyle = bpsGlyph
+      SpeedButtonOptions.Flat = True
+      SpeedButtonOptions.Transparent = True
+      TabOrder = 1
+      OnClick = cxButton3Click
+    end
+    object btnFilterOk: TcxButton
+      Left = 472
+      Top = 15
+      Width = 102
+      Height = 25
+      Hint = #1055#1088#1080#1084#1077#1085#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
+      Anchors = [akTop, akRight]
+      Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
+      OptionsImage.ImageIndex = 5
+      OptionsImage.Images = IM.IL
+      TabOrder = 2
+      OnClick = btnFilterOkClick
+    end
+    object btnFilterClear: TcxButton
+      Left = 573
+      Top = 15
+      Width = 102
+      Height = 25
+      Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
+      Anchors = [akTop, akRight]
+      Caption = #1054#1090#1084#1077#1085#1080#1090#1100
+      OptionsImage.ImageIndex = 2
+      OptionsImage.Images = IM.IL
+      TabOrder = 3
+      OnClick = btnFilterClearClick
+    end
+  end
+  inherited ActionList: TActionList
+    Tag = 85
+    Left = 604
+    Top = 168
+    object actAccess: TAction
+      Caption = #1055#1088#1072#1074#1072' '#1076#1086#1089#1090#1091#1087#1072
+      ImageIndex = 6
+      OnExecute = actAccessExecute
+    end
+  end
+  inherited PopupMenu: TPopupMenu
+    Left = 605
+    Top = 231
+    object N9: TMenuItem [6]
+      Action = actAccess
+    end
+    object N8: TMenuItem [7]
+      Caption = '-'
+    end
+  end
+  inherited cxImageList32: TcxImageList
     FormatVersion = 1
-    DesignInfo = 4194348
+    DesignInfo = 12910634
     ImageInfo = <
       item
         ImageClass = 'TdxSmartImage'
@@ -471,12 +552,84 @@ object BaseFormT: TBaseFormT
           E9A3F1D1BE0B01E00FE5DFFF3B6B594FDCD6290000000049454E44AE426082}
         FileName = 'Images\Actions\Refresh_32x32.png'
         Keywords = 'Actions;Refresh'
+      end
+      item
+        ImageClass = 'TdxSmartImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+          F40000001974455874536F6674776172650041646F626520496D616765526561
+          647971C9653C00000011744558745469746C65005065726D697373696F6E3BAC
+          69E97A000007FC49444154785E95967B6C5C4715C6BFB9F7EEAEBD5EDBF16B37
+          7E3EE2384E71490854A40135D036212152416D1D4AD502915090282A82F60F4A
+          919A44E5212A1AF10FE2A142254A51689A92170929C1D036010A8A42AAA4916B
+          D7491C274EBDCE3ADEEEE33EE6C13D77E7126F9DE7AC8E66359A3BDFEF7CE7CC
+          DDB594520807630CD7184C87A183CD0AA543CE0AE8B53963B6A67535B5E7B7FD
+          119C0B6C7C78E0FFC28B16F7C7EE7DF02B9F332DEB3ECF13BD5CCA5B3DCF83E3
+          3AC70B057BD82E1676BE7E60D7EEF4C4B8038003C017BEF6985212D8FEDCD632
+          81EB02146D078F6CF86298B1F98DC7BFD73FBFADFD375DADCD1F69694E21D558
+          8FDA9AEA209BF45466E999F189A527474607E289C4B173674E6D1CDCF3D27100
+          DE4BBFDA2A06BEFA2D05E0A600668B479E78FAD9C7FB7ABA9E5AB8A02B9A6C6C
+          C07BE9299C1C398D42BE08D33490A88A23D9508F9EAE762CE86C5F7AF478F250
+          A2A6EE07BB5FFC25A5EDBCFCEB9F0A00F2660042F1E8779FFEC98FFB6F59F468
+          7FDF426473050CBEF12F9C3E7B0E97B259146C1B966121168B625E6D0D7A3ADB
+          B0B0BB03CB972D8932C5B6E04B5F4FED7EE1E7DF0160877D723300D6379FD8F2
+          606747FBA3B72CEAF1B3BE88378F1CC3E8E9B174667A7AA75DCC1F7CEFFCD87F
+          2DCBC2FCB6AE659395F1555317339F9FCEBEDFB464712F16F574F9C0F9473E75
+          CF036FBDB6E70F2F901300C4F50174F67DB72EAD8A27AA7FB8B8B71B39DFEA7F
+          FEE7288E9D78FB58F6D2F4B383BBB7ED04E0CDB2F52C80FD6B06BE7C389F2F7C
+          3B16892CE96A6F45AAA9C177ABE6C9FA64F3AECCE44446EF5737E280F9C93BD7
+          0E74B7B7A69A9349BCFAF7C3181A1E494FA527B71EDABFE31500AECE263C8C53
+          1C78F9B73B56DFF7103B3134FC4C536343632AD988C6BABA8EDE251FBFFFCD83
+          BB9ED7FB68A86B0118B4CE2C6B6D475B73D070C3EF9EC2F90B13BB7DF15D5A9C
+          FFF5D0BF95920AC1472AF5994FAF2018E72FAFBCB8F39E8736AEF49FDBD0EC03
+          44235118A6B906C0EF42F01B7200124B5B5249BC333AE643A491CBCE0C86077C
+          401C120AFB07FFA13E7BD727048938F9C2DF2E4CA637F42DEC463C5E0905E3A3
+          5A8B5DB1071863737A40024D75F36A3193CDE1622683A989F1A3610DDF38B80F
+          57198A0027C6478F76F7F6221EAB402C1683942249498500A19E52AADC81F5EB
+          D763DFBE7D06E7DC5240226299B08B45140A454C9D3B35DDD2D2627475759947
+          8E1C096B5846BE72E54A363A3A6A8E9E7C6BFAF695AB615A2618180417918A8A
+          0A0AA3B5B5959D3871626E0F90B8E3384667678F99B974312A8550B6E332DB75
+          21A5444343B22A999CCFE3F13A8F73B3DC313D62B11A63FEFCF6A8694609DE77
+          2F0BCE399412AAA1295539AFA62E5A5B1BE7BE96DABE7DBB2A0348A7AB981019
+          EB47F7B7AE6AAA6AFFFED15CDA28BEBD179DDEBB58BB4060EDDD1F1A9152D161
+          6429A492501228AD49084133FCB9125276E01D750A7258A2C319C71D2987DDB6
+          B86DE7641E9BFE74AE7ABFAF6503D000BA16EBD63DCC1C271669A9319EEB1BD8
+          985C9E6C0D0E5E74C732DC4B7B495095000225C501082821017080A0A4075028
+          0F770A117CBF5B2621E5877171EC7CFFEBBF7FED178611E98BC53C57117508B0
+          65CB1648E9B288EF1B6332196F4C42148721B90DC628530590B8062131252582
+          FE0F846400A444603794A4EF34BB25602E501973E89C46D364166991E6A64D9B
+          2E97201AB5991096111CA05C086F062CD09581CD0CFEAC9416232802D1824A96
+          C425C1680072228028954C382EA490304DD3304D9BCD69425D0A16242B1C80BB
+          812023015AD3A28C662570E0D018B6ED1B0DD61E58D38155CB53409839954770
+          48CA5E6800EEE83E510680B9003A58D054D226FB098804758625FBA51F346FDB
+          3B8293631EE2D575F8F31189D52B2A209C4902A2AC75094A4130CAF3E0098550
+          FC4A008C42D201242E6C7D9882D2D64B083021B5AD1C95D5F36045A330AD088C
+          480DDC99B3502A14D533ED25375C4E70D704A06064BBF48A906E00506A3EED42
+          60A7FEBEEEF67AFC6CAF0D1806EEBA2D09296C7A4EF746E8020734B0703D8872
+          0768561F0430824DBC00E9D93A1B098420410D39A43FB7D41BC85ECA2051D788
+          E67A13DECC38A4E3D033E12DD1575337A2C72144E0C0557B80052143078A25EB
+          83AB154094B2D7198D9C9981E31451C13D0C9FC9A0379105776D208416A5392C
+          037709405DBF048200DCF721BCA216A310FA5DE0910B01CCF05816CC30C13D8E
+          53672F81F51BE45A98BD9E7503130CD70E5C1F40C273F210C52200B2900445C9
+          81B0BE7E0C8DE5C158053CCE3174DA07401394EB946E8A980541A5931CC25541
+          E9C0B4D35705E08072F2BA0464A5CE42E91BA16146CED940A41282730C9F9D01
+          580AD275C23D0148082109C2A304009830AE7A0D6950C6DC2940B8B6A60FEBAF
+          9DD0AFE5573735A1BAFB63608651CA9A3B109E3B0B9AF6E9D211045710C202B3
+          18AE08502858B02A18D529C85E781E0996BF0BE8605CB67666E870A92C425D2E
+          970A42FF4885CF96B2A726148CC12958730118B324E072CEE58C9DCDD52AC72D
+          1DA421A04BA02D9E5512A96F890A0174E3D15C0A622EDA016716102E63515906
+          B079F366B662C57A95A8B0ECF17CE4317730F30C8006496E08BA997E08038244
+          0419C120399525102DAD53969461C05ACA9880688DB8A4C4F4B4997852322B9F
+          CF43FA9A65BF86AAAD0D22972B14F65CA8DB6128BE1F505128D3309462656FAF
+          F231773DEC7313CC0FC82803186131C717CF59A2906B6B4B70D22C2B81FF1789
+          FE96F174BA2A6759F9A269C2A09F685C7B30DCC070DD0AFD2AA8E2F39A0C415A
+          E1F81F3371F891D17E230E0000000049454E44AE426082}
+        FileName = 'Images\Business Objects\BOPermission_32x32.png'
+        Keywords = 'Business Objects;BOPermission'
       end>
   end
-  object cxImageList16: TcxImageList
-    SourceDPI = 96
+  inherited cxImageList16: TcxImageList
     FormatVersion = 1
-    DesignInfo = 8912936
     ImageInfo = <
       item
         ImageClass = 'TdxSmartImage'
@@ -649,6 +802,105 @@ object BaseFormT: TBaseFormT
           10230000000049454E44AE426082}
         FileName = 'Images\Actions\Refresh_16x16.png'
         Keywords = 'Actions;Refresh'
+      end
+      item
+        ImageClass = 'TdxSmartImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+          610000001974455874536F6674776172650041646F626520496D616765526561
+          647971C9653C00000011744558745469746C65005065726D697373696F6E3BAC
+          69E97A0000028849444154785E7592CF4B545F18C69F73E79A4416042D84A471
+          D2FA5A999506064509266A8BFA038A56D142088368910E522D0A5AB4FAE2A25C
+          B48A4849B3DA2884440E5A5891639AE14859B471D4993BCEFD71CEB9A7F75C1D
+          31B5030FCFE5E5BE9FE739976B2AA5A00F632C3092D974ADB54E194673D6762B
+          6693734C70EFB3954EFD1FEB7BDE07C025A9DC9E89BF8F79B5E5765BD1CEA268
+          E9EE3022BB8A20A4C4E897AF75C3231FEB00762FD6D7730B804D526B01A10B97
+          AF34141616B694EFDB83896F0974F6BC82F025CA4A4B70F470056CDBB99E9A3F
+          F96EECFD9B5E007C2D204F28A3AD341236C627A7D0D5F3A2DF5A98EBF0956F4C
+          27A62FD59FAEAD8D1487597C6CBC1540FF8680B495292B290EE369F74BA4E693
+          1DF1E1019DC40E56D718938944EDD9C67A28C6F602C8276105C0E86840C6B20A
+          5CD781E3BAA0E5C1DC3D47E9B9B2AA122603A4945B3480560CA5949F6B600CDE
+          6DECCDCFCB020351440F29DC283FF3534A1F424BF890E21378EC036E1EF191FE
+          EF58D7C50743A700B83940283F2F74BCAAF921A0248903BE0B48926F03822417
+          C933344EE1C99D47D5BAF16A00D5C1D252B26B65B9BDF33BB940D3B96D80A767
+          0EE02CC2F364B043C20A40D785CC2C27F1E0E51FBF2C285F02A108E04E004203
+          6C701E00D86A0093820022057836C09DA0414325B514BA992080A5E7A4ECC60D
+          B806B8F304B0747A00793D9282921C3507A60047CF6D28D786E09BD6015850CB
+          4B2E250917F1440693330E14A5C76780F2CD1694E70204F0B8B9FE0A1EF7A19C
+          59026482F4FD3BB278DC6C826D2D0EBE8BFCED072D14C185285807100B19F7ED
+          B3FBDD27B890E00413812BF2246846CE20E4764801A46D3E04C05B0D70CEB7C7
+          1A977F5123D7EA1FAE480E6991843F444C7452F6AD885E0000000049454E44AE
+          426082}
+        FileName = 'Images\Business Objects\BOPermission_16x16.png'
+        Keywords = 'Business Objects;BOPermission'
       end>
+  end
+  inherited Query: TFDQuery
+    SQL.Strings = (
+      'select * '
+      '  from vUsers u'
+      ' where 1=1'
+      '   -- filter'
+      '   !Brief'
+      '   '
+      ' ')
+    Left = 523
+    Top = 169
+    MacroData = <
+      item
+        Value = Null
+        Name = 'BRIEF'
+      end>
+    object QueryUserID: TFMTBCDField
+      AutoGenerateValue = arAutoInc
+      FieldName = 'UserID'
+      Origin = 'UserID'
+      ProviderFlags = [pfInWhere]
+      ReadOnly = True
+      Precision = 18
+      Size = 0
+    end
+    object QueryBrief: TWideStringField
+      FieldName = 'Brief'
+      Origin = 'Brief'
+      Required = True
+      Size = 512
+    end
+    object QueryName: TWideStringField
+      FieldName = 'Name'
+      Origin = 'Name'
+      Size = 512
+    end
+    object QueryisAdmin: TBooleanField
+      FieldName = 'isAdmin'
+      Origin = 'isAdmin'
+      ReadOnly = True
+    end
+    object QueryisBlock: TBooleanField
+      FieldName = 'isBlock'
+      Origin = 'isBlock'
+    end
+    object QueryDateBlock: TSQLTimeStampField
+      FieldName = 'DateBlock'
+      Origin = 'DateBlock'
+      ReadOnly = True
+    end
+    object QueryinDatetime: TSQLTimeStampField
+      FieldName = 'inDatetime'
+      Origin = 'inDatetime'
+    end
+    object QueryupDatetime: TSQLTimeStampField
+      FieldName = 'upDatetime'
+      Origin = 'upDatetime'
+    end
+  end
+  inherited DataSource: TDataSource
+    Left = 525
+    Top = 231
+  end
+  inherited cxStyleRepository: TcxStyleRepository
+    Left = 168
+    Top = 150
+    PixelsPerInch = 96
   end
 end

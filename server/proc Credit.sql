@@ -25,9 +25,12 @@ as
       Begin tran
 
 		insert into tCreditTypes
-		      (Name, UserID)
+		      (Name 
+              ,InUserID
+              ,UpUserID)
 		OUTPUT INSERTED.CreditTypeID INTO @ID
 		select @Name
+              ,dbo.GetUserID()
               ,dbo.GetUserID()
 
 		Select @CreditTypeID = ID from @ID	
@@ -78,6 +81,8 @@ as
 
 		Update tCreditTypes
 		   set Name = @Name
+              ,UpUserID      = dbo.GetUserID()
+              ,UpDatetime    = GetDate()
 		 where CreditTypeID=@CreditTypeID
 
       --commit tran
@@ -181,7 +186,8 @@ as
               ,PayAmount
               ,CloseDate
               ,Comment
-              ,UserID
+              ,InUserID
+              ,UpUserID
               )
 		OUTPUT INSERTED.CreditID INTO @ID
 		select @CreditTypeID
@@ -191,6 +197,7 @@ as
               ,nullif(@PayAmount, '19000101') 	
               ,nullif(@CloseDate, '19000101') 	
               ,@Comment	   
+              ,dbo.GetUserID()
               ,dbo.GetUserID()
 
 		Select @CreditID = ID from @ID	

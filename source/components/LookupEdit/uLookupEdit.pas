@@ -146,6 +146,7 @@ type
     FConnection: TFDConnection;
     FLookupFilter: string;
     FLookupSQL: string;
+    FLookupResult: Integer;
     function GetActiveProperties: AButtonEditProperties;
     function GetProperties: AButtonEditProperties;
     procedure SetProperties(Value: AButtonEditProperties);
@@ -172,6 +173,7 @@ type
     property LookupSQL:string          read FLookupSQL      write FLookupSQL;
     property LookupKey:Integer         read FLookupKey      write SetLookupKey;
     property LookupFilter:string       read FLookupFilter   write FLookupFilter;
+    property LookupResult:Integer      read FLookupResult   write FLookupResult;
 
     property Anchors;
     property AutoSize;
@@ -311,6 +313,7 @@ var obj: TBaseFormT;
      fc: TFormClass;
 begin
   Result := 0;
+  FLookupResult:= 0;
 
   fc := TFormClass(FindClass(FLookupForm));
   Application.CreateForm(fc, obj);
@@ -319,9 +322,9 @@ begin
   obj.ID:=FLookupKey;
   obj.LookupFilter := LookupFilter;
   obj.Position:=poDesktopCenter;
-  obj.ShowModal;
+  FLookupResult :=obj.ShowModal;
 
-  if obj.ID > 0 then
+  if (obj.ID > 0) and (FLookupResult = 1) then
   begin
     // возврат ключевого поля
     Result := obj.ID;
@@ -342,11 +345,17 @@ begin
   ShowHint:= True;
 end;
 
-procedure ALookupEdit.DoButtonClick(AButtonVisibleIndex: Integer);
+procedure ALookupEdit.DoButtonClick(AButtonVisibleIndex: Integer); var FKey : Integer;
 begin
   if AButtonVisibleIndex = 0 then
   begin
-    if FLookupForm <> '' then LookupKey := ACallModeLookup;
+    if FLookupForm <> '' then
+    begin
+      FKey := ACallModeLookup;
+
+      if ((FLookupResult = 1) and (FKey > 0)) then
+        LookupKey := FKey;
+    end;
   end
   else
   if AButtonVisibleIndex= 1 then

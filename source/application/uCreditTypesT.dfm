@@ -1,7 +1,6 @@
 inherited CreditTypesT: TCreditTypesT
   Caption = #1042#1080#1076#1099' '#1082#1088#1077#1076#1080#1090#1086#1074
   StyleElements = [seFont, seClient, seBorder]
-  OnCreate = FormCreate
   TextHeight = 17
   inherited ToolBar: TToolBar
     DoubleBuffered = True
@@ -9,6 +8,8 @@ inherited CreditTypesT: TCreditTypesT
   inherited Grid: TcxGrid
     Top = 88
     Height = 402
+    ExplicitTop = 88
+    ExplicitHeight = 402
     inherited TableView: TcxGridDBTableView
       DataController.KeyFieldNames = 'CreditTypeID'
       object TableViewCreditTypeID: TcxGridDBColumn
@@ -20,7 +21,7 @@ inherited CreditTypesT: TCreditTypesT
         Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
         DataBinding.FieldName = 'Name'
         HeaderAlignmentHorz = taCenter
-        Width = 658
+        Width = 641
       end
     end
   end
@@ -96,6 +97,9 @@ inherited CreditTypesT: TCreditTypesT
       OnClick = cxButton3Click
     end
   end
+  inherited ActionList: TActionList
+    Tag = 50
+  end
   inherited cxImageList32: TcxImageList
     FormatVersion = 1
   end
@@ -137,12 +141,6 @@ inherited CreditTypesT: TCreditTypesT
     object QueryInDateTime: TSQLTimeStampField
       FieldName = 'InDateTime'
       Origin = 'InDateTime'
-    end
-    object QueryUserID: TFMTBCDField
-      FieldName = 'UserID'
-      Origin = 'UserID'
-      Precision = 15
-      Size = 0
     end
   end
   inherited cxStyleRepository: TcxStyleRepository

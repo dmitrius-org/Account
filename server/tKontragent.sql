@@ -8,8 +8,12 @@ begin
 	(
 	 KontragentTypeID  numeric(15, 0)   --
 	,Name              varchar(32)   
+     --
+    ,InUserID          numeric(15, 0)
 	,InDateTime        DateTime default getdate()   -- 
-    ,UserID            numeric(15, 0) 
+
+    ,UpUserID          numeric(15, 0) 
+    ,UpDateTime        DateTime default getdate()  
 	);
 
 	create unique index ao1 on tKontragentType(KontragentTypeID);
@@ -24,7 +28,11 @@ select 2, 'Покупатель'      union all
 select 3, 'Поставщик' 
 
 if OBJECT_ID('tKontragents') is null
---  drop table tKontragents
+/*begin
+  ALTER TABLE tKontragents SET ( SYSTEM_VERSIONING = OFF )
+  drop table tKontragents
+  DROP TABLE hKontragents
+end */
 /* **********************************************************
 tKontragents - 
 ********************************************************** */
@@ -47,11 +55,24 @@ begin
     ,PartnerID         numeric(15, 0)
     ,IsPartner         bit
     ,Debts             float
+     --
+    ,InUserID          numeric(15, 0)
 	,InDateTime        DateTime default getdate()   -- 
-    ,UserID            numeric(15, 0) 
-	);
 
-	create index ao1 on tKontragents(KontragentID);
+    ,UpUserID          numeric(15, 0) 
+    ,UpDateTime        DateTime default getdate()  
+    --
+    ,[ValidFrom] DATETIME2 GENERATED ALWAYS AS ROW START
+    ,[ValidTo] DATETIME2 GENERATED ALWAYS AS ROW END
+
+    ,PERIOD FOR SYSTEM_TIME (ValidFrom, ValidTo)
+
+    ,CONSTRAINT PK_tKontragents_KontragentID PRIMARY KEY NONCLUSTERED (KontragentID)
+	)
+    WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = dbo.hKontragents));
+
+
+	--create index ao1 on tKontragents(KontragentID);
 
 	grant select on tKontragents to public;
 end

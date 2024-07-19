@@ -2,7 +2,6 @@ inherited CreditPaymentT: TCreditPaymentT
   Caption = #1042#1099#1087#1083#1072#1090#1099' '#1087#1086' '#1082#1088#1077#1076#1080#1090#1091
   ClientWidth = 880
   StyleElements = [seFont, seClient, seBorder]
-  OnCreate = FormCreate
   ExplicitWidth = 896
   TextHeight = 17
   inherited ToolBar: TToolBar
@@ -147,6 +146,9 @@ inherited CreditPaymentT: TCreditPaymentT
       TabOrder = 3
       OnClick = cxButton3Click
     end
+  end
+  inherited ActionList: TActionList
+    Tag = 51
   end
   inherited cxImageList32: TcxImageList
     FormatVersion = 1

@@ -1,31 +1,38 @@
 inherited ExpenseItemsT: TExpenseItemsT
   Caption = #1057#1090#1072#1090#1100#1080' '#1088#1072#1089#1093#1086#1076#1086#1074
+  ClientWidth = 871
   StyleElements = [seFont, seClient, seBorder]
-  OnCreate = FormCreate
+  ExplicitWidth = 887
   TextHeight = 17
   inherited ToolBar: TToolBar
+    Width = 871
     ButtonWidth = 111
     DoubleBuffered = True
+    ExplicitWidth = 871
     inherited tbShow: TToolButton
-      ExplicitWidth = 111
+      AutoSize = True
+      ExplicitWidth = 91
     end
     inherited tbAdd: TToolButton
-      Left = 111
-      ExplicitLeft = 111
-      ExplicitWidth = 111
+      Left = 91
+      AutoSize = True
+      ExplicitLeft = 91
+      ExplicitWidth = 69
     end
     inherited tbEdit: TToolButton
-      Left = 222
-      ExplicitLeft = 222
-      ExplicitWidth = 111
+      Left = 160
+      AutoSize = True
+      ExplicitLeft = 160
+      ExplicitWidth = 69
     end
     inherited tbDelete: TToolButton
-      Left = 333
-      ExplicitLeft = 333
-      ExplicitWidth = 111
+      Left = 229
+      AutoSize = True
+      ExplicitLeft = 229
+      ExplicitWidth = 58
     end
     object ToolButton1: TToolButton
-      Left = 444
+      Left = 287
       Top = 0
       Width = 8
       Caption = 'ToolButton1'
@@ -33,14 +40,18 @@ inherited ExpenseItemsT: TExpenseItemsT
       Style = tbsSeparator
     end
     object ToolButton2: TToolButton
-      Left = 452
+      Left = 295
       Top = 0
       Action = actGroup
     end
   end
   inherited Grid: TcxGrid
     Top = 114
+    Width = 871
     Height = 376
+    ExplicitTop = 114
+    ExplicitWidth = 871
+    ExplicitHeight = 376
     inherited TableView: TcxGridDBTableView
       DataController.KeyFieldNames = 'ExpenseItemID'
       object TableViewExpenseItemID: TcxGridDBColumn
@@ -52,22 +63,24 @@ inherited ExpenseItemsT: TExpenseItemsT
         Caption = #1043#1088#1091#1087#1087#1072
         DataBinding.FieldName = 'ExpenseGroup'
         HeaderAlignmentHorz = taCenter
-        Width = 300
+        Width = 253
       end
       object TableViewName: TcxGridDBColumn
         Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
         DataBinding.FieldName = 'Name'
         HeaderAlignmentHorz = taCenter
-        Width = 488
+        Width = 447
       end
     end
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
+    ExplicitWidth = 871
     ExplicitHeight = 74
     Height = 74
+    Width = 871
     object SkLabel1: TSkLabel
-      Left = 145
+      Left = 200
       Top = 18
       Width = 100
       Height = 19
@@ -76,6 +89,7 @@ inherited ExpenseItemsT: TExpenseItemsT
         item
           Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
         end>
+      ExplicitLeft = 145
     end
     object SkLabel2: TSkLabel
       Left = 145
@@ -88,7 +102,7 @@ inherited ExpenseItemsT: TExpenseItemsT
         end>
     end
     object edtName: TcxTextEdit
-      Left = 251
+      Left = 306
       Top = 15
       Anchors = [akTop, akRight]
       Properties.MaxLength = 255
@@ -98,7 +112,7 @@ inherited ExpenseItemsT: TExpenseItemsT
       Width = 298
     end
     object cxButton3: TcxButton
-      Left = 550
+      Left = 605
       Top = 15
       Width = 25
       Height = 25
@@ -118,7 +132,7 @@ inherited ExpenseItemsT: TExpenseItemsT
       OnClick = cxButton3Click
     end
     object btnFilterOk: TcxButton
-      Left = 610
+      Left = 665
       Top = 15
       Width = 102
       Height = 25
@@ -131,7 +145,7 @@ inherited ExpenseItemsT: TExpenseItemsT
       OnClick = btnFilterOkClick
     end
     object btnFilterClear: TcxButton
-      Left = 711
+      Left = 766
       Top = 15
       Width = 102
       Height = 25
@@ -176,6 +190,7 @@ inherited ExpenseItemsT: TExpenseItemsT
     end
   end
   inherited ActionList: TActionList
+    Tag = 70
     object actGroup: TAction
       Tag = 1
       Caption = #1043#1088#1091#1087#1087#1099' '#1088#1072#1089#1093#1086#1076#1086#1074
@@ -815,7 +830,7 @@ inherited ExpenseItemsT: TExpenseItemsT
       '      ,e.Name           '
       '      ,e.isActive       '
       '      ,e.InDateTime     '
-      '      ,e.UserID         '
+      '       '
       '  from tExpenseItems e (nolock)'
       '  left join tExpenseGroups g (nolock)'
       '         on g.ExpenseGroupID = e.ExpenseGroupID'
@@ -867,12 +882,6 @@ inherited ExpenseItemsT: TExpenseItemsT
     object QueryInDateTime: TSQLTimeStampField
       FieldName = 'InDateTime'
       Origin = 'InDateTime'
-    end
-    object QueryUserID: TFMTBCDField
-      FieldName = 'UserID'
-      Origin = 'UserID'
-      Precision = 15
-      Size = 0
     end
   end
   inherited cxStyleRepository: TcxStyleRepository

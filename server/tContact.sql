@@ -12,10 +12,12 @@ begin
 	,Phone             varchar(256)  
     ,Mail              varchar(256)  
     ,Comment           varchar(256)  
-	,InDateTime        DateTime default getdate()   -- 
-    ,UpDateTime        DateTime default getdate()  
+     --
     ,InUserID          numeric(15, 0)
+	,InDateTime        DateTime default getdate()   -- 
+
     ,UpUserID          numeric(15, 0) 
+    ,UpDateTime        DateTime default getdate()  
 	);
 
 	create index ao1 on tContacts(ContactID);
@@ -43,10 +45,12 @@ begin
 	,Phone             varchar(256)  
     ,Mail              varchar(256)  
     ,Comment           varchar(256)  
-	,InDateTime        DateTime default getdate()  
-    ,UpDateTime        DateTime default getdate()  
+     --
     ,InUserID          numeric(15, 0)
+	,InDateTime        DateTime default getdate()   -- 
+
     ,UpUserID          numeric(15, 0) 
+    ,UpDateTime        DateTime default getdate()  
 	);
 
 	create index ao1 on pContacts(Spid, ContactID);

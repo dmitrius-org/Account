@@ -77,6 +77,9 @@ type
     ///  CurrentCashBalance - текщий остаток по кассе
     ///</summary>
     procedure CurrentCashBalance();
+
+
+    function GetOperation(ATranTypeID, AKassaID, AOperationTypeID: integer): Integer;
   end;
 
 var
@@ -96,7 +99,7 @@ begin
 
   if tRetVal.Code = 0 then
   case FormAction of
-    acInsert, acClone, acAddDebet:
+    acInsert, acClone, acAddDebet, acRequest:
     begin
       tSql.Open('''
                   declare @R              int = 0
@@ -224,7 +227,7 @@ begin
   tRetVal.Clear;
 
   case FormAction of
-    acInsert, acReportCreate, acUpdate, acReportEdit, acClone, acAddDebet:
+    acInsert, acReportCreate, acUpdate, acReportEdit, acClone, acAddDebet, acRequest:
     begin
 
       if edtTranType.EditValue = 0 then
@@ -306,7 +309,8 @@ begin
                      ,t.Discount
                      ,t.ParentID
                      ,t.InDateTime
-                     ,t.UserID
+                     ,t.UpUserID
+                     ,t.UpDateTime
                  from tTransaction t (nolock)
                 where t.TransactionID = :TransactionID
             ''';
@@ -364,7 +368,7 @@ begin
         edtTranType.Enabled := False;
         edtTranType.EditValue := 2;
         edtOperation.Enabled := False;
-        edtOperation.EditValue:=9;
+        edtOperation.EditValue:=GetOperation(edtTranType.EditValue, FKassaID,  3);
 
         edtCreditD.LookupKey := CreditID;
         edtCreditD.Enabled := False;
@@ -375,7 +379,7 @@ begin
         Self.Caption := 'Добавление расходного документа';
         edtTranType.EditValue := 2;
         edtTranType.Enabled := False;
-        edtOperation.EditValue := 6;
+        edtOperation.EditValue := GetOperation(edtTranType.EditValue, FKassaID,  2);
       end;
     end;
     acAddDebet:
@@ -387,9 +391,9 @@ begin
       begin
         Self.Caption := 'Добавление приходного документа';
         edtTranType.Enabled := False;
-        edtTranType.EditValue := 2;
+        edtTranType.EditValue := 1;
         edtOperation.Enabled := False;
-        edtOperation.EditValue:=9;
+        edtOperation.EditValue:=GetOperation(edtTranType.EditValue, FKassaID,  3);
 
         edtCreditD.LookupKey := CreditID;
         edtCreditD.Enabled := False;
@@ -399,8 +403,20 @@ begin
         Self.Caption := 'Добавление приходного документа';
         edtTranType.EditValue := 1;
         edtTranType.Enabled := False;
-        edtOperation.EditValue := 1;
+        edtOperation.EditValue := GetOperation(edtTranType.EditValue, FKassaID,  1);
       end;
+    end;
+    acRequest:   //// заявка на расход
+    begin
+
+      edtOperDate.date := Date();
+
+      Self.Caption := 'Добавление заявки на расход';
+      edtTranType.Enabled := False;
+      edtTranType.EditValue := 3;
+      edtOperation.Enabled := False;
+      edtOperation.EditValue:=GetOperation(edtTranType.EditValue, FKassaID,  2);
+
     end;
     acUpdate, acReportEdit, acUserAction:
     begin
@@ -427,6 +443,18 @@ begin
   end;
 
   CurrentCashBalance;
+end;
+
+function TTransactionF.GetOperation(ATranTypeID, AKassaID,  AOperationTypeID: integer): Integer;
+begin
+  TSql.Open('select OperationID from tOperation (nolock) where TranTypeID = :TranTypeID and KassaID= :KassaID and OperationTypeID = :OperationTypeID',
+  ['TranTypeID', 'KassaID', 'OperationTypeID'], [ATranTypeID, AKassaID, AOperationTypeID]);
+
+  if TSql.Q.RecordCount >0 then
+    Result := TSql.Q.FieldByName('OperationID').AsInteger
+  else
+    Result := 0;
+
 end;
 
 procedure TTransactionF.SetCreditID(const Value: Integer);

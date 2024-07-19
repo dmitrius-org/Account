@@ -8,8 +8,12 @@ begin
 	(
 	 TaskStatusID      numeric(15, 0)   --
 	,Name              varchar(32)   
+     --
+    ,InUserID          numeric(15, 0)
 	,InDateTime        DateTime default getdate()   -- 
-    ,UserID            numeric(15, 0) 
+
+    ,UpUserID          numeric(15, 0) 
+    ,UpDateTime        DateTime default getdate()  
 	);
 
 	create unique index ao1 on tTaskStatus(TaskStatusID);
@@ -24,7 +28,11 @@ select 2, 'выполнено'         union all
 select 3, 'не начато' 
 
 if OBJECT_ID('tTasks') is null
---  drop table tTasks
+/*begin
+  ALTER TABLE tTasks SET ( SYSTEM_VERSIONING = OFF )
+  drop table tTasks
+  DROP TABLE hTasks
+end */
 /* **********************************************************
 tTasks - 
 ********************************************************** */
@@ -37,9 +45,21 @@ begin
     ,CreateDate        DateTime
     ,ManagerID         numeric(15, 0)
     ,TaskStatusID      numeric(15, 0) 
+     --
+    ,InUserID          numeric(15, 0)
 	,InDateTime        DateTime default getdate()   -- 
-    ,UserID            numeric(15, 0) 
-	);
+
+    ,UpUserID          numeric(15, 0) 
+    ,UpDateTime        DateTime default getdate()  
+     --
+    ,[ValidFrom] DATETIME2 GENERATED ALWAYS AS ROW START
+    ,[ValidTo] DATETIME2 GENERATED ALWAYS AS ROW END
+
+    ,PERIOD FOR SYSTEM_TIME (ValidFrom, ValidTo)
+
+    ,CONSTRAINT PK_tTasks_TaskID PRIMARY KEY NONCLUSTERED (TaskID)
+	)
+    WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = dbo.hTasks));
 
 	create index ao1 on tTasks(TaskID);
 

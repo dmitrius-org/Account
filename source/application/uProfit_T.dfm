@@ -318,6 +318,7 @@ inherited Profit_T: TProfit_T
     end
   end
   inherited ActionList: TActionList
+    Tag = 55
     Left = 550
     Top = 151
   end

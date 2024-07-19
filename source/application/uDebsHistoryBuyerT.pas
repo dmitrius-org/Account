@@ -40,6 +40,7 @@ type
     ToolButton1: TToolButton;
     procedure FormShow(Sender: TObject);
     procedure actExportToExcelExecute(Sender: TObject);
+    procedure actRefreshExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -53,6 +54,9 @@ var
 
 
 implementation
+
+uses
+  MTLogger;
 
 {$R *.dfm}
 
@@ -69,7 +73,7 @@ begin
   try
     with SaveDialog do
     begin
-      FileName := Self.Caption + ' ' + FormatDateTime('YYYYMMDD', Now ()); // default file name
+      FileName := StringReplace(Self.Caption, '.', '',[rfReplaceAll])  + ' ' + FormatDateTime('YYYYMMDD', Now ()); // default file name
       Filter := '*.xls|*.xls|*.xlsx|*.xlsx|';
       if Execute then
       begin
@@ -82,7 +86,13 @@ begin
       end;
     end;
   finally
-    path := SaveDialog.FileName;
+    case SaveDialog.FilterIndex of
+      1:
+        path := SaveDialog.FileName + '.xls';
+      2:
+        path := SaveDialog.FileName + '.xlsx';  //2007
+    end;
+    logger.Info(path);
     SaveDialog.Free;
   end;
 
@@ -90,10 +100,16 @@ begin
   begin
     ExcelAPP := CreateOleObject('Excel.Application'); // Create an excel object
     ExcelAPP.Visible := false;
-         Excelapp.Workbooks.open (PATH); // Use Excel's method to open the file
-    ExcelAPP.WorkSheets[1] .Activate; // The file operation, here is no different from the VBA operation anymore
+    Excelapp.Workbooks.open (PATH); // Use Excel's method to open the file
+    ExcelAPP.WorkSheets[1].Activate; // The file operation, here is no different from the VBA operation anymore
     ExcelAPP.Visible :=  True; // Show out
   end;
+end;
+
+procedure TDebsHistoryBuyerT.actRefreshExecute(Sender: TObject);
+begin
+  inherited;
+  DataLoad;
 end;
 
 procedure TDebsHistoryBuyerT.DataLoad;

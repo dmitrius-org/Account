@@ -19,10 +19,13 @@ Type
     class procedure SetConnection(const Value: TFDConnection); static;
 
     class procedure Prepare(AQuery: TFDQuery; AParams: array of string; AArgs: array of variant);
+  private
+    class function GetQ: TFDQuery; static;
+
   public
     class property Connection: TFDConnection read GetConnection write SetConnection;
 
-    class function Q():TFDQuery; static;
+    class property Q: TFDQuery read GetQ ;
 
     /// <summary>
     /// Возвращает результат запроса переданного в параметре ASqlText
@@ -88,16 +91,17 @@ begin
   result:= VarToBoolDef(v, ADefValue);
 end;
 
-class function TSql.Q: TFDQuery;
-begin
-  if not Assigned(FQuery) then
-  begin
-    FQuery := TFDQuery.Create(nil);
-    FQuery.Connection := FConnection;
-  end;
-
-  result := FQuery;
-end;
+//class function TSql.Q: TFDQuery;
+//begin
+//  if not Assigned(FQuery) then
+//  begin
+//    FQuery := TFDQuery.Create(nil);
+//    FQuery.FetchOptions.RowsetSize := 1000000;
+//    FQuery.Connection := FConnection;
+//  end;
+//
+//  result := FQuery;
+//end;
 
 class procedure TSql.Exec(ASql: String; AParams: array of string;  AArgs: array of variant);
 var FQueryTMP:TFDQuery;
@@ -149,17 +153,26 @@ begin
   Result:= FConnection;
 end;
 
+class function TSql.GetQ: TFDQuery;
+begin
+  if not Assigned(FQuery) then
+  begin
+    FQuery := TFDQuery.Create(nil);
+    FQuery.FetchOptions.RowsetSize := 1000000;
+    FQuery.Connection :=FConnection;
+  end;
+
+  result := FQuery;
+end;
+
 class procedure TSql.SetConnection(const Value: TFDConnection);
 begin
   if Assigned(Value) then
   begin
     FConnection:= Value;
-
-    if not Assigned(FQuery) then FQuery := TFDQuery.Create(nil);
-
-    FQuery.Connection :=FConnection;
   end;
 end;
+
 
 class function TSql.GetSetting(ASetting: String; ADefValue: Integer): Integer;
 var v: Variant;

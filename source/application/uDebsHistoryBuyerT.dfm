@@ -48,8 +48,9 @@ inherited DebsHistoryBuyerT: TDebsHistoryBuyerT
     Top = 82
     Width = 973
     Height = 363
-    ExplicitWidth = 915
-    ExplicitHeight = 329
+    ExplicitTop = 82
+    ExplicitWidth = 973
+    ExplicitHeight = 363
     inherited TableView: TcxGridDBTableView
       OptionsView.HeaderHeight = 35
       object TableViewOperDate: TcxGridDBColumn
@@ -104,7 +105,8 @@ inherited DebsHistoryBuyerT: TDebsHistoryBuyerT
   end
   inherited FilterPanel: TcxGroupBox
     Top = 23
-    ExplicitWidth = 915
+    ExplicitTop = 23
+    ExplicitWidth = 973
     Width = 973
   end
   inherited ActionList: TActionList
@@ -124,12 +126,6 @@ inherited DebsHistoryBuyerT: TDebsHistoryBuyerT
     inherited actDelete: TAction
       Tag = -1
       Visible = False
-    end
-    inherited actRefresh: TAction
-      Tag = -1
-    end
-    inherited actLookup: TAction
-      Tag = -1
     end
     object actExportToExcel: TAction
       Caption = #1069#1082#1089#1087#1086#1088#1090' '#1074' Excel'

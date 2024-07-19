@@ -28,13 +28,16 @@ as
       Begin tran
 
 		insert into tTasks
-		      (Comment, DueDate, CreateDate, ManagerID, TaskStatusID, UserID)
+		      (Comment, DueDate, CreateDate, ManagerID, TaskStatusID, 
+               InUserID  
+              ,UpUserID)
 		OUTPUT INSERTED.TaskID INTO @ID
 		select @Comment
               ,@DueDate     
               ,@CreateDate  
               ,@ManagerID   
               ,@TaskStatusID
+              ,dbo.GetUserID()
               ,dbo.GetUserID()
 
 		Select @TaskID = ID from @ID	
@@ -77,6 +80,8 @@ as
               ,CreateDate   = @CreateDate  
               ,ManagerID    = @ManagerID   
               ,TaskStatusID = @TaskStatusID
+              ,UpUserID     = dbo.GetUserID()
+              ,UpDatetime   = GetDate()
 		 where TaskID=@TaskID
   END TRY  
   BEGIN CATCH  

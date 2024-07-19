@@ -305,7 +305,8 @@ begin
           ,dr.Phone
           ,dr.Mail
           ,dr.InDateTime
-          ,dr.UserID
+          ,dr.upUserID
+          ,dr.upDateTime
       from tDocumentRequest dr (nolock)
      where dr.DocumentRequestID = :DocumentRequestID
   ''';

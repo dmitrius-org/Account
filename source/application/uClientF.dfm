@@ -10,19 +10,12 @@ inherited ClientF: TClientF
     Top = 321
     Width = 651
     Frame.Borders = []
-    TabOrder = 2
+    TabOrder = 1
     ExplicitTop = 321
     ExplicitWidth = 651
     inherited dxPanel1: TdxPanel
       Height = 46
-      TabOrder = 0
       ExplicitHeight = 46
-      inherited edtInDate: TcxDateEdit
-        TabOrder = 1
-      end
-      inherited edtUser: ALookupEdit
-        TabOrder = 0
-      end
     end
     inherited btnCancel: TcxButton
       Left = 448
@@ -33,7 +26,6 @@ inherited ClientF: TClientF
     inherited btnOk: TcxButton
       Left = 543
       Height = 40
-      TabOrder = 2
       OnClick = btnOkClick
       ExplicitLeft = 543
       ExplicitHeight = 40
@@ -44,7 +36,7 @@ inherited ClientF: TClientF
     Top = 0
     Width = 651
     Height = 321
-    ActivePage = TabContact
+    ActivePage = TabCommon
     Align = alClient
     DoubleBuffered = True
     OwnerDraw = True
@@ -106,6 +98,13 @@ inherited ClientF: TClientF
         Top = 72
         Properties.DateButtons = [btnClear, btnNow, btnToday]
         TabOrder = 1
+        Width = 121
+      end
+      object edtDiscount: TcxCurrencyEdit
+        Left = 114
+        Top = 124
+        Properties.DisplayFormat = ',0.00 %;-,0.00 %'
+        TabOrder = 2
         Width = 121
       end
     end
@@ -243,6 +242,8 @@ inherited ClientF: TClientF
           object TableViewDiscountDiscount: TcxGridDBColumn
             Caption = #1057#1082#1080#1076#1082#1072
             DataBinding.FieldName = 'Discount'
+            PropertiesClassName = 'TcxCurrencyEditProperties'
+            Properties.DisplayFormat = ',0.00 %;-,0.00 %'
             HeaderAlignmentHorz = taCenter
             Width = 189
           end
@@ -252,13 +253,6 @@ inherited ClientF: TClientF
         end
       end
     end
-  end
-  object edtDiscount: TcxCurrencyEdit [2]
-    Left = 118
-    Top = 154
-    Properties.DisplayFormat = ',0.00 %;-,0.00 %'
-    TabOrder = 1
-    Width = 121
   end
   inherited FDQuery: TFDQuery
     Left = 452

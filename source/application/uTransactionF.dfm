@@ -63,6 +63,7 @@ inherited TransactionF: TTransactionF
     Top = 103
     Width = 76
     Height = 19
+    Visible = False
     Words = <
       item
         Caption = #1050#1086#1085#1090#1088#1072#1075#1077#1085#1090':'
@@ -73,6 +74,7 @@ inherited TransactionF: TTransactionF
     Top = 103
     Width = 108
     Height = 19
+    Visible = False
     Words = <
       item
         Caption = #1057#1090#1072#1090#1100#1103' '#1088#1072#1089#1093#1086#1076#1086#1074':'
@@ -83,6 +85,7 @@ inherited TransactionF: TTransactionF
     Top = 103
     Width = 49
     Height = 19
+    Visible = False
     Words = <
       item
         Caption = #1050#1088#1077#1076#1080#1090':'
@@ -94,22 +97,12 @@ inherited TransactionF: TTransactionF
     TabOrder = 10
     ExplicitTop = 312
     ExplicitWidth = 627
-    inherited dxPanel1: TdxPanel
-      TabOrder = 0
-      inherited edtInDate: TcxDateEdit
-        TabOrder = 1
-      end
-      inherited edtUser: ALookupEdit
-        TabOrder = 0
-      end
-    end
     inherited btnCancel: TcxButton
       Left = 424
       ExplicitLeft = 424
     end
     inherited btnOk: TcxButton
       Left = 520
-      TabOrder = 2
       OnClick = btnOkClick
       ExplicitLeft = 520
     end
@@ -204,6 +197,7 @@ inherited TransactionF: TTransactionF
     Properties.Images = IM.IL
     ShowHint = True
     TabOrder = 4
+    Visible = False
     Width = 447
   end
   object edtExpenseItem: ALookupEdit [15]
@@ -233,6 +227,7 @@ inherited TransactionF: TTransactionF
     Properties.Images = IM.IL
     ShowHint = True
     TabOrder = 6
+    Visible = False
     Width = 447
   end
   object edtCreditD: ALookupEdit [16]
@@ -264,6 +259,7 @@ inherited TransactionF: TTransactionF
     Properties.Images = IM.IL
     ShowHint = True
     TabOrder = 5
+    Visible = False
     Width = 447
   end
   object dxPanel2: TdxPanel [17]

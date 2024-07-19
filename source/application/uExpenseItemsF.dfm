@@ -33,14 +33,9 @@ inherited ExpenseItemsF: TExpenseItemsF
     ExplicitTop = 151
     ExplicitWidth = 611
     inherited dxPanel1: TdxPanel
-      TabOrder = 0
       inherited edtInDate: TcxDateEdit
         Properties.DateButtons = []
         Properties.UseLeftAlignmentOnEditing = False
-        TabOrder = 1
-      end
-      inherited edtUser: ALookupEdit
-        TabOrder = 0
       end
     end
     inherited btnCancel: TcxButton
@@ -49,7 +44,6 @@ inherited ExpenseItemsF: TExpenseItemsF
     end
     inherited btnOk: TcxButton
       Left = 504
-      TabOrder = 2
       OnClick = btnOkClick
       ExplicitLeft = 504
     end

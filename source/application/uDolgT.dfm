@@ -3,6 +3,7 @@ inherited DolgT: TDolgT
   ClientHeight = 514
   ClientWidth = 772
   StyleElements = [seFont, seClient, seBorder]
+  OnClose = FormClose
   OnShow = FormShow
   ExplicitWidth = 788
   ExplicitHeight = 553
@@ -14,22 +15,38 @@ inherited DolgT: TDolgT
   end
   object PageControl: TPageControl [1]
     Left = 0
-    Top = 113
+    Top = 102
     Width = 772
-    Height = 401
-    ActivePage = TabClient
+    Height = 412
+    ActivePage = tabBuyer
     Align = alClient
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    OwnerDraw = True
+    ParentFont = False
+    TabHeight = 30
     TabOrder = 2
+    OnDrawTab = PageControlDrawTab
     object tabBuyer: TTabSheet
       Caption = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1080
       object Grid: TcxGrid
         Left = 0
         Top = 70
         Width = 764
-        Height = 301
+        Height = 302
         Align = alClient
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
         PopupMenu = PopupMenu
         TabOrder = 1
+        LookAndFeel.NativeStyle = False
         object TableView: TcxGridDBTableView
           PopupMenu = PopupMenuBuyer
           Navigator.Buttons.CustomButtons = <>
@@ -50,13 +67,14 @@ inherited DolgT: TDolgT
           OptionsSelection.CellSelect = False
           OptionsSelection.HideSelection = True
           OptionsView.NoDataToDisplayInfoText = #1053#1077#1090' '#1076#1072#1085#1085#1099#1093
-          OptionsView.DataRowHeight = 22
+          OptionsView.DataRowHeight = 25
           OptionsView.GroupByBox = False
           OptionsView.GroupFooterMultiSummaries = True
           OptionsView.HeaderHeight = 30
           OptionsView.Indicator = True
           OptionsView.RowSeparatorColor = clBlack
           Styles.Background = GridBaground
+          Styles.Content = GridRow
           Styles.Header = GridHeader
           Styles.Selection = GridRowSelect
           object TableViewBuyerID: TcxGridDBColumn
@@ -74,6 +92,8 @@ inherited DolgT: TDolgT
           object TableViewbalance: TcxGridDBColumn
             Caption = #1044#1086#1083#1075
             DataBinding.FieldName = 'balance'
+            PropertiesClassName = 'TcxCurrencyEditProperties'
+            Properties.DisplayFormat = ',0 '#8381';-,0 '#8381
             HeaderAlignmentHorz = taCenter
             Width = 192
           end
@@ -90,6 +110,12 @@ inherited DolgT: TDolgT
         Align = alTop
         BevelEdges = []
         Caption = 'Panel1'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
         ShowCaption = False
         TabOrder = 0
         DesignSize = (
@@ -207,7 +233,7 @@ inherited DolgT: TDolgT
           Left = 0
           Top = 6
           Width = 131
-          Height = 25
+          Height = 39
           Action = actAddKassaKreditRequest
           TabOrder = 0
         end
@@ -215,9 +241,10 @@ inherited DolgT: TDolgT
           Left = 137
           Top = 6
           Width = 131
-          Height = 25
+          Height = 39
           Action = actHistoryBuyer
           TabOrder = 1
+          WordWrap = True
         end
       end
     end
@@ -232,9 +259,14 @@ inherited DolgT: TDolgT
         Align = alTop
         BevelEdges = []
         Caption = 'Panel1'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
         ShowCaption = False
         TabOrder = 0
-        ExplicitTop = 8
         DesignSize = (
           764
           70)
@@ -278,10 +310,10 @@ inherited DolgT: TDolgT
           Left = 0
           Top = 7
           Width = 131
-          Height = 25
+          Height = 39
           Action = actHistoryClient
           TabOrder = 0
-          OnClick = cxButton6Click
+          WordWrap = True
         end
         object edtClient: ALookupEdit
           Left = 416
@@ -317,10 +349,17 @@ inherited DolgT: TDolgT
         Left = 0
         Top = 70
         Width = 764
-        Height = 301
+        Height = 302
         Align = alClient
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
         PopupMenu = PopupMenu
         TabOrder = 1
+        LookAndFeel.NativeStyle = False
         object TableViewClient: TcxGridDBTableView
           PopupMenu = PopupMenuClient
           Navigator.Buttons.CustomButtons = <>
@@ -341,13 +380,14 @@ inherited DolgT: TDolgT
           OptionsSelection.CellSelect = False
           OptionsSelection.HideSelection = True
           OptionsView.NoDataToDisplayInfoText = #1053#1077#1090' '#1076#1072#1085#1085#1099#1093
-          OptionsView.DataRowHeight = 22
+          OptionsView.DataRowHeight = 25
           OptionsView.GroupByBox = False
           OptionsView.GroupFooterMultiSummaries = True
           OptionsView.HeaderHeight = 30
           OptionsView.Indicator = True
           OptionsView.RowSeparatorColor = clBlack
           Styles.Background = GridBaground
+          Styles.Content = GridRow
           Styles.Header = GridHeader
           Styles.Selection = GridRowSelect
           object TableViewClientClientID: TcxGridDBColumn
@@ -364,6 +404,8 @@ inherited DolgT: TDolgT
           object TableViewClientbalance: TcxGridDBColumn
             Caption = #1044#1086#1083#1075
             DataBinding.FieldName = 'balance'
+            PropertiesClassName = 'TcxCurrencyEditProperties'
+            Properties.DisplayFormat = ',0 '#8381';-,0 '#8381
             HeaderAlignmentHorz = taCenter
             Width = 204
           end
@@ -378,13 +420,110 @@ inherited DolgT: TDolgT
     Left = 0
     Top = 38
     Width = 772
-    Height = 75
+    Height = 64
     Align = alTop
     Caption = 'Panel1'
     ShowCaption = False
     TabOrder = 1
+    DesignSize = (
+      772
+      64)
+    object SkLabel2: TSkLabel
+      Left = 23
+      Top = 6
+      Width = 38
+      Height = 19
+      TextSettings.Font.Weight = Bold
+      Words = <
+        item
+          Caption = #1044#1086#1083#1075':'
+        end>
+    end
+    object SkLabel3: TSkLabel
+      Left = 232
+      Top = 6
+      Width = 117
+      Height = 19
+      TextSettings.Font.Weight = Medium
+      Words = <
+        item
+          Caption = #1044#1086#1083#1075' '#1087#1086#1082#1091#1087#1072#1090#1080#1083#1080':'
+        end>
+    end
+    object SkLabel4: TSkLabel
+      Left = 232
+      Top = 31
+      Width = 96
+      Height = 19
+      TextSettings.Font.Weight = Medium
+      Words = <
+        item
+          Caption = #1044#1086#1083#1075' '#1082#1083#1080#1077#1085#1090#1099':'
+        end>
+    end
+    object edtTotal: TcxCurrencyEdit
+      Left = 67
+      Top = 6
+      Anchors = [akTop, akRight]
+      ParentFont = False
+      Properties.Alignment.Horz = taCenter
+      Properties.DecimalPlaces = 0
+      Properties.DisplayFormat = ',0 '#8381';-,0 '#8381
+      Properties.ReadOnly = True
+      Style.Color = clBtnFace
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = [fsBold]
+      Style.ReadOnly = True
+      Style.IsFontAssigned = True
+      TabOrder = 0
+      Width = 135
+    end
+    object edtSClient: TcxCurrencyEdit
+      Left = 351
+      Top = 35
+      Anchors = [akTop, akRight]
+      ParentFont = False
+      Properties.Alignment.Horz = taCenter
+      Properties.DecimalPlaces = 0
+      Properties.DisplayFormat = ',0 '#8381';-,0 '#8381
+      Properties.ReadOnly = True
+      Style.Color = clBtnFace
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = [fsBold]
+      Style.ReadOnly = True
+      Style.IsFontAssigned = True
+      TabOrder = 2
+      Width = 151
+    end
+    object edtSBuyer: TcxCurrencyEdit
+      Left = 351
+      Top = 6
+      Anchors = [akTop, akRight]
+      ParentFont = False
+      Properties.Alignment.Horz = taCenter
+      Properties.DecimalPlaces = 0
+      Properties.DisplayFormat = ',0 '#8381';-,0 '#8381
+      Properties.ReadOnly = True
+      Style.Color = clBtnFace
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = [fsBold]
+      Style.ReadOnly = True
+      Style.IsFontAssigned = True
+      TabOrder = 1
+      Width = 151
+    end
   end
   inherited ActionList: TActionList
+    Tag = 60
     Left = 558
     Top = 251
     inherited actShow: TAction
@@ -403,12 +542,9 @@ inherited DolgT: TDolgT
       Tag = -1
       Visible = False
     end
-    inherited actLookup: TAction
-      Tag = -1
-    end
     object actRefreshBuyer: TAction
       Tag = 1
-      Caption = #1054#1073#1085#1086#1074#1080#1090#1100
+      Caption = #1054#1073#1085#1086#1074#1080#1090#1100' '#1076#1072#1085#1085#1099#1077' '#1087#1086' '#1087#1086#1082#1091#1087#1072#1090#1077#1083#1103#1084
       ImageIndex = 5
       OnExecute = actRefreshBuyerExecute
     end
@@ -416,20 +552,22 @@ inherited DolgT: TDolgT
       Tag = 1
       Caption = #1047#1072#1103#1074#1082#1072' '#1085#1072' '#1088#1072#1089#1093#1086#1076
       ImageIndex = 0
+      OnExecute = actAddKassaKreditRequestExecute
     end
     object actHistoryBuyer: TAction
       Tag = 1
-      Caption = #1048#1089#1090#1086#1088#1080#1103' '#1076#1086#1083#1075#1072
+      Caption = #1048#1089#1090#1086#1088#1080#1103' '#1076#1086#1083#1075#1072' '#1087#1086#1082#1091#1087#1072#1090#1077#1083#1077#1081
       ImageIndex = 6
       OnExecute = actHistoryBuyerExecute
     end
     object actHistoryClient: TAction
       Tag = 1
-      Caption = #1048#1089#1090#1086#1080#1103' '#1076#1086#1083#1075#1072
+      Caption = #1048#1089#1090#1086#1080#1103' '#1076#1086#1083#1075#1072' '#1082#1083#1080#1077#1085#1090#1086#1074
       ImageIndex = 6
+      OnExecute = actHistoryClientExecute
     end
     object actRefreshClient: TAction
-      Caption = #1054#1073#1085#1086#1074#1080#1090#1100
+      Caption = #1054#1073#1085#1086#1074#1080#1090#1100' '#1076#1072#1085#1085#1099#1077' '#1087#1086' '#1082#1083#1080#1077#1085#1090#1072#1084
       ImageIndex = 5
       OnExecute = actRefreshClientExecute
     end
@@ -1180,35 +1318,6 @@ inherited DolgT: TDolgT
       Action = actHistoryBuyer
     end
   end
-  object cxStyleRepository: TcxStyleRepository
-    Left = 208
-    Top = 300
-    PixelsPerInch = 96
-    object GridHeader: TcxStyle
-      AssignedValues = [svColor, svFont, svTextColor]
-      Color = 14602694
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      TextColor = clBlack
-    end
-    object GridBaground: TcxStyle
-      AssignedValues = [svColor]
-      Color = 15527148
-    end
-    object GridRowSelect: TcxStyle
-      AssignedValues = [svColor, svFont, svTextColor]
-      Color = clGold
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      TextColor = clBlack
-    end
-  end
   object qClient: TFDQuery
     Connection = DM.FDConnection
     SQL.Strings = (
@@ -1270,6 +1379,43 @@ inherited DolgT: TDolgT
     end
     object MenuItem4: TMenuItem
       Action = actHistoryClient
+    end
+  end
+  object cxStyleRepository: TcxStyleRepository
+    Left = 144
+    Top = 72
+    PixelsPerInch = 96
+    object GridHeader: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = 14602694
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object GridBaground: TcxStyle
+      AssignedValues = [svColor]
+      Color = 15527148
+    end
+    object GridRowSelect: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clGold
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object GridRow: TcxStyle
+      AssignedValues = [svFont]
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Segoe UI'
+      Font.Style = []
     end
   end
 end

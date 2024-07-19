@@ -146,7 +146,8 @@ begin
            select Name
                      ,isActive
                      ,InDateTime
-                     ,UserID
+                     ,upUserID
+                     ,upDateTime
                  from tCreditTypes (nolock)
                where CreditTypeID = :CreditTypeID
   ''';

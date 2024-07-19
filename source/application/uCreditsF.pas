@@ -225,7 +225,8 @@ begin
           ,CloseDate
           ,Comment
           ,InDateTime
-          ,UserID
+          ,upUserID
+          ,upDateTime
       from tCredits (nolock)
     where CreditID = :CreditID
   ''';

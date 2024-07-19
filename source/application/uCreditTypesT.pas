@@ -1,4 +1,4 @@
-unit uCreditTypesT;
+﻿unit uCreditTypesT;
 
 interface
 
@@ -22,7 +22,6 @@ type
     QueryName: TStringField;
     QueryisActive: TBooleanField;
     QueryInDateTime: TSQLTimeStampField;
-    QueryUserID: TFMTBCDField;
     TableViewCreditTypeID: TcxGridDBColumn;
     TableViewName: TcxGridDBColumn;
     SkLabel1: TSkLabel;
@@ -55,20 +54,17 @@ uses
 
 procedure TCreditTypesT.btnFilterClearClick(Sender: TObject);
 begin
-  inherited;
   edtName.Clear;
   DataLoad;
 end;
 
 procedure TCreditTypesT.btnFilterOkClick(Sender: TObject);
 begin
-  inherited;
   DataLoad;
 end;
 
 procedure TCreditTypesT.cxButton3Click(Sender: TObject);
 begin
-  inherited;
   edtName.Clear;
   DataLoad;
 end;
@@ -89,7 +85,6 @@ end;
 procedure TCreditTypesT.edtNameKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  inherited;
   if Key = 13 then DataLoad;
 end;
 

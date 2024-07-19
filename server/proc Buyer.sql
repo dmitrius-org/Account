@@ -80,7 +80,8 @@ as
               ,DiscountDate	
               ,PartnerID	
               ,IsPartner	
-              ,UserID)
+              ,InUserID  
+              ,UpUserID)
 		OUTPUT INSERTED.KontragentID INTO @ID
 		select @KontragentTypeID
               ,@Name    	    
@@ -96,6 +97,7 @@ as
               ,@DiscountDate	
               ,@PartnerID	
               ,@IsPartner 
+              ,dbo.GetUserID()
               ,dbo.GetUserID()
 
 		Select @BuyerID = ID from @ID
@@ -200,20 +202,22 @@ as
 
 	Update tKontragents
 		set 
-            Name    	    = @Name    	    
-            ,FullName	    = @FullName	    
-            ,Inn	        = @Inn	        
-            ,Program	    = @Program	    
-            ,PostAddress	= @PostAddress	
-            ,LegalAddress	= @LegalAddress	
-            ,Edo	        = @Edo	        
-            ,EdoID	    = @EdoID	    
-            ,IsImport	    = @IsImport	    
-            ,Discount	    = @Discount	    
-            ,DiscountDate	= @DiscountDate	
-            ,PartnerID	= @PartnerID	
-            ,IsPartner	= @IsPartner	
-		where KontragentID  = @BuyerID
+             Name          = @Name    	    
+            ,FullName	   = @FullName	    
+            ,Inn	       = @Inn	        
+            ,Program	   = @Program	    
+            ,PostAddress   = @PostAddress	
+            ,LegalAddress  = @LegalAddress	
+            ,Edo	       = @Edo	        
+            ,EdoID	       = @EdoID	    
+            ,IsImport	   = @IsImport	    
+            ,Discount	   = @Discount	    
+            ,DiscountDate  = @DiscountDate	
+            ,PartnerID	   = @PartnerID	
+            ,IsPartner	   = @IsPartner
+            ,UpUserID      = dbo.GetUserID()
+            ,UpDatetime    = GetDate()
+	   where KontragentID = @BuyerID
 
     exec ContactFill
             @ObjectTypeID = @KontragentTypeID

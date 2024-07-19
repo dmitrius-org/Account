@@ -62,22 +62,12 @@ inherited TasksF: TTasksF
     TabOrder = 5
     ExplicitTop = 258
     ExplicitWidth = 603
-    inherited dxPanel1: TdxPanel
-      TabOrder = 0
-      inherited edtInDate: TcxDateEdit
-        TabOrder = 1
-      end
-      inherited edtUser: ALookupEdit
-        TabOrder = 0
-      end
-    end
     inherited btnCancel: TcxButton
       Left = 398
       ExplicitLeft = 398
     end
     inherited btnOk: TcxButton
       Left = 491
-      TabOrder = 2
       OnClick = btnOkClick
       ExplicitLeft = 491
     end

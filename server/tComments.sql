@@ -10,10 +10,12 @@ begin
     ,Comment           varchar(256) 
 	,ObjectID          numeric(15, 0)
     ,ObjectTypeID      numeric(15, 0) 
-	,InDateTime        DateTime default getdate()  
-    ,UpDateTime        DateTime default getdate()  
+     --
     ,InUserID          numeric(15, 0)
+	,InDateTime        DateTime default getdate()   -- 
+
     ,UpUserID          numeric(15, 0) 
+    ,UpDateTime        DateTime default getdate()  
 	);
 
 	create index ao1 on tComments(CommentID);
@@ -37,10 +39,12 @@ begin
 	,ObjectID          numeric(15, 0)
     ,ObjectTypeID      numeric(15, 0) 
 
-	,InDateTime        DateTime default getdate()  
-    ,UpDateTime        DateTime default getdate()  
+     --
     ,InUserID          numeric(15, 0)
+	,InDateTime        DateTime default getdate()   -- 
+
     ,UpUserID          numeric(15, 0) 
+    ,UpDateTime        DateTime default getdate()  
 	);
 
 	create index ao1 on pComments(Spid, CommentID);

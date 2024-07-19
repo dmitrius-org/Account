@@ -14,7 +14,7 @@ uses
   Vcl.ImgList, cxImageList, Vcl.Menus, System.Actions, Vcl.ActnList, cxGroupBox,
   cxGridLevel, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, cxGridExportLink,
-  Vcl.OleAuto;
+  Vcl.OleAuto, dxSkinBasic;
 
 type
   TDebsHistoryClientT = class(TBaseFormDBT)
@@ -40,6 +40,7 @@ type
     QueryPartnerID: TIntegerField;
     procedure FormShow(Sender: TObject);
     procedure actExportToExcelExecute(Sender: TObject);
+    procedure actRefreshExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -54,6 +55,9 @@ var
 
 implementation
 
+uses
+  MTLogger;
+
 {$R *.dfm}
 
 { TDebsHistoryBuyerT }
@@ -62,27 +66,37 @@ procedure TDebsHistoryClientT.actExportToExcelExecute(Sender: TObject);
 var
   SaveDialog: TSaveDialog;　　
   path: string; // path information
-     Excelapp: variant; // Variation variables
+  Excelapp: variant; // Variation variables
 begin
   SaveDialog := TSaveDialog.Create(nil);
   path := '';
   try
     with SaveDialog do
     begin
-      FileName := Self.Caption + ' ' + FormatDateTime('YYYYMMDD', Now ()); // default file name
+      FileName := StringReplace(Self.Caption, '.', '',[rfReplaceAll]) + ' ' + FormatDateTime('YYYYMMDD', Now ()); // default file name
       Filter := '*.xls|*.xls|*.xlsx|*.xlsx|';
       if Execute then
       begin
-        case SaveDialog.FilterIndex of
+        case FilterIndex of
           1:
-            ExportGridToExcel(SaveDialog.FileName, grid, true, true, true, 'xls');
+            ExportGridToExcel(FileName, grid, true, true, true, 'xls');
           2:
-            ExportGridToXLSX(SaveDialog.FileName, grid, true, true, true, 'xlsx');  //2007
+            ExportGridToXLSX(FileName, grid, true, true, true, 'xlsx');  //2007
         end;
       end;
     end;
   finally
-    path := SaveDialog.FileName;
+
+    case SaveDialog.FilterIndex of
+      1:
+        path := SaveDialog.FileName + '.xls';
+      2:
+        path := SaveDialog.FileName + '.xlsx';  //2007
+    end;
+
+
+    logger.Info(path);
+
     SaveDialog.Free;
   end;
 
@@ -90,10 +104,16 @@ begin
   begin
     ExcelAPP := CreateOleObject('Excel.Application'); // Create an excel object
     ExcelAPP.Visible := false;
-         Excelapp.Workbooks.open (PATH); // Use Excel's method to open the file
-    ExcelAPP.WorkSheets[1] .Activate; // The file operation, here is no different from the VBA operation anymore
+    Excelapp.Workbooks.open (path); // Use Excel's method to open the file
+    ExcelAPP.WorkSheets[1].Activate; // The file operation, here is no different from the VBA operation anymore
     ExcelAPP.Visible :=  True; // Show out
   end;
+end;
+
+procedure TDebsHistoryClientT.actRefreshExecute(Sender: TObject);
+begin
+  inherited;
+  DataLoad
 end;
 
 procedure TDebsHistoryClientT.DataLoad;
@@ -101,7 +121,7 @@ begin
   inherited;
   Query.Close();
 
-  Query.ParamByName('BuyerID').AsInteger := id;
+  Query.ParamByName('ClientID').AsInteger := id;
 
   Query.Open();
 end;

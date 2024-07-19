@@ -42,7 +42,11 @@ uses
   uProfit_T in '..\source\application\uProfit_T.pas' {Profit_T},
   uDebsHistoryClientT in '..\source\application\uDebsHistoryClientT.pas' {DebsHistoryClientT},
   uDolgT in '..\source\application\uDolgT.pas' {DolgT},
-  uDebsHistoryBuyerT in '..\source\application\uDebsHistoryBuyerT.pas' {DebsHistoryBuyerT};
+  uDebsHistoryBuyerT in '..\source\application\uDebsHistoryBuyerT.pas' {DebsHistoryBuyerT},
+  uUserT in '..\source\application\uUserT.pas' {UserT},
+  uUserF in '..\source\application\uUserF.pas' {UserF},
+  uUserAccess in '..\source\application\uUserAccess.pas' {UserAccess},
+  uGrantUtils in '..\source\application\uGrantUtils.pas';
 
 {$R *.res}
 
@@ -52,29 +56,21 @@ begin
 
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TIM, IM);
-//  Application.CreateForm(TDebsHistoryBuyerT, DebsHistoryBuyerT);
-  //Application.CreateForm(TDebsHistoryBuyerT, DebsHistoryBuyerT);
-  //  Application.CreateForm(TProfit_T, Profit_T);
-  //Application.CreateForm(TDocumentRequestT, DocumentRequestT);
-  //Application.CreateForm(TDocumentRequestF, DocumentRequestF);
-  //  Application.CreateForm(TTransactionF, TransactionF);
+
   Application.Title := DM.FDManager.ConnectionDefs.FindConnectionDef('Connection').Params.Values['ApplicationName'];
 
-//  var LoginForm: TLoginForm;
-//
-//  LoginForm := TLoginForm.Create(nil);
-//
-//  if LoginForm.ShowModal = 1 then
-  if 1=1 then
-  begin
-    //LoginForm.Free;
-    Application.CreateForm(TDolgT, DolgT);
-  // Application.CreateForm(TMainForm, MainForm);
+  {$IFDEF Release}
+  var LoginForm: TLoginForm;
+  LoginForm := TLoginForm.Create(nil);
 
-// Application.CreateForm(TProfit_T, Profit_T);
-//    Application.CreateForm(TDocumentRequestT, DocumentRequestT);
-//Application.CreateForm(TCreditPaymentT, CreditPaymentT);
-//Application.CreateForm(TCreditsT, CreditsT);
+  if LoginForm.ShowModal = 1 then
+  {$ELSE}
+  if 1=1 then
+  {$ENDIF}
+  begin
+
+    Application.CreateForm(TMainForm, MainForm);
+
     Application.Run;
 
   end

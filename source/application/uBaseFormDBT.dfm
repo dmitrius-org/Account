@@ -54,6 +54,7 @@ inherited BaseFormDBT: TBaseFormDBT
     Align = alClient
     PopupMenu = PopupMenu
     TabOrder = 2
+    LookAndFeel.NativeStyle = False
     object TableView: TcxGridDBTableView
       OnGetStoredProperties = TableViewGetStoredProperties
       OnGetStoredPropertyValue = TableViewGetStoredPropertyValue
@@ -76,13 +77,14 @@ inherited BaseFormDBT: TBaseFormDBT
       OptionsSelection.CellSelect = False
       OptionsSelection.HideSelection = True
       OptionsView.NoDataToDisplayInfoText = #1053#1077#1090' '#1076#1072#1085#1085#1099#1093
-      OptionsView.DataRowHeight = 22
+      OptionsView.DataRowHeight = 25
       OptionsView.GroupByBox = False
       OptionsView.GroupFooterMultiSummaries = True
       OptionsView.HeaderHeight = 30
       OptionsView.Indicator = True
       OptionsView.RowSeparatorColor = clBlack
       Styles.Background = GridBaground
+      Styles.Content = GridRow
       Styles.Footer = GridHeader
       Styles.Header = GridHeader
       Styles.Selection = GridRowSelect
@@ -140,7 +142,6 @@ inherited BaseFormDBT: TBaseFormDBT
       OnExecute = actRefreshExecute
     end
     inherited actLookup: TAction
-      Tag = 1
       OnExecute = actLookupExecute
     end
   end
@@ -194,10 +195,18 @@ inherited BaseFormDBT: TBaseFormDBT
       Color = clGold
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
+      Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = []
       TextColor = clBlack
+    end
+    object GridRow: TcxStyle
+      AssignedValues = [svFont]
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Segoe UI'
+      Font.Style = []
     end
   end
 end

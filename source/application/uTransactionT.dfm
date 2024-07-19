@@ -3,7 +3,6 @@ inherited TransactionT: TTransactionT
   ClientHeight = 469
   ClientWidth = 925
   StyleElements = [seFont, seClient, seBorder]
-  OnCreate = FormCreate
   ExplicitWidth = 941
   ExplicitHeight = 508
   TextHeight = 17
@@ -235,8 +234,8 @@ inherited TransactionT: TTransactionT
       Width = 121
     end
     object edtSumD: TcxCurrencyEdit
-      Left = 472
-      Top = 54
+      Left = 474
+      Top = 55
       Anchors = [akTop, akRight]
       ParentFont = False
       Properties.Alignment.Horz = taCenter
@@ -256,6 +255,7 @@ inherited TransactionT: TTransactionT
     end
   end
   inherited ActionList: TActionList
+    Tag = 20
     Left = 580
     Top = 137
     object actAddDebet: TAction [1]
@@ -900,37 +900,10 @@ inherited TransactionT: TTransactionT
   end
   inherited Query: TFDQuery
     SQL.Strings = (
-      'Select t.TransactionID '
-      '      ,t.TranTypeID '
-      '      ,tt.Brief       as TranType'
-      '      ,ot.Name        as OperationName'
-      '      ,t.OperDate'
-      '      ,k.Name         as KontragentName'
-      '      ,iif(t.TranTypeID = 1, t.Amount, 0) as Debet'
-      '      ,iif(t.TranTypeID = 2, t.Amount, 0) as Credit'
-      '      ,ks.Name        as Kassa'
-      
-        '      ,(Select sum(IIf(t2.TranTypeID=1, 1, -1) * t2.Amount )    ' +
-        '      '
-      '          from tTransaction t2 (nolock)         '
-      '         where t2.InDateTime <= t.InDateTime '
-      '        ) AS balance'
-      '  from tTransaction t (nolock)'
-      ' inner join tTranType tt (nolock)'
-      '         on tt.TranTypeID = t.TranTypeID'
-      '         '
-      ' Inner join tKassa ks (nolock)'
-      '         on ks.KassaID = t.KassaID'
-      '                  '
-      ' left join tKontragents k (nolock)'
-      '         on k.KontragentID = t.KontragentID'
-      ''
-      '  left join tOperation o (nolock)'
-      '         on o.OperationID = t.OperationID'
-      '  left join tOperationType ot (nolock)'
-      '         on ot.OperationTypeID = o.OperationTypeID'
-      'where 1=1'
-      ''
+      'Select t.*'
+      '  from vTransaction t'
+      ' where 1=1'
+      ' '
       '!Kassa'
       ''
       '!DateB'

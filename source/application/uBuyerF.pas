@@ -382,7 +382,8 @@ begin
                     ,IsPartner
                     ,Debts
                     ,InDateTime
-                    ,UserID
+                    ,upUserID
+                    ,upDateTime
                 from tKontragents  (nolock)
                where KontragentID = :KontragentID
             ''';

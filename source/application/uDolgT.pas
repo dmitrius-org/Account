@@ -15,7 +15,7 @@ uses
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.ExtCtrls, cxContainer,
   System.Skia, Vcl.StdCtrls, cxButtons, Vcl.Skia, cxTextEdit, cxMaskEdit,
-  uLookupEdit;
+  uLookupEdit, cxCurrencyEdit;
 
 type
   TDolgT = class(TBaseFormT)
@@ -38,10 +38,6 @@ type
     PopupMenuBuyer: TPopupMenu;
     actRefreshBuyer: TAction;
     actRefreshBuyer1: TMenuItem;
-    cxStyleRepository: TcxStyleRepository;
-    GridHeader: TcxStyle;
-    GridBaground: TcxStyle;
-    GridRowSelect: TcxStyle;
     edtBuyer: ALookupEdit;
     SkLabel8: TSkLabel;
     btnFilterClear: TcxButton;
@@ -78,6 +74,17 @@ type
     MenuItem1: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem4: TMenuItem;
+    cxStyleRepository: TcxStyleRepository;
+    GridHeader: TcxStyle;
+    GridBaground: TcxStyle;
+    GridRowSelect: TcxStyle;
+    GridRow: TcxStyle;
+    edtTotal: TcxCurrencyEdit;
+    edtSClient: TcxCurrencyEdit;
+    edtSBuyer: TcxCurrencyEdit;
+    SkLabel2: TSkLabel;
+    SkLabel3: TSkLabel;
+    SkLabel4: TSkLabel;
     procedure actRefreshBuyerExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnFilterClearClick(Sender: TObject);
@@ -92,7 +99,11 @@ type
     procedure cxButton3Click(Sender: TObject);
     procedure cxButton4Click(Sender: TObject);
     procedure actRefreshClientExecute(Sender: TObject);
-    procedure cxButton6Click(Sender: TObject);
+    procedure actHistoryClientExecute(Sender: TObject);
+    procedure actAddKassaKreditRequestExecute(Sender: TObject);
+    procedure PageControlDrawTab(Control: TCustomTabControl; TabIndex: Integer;
+      const Rect: TRect; Active: Boolean);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -102,6 +113,8 @@ type
     procedure DataLoadClient();
 
     procedure SetActionEnabled();
+
+    procedure   sum();
   end;
 
 var
@@ -110,21 +123,42 @@ var
 implementation
 
 uses
-  uCommonType, MTLogger, uSql, uImageModule, uDebsHistoryBuyerT, uDebsHistoryClientT;
+  uCommonType, MTLogger, uSql, uImageModule, uDebsHistoryBuyerT, uDebsHistoryClientT, uBaseFormDBT, uTransactionF, uDataModule;
 
 {$R *.dfm}
 
 { TDolgT }
+
+procedure TDolgT.actAddKassaKreditRequestExecute(Sender: TObject);
+var TransactionF: TTransactionF;
+begin
+  // заявка на расход
+  TransactionF:= TTransactionF.Create(self);
+  TransactionF.ID := TableViewBuyerID.EditValue;
+  TransactionF.FormAction := acRequest;
+  TransactionF.KassaID := 1;
+  TransactionF.ShowModal;
+  TransactionF.Free;
+end;
 
 procedure TDolgT.actHistoryBuyerExecute(Sender: TObject);
 var DebsHistoryBuyer: TDebsHistoryBuyerT;
 begin
   DebsHistoryBuyer:= TDebsHistoryBuyerT.Create(self);
   DebsHistoryBuyer.ID := TableViewBuyerID.EditValue;
-  DebsHistoryBuyer.Caption := 'История долга по ' + TableViewBuyerName.EditValue;
+  DebsHistoryBuyer.Caption := 'История долга ' + TableViewBuyerName.EditValue;
   DebsHistoryBuyer.ShowModal;
   DebsHistoryBuyer.Free;
+end;
 
+procedure TDolgT.actHistoryClientExecute(Sender: TObject);
+var DebsHistoryClient: TDebsHistoryClientT;
+begin
+  DebsHistoryClient:= TDebsHistoryClientT.Create(self);
+  DebsHistoryClient.ID := TableViewClientClientID.EditValue;
+  DebsHistoryClient.Caption := 'История долга ' + TableViewClientClientName.EditValue;
+  DebsHistoryClient.ShowModal;
+  DebsHistoryClient.Free;
 end;
 
 procedure TDolgT.actRefreshBuyerExecute(Sender: TObject);
@@ -159,16 +193,6 @@ end;
 procedure TDolgT.cxButton4Click(Sender: TObject);
 begin
   DataLoadClient;
-end;
-
-procedure TDolgT.cxButton6Click(Sender: TObject);
-var DebsHistoryClient: TDebsHistoryClientT;
-begin
-  DebsHistoryClient:= TDebsHistoryClientT.Create(self);
-  DebsHistoryClient.ID := TableViewClientClientID.EditValue;
-  DebsHistoryClient.Caption := 'История долга по ' + TableViewBuyerName.EditValue;
-  DebsHistoryClient.ShowModal;
-  DebsHistoryClient.Free;
 end;
 
 procedure TDolgT.DataLoadBuyer;
@@ -233,17 +257,76 @@ begin
   if Key = 13 then DataLoadBuyer;
 end;
 
+procedure TDolgT.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  inherited;
+  if Self.FormStyle = fsMDIChild then
+    DM.OpenFormList.Delete(DM.OpenFormList.IndexOf(Self.ClassName));
+
+  Action := caFree;
+end;
+
 procedure TDolgT.FormShow(Sender: TObject);
 begin
   inherited;
   DataLoadBuyer;
   DataLoadClient;
+
+  sum;
+end;
+
+procedure TDolgT.PageControlDrawTab(Control: TCustomTabControl;
+  TabIndex: Integer; const Rect: TRect; Active: Boolean);
+var
+y    : Integer;
+x    : Integer;
+aRect: TRect;
+begin
+  if Active then
+  begin
+    Control.Canvas.Brush.Color := clWebLightGreen;
+    Control.Canvas.FillRect(Rect);
+  end
+  else
+  begin
+    Control.Canvas.Brush.Color := clBtnFace;
+    Control.Canvas.FillRect(Rect);
+  end;
+
+  y  := Rect.Top + ((Rect.Bottom - Rect.Top - Control.Canvas.TextHeight(TTabControl(Control).Tabs[TabIndex])) div 2) + 1;
+  x  := Rect.Left + ((Rect.Right - Rect.Left - Control.Canvas.TextWidth (TTabControl(Control).Tabs[TabIndex])) div 2) + 1;
+  //draw the tab title
+  Control.Canvas.TextOut(x,y,TTabControl(Control).Tabs[TabIndex]);
 end;
 
 procedure TDolgT.SetActionEnabled;
 begin
 
 
+end;
+
+procedure TDolgT.sum;
+begin
+
+  TSql.Open('''
+    select  sum(iif(source = 'Kassa', round(D*Amount / ((100-isnull(Discount, 0)) / 100), 0),
+                                      round(D*Amount * ((100-isnull(Discount, 0)) / 100), 0))
+           ) AS balance
+      FROM vTurnoverBuyer
+  ''', [], []) ;
+
+  edtSBuyer.Value :=  TSql.q.FieldByName('balance').AsFloat;
+
+  TSql.Open('''
+    select sum(iif(source = 'Kassa', round(D*Amount, 0),
+                                     round(D*Amount * ((100-isnull(Discount, 0)) / 100), 0))
+           ) AS balance
+      FROM vTurnoverClient
+  '''  , [], []) ;
+
+  edtSClient.Value :=  TSql.q.FieldByName('balance').AsFloat;
+
+  edtTotal.Value := edtSClient.Value + edtSBuyer.Value;
 end;
 
 initialization

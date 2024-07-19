@@ -46,19 +46,19 @@ type
     actCreditPayment: TAction;
     ToolButton1: TToolButton;
     ToolButton2: TToolButton;
-    actCredit: TAction;
     ToolButton3: TToolButton;
     edtSum: TcxCurrencyEdit;
     edtSumT: TcxCurrencyEdit;
     edtAVG: TcxCurrencyEdit;
     lblCount: TSkLabel;
+    actCreditType: TAction;
     procedure FormCreate(Sender: TObject);
     procedure edtDateBKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure edtStatePropertiesEditValueChanged(Sender: TObject);
     procedure actCreditPaymentExecute(Sender: TObject);
     procedure btnFilterClearClick(Sender: TObject);
-    procedure actCreditExecute(Sender: TObject);
+    procedure actCreditTypeExecute(Sender: TObject);
   private
     { Private declarations }
     procedure Summ();
@@ -79,15 +79,6 @@ uses
 {$R *.dfm}
 
 
-procedure TCreditsT.actCreditExecute(Sender: TObject);
-var CreditTypesT:TCreditTypesT;
-begin
-  inherited;
-  CreditTypesT  := TCreditTypesT.Create(self);
-  CreditTypesT.ShowModal;
-  CreditTypesT.Free;
-end;
-
 procedure TCreditsT.actCreditPaymentExecute(Sender: TObject);
 var CreditPaymentT: TCreditPaymentT;
 begin
@@ -96,6 +87,15 @@ begin
   CreditPaymentT.CreditID := TableViewCreditID.EditValue;
   CreditPaymentT.showModal;
   CreditPaymentT.free;
+end;
+
+procedure TCreditsT.actCreditTypeExecute(Sender: TObject);
+var CreditTypesT:TCreditTypesT;
+begin
+  inherited;
+  CreditTypesT  := TCreditTypesT.Create(self);
+  CreditTypesT.ShowModal;
+  CreditTypesT.Free;
 end;
 
 procedure TCreditsT.btnFilterClearClick(Sender: TObject);
@@ -164,6 +164,8 @@ begin
   inherited;
   logger.Info('TCreditsT.SetActionEnabled');
   actCreditPayment.Enabled := (actCreditPayment.Tag = 1) and (Query.RecordCount > 0);
+  actCreditType.Enabled := (actCreditType.Tag = 1);
+
 end;
 
 procedure TCreditsT.Summ;

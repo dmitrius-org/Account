@@ -31,6 +31,7 @@ type
     GridRowSelect: TcxStyle;
     N7: TMenuItem;
     FilterPanel: TcxGroupBox;
+    GridRow: TcxStyle;
     procedure FormShow(Sender: TObject);
     procedure actAddExecute(Sender: TObject);
     procedure actEditExecute(Sender: TObject);
@@ -166,7 +167,7 @@ begin
   SaveGridState;
 
   if Self.FormStyle = fsMDIChild then
-   DM.OpenFormList.Delete(DM.OpenFormList.IndexOf(Self.ClassName));
+    DM.OpenFormList.Delete(DM.OpenFormList.IndexOf(Self.ClassName));
 
   Action := caFree;
 end;
@@ -213,7 +214,8 @@ end;
 procedure TBaseFormDBT.SelectLookupKey;
 begin
   ID := Query.FieldByName(TableView.DataController.KeyFieldNames).Value;
-  Self.Close;
+  Self.ModalResult := mrOk;
+//  Self.Close;
 end;
 
 procedure TBaseFormDBT.SetActionEnabled;

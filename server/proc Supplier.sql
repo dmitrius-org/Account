@@ -57,7 +57,8 @@ as
               ,Edo	        
               ,EdoID	    
               ,IsImport	    
-              ,UserID)
+              ,InUserID
+              ,UpUserID)
 		OUTPUT INSERTED.KontragentID INTO @ID
 		select @KontragentTypeID
               ,@Name    	    
@@ -69,6 +70,7 @@ as
               ,@Edo	        
               ,@EdoID	    
               ,@IsImport	    
+              ,dbo.GetUserID()
               ,dbo.GetUserID()
 
 		Select @SupplierID = ID from @ID
@@ -149,6 +151,8 @@ as
               ,LegalAddress	= @LegalAddress	
               ,Edo	        = @Edo	        
               ,EdoID	    = @EdoID	    
+              ,UpUserID      = dbo.GetUserID()
+              ,UpDatetime    = GetDate()
 		 where KontragentID  = @SupplierID
 
         exec ContactFill

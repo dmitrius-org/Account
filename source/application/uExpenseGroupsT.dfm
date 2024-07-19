@@ -3,7 +3,6 @@ inherited ExpenseGroupsT: TExpenseGroupsT
   ClientHeight = 370
   ClientWidth = 805
   StyleElements = [seFont, seClient, seBorder]
-  OnCreate = FormCreate
   ExplicitWidth = 821
   ExplicitHeight = 409
   TextHeight = 17
@@ -17,8 +16,9 @@ inherited ExpenseGroupsT: TExpenseGroupsT
     Top = 87
     Width = 805
     Height = 283
+    ExplicitTop = 87
     ExplicitWidth = 805
-    ExplicitHeight = 271
+    ExplicitHeight = 283
     inherited TableView: TcxGridDBTableView
       DataController.KeyFieldNames = 'ExpenseGroupID'
       OptionsCustomize.ColumnExpressionEditing = True
@@ -35,7 +35,7 @@ inherited ExpenseGroupsT: TExpenseGroupsT
         HeaderAlignmentHorz = taCenter
         Styles.Footer = GridHeader
         Styles.Header = GridHeader
-        Width = 488
+        Width = 468
       end
       object TableViewisActive: TcxGridDBColumn
         Caption = #1055#1088#1080#1079#1085#1072#1082' '#1072#1082#1090#1080#1074#1085#1086#1089#1090#1080
@@ -122,6 +122,7 @@ inherited ExpenseGroupsT: TExpenseGroupsT
     end
   end
   inherited ActionList: TActionList
+    Tag = 75
     Left = 616
   end
   inherited PopupMenu: TPopupMenu
@@ -143,7 +144,7 @@ inherited ExpenseGroupsT: TExpenseGroupsT
       '      ,Name'
       '      ,isActive'
       '      ,InDateTime'
-      '      ,UserID'
+      ''
       '  from tExpenseGroups (nolock)'
       ' where 1=1'
       '   !Name'
@@ -179,13 +180,6 @@ inherited ExpenseGroupsT: TExpenseGroupsT
       FieldName = 'InDateTime'
       Origin = 'InDateTime'
       ReadOnly = True
-    end
-    object QueryUserID: TFMTBCDField
-      FieldName = 'UserID'
-      Origin = 'UserID'
-      ReadOnly = True
-      Precision = 15
-      Size = 0
     end
   end
   inherited DataSource: TDataSource

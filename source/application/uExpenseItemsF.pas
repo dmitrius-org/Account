@@ -73,8 +73,8 @@ begin
         end;
 
         insert tExpenseItems
-              (Name, isActive, ExpenseGroupID, UserID)
-        select :Name, :isActive, :ExpenseGroupID, dbo.GetUserID()
+              (Name, isActive, ExpenseGroupID, InUserID, UpUserID)
+        select :Name, :isActive, :ExpenseGroupID, dbo.GetUserID(), dbo.GetUserID()
 
 
         exit_:
@@ -116,9 +116,10 @@ begin
         Update tExpenseItems
            set Name     = :Name,
                isActive = :isActive,
-               ExpenseGroupID=:ExpenseGroupID
+               ExpenseGroupID=:ExpenseGroupID,
+               UpUserID = dbo.GetUserID(),
+               UpDateTime=GetDate()
          where ExpenseItemID =:ExpenseItemID
-
 
         exit_:
 
@@ -143,16 +144,6 @@ begin
       sqltext :='''
         declare @R int = 0
                ,@M varchar(256) = ''
-
-        /*if exists (Select 1
-                     from tExpenseItems (nolock)
-                    where ExpenseItemID = :ExpenseItemID)
-        begin
-          select @R = 1
-                ,@M = 'Группа используется в справочнике "Статьи расходов"'
-
-          goto exit_
-        end; */
 
         delete
           from tExpenseItems
@@ -217,8 +208,8 @@ begin
                   ,e.ExpenseGroupID
                   ,e.Name
                   ,e.isActive
-                  ,e.InDateTime
-                  ,e.UserID
+                  ,e.upDateTime
+                  ,e.upUserID
               from tExpenseItems e (nolock)
               left join tExpenseGroups g (nolock)
                      on g.ExpenseGroupID = e.ExpenseGroupID

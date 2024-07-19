@@ -3,7 +3,6 @@ inherited DocumentRequestT: TDocumentRequestT
   ClientHeight = 535
   ClientWidth = 930
   StyleElements = [seFont, seClient, seBorder]
-  OnCreate = FormCreate
   ExplicitWidth = 946
   ExplicitHeight = 574
   TextHeight = 17
@@ -246,12 +245,13 @@ inherited DocumentRequestT: TDocumentRequestT
       Top = 47
       TabOrder = 4
       OnKeyDown = edtAccountNumberKeyDown
-      Width = 258
+      Width = 263
     end
   end
   inherited ActionList: TActionList
-    Left = 635
-    Top = 225
+    Tag = 30
+    Left = 636
+    Top = 226
   end
   inherited cxImageList32: TcxImageList
     FormatVersion = 1

@@ -117,14 +117,18 @@ union all select 16, 2, 2, 3,  0, 8   --  Покупатели  Касса 2	З�
 
 go
 if OBJECT_ID('tTransaction') is null
---  drop table tTransaction
+/*begin
+  ALTER TABLE tTransaction SET ( SYSTEM_VERSIONING = OFF )
+  drop table tTransaction
+  DROP TABLE hTransaction
+end */
 /* **********************************************************
 tTransaction - 
 ********************************************************** */
 begin
 	create table tTransaction
 	(
-	 TransactionID      numeric(15, 0)  identity  --
+	 TransactionID      numeric(15, 0)  identity
     ,TranTypeID         numeric(15, 0)
     ,OperationID        numeric(15, 0)
 	,OperDate           datetime 
@@ -136,9 +140,24 @@ begin
     ,KontragentID       numeric(15, 0) 
     ,Discount           money
     ,ParentID           numeric(15, 0) 
-	,InDateTime         DateTime2 default getdate()   -- 
-    ,UserID             numeric(15, 0) 
-	);
+
+     --
+    ,InUserID          numeric(15, 0)
+	,InDateTime        DateTime default getdate()   -- 
+
+    ,UpUserID          numeric(15, 0) 
+    ,UpDateTime        DateTime default getdate()  
+     
+     --
+    ,[ValidFrom] DATETIME2 GENERATED ALWAYS AS ROW START
+    ,[ValidTo] DATETIME2 GENERATED ALWAYS AS ROW END
+
+    ,PERIOD FOR SYSTEM_TIME (ValidFrom, ValidTo)
+
+    ,CONSTRAINT PK_tTransaction_TransactionID PRIMARY KEY NONCLUSTERED (TransactionID)
+	)
+    WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = dbo.hTransaction));
+
 
 	create index ao1 on tTransaction(TransactionID, TranTypeID);
 

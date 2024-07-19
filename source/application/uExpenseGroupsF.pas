@@ -74,8 +74,8 @@ begin
   '''
                select Name
                      ,isActive
-                     ,InDateTime
-                     ,UserID
+                     ,upDateTime
+                     ,upUserID
                  from tExpenseGroups (nolock)
                where ExpenseGroupID = :ExpenseGroupID
   ''';
@@ -112,8 +112,11 @@ begin
         end;
 
         insert tExpenseGroups
-              (Name, isActive, UserID)
-        select :Name, :isActive, dbo.GetUserID()
+              (Name, isActive, InUserID, UpUserID)
+        select :Name,
+               :isActive,
+               dbo.GetUserID(),
+               dbo.GetUserID()
 
 
         exit_:
@@ -151,7 +154,9 @@ begin
 
         Update tExpenseGroups
            set Name     = :Name,
-               isActive = :isActive
+               isActive = :isActive,
+               UpUserID = dbo.GetUserID(),
+               UpDateTime=GetDate()
          where ExpenseGroupID = :ExpenseGroupID
 
 

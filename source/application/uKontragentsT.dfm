@@ -268,6 +268,7 @@ inherited KontragentsT: TKontragentsT
     end
   end
   inherited ActionList: TActionList
+    Tag = 65
     Left = 560
     Top = 224
     inherited actAdd: TAction

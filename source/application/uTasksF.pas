@@ -188,18 +188,12 @@ begin
   FDQuery.Close;
   FDQuery.sql.text :=
   '''
-            Select t.CreateDate
-                  ,t.Comment
-                  ,t.DueDate
-                  ,t.ManagerID
-                  ,t.TaskStatusID
-                  ,t.InDateTime
-                  ,t.UserID
+            Select t.*
               from tTasks t (nolock)
 
              where t.TaskID = :TaskID
   ''';
-  FDQuery.ParamByName('ExpenseItemID').AsInteger := ID;
+  FDQuery.ParamByName('TaskID').AsInteger := ID;
   FDQuery.Open;
 
   edtCreateDate.Date := FDQuery.FieldByName('CreateDate').Value;

@@ -1,24 +1,43 @@
 inherited AccountT: TAccountT
   Caption = #1057#1095#1077#1090#1072
-  ClientHeight = 507
-  ClientWidth = 1019
+  ClientHeight = 496
+  ClientWidth = 1044
   StyleElements = [seFont, seClient, seBorder]
-  OnCreate = FormCreate
-  ExplicitWidth = 1035
-  ExplicitHeight = 546
+  ExplicitWidth = 1060
+  ExplicitHeight = 535
   TextHeight = 17
   inherited ToolBar: TToolBar
-    Width = 1019
+    Width = 1044
     DoubleBuffered = True
-    ExplicitWidth = 1019
+    ExplicitWidth = 1044
+    inherited tbShow: TToolButton
+      AutoSize = True
+      ExplicitWidth = 91
+    end
     inherited tbAdd: TToolButton
+      Left = 91
       Action = nil
+      AutoSize = True
       DropdownMenu = AddMenu
       Style = tbsWholeDropDown
       OnClick = nil
+      ExplicitLeft = 91
+      ExplicitWidth = 69
+    end
+    inherited tbEdit: TToolButton
+      Left = 160
+      AutoSize = True
+      ExplicitLeft = 160
+      ExplicitWidth = 69
+    end
+    inherited tbDelete: TToolButton
+      Left = 229
+      AutoSize = True
+      ExplicitLeft = 229
+      ExplicitWidth = 58
     end
     object ToolButton1: TToolButton
-      Left = 348
+      Left = 287
       Top = 0
       Width = 8
       Caption = 'ToolButton1'
@@ -26,18 +45,19 @@ inherited AccountT: TAccountT
       Style = tbsSeparator
     end
     object ToolButton2: TToolButton
-      Left = 356
+      Left = 295
       Top = 0
-      Action = actontragent
+      Action = actKontragent
+      AutoSize = True
     end
   end
   inherited Grid: TcxGrid
     Top = 152
-    Width = 1019
-    Height = 355
+    Width = 1044
+    Height = 344
     ExplicitTop = 152
-    ExplicitWidth = 1019
-    ExplicitHeight = 355
+    ExplicitWidth = 1044
+    ExplicitHeight = 344
     inherited TableView: TcxGridDBTableView
       OnCustomDrawCell = TableViewCustomDrawCell
       DataController.KeyFieldNames = 'AccountID'
@@ -111,10 +131,10 @@ inherited AccountT: TAccountT
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
-    ExplicitWidth = 1019
+    ExplicitWidth = 1044
     ExplicitHeight = 112
     Height = 112
-    Width = 1019
+    Width = 1044
     object SkLabel1: TSkLabel
       Left = 7
       Top = 18
@@ -414,8 +434,9 @@ inherited AccountT: TAccountT
     end
   end
   inherited ActionList: TActionList
-    Left = 574
-    Top = 142
+    Tag = 10
+    Left = 541
+    Top = 196
     object actClone: TAction
       Tag = 1
       Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1087#1086' '#1086#1073#1088#1072#1079#1094#1091
@@ -434,10 +455,10 @@ inherited AccountT: TAccountT
       ImageIndex = 7
       OnExecute = actRefundFromAccountExecute
     end
-    object actontragent: TAction
+    object actKontragent: TAction
       Caption = #1050#1086#1085#1090#1088#1072#1075#1077#1085#1090#1099
       ImageIndex = 9
-      OnExecute = actontragentExecute
+      OnExecute = actKontragentExecute
     end
   end
   inherited PopupMenu: TPopupMenu

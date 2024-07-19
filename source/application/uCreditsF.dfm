@@ -80,22 +80,8 @@ inherited CreditsF: TCreditsF
     Top = 304
     TabOrder = 7
     ExplicitTop = 304
-    inherited dxPanel1: TdxPanel
-      TabOrder = 0
-      inherited edtInDate: TcxDateEdit
-        TabOrder = 1
-      end
-      inherited edtUser: ALookupEdit
-        TabOrder = 0
-      end
-    end
-    inherited btnCancel: TcxButton
-      ExplicitLeft = 390
-    end
     inherited btnOk: TcxButton
-      TabOrder = 2
       OnClick = btnOkClick
-      ExplicitLeft = 486
     end
   end
   object edtOperDate: TcxDateEdit [8]

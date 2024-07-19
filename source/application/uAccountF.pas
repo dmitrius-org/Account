@@ -60,6 +60,10 @@ type
     procedure edtPaymentDatePropertiesChange(Sender: TObject);
     procedure edtPaymentAmountPropertiesChange(Sender: TObject);
     procedure btnCopyClick(Sender: TObject);
+    procedure edtBuyerPropertiesButtonClick(Sender: TObject;
+      AButtonIndex: Integer);
+    procedure edtClientPropertiesButtonClick(Sender: TObject;
+      AButtonIndex: Integer);
   private
     { Private declarations }
     FIsRefund: Boolean;
@@ -349,8 +353,8 @@ begin
                      ,PayNumber
                      ,PayDate
                      ,InDateTime
-                     ,UserID
-
+                     ,upUserID
+                     ,upDateTime
                  from tAccounts (nolock)
                 where AccountID = :AccountID
             ''',
@@ -385,8 +389,9 @@ begin
                      ,PayNumber
                      ,PayDate
                      ,InDateTime
-                     ,UserID
-
+                     ,InUserID
+                     ,UpUserID
+                     ,UpDateTime
                  from tAccounts (nolock)
                 where AccountID = :AccountID
             ''';
@@ -417,6 +422,30 @@ procedure TAccountF.edtAccountNumberPropertiesChange(Sender: TObject);
 begin
   inherited;
   SetStatus;
+end;
+
+procedure TAccountF.edtBuyerPropertiesButtonClick(Sender: TObject;
+  AButtonIndex: Integer);
+begin
+  if ((AButtonIndex = 0) and (edtBuyer.LookupResult = 1)) then
+  begin
+    TSql.Open('select Discount from tKontragents (nolock) where KontragentID=:ID', ['ID'], [edtBuyer.LookupKey]);
+
+    if TSql.Q.RecordCount>0 then
+      edtBuyerDiscount.Value := TSql.Q.FieldByName('Discount').AsFloat;
+  end;
+end;
+
+procedure TAccountF.edtClientPropertiesButtonClick(Sender: TObject;
+  AButtonIndex: Integer);
+begin
+  if ((AButtonIndex = 0) and (edtClient.LookupResult = 1)) then
+  begin
+    TSql.Open('select Discount from tKontragents (nolock) where KontragentID=:ID', ['ID'], [edtClient.LookupKey]);
+
+    if TSql.Q.RecordCount>0 then
+      edtClientDiscount.Value := TSql.Q.FieldByName('Discount').AsFloat;
+  end;
 end;
 
 procedure TAccountF.edtPaymentAmountPropertiesChange(Sender: TObject);

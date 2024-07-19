@@ -12,11 +12,15 @@ begin
 	,Discount          float
     ,DiscountDate      datetime  
     ,Comment           varchar(256)  
-	,InDateTime        DateTime default getdate()   -- 
-    ,UpDateTime        DateTime default getdate()  
+
+
+     --
     ,InUserID          numeric(15, 0)
+	,InDateTime        DateTime default getdate()   -- 
+
     ,UpUserID          numeric(15, 0) 
-	);
+    ,UpDateTime        DateTime default getdate()  
+    );
 
 	create index ao1 on tDiscounts(DiscountID);
 
@@ -42,10 +46,12 @@ create table pDiscounts
    ,Discount          float
    ,DiscountDate      datetime 
    ,Comment           varchar(256)  
-   ,InDateTime        DateTime default getdate()    
-   ,UpDateTime        DateTime default getdate()  
-   ,InUserID          numeric(15, 0)
-   ,UpUserID          numeric(15, 0) 
+     --
+    ,InUserID          numeric(15, 0)
+	,InDateTime        DateTime default getdate()   -- 
+
+    ,UpUserID          numeric(15, 0) 
+    ,UpDateTime        DateTime default getdate()  
 );
 
 create index ao1 on pDiscounts(Spid, DiscountID);

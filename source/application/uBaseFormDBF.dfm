@@ -34,7 +34,8 @@ inherited BaseFormDBF: TBaseFormDBF
       object edtInDate: TcxDateEdit
         Left = 3
         Top = 21
-        Hint = #1044#1072#1090#1072' '#1089#1086#1079#1076#1072#1085#1080#1103
+        Hint = #1044#1072#1090#1072' '#1087#1086#1089#1083#1077#1076#1085#1077#1075#1086' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
+        TabStop = False
         ParentColor = True
         ParentFont = False
         Properties.AllowDropDownWhenReadOnly = False
@@ -58,7 +59,8 @@ inherited BaseFormDBF: TBaseFormDBF
       object edtUser: ALookupEdit
         Left = 3
         Top = 2
-        Hint = #1055#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1100' '#1089#1086#1079#1076#1072#1074#1096#1080#1081' '#1086#1073#1098#1077#1082#1090
+        Hint = #1055#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1100' '#1089#1076#1077#1083#1072#1074#1096#1080#1081' '#1087#1086#1089#1083#1077#1076#1085#1077#1077' '#1080#1079#1084#1077#1085#1077#1085#1080#1077
+        TabStop = False
         LookupConnection = DM.FDConnection
         LookupSQL = 'select Name from tUser (nolock) where userid = :ID'
         LookupKey = 0

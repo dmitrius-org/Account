@@ -269,6 +269,19 @@
             <Form>DebsHistoryBuyerT</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="..\source\application\uUserT.pas">
+            <Form>UserT</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\source\application\uUserF.pas">
+            <Form>UserF</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\source\application\uUserAccess.pas">
+            <Form>UserAccess</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\source\application\uGrantUtils.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

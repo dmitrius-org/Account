@@ -72,22 +72,12 @@ inherited DocumentRequestF: TDocumentRequestF
     TabOrder = 7
     ExplicitTop = 389
     ExplicitWidth = 573
-    inherited dxPanel1: TdxPanel
-      TabOrder = 0
-      inherited edtInDate: TcxDateEdit
-        TabOrder = 1
-      end
-      inherited edtUser: ALookupEdit
-        TabOrder = 0
-      end
-    end
     inherited btnCancel: TcxButton
       Left = 370
       ExplicitLeft = 370
     end
     inherited btnOk: TcxButton
       Left = 466
-      TabOrder = 2
       OnClick = btnOkClick
       ExplicitLeft = 466
     end

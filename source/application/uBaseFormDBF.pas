@@ -57,8 +57,8 @@ uses
 
 procedure TBaseFormDBF.DataLoad;
 begin
-  edtUser.LookupKey := FDQuery.FieldByName('UserID').AsInteger;
-  edtInDate.Date    := FDQuery.FieldByName('InDateTime').AsDateTime;
+  edtUser.LookupKey := FDQuery.FieldByName('upUserID').AsInteger;
+  edtInDate.Date    := FDQuery.FieldByName('upDateTime').AsDateTime;
   FDQuery.Close;
 end;
 

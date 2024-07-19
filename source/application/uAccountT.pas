@@ -80,7 +80,7 @@ type
     btnFilterClear: TcxButton;
     qAccountStatus: TFDQuery;
     dsAccountStatus: TDataSource;
-    actontragent: TAction;
+    actKontragent: TAction;
     ToolButton1: TToolButton;
     ToolButton2: TToolButton;
     N13: TMenuItem;
@@ -97,7 +97,7 @@ type
     procedure btnFilterOkClick(Sender: TObject);
     procedure btnFilterClearClick(Sender: TObject);
     procedure edtAccountNumberKeyDown(Sender: TObject; var Key: Word;   Shift: TShiftState);
-    procedure actontragentExecute(Sender: TObject);
+    procedure actKontragentExecute(Sender: TObject);
     procedure edtBuyerPropertiesButtonClick(Sender: TObject;
       AButtonIndex: Integer);
   private
@@ -127,7 +127,7 @@ begin
   EditForm(acClone);
 end;
 
-procedure TAccountT.actontragentExecute(Sender: TObject);
+procedure TAccountT.actKontragentExecute(Sender: TObject);
 var kontragent: TKontragentsT;
 begin
   kontragent:= TKontragentsT.Create(self);
@@ -257,6 +257,7 @@ end;
 
 procedure TAccountT.FormCreate(Sender: TObject);
 begin
+  inherited;
   EditFormClass := 'TAccountF';
 end;
 
@@ -275,6 +276,7 @@ begin
   actClone.Enabled := (actClone.Tag = 1) and (Query.RecordCount > 0);
   actRefund.Enabled := (actRefund.Tag = 1);
   actRefundFromAccount.Enabled := (actRefundFromAccount.Tag = 1) and (Query.RecordCount > 0);
+  actKontragent.Enabled := (actKontragent.Tag = 1);
 end;
 
 procedure TAccountT.TableViewCustomDrawCell(Sender: TcxCustomGridTableView;
