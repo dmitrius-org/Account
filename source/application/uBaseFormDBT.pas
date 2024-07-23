@@ -110,7 +110,6 @@ end;
 procedure TBaseFormDBT.actLookupExecute(Sender: TObject);
 begin
   inherited;
-
   SelectLookupKey
 end;
 

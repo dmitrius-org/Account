@@ -1,4 +1,4 @@
-unit uKontragentsChose;
+unit uKassaChose;
 
 interface
 
@@ -9,7 +9,7 @@ uses
   cxGroupBox, cxRadioGroup;
 
 type
-  TKontragentsChose = class(TForm)
+  TKassaChose = class(TForm)
     KType: TcxRadioGroup;
     procedure KTypePropertiesEditValueChanged(Sender: TObject);
   private
@@ -19,13 +19,13 @@ type
   end;
 
 var
-  KontragentsChose: TKontragentsChose;
+  KassaChose: TKassaChose;
 
 implementation
 
 {$R *.dfm}
 
-procedure TKontragentsChose.KTypePropertiesEditValueChanged(Sender: TObject);
+procedure TKassaChose.KTypePropertiesEditValueChanged(Sender: TObject);
 begin
   modalresult := mrOk;
 end;

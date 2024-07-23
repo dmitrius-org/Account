@@ -10,7 +10,7 @@ inherited UserAccess: TUserAccess
     Top = 444
     Width = 570
     TabOrder = 1
-    ExplicitTop = 374
+    ExplicitTop = 444
     ExplicitWidth = 570
     inherited btnCancel: TcxButton
       Left = 367
@@ -41,11 +41,9 @@ inherited UserAccess: TUserAccess
     RootValue = -1
     ScrollbarAnnotations.CustomAnnotations = <>
     TabOrder = 0
-    ExplicitHeight = 374
     object TreecxDBTreeListColumn1: TcxDBTreeListColumn
       Caption.AlignHorz = taCenter
       Caption.Text = #1052#1077#1085#1102
-      DataBinding.ValueType = 'String'
       DataBinding.FieldName = 'Caption'
       Options.Customizing = False
       Options.Editing = False
@@ -61,7 +59,6 @@ inherited UserAccess: TUserAccess
       Properties.Alignment = taCenter
       Caption.AlignHorz = taCenter
       Caption.Text = #1044#1086#1089#1090#1091#1087
-      DataBinding.ValueType = 'Boolean'
       DataBinding.FieldName = 'Value'
       Options.Customizing = False
       Width = 122

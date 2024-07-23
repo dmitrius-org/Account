@@ -434,9 +434,9 @@ inherited AccountT: TAccountT
     end
   end
   inherited ActionList: TActionList
-    Tag = 10
-    Left = 541
-    Top = 196
+    Tag = 20
+    Left = 543
+    Top = 198
     object actClone: TAction
       Tag = 1
       Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1087#1086' '#1086#1073#1088#1072#1079#1094#1091

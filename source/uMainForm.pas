@@ -133,11 +133,18 @@ var form : TBaseFormT;
     mr : TModalResult;
 begin
 
-  if dm.OpenFormList.IndexOf(FormClassName) >= 0 then exit;
+  if dm.OpenFormList.IndexOf(FormClassName) >= 0 then
+  begin
+//     form := (Find(FormClassName)). as TForm;
+//     form.Show;
+  end
+  else
+  begin
 
-  form := TFormClass(FindClass(FormClassName)).Create(self) as TBaseFormT;
-  form.FormStyle := fsMDIChild;
-  dm.OpenFormList.Add(FormClassName);
+    form := TFormClass(FindClass(FormClassName)).Create(self) as TBaseFormT;
+    form.FormStyle := fsMDIChild;
+    dm.OpenFormList.Add(FormClassName);
+  end;
   //form.ShowModal;
 end;
 

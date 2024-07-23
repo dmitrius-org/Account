@@ -282,6 +282,10 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\source\application\uGrantUtils.pas"/>
+        <DCCReference Include="..\source\application\uKassaChose.pas">
+            <Form>KassaChose</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

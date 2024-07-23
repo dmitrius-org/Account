@@ -55,6 +55,7 @@ type
     edtSum: TcxCurrencyEdit;
     edtSumC: TcxCurrencyEdit;
     edtSumD: TcxCurrencyEdit;
+    QueryKassaID: TFMTBCDField;
     procedure actAddDebetExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ToolBarCustomDrawButton(Sender: TToolBar; Button: TToolButton;
@@ -65,6 +66,9 @@ type
       Shift: TShiftState);
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure TableViewCellClick(Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
   private
     { Private declarations }
   public
@@ -75,6 +79,7 @@ type
     procedure EditFormData(AEditform : TBaseFormF); override;
 
     procedure DataLoad(); override;
+    procedure SetActionEnabled(); override;
 
     procedure Summ();
   end;
@@ -85,7 +90,7 @@ var
 implementation
 
 uses
-  uCommonType, MTLogger, uImageModule, uSql;
+  uCommonType, MTLogger, uImageModule, uSql, uKassaChose;
 
 {$R *.dfm}
 
@@ -113,12 +118,7 @@ procedure TTransactionT.DataLoad;
 begin
   logger.Info('TTransactionT.DataLoad');
   Query.Close();
-//
-//  if edtAccountStatus.text <> '' then
-//    Query.MacroByName('AccountStatus').Value := ' and a.AccountStatusID in (' + Integer(edtAccountStatus.EditValue).ToString + ')'
-//  else
-//    Query.MacroByName('AccountStatus').Value := '';
-//
+
   if edKassa.EditValue > 0 then
     Query.MacroByName('Kassa').Value := ' and t.KassaID= ' + Integer(edKassa.EditValue).ToString
   else
@@ -135,11 +135,6 @@ begin
   else
     Query.MacroByName('DateE').Value := '';
 
-//  if FormAction = acLookup then
-//    Query.MacroByName('LookupFilter').Value := LookupFilter
-//  else
-//    Query.MacroByName('LookupFilter').Value := '';
-
   Query.Open();
 
   Summ;
@@ -148,10 +143,51 @@ begin
 end;
 
 procedure TTransactionT.EditFormData(AEditform: TBaseFormF);
+var KassaID: Integer;
+    KassaChose: TKassaChose;
 begin
   if AEditform.FormAction in [acInsert, acAddDebet] then
   begin
-    TTransactionF(AEditform).KassaID := 1;
+    KassaID := 0;
+
+    if AEditform.FormAction = acInsert then   // расход
+      TSql.Open('''
+        select n.ParentID
+          from tGrant g (nolock)
+         inner join tMenu n (nolock)
+                 on n.MenuID = g.MenuID
+         where g.ObjectType = 0
+           and g.ObjectID = dbo.GetUserID()
+           and g.MenuID in (5,11)
+      ''', [], [])
+    else
+    if AEditform.FormAction = acAddDebet then // приход
+      TSql.Open('''
+        select n.ParentID
+          from tGrant g (nolock)
+         inner join tMenu n (nolock)
+                 on n.MenuID = g.MenuID
+         where g.ObjectType = 0
+           and g.ObjectID = dbo.GetUserID()
+           and g.MenuID in (4,10)
+      ''', [], []);
+
+    if TSql.q.RecordCount > 1 then
+    begin
+      KassaChose := TKassaChose.Create(Self);
+      if KassaChose.ShowModal = mrOk then
+      begin
+        KassaID := KassaChose.KType.EditingValue;
+      end;
+      KassaChose.Free;
+    end
+    else
+    if TSql.q.RecordCount > 0 then
+    begin
+      KassaID := TSql.Q.FieldByName('ParentID').AsInteger;
+    end;
+
+    TTransactionF(AEditform).KassaID := KassaID;
   end;
 end;
 
@@ -182,7 +218,74 @@ begin
   edtPaymentDate.Date := Date();
   edtPaymentDateE.Date := Date();
 
+  qKassa.Open;
+
   DataLoad;
+end;
+
+procedure TTransactionT.SetActionEnabled;
+begin
+  inherited;
+
+  TSql.Open('''
+    Select iif(charindex('TTransactionT.actShow', S) >0, 1, 0) as show,
+           iif(charindex('TTransactionT.actEdit', S) >0, 1, 0) as edit,
+           iif(charindex('TTransactionT.actDelete', S) >0, 1, 0) as del
+
+    from (
+      SELECT STRING_AGG(n.Name, ';') as S
+        FROM [tKassa] k (nolock)
+     /* inner join tGrant g (nolock)
+              on g.ObjectType = 0
+             and g.ObjectID   = dbo.GetUserID()
+             and g.MenuID     = k.KassaID
+      */
+      inner join tMenu n (nolock)
+              on n.ParentID = k.KassaID
+      inner join tGrant r (nolock)
+              on r.ObjectType = 0
+             and r.ObjectID   = dbo.GetUserID()
+             and r.MenuID     = n.MenuID
+
+     where k.kassaID = :kassaID
+     ) p
+  ''', ['kassaID'], [Query.FieldByName('kassaID').asInteger]);
+
+
+
+  actShow.Enabled := (TSql.Q.FieldByName('show').AsInteger = 1) and (Query.RecordCount > 0);
+  actEdit.Enabled := (TSql.Q.FieldByName('edit').AsInteger = 1) and (Query.RecordCount > 0);
+  actDelete.Enabled:=(TSql.Q.FieldByName('del').AsInteger  = 1) and (Query.RecordCount > 0);
+
+
+  TSql.Open('''
+        -- Приход
+        select n.ParentID
+          from tGrant g (nolock)
+         inner join tMenu n (nolock)
+                 on n.MenuID = g.MenuID
+         where g.ObjectType = 0
+           and g.ObjectID = dbo.GetUserID()
+           and g.MenuID in (4,10)
+
+  ''', [], []);
+
+    tbAdd2.Enabled := (TSql.Q.RecordCount > 0);
+
+  TSql.Open('''
+        -- Расход
+        select n.ParentID
+          from tGrant g (nolock)
+         inner join tMenu n (nolock)
+                 on n.MenuID = g.MenuID
+         where g.ObjectType = 0
+           and g.ObjectID = dbo.GetUserID()
+           and g.MenuID in (5,11)
+
+  ''', [], []);
+
+    actAdd.Enabled := (TSql.Q.RecordCount > 0);
+
 end;
 
 procedure TTransactionT.Summ;
@@ -230,23 +333,45 @@ begin
 
 end;
 
+procedure TTransactionT.TableViewCellClick(Sender: TcxCustomGridTableView;
+  ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+  AShift: TShiftState; var AHandled: Boolean);
+begin
+  SetActionEnabled
+end;
+
 procedure TTransactionT.ToolBarCustomDrawButton(Sender: TToolBar;
   Button: TToolButton; State: TCustomDrawState; var DefaultDraw: Boolean);
 begin
   //  inherited;
-  if Button.Name = tbAdd2.Name then
+  if (Button.Name = tbAdd2.Name) then
   begin
-    Sender.Canvas.Font.Color := clGreen; // Задаем цвет текста
-    Sender.Canvas.Font.Style := [fsBold];
+    if (Button.Enabled) then
+    begin
+      Sender.Canvas.Font.Color := clGreen; // Задаем цвет текста
+      Sender.Canvas.Font.Style := [fsBold];
+
+    end
+    else
+    begin
+      Sender.Canvas.Font.Color := clGray; // Задаем цвет текста
+    end;
     Sender.Canvas.Brush.Color:= clBtnFace;
     Sender.Canvas.TextOut(Button.Left + 20, Button.Top + 20, TAction(Button.Action).Caption); // Рисуем текст кнопки
     // DefaultDraw := False; // Отключаем стандартную отрисовку
   end;
 
-  if Button.Name = tbAdd.Name then
+  if (Button.Name = tbAdd.Name) then
   begin
-    Sender.Canvas.Font.Color := clRed; // Задаем цвет текста
-    Sender.Canvas.Font.Style := [fsBold];
+    if (Button.Enabled) then
+    begin
+      Sender.Canvas.Font.Color := clRed; // Задаем цвет текста
+      Sender.Canvas.Font.Style := [fsBold];
+    end
+    else
+    begin
+      Sender.Canvas.Font.Color := clGray; // Задаем цвет текста
+    end;
     Sender.Canvas.Brush.Color:= clBtnFace;
     Sender.Canvas.TextOut(Button.Left + 20, Button.Top + 20, TAction(Button.Action).Caption); // Рисуем текст кнопки
   end

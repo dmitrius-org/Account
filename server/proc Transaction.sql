@@ -269,9 +269,13 @@ create proc UserKassaList
 as
   declare @r int = 0
 
-  SELECT [KassaID]
-        ,[Name]
-    FROM [tKassa] (nolock)
+  SELECT k.[KassaID]
+        ,k.[Name]
+    FROM [tKassa] k (nolock)
+  inner join tGrant g (nolock)
+          on g.ObjectType = 0
+         and g.ObjectID   = dbo.GetUserID()
+         and g.MenuID     = k.KassaID
 
 
 exit_:
@@ -303,7 +307,30 @@ Select t.TransactionID
           from tTransaction t2 (nolock)         
          where t2.InDateTime <= t.InDateTime 
         ) AS balance
-  from tTransaction t (nolock)
+
+      ,t.KassaID
+
+
+
+    FROM 
+   --- права  
+        [tKassa] ka (nolock)
+  inner join tGrant g (nolock)
+          on g.ObjectType = 0
+         and g.ObjectID   = dbo.GetUserID()
+         and g.MenuID     = ka.KassaID
+
+  inner join tMenu n (nolock)
+          on n.ParentID = ka.KassaID
+  inner join tGrant r (nolock)
+          on r.ObjectType = 0
+         and r.ObjectID   = dbo.GetUserID()
+         and r.MenuID     = n.MenuID
+  --- права
+
+   
+ inner join tTransaction t (nolock)
+         on t.KassaID = ka.KassaID
  inner join tTranType tt (nolock)
          on tt.TranTypeID = t.TranTypeID
          

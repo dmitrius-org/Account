@@ -34,6 +34,7 @@ inherited TransactionT: TTransactionT
     ExplicitWidth = 925
     ExplicitHeight = 343
     inherited TableView: TcxGridDBTableView
+      OnCellClick = TableViewCellClick
       DataController.KeyFieldNames = 'TransactionID'
       DataController.Summary.DefaultGroupSummaryItems = <
         item
@@ -255,7 +256,6 @@ inherited TransactionT: TTransactionT
     end
   end
   inherited ActionList: TActionList
-    Tag = 20
     Left = 580
     Top = 137
     object actAddDebet: TAction [1]
@@ -901,7 +901,7 @@ inherited TransactionT: TTransactionT
   inherited Query: TFDQuery
     SQL.Strings = (
       'Select t.*'
-      '  from vTransaction t'
+      '  from vTransaction t        '
       ' where 1=1'
       ' '
       '!Kassa'
@@ -978,10 +978,16 @@ inherited TransactionT: TTransactionT
       Precision = 15
       Size = 0
     end
+    object QueryKassaID: TFMTBCDField
+      FieldName = 'KassaID'
+      Origin = 'KassaID'
+      Precision = 15
+      Size = 0
+    end
   end
   inherited DataSource: TDataSource
-    Left = 687
-    Top = 170
+    Left = 681
+    Top = 194
   end
   inherited cxStyleRepository: TcxStyleRepository
     Left = 133

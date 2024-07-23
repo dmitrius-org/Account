@@ -46,7 +46,8 @@ uses
   uUserT in '..\source\application\uUserT.pas' {UserT},
   uUserF in '..\source\application\uUserF.pas' {UserF},
   uUserAccess in '..\source\application\uUserAccess.pas' {UserAccess},
-  uGrantUtils in '..\source\application\uGrantUtils.pas';
+  uGrantUtils in '..\source\application\uGrantUtils.pas',
+  uKassaChose in '..\source\application\uKassaChose.pas' {KassaChose};
 
 {$R *.res}
 
@@ -54,9 +55,9 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
 
+
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TIM, IM);
-
   Application.Title := DM.FDManager.ConnectionDefs.FindConnectionDef('Connection').Params.Values['ApplicationName'];
 
   {$IFDEF Release}
@@ -68,7 +69,7 @@ begin
   if 1=1 then
   {$ENDIF}
   begin
-
+    //Application.CreateForm(TTransactionT, TransactionT);
     Application.CreateForm(TMainForm, MainForm);
 
     Application.Run;

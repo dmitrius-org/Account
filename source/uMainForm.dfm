@@ -12,6 +12,7 @@ object MainForm: TMainForm
   Font.Style = []
   FormStyle = fsMDIForm
   VisualManager = FormTabsBar1
+  Position = poDesktopCenter
   Visible = True
   OnCreate = FormCreate
   OnShow = FormShow

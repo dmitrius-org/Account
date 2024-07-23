@@ -113,7 +113,9 @@ begin
 
 //  else
 //  end;
-//  Caption := 'Пользователь [' + edtLogin.Text   + ']';
+  TSql.Open('select Brief from tUser (nolock) where userID = :ID', ['ID'], [ID]);
+
+  Caption := 'Права поьзователя [' + TSql.q.FieldByName('Brief').AsString  + ']';
 
  // inherited;
 end;

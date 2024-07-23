@@ -259,15 +259,15 @@ create proc UserDeleteCheck
 as
   declare @r int = 0
 
-  --if exists (select 1 
-  --             from tUser u (nolock)
-  --            where u.UserID  = @UserID
-  --              )
-  --begin
-  --  set @r = 11 -- Удаление запрещено, пользователь входит в группу прав!
-  --  goto exit_
-  --end
-
+  if exists (select 1 
+               from tUser u (nolock)
+              where u.UserID  = @UserID
+                and u.UserID  = 1
+                )
+  begin
+    set @r = 300--   'Удаление учетной записи администратора запрещено!'
+    goto exit_
+  end
 
   if exists (select 1 
                from tKontragents (nolock)
