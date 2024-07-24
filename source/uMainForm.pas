@@ -38,12 +38,13 @@ type
     ToolButton9: TToolButton;
     actProfit: TAction;
     ToolButton10: TToolButton;
-    ToolButton11: TToolButton;
     actDebs: TAction;
     ToolButton12: TToolButton;
     ToolButton13: TToolButton;
     ToolButton14: TToolButton;
     actUser: TAction;
+    actStatistic: TAction;
+    ToolButton11: TToolButton;
     procedure FormCreate(Sender: TObject);
     procedure actAccountExecute(Sender: TObject);
     procedure FormTabsBar1AcceptForm(AForm: TForm; var AAccept: Boolean);
@@ -57,6 +58,7 @@ type
     procedure actDebsExecute(Sender: TObject);
     procedure actUserExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure actStatisticExecute(Sender: TObject);
   private
     { Private declarations }
     FGrant: TAccess;
@@ -116,6 +118,11 @@ end;
 procedure TMainForm.actProfitExecute(Sender: TObject);
 begin
   CreateMDIChild('TProfit_T');
+end;
+
+procedure TMainForm.actStatisticExecute(Sender: TObject);
+begin
+  CreateMDIChild('TStatisticT');
 end;
 
 procedure TMainForm.actTaskExecute(Sender: TObject);

@@ -351,18 +351,27 @@ inherited Profit_T: TProfit_T
   end
   inherited Query: TFDQuery
     SQL.Strings = (
-      
-        'SELECT p.AccountNumber, p.OperDate, p.BuyerName, p.ClientName, p' +
-        '.C, p.Amount, p.discount, p.BuyerID, p.PartnerID, p.ClientID, (p' +
-        '.Amount * (p.discount/100)) AS Summ'
+      'SELECT p.AccountNumber, '
+      '       p.OperDate, '
+      '       p.BuyerName, '
+      '       p.ClientName, '
+      '       p.C, '
+      '       p.Amount, '
+      '       p.discount,'
+      '       p.BuyerID, '
+      '       p.PartnerID, '
+      '       p.ClientID,'
+      '       (p.Amount * (p.discount/100)) AS Summ'
       'FROM vTurnoverProfit AS p'
       ''
       'where 1=1'
       ''
       '!DateB'
+      ''
       '!DateE'
       ''
       '!BuyerID'
+      ''
       '!ClientID'
       ''
       '!AccountNumber')

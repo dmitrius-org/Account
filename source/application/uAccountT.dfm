@@ -1282,9 +1282,14 @@ inherited AccountT: TAccountT
   inherited Query: TFDQuery
     SQL.Strings = (
       'Select a.AccountID'
-      '      ,a.PaymentDate      '
+      '      ,isnull(a.PaymentDate, a.AccountDate) AS PaymentDate     '
       '      ,a.AccountNumber'
-      '      ,isnull(a.PaymentAmount, a.AccountAmount) PaymentAmount'
+      '      ,case '
+      
+        '         when isnull(a.PaymentAmount, 0) = 0 then a.AccountAmoun' +
+        't '
+      '         else a.PaymentAmount'
+      '       end PaymentAmount'
       '      ,kb.Name        BuyerName'
       '      ,a.BuyerDiscount'
       '      ,kC.Name        ClientName'

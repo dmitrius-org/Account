@@ -14,7 +14,10 @@ as
        a.ClientDiscount,
        isnull(C.Name,'') AS ClientName,
        a.IsRefund AS C, 
-       isnull(a.PaymentAmount, a.AccountAmount) AS Amount, 
+       case 
+         when isnull(a.PaymentAmount, 0) = 0 then a.AccountAmount 
+         else a.PaymentAmount
+       end Amount,
        IIf(a.BuyerDiscount>0, a.BuyerDiscount-a.ClientDiscount, 0) AS Discount,
        a.BuyerID, 
        b.KontragentID as PartnerID, 

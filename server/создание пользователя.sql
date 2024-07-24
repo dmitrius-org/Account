@@ -42,10 +42,10 @@ insert tMenu (MenuID, N, Caption, Name, Type, ParentID) select 50,  50,  'Виды к
 insert tMenu (MenuID, N, Caption, Name, Type, ParentID) select 51,  51,  'Выплаты по кредиту',          'TCreditPaymentT',                   0,  40
 insert tMenu (MenuID, N, Caption, Name, Type, ParentID) select 55,  55,  'Прибыль',                     'TMainForm.actProfit',               0,  0
 insert tMenu (MenuID, N, Caption, Name, Type, ParentID) select 60,  60,  'Долги',                       'TMainForm.actDebs',                 0,  0
-                                                                                                                                    
+insert tMenu (MenuID, N, Caption, Name, Type, ParentID) select 62,  62,  'Статистика',                  'TMainForm.actStatistic',            0,  0                                                                                                                                    
 insert tMenu (MenuID, N, Caption, Name, Type, ParentID) select 65,  65,  'Контрагенты',                 'TMainForm.actKontragent',           0,  0
 insert tMenu (MenuID, N, Caption, Name, Type, ParentID) select 70,  70,  'Статьи расходов',             'TMainForm.actExpenseItems',         0,  0
-insert tMenu (MenuID, N, Caption, Name, Type, ParentID) select 75,  75,  'Группы расходов',             '.TExpenseGroupsT',                  0,  70
+insert tMenu (MenuID, N, Caption, Name, Type, ParentID) select 75,  75,  'Группы расходов',             'TExpenseGroupsT',                   0,  70
 insert tMenu (MenuID, N, Caption, Name, Type, ParentID) select 80,  80,  'Поручения',                   'TMainForm.actTask',                 0,  0
 insert tMenu (MenuID, N, Caption, Name, Type, ParentID) select 85,  85,  'Пользователи',                'TMainForm.actUser',                 0,  0
 

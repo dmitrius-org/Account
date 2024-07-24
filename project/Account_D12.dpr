@@ -47,7 +47,8 @@ uses
   uUserF in '..\source\application\uUserF.pas' {UserF},
   uUserAccess in '..\source\application\uUserAccess.pas' {UserAccess},
   uGrantUtils in '..\source\application\uGrantUtils.pas',
-  uKassaChose in '..\source\application\uKassaChose.pas' {KassaChose};
+  uKassaChose in '..\source\application\uKassaChose.pas' {KassaChose},
+  uStatisticT in '..\source\uStatisticT.pas' {StatisticT};
 
 {$R *.res}
 

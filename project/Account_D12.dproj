@@ -286,6 +286,10 @@
             <Form>KassaChose</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="..\source\uStatisticT.pas">
+            <Form>StatisticT</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
