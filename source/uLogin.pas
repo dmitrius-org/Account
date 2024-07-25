@@ -31,7 +31,7 @@ implementation
 
 {$R *.dfm}
 
-uses uDataModule;
+uses uDataModule, uImageModule;
 
 procedure TLoginForm.btnCancelClick(Sender: TObject);
 begin
