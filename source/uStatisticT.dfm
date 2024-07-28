@@ -10,11 +10,15 @@ inherited StatisticT: TStatisticT
     Width = 651
     DoubleBuffered = True
     Visible = False
+    ExplicitWidth = 651
   end
   inherited Grid: TcxGrid
     Top = 82
     Width = 651
     Height = 239
+    ExplicitTop = 82
+    ExplicitWidth = 651
+    ExplicitHeight = 239
     inherited TableView: TcxGridDBTableView
       object TableViewName: TcxGridDBColumn
         Caption = #1055#1086#1082#1072#1079#1072#1090#1077#1083#1100

@@ -1,7 +1,10 @@
 inherited TransactionT: TTransactionT
+  BorderIcons = [biSystemMenu]
   Caption = #1050#1072#1089#1089#1072
   ClientHeight = 469
   ClientWidth = 925
+  Visible = True
+  WindowState = wsMaximized
   StyleElements = [seFont, seClient, seBorder]
   ExplicitWidth = 941
   ExplicitHeight = 508
@@ -27,12 +30,13 @@ inherited TransactionT: TTransactionT
     end
   end
   inherited Grid: TcxGrid
-    Top = 126
+    Top = 116
     Width = 925
-    Height = 343
-    ExplicitTop = 126
+    Height = 353
+    OnLayoutChanged = GridLayoutChanged
+    ExplicitTop = 116
     ExplicitWidth = 925
-    ExplicitHeight = 343
+    ExplicitHeight = 353
     inherited TableView: TcxGridDBTableView
       OnCellClick = TableViewCellClick
       DataController.KeyFieldNames = 'TransactionID'
@@ -43,6 +47,8 @@ inherited TransactionT: TTransactionT
           FieldName = 'Debet'
           Column = TableViewCredit
         end>
+      OnColumnSizeChanged = TableViewColumnSizeChanged
+      OnLeftPosChanged = TableViewLeftPosChanged
       object TableViewTransactionID: TcxGridDBColumn
         Caption = #1048#1076#1077#1085#1090#1080#1092#1080#1082#1072#1090#1086#1088
         DataBinding.FieldName = 'TransactionID'
@@ -101,8 +107,8 @@ inherited TransactionT: TTransactionT
   inherited FilterPanel: TcxGroupBox
     Visible = True
     ExplicitWidth = 925
-    ExplicitHeight = 86
-    Height = 86
+    ExplicitHeight = 76
+    Height = 76
     Width = 925
     object SkLabel4: TSkLabel
       Left = 373
@@ -125,7 +131,7 @@ inherited TransactionT: TTransactionT
         end>
     end
     object SkLabel6: TSkLabel
-      Left = 7
+      Left = 27
       Top = 16
       Width = 39
       Height = 19
@@ -196,7 +202,7 @@ inherited TransactionT: TTransactionT
     end
     object edtSum: TcxCurrencyEdit
       Left = 724
-      Top = 55
+      Top = 45
       Anchors = [akTop, akRight]
       ParentFont = False
       Properties.Alignment.Horz = taCenter
@@ -216,7 +222,7 @@ inherited TransactionT: TTransactionT
     end
     object edtSumC: TcxCurrencyEdit
       Left = 599
-      Top = 55
+      Top = 45
       Anchors = [akTop, akRight]
       ParentFont = False
       Properties.Alignment.Horz = taCenter
@@ -236,7 +242,7 @@ inherited TransactionT: TTransactionT
     end
     object edtSumD: TcxCurrencyEdit
       Left = 474
-      Top = 55
+      Top = 45
       Anchors = [akTop, akRight]
       ParentFont = False
       Properties.Alignment.Horz = taCenter

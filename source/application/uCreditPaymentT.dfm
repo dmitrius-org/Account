@@ -66,7 +66,7 @@ inherited CreditPaymentT: TCreditPaymentT
         end>
     end
     object SkLabel1: TSkLabel
-      Left = 307
+      Left = 314
       Top = 18
       Width = 92
       Height = 19

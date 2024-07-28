@@ -2,41 +2,26 @@ object MainForm: TMainForm
   Left = 0
   Top = 0
   Caption = 'MainForm'
-  ClientHeight = 596
-  ClientWidth = 1092
+  ClientHeight = 486
+  ClientWidth = 927
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
-  FormStyle = fsMDIForm
-  VisualManager = FormTabsBar1
   Position = poDesktopCenter
   Visible = True
+  WindowState = wsMaximized
   OnCreate = FormCreate
   OnShow = FormShow
   TextHeight = 15
-  object FormTabsBar1: TFormTabsBar
-    Left = 0
-    Top = 61
-    Width = 1092
-    Height = 30
-    ParentColor = False
-    TabOptions.ShowFormIcon = True
-    TabOptions.ShowFormSystemMenu = True
-    TabOptions.ShowCloseButton = True
-    TabOptions.ShowHintForTruncatedCaption = True
-    TabMinWidth = 100
-    TabMaxWidth = 250
-    ShowTabsMenuButton = True
-    OnAcceptForm = FormTabsBar1AcceptForm
-  end
   object ToolBar2: TToolBar
     Left = 0
     Top = 0
-    Width = 1092
-    Height = 61
+    Width = 927
+    Height = 60
+    AutoSize = True
     BorderWidth = 1
     ButtonHeight = 56
     ButtonWidth = 124
@@ -146,6 +131,27 @@ object MainForm: TMainForm
       Action = actUser
       AutoSize = True
     end
+  end
+  object MainPage: TcxPageControl
+    Left = 0
+    Top = 60
+    Width = 927
+    Height = 426
+    Align = alClient
+    Color = clSilver
+    ParentBackground = False
+    ParentColor = False
+    TabOrder = 1
+    Properties.CloseButtonMode = cbmEveryTab
+    Properties.CustomButtons.Buttons = <>
+    Properties.Options = [pcoAlwaysShowGoDialogButton, pcoCloseButton, pcoGoDialog, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize, pcoUsePageColorForTab]
+    Properties.OwnerDraw = True
+    Properties.TabSlants.Kind = skCutCorner
+    OnCanCloseEx = MainPageCanCloseEx
+    ClientRectBottom = 422
+    ClientRectLeft = 4
+    ClientRectRight = 923
+    ClientRectTop = 4
   end
   object MainMenu: TMainMenu
     Images = ImageList

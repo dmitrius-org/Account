@@ -259,6 +259,13 @@ procedure TAccountT.FormCreate(Sender: TObject);
 begin
   inherited;
   EditFormClass := 'TAccountF';
+
+//  if (not (FormAction = acLookup ))then
+//  begin
+//   // Self.WindowState := wsMaximized;
+//   // Self.BorderIcons := [biSystemMenu];
+//  end;
+
 end;
 
 procedure TAccountT.FormShow(Sender: TObject);

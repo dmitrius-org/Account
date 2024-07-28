@@ -53,14 +53,16 @@ inherited CreditsT: TCreditsT
     end
   end
   inherited Grid: TcxGrid
-    Top = 157
+    Top = 148
     Width = 944
-    Height = 333
-    ExplicitTop = 157
+    Height = 342
+    OnLayoutChanged = GridLayoutChanged
+    ExplicitTop = 148
     ExplicitWidth = 944
-    ExplicitHeight = 333
+    ExplicitHeight = 342
     inherited TableView: TcxGridDBTableView
       DataController.KeyFieldNames = 'CreditID'
+      OnLeftPosChanged = TableViewLeftPosChanged
       object TableViewCreditID: TcxGridDBColumn
         Caption = #1048#1076#1077#1085#1090#1080#1092#1080#1082#1072#1090#1086#1088
         DataBinding.FieldName = 'CreditID'
@@ -108,8 +110,8 @@ inherited CreditsT: TCreditsT
   inherited FilterPanel: TcxGroupBox
     Visible = True
     ExplicitWidth = 944
-    ExplicitHeight = 117
-    Height = 117
+    ExplicitHeight = 108
+    Height = 108
     Width = 944
     object SkLabel7: TSkLabel
       Left = 11
@@ -144,7 +146,7 @@ inherited CreditsT: TCreditsT
     end
     object lblCount: TSkLabel
       Left = 12
-      Top = 93
+      Top = 89
       Width = 110
       Height = 19
       TextSettings.Font.Weight = Bold
@@ -203,7 +205,6 @@ inherited CreditsT: TCreditsT
       LookupForm = 'TCreditTypesT'
       LookupSQL = 'select name from tCreditTypes (nolock) where CreditTypeID = :ID'
       LookupKey = 0
-      Anchors = [akLeft, akTop, akRight]
       ParentShowHint = False
       Properties.Buttons = <
         item
@@ -228,8 +229,9 @@ inherited CreditsT: TCreditsT
     object edtState: TcxRadioGroup
       Left = 11
       Top = 40
-      Alignment = alTopCenter
       Caption = #1057#1086#1089#1090#1086#1103#1085#1080#1077' '#1082#1088#1077#1076#1080#1090#1072
+      Ctl3D = False
+      ParentCtl3D = False
       Properties.Columns = 3
       Properties.DefaultValue = 1
       Properties.Items = <
@@ -253,7 +255,7 @@ inherited CreditsT: TCreditsT
     end
     object edtSum: TcxCurrencyEdit
       Left = 547
-      Top = 88
+      Top = 83
       Anchors = [akTop, akRight]
       ParentFont = False
       Properties.Alignment.Horz = taCenter
@@ -273,7 +275,7 @@ inherited CreditsT: TCreditsT
     end
     object edtSumT: TcxCurrencyEdit
       Left = 434
-      Top = 88
+      Top = 83
       Anchors = [akTop, akRight]
       ParentFont = False
       Properties.Alignment.Horz = taCenter
@@ -293,7 +295,7 @@ inherited CreditsT: TCreditsT
     end
     object edtAVG: TcxCurrencyEdit
       Left = 326
-      Top = 88
+      Top = 83
       Anchors = [akTop, akRight]
       ParentFont = False
       Properties.Alignment.Horz = taCenter
@@ -1085,7 +1087,6 @@ inherited CreditsT: TCreditsT
       end>
   end
   inherited Query: TFDQuery
-    Active = True
     SQL.Strings = (
       '            select c.CreditID'
       '                  ,t.Name        CreditType'

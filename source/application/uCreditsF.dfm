@@ -1,8 +1,8 @@
 inherited CreditsF: TCreditsF
   Caption = #1050#1088#1077#1076#1080#1090
-  ClientHeight = 350
+  ClientHeight = 335
   StyleElements = [seFont, seClient, seBorder]
-  ExplicitHeight = 389
+  ExplicitHeight = 374
   TextHeight = 17
   object SkLabel7: TSkLabel [0]
     Left = 8
@@ -77,7 +77,7 @@ inherited CreditsF: TCreditsF
       end>
   end
   inherited Panel: TdxPanel
-    Top = 304
+    Top = 289
     TabOrder = 7
     ExplicitTop = 304
     inherited btnOk: TcxButton

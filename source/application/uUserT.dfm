@@ -49,10 +49,12 @@ inherited UserT: TUserT
     end
   end
   inherited Grid: TcxGrid
+    Top = 86
     Width = 678
-    Height = 355
+    Height = 368
+    ExplicitTop = 86
     ExplicitWidth = 678
-    ExplicitHeight = 355
+    ExplicitHeight = 368
     inherited TableView: TcxGridDBTableView
       DataController.KeyFieldNames = 'UserID'
       object TableViewUserID: TcxGridDBColumn
@@ -91,6 +93,8 @@ inherited UserT: TUserT
   inherited FilterPanel: TcxGroupBox
     Visible = True
     ExplicitWidth = 678
+    ExplicitHeight = 46
+    Height = 46
     Width = 678
     object SkLabel1: TSkLabel
       Left = 94

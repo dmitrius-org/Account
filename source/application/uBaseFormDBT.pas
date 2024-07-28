@@ -165,8 +165,8 @@ begin
   inherited;
   SaveGridState;
 
-  if Self.FormStyle = fsMDIChild then
-    DM.OpenFormList.Delete(DM.OpenFormList.IndexOf(Self.ClassName));
+  if FormAction <> acLookup then
+    (DM.OpenFormList.Remove(Self.ClassName));
 
   Action := caFree;
 end;
@@ -241,48 +241,48 @@ end;
 procedure TBaseFormDBT.TableViewGetStoredProperties(Sender: TcxCustomGridView;
   AProperties: TStrings);
 begin
-   AProperties.Add('FormWidth');
-   AProperties.Add('FormHeight');
+//   AProperties.Add('FormWidth');
+//   AProperties.Add('FormHeight');
 end;
 
 procedure TBaseFormDBT.TableViewGetStoredPropertyValue(
   Sender: TcxCustomGridView; const AName: string; var AValue: Variant);
 begin
-  if AName = 'FormWidth' then
-    if Sender is TcxCustomGridView then
-    begin
-      if Self.WindowState = wsNormal then
-        AValue := Self.Width;
-      Exit;
-    end;
-
-  if AName = 'FormHeight' then
-    if Sender is TcxCustomGridView then
-    begin
-      if Self.WindowState = wsNormal then
-        AValue := Self.Height;
-
-      Exit;
-    end;
+//  if AName = 'FormWidth' then
+//    if Sender is TcxCustomGridView then
+//    begin
+//      if Self.WindowState = wsNormal then
+//        AValue := Self.Width;
+//      Exit;
+//    end;
+//
+//  if AName = 'FormHeight' then
+//    if Sender is TcxCustomGridView then
+//    begin
+//      if Self.WindowState = wsNormal then
+//        AValue := Self.Height;
+//
+//      Exit;
+//    end;
 end;
 
 procedure TBaseFormDBT.TableViewSetStoredPropertyValue(
   Sender: TcxCustomGridView; const AName: string; const AValue: Variant);
 begin
-  inherited;
-  if AName = 'FormWidth' then
-    if Sender is TcxCustomGridView then
-    begin
-      Self.Width := AValue;
-      Exit;
-    end;
-
-  if AName = 'FormHeight' then
-    if Sender is TcxCustomGridView then
-    begin
-      Self.Height := AValue;
-      Exit;
-    end;
+ // inherited;
+//  if AName = 'FormWidth' then
+//    if Sender is TcxCustomGridView then
+//    begin
+//      Self.Width := AValue;
+//      Exit;
+//    end;
+//
+//  if AName = 'FormHeight' then
+//    if Sender is TcxCustomGridView then
+//    begin
+//      Self.Height := AValue;
+//      Exit;
+//    end;
 end;
 
 end.

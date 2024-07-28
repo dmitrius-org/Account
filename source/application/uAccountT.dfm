@@ -1,7 +1,11 @@
 inherited AccountT: TAccountT
+  AutoSize = True
+  BorderIcons = [biSystemMenu]
   Caption = #1057#1095#1077#1090#1072
   ClientHeight = 496
   ClientWidth = 1044
+  Visible = True
+  WindowState = wsMaximized
   StyleElements = [seFont, seClient, seBorder]
   ExplicitWidth = 1060
   ExplicitHeight = 535
@@ -52,12 +56,12 @@ inherited AccountT: TAccountT
     end
   end
   inherited Grid: TcxGrid
-    Top = 152
+    Top = 141
     Width = 1044
-    Height = 344
-    ExplicitTop = 152
+    Height = 355
+    ExplicitTop = 141
     ExplicitWidth = 1044
-    ExplicitHeight = 344
+    ExplicitHeight = 355
     inherited TableView: TcxGridDBTableView
       OnCustomDrawCell = TableViewCustomDrawCell
       DataController.KeyFieldNames = 'AccountID'
@@ -132,11 +136,11 @@ inherited AccountT: TAccountT
   inherited FilterPanel: TcxGroupBox
     Visible = True
     ExplicitWidth = 1044
-    ExplicitHeight = 112
-    Height = 112
+    ExplicitHeight = 101
+    Height = 101
     Width = 1044
     object SkLabel1: TSkLabel
-      Left = 7
+      Left = 44
       Top = 18
       Width = 53
       Height = 19
@@ -146,8 +150,8 @@ inherited AccountT: TAccountT
         end>
     end
     object SkLabel2: TSkLabel
-      Left = 7
-      Top = 49
+      Left = 50
+      Top = 45
       Width = 47
       Height = 19
       Words = <
@@ -157,7 +161,7 @@ inherited AccountT: TAccountT
     end
     object SkLabel3: TSkLabel
       Left = 211
-      Top = 49
+      Top = 45
       Width = 17
       Height = 19
       Words = <
@@ -177,7 +181,7 @@ inherited AccountT: TAccountT
     end
     object SkLabel7: TSkLabel
       Left = 7
-      Top = 80
+      Top = 73
       Width = 94
       Height = 19
       Words = <
@@ -187,7 +191,7 @@ inherited AccountT: TAccountT
     end
     object SkLabel4: TSkLabel
       Left = 211
-      Top = 80
+      Top = 73
       Width = 20
       Height = 19
       Words = <
@@ -207,7 +211,7 @@ inherited AccountT: TAccountT
     end
     object SkLabel11: TSkLabel
       Left = 664
-      Top = 49
+      Top = 45
       Width = 27
       Height = 19
       Words = <
@@ -227,7 +231,7 @@ inherited AccountT: TAccountT
     end
     object SkLabel12: TSkLabel
       Left = 340
-      Top = 49
+      Top = 45
       Width = 75
       Height = 19
       Words = <
@@ -237,7 +241,7 @@ inherited AccountT: TAccountT
     end
     object SkLabel13: TSkLabel
       Left = 340
-      Top = 80
+      Top = 73
       Width = 48
       Height = 19
       Words = <
@@ -254,7 +258,7 @@ inherited AccountT: TAccountT
     end
     object edtPayNumber: TcxTextEdit
       Left = 103
-      Top = 47
+      Top = 43
       TabOrder = 5
       OnKeyDown = edtAccountNumberKeyDown
       Width = 104
@@ -269,7 +273,7 @@ inherited AccountT: TAccountT
     end
     object edtPayDate: TcxDateEdit
       Left = 231
-      Top = 47
+      Top = 43
       Properties.DateButtons = [btnClear, btnNow, btnToday]
       Properties.UseNullString = True
       TabOrder = 6
@@ -278,7 +282,7 @@ inherited AccountT: TAccountT
     end
     object edtPaymentDate: TcxDateEdit
       Left = 103
-      Top = 78
+      Top = 71
       Properties.DateButtons = [btnClear, btnNow, btnToday]
       Properties.UseNullString = True
       TabOrder = 10
@@ -287,7 +291,7 @@ inherited AccountT: TAccountT
     end
     object edtPaymentDateE: TcxDateEdit
       Left = 231
-      Top = 78
+      Top = 71
       Properties.DateButtons = [btnClear, btnNow, btnToday]
       Properties.UseNullString = True
       TabOrder = 11
@@ -311,7 +315,7 @@ inherited AccountT: TAccountT
     end
     object edtType: TcxComboBox
       Left = 714
-      Top = 47
+      Top = 43
       Properties.Items.Strings = (
         #1042#1086#1079#1074#1088#1072#1090#1099)
       TabOrder = 8
@@ -350,7 +354,7 @@ inherited AccountT: TAccountT
     end
     object edtSupplier: ALookupEdit
       Left = 424
-      Top = 47
+      Top = 43
       LookupConnection = DM.FDConnection
       LookupForm = 'TKontragentsT'
       LookupSQL = 'Select Name from tKontragents (nolock) where KontragentID = :ID'
@@ -380,7 +384,7 @@ inherited AccountT: TAccountT
     end
     object edtClient: ALookupEdit
       Left = 424
-      Top = 78
+      Top = 71
       LookupConnection = DM.FDConnection
       LookupForm = 'TKontragentsT'
       LookupSQL = 'Select Name from tKontragents (nolock) where KontragentID = :ID'
@@ -422,7 +426,7 @@ inherited AccountT: TAccountT
     end
     object btnFilterClear: TcxButton
       Left = 866
-      Top = 47
+      Top = 43
       Width = 99
       Height = 25
       Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1080#1083#1100#1090#1088

@@ -370,3 +370,4 @@ initialization
   else
     PerformanceFrequency := 1000; // impossible condition ???
 end.
+

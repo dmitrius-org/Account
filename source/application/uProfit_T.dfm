@@ -1,23 +1,28 @@
 inherited Profit_T: TProfit_T
+  AutoSize = True
   Caption = #1055#1088#1080#1073#1099#1083#1100' '#1089' '#1090#1088#1072#1085#1079#1072#1082#1094#1080#1081
-  ClientWidth = 929
+  ClientHeight = 456
+  ClientWidth = 904
   StyleElements = [seFont, seClient, seBorder]
-  ExplicitWidth = 945
+  ExplicitWidth = 920
+  ExplicitHeight = 495
   TextHeight = 17
   inherited ToolBar: TToolBar
-    Width = 929
+    Width = 904
     DoubleBuffered = True
     Visible = False
     ExplicitWidth = 929
   end
   inherited Grid: TcxGrid
-    Top = 158
-    Width = 929
-    Height = 332
-    ExplicitTop = 158
+    Top = 140
+    Width = 904
+    Height = 316
+    OnLayoutChanged = GridLayoutChanged
+    ExplicitTop = 140
     ExplicitWidth = 929
-    ExplicitHeight = 332
+    ExplicitHeight = 350
     inherited TableView: TcxGridDBTableView
+      OnLeftPosChanged = TableViewLeftPosChanged
       object TableViewAccountNumber: TcxGridDBColumn
         Caption = #1050#1086#1076' '#1090#1088#1085#1079#1072#1082#1094#1080#1080
         DataBinding.FieldName = 'AccountNumber'
@@ -40,7 +45,7 @@ inherited Profit_T: TProfit_T
         Caption = #1050#1083#1080#1077#1085#1090
         DataBinding.FieldName = 'ClientName'
         HeaderAlignmentHorz = taCenter
-        Width = 184
+        Width = 180
       end
       object TableViewAmount: TcxGridDBColumn
         Caption = #1057#1091#1084#1084#1072' '#1090#1088#1072#1085#1079#1072#1082#1094#1080#1080
@@ -71,12 +76,12 @@ inherited Profit_T: TProfit_T
   inherited FilterPanel: TcxGroupBox
     Visible = True
     ExplicitWidth = 929
-    ExplicitHeight = 118
-    Height = 118
-    Width = 929
+    ExplicitHeight = 100
+    Height = 100
+    Width = 904
     object SkLabel4: TSkLabel
       Left = 239
-      Top = 52
+      Top = 47
       Width = 20
       Height = 19
       Words = <
@@ -86,7 +91,7 @@ inherited Profit_T: TProfit_T
     end
     object SkLabel7: TSkLabel
       Left = 12
-      Top = 49
+      Top = 44
       Width = 111
       Height = 19
       Words = <
@@ -95,8 +100,8 @@ inherited Profit_T: TProfit_T
         end>
     end
     object SkLabel1: TSkLabel
-      Left = 10
-      Top = 20
+      Left = 12
+      Top = 17
       Width = 106
       Height = 19
       Words = <
@@ -106,7 +111,7 @@ inherited Profit_T: TProfit_T
     end
     object SkLabel8: TSkLabel
       Left = 390
-      Top = 22
+      Top = 20
       Width = 78
       Height = 19
       Words = <
@@ -116,7 +121,7 @@ inherited Profit_T: TProfit_T
     end
     object SkLabel13: TSkLabel
       Left = 390
-      Top = 52
+      Top = 47
       Width = 48
       Height = 19
       Words = <
@@ -126,7 +131,7 @@ inherited Profit_T: TProfit_T
     end
     object lblCount: TSkLabel
       Left = 12
-      Top = 93
+      Top = 77
       Width = 125
       Height = 19
       TextSettings.Font.Weight = Bold
@@ -137,7 +142,7 @@ inherited Profit_T: TProfit_T
     end
     object SkLabel2: TSkLabel
       Left = 325
-      Top = 93
+      Top = 77
       Width = 118
       Height = 19
       Words = <
@@ -147,7 +152,7 @@ inherited Profit_T: TProfit_T
     end
     object btnFilterClear: TcxButton
       Left = 730
-      Top = 49
+      Top = 44
       Width = 99
       Height = 25
       Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
@@ -159,7 +164,7 @@ inherited Profit_T: TProfit_T
     end
     object btnFilterOk: TcxButton
       Left = 730
-      Top = 18
+      Top = 16
       Width = 99
       Height = 25
       Hint = #1055#1088#1080#1084#1077#1085#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
@@ -171,7 +176,7 @@ inherited Profit_T: TProfit_T
     end
     object edtDateE: TcxDateEdit
       Left = 265
-      Top = 49
+      Top = 44
       Properties.ClearKey = 46
       Properties.DateButtons = [btnClear, btnNow, btnToday]
       Properties.UseNullString = True
@@ -181,7 +186,7 @@ inherited Profit_T: TProfit_T
     end
     object edtDateB: TcxDateEdit
       Left = 129
-      Top = 49
+      Top = 44
       Properties.ClearKey = 46
       Properties.DateButtons = [btnClear, btnNow, btnToday]
       Properties.UseNullString = True
@@ -191,14 +196,14 @@ inherited Profit_T: TProfit_T
     end
     object edtTranCode: TcxTextEdit
       Left = 129
-      Top = 18
+      Top = 16
       TabOrder = 0
       OnKeyDown = edtTranCodeKeyDown
       Width = 104
     end
     object edtBuyer: ALookupEdit
       Left = 474
-      Top = 18
+      Top = 16
       LookupConnection = DM.FDConnection
       LookupForm = 'TKontragentsT'
       LookupSQL = 'Select Name from tKontragents (nolock) where KontragentID = :ID'
@@ -228,7 +233,7 @@ inherited Profit_T: TProfit_T
     end
     object edtClient: ALookupEdit
       Left = 474
-      Top = 49
+      Top = 44
       LookupConnection = DM.FDConnection
       LookupForm = 'TKontragentsT'
       LookupSQL = 'Select Name from tKontragents (nolock) where KontragentID = :ID'
@@ -258,8 +263,7 @@ inherited Profit_T: TProfit_T
     end
     object edtAVG: TcxCurrencyEdit
       Left = 446
-      Top = 89
-      Anchors = [akTop, akRight]
+      Top = 73
       ParentFont = False
       Properties.Alignment.Horz = taCenter
       Properties.DecimalPlaces = 0
@@ -277,8 +281,8 @@ inherited Profit_T: TProfit_T
       Width = 121
     end
     object edtSumT: TcxCurrencyEdit
-      Left = 573
-      Top = 89
+      Left = 548
+      Top = 73
       Anchors = [akTop, akRight]
       ParentFont = False
       Properties.Alignment.Horz = taCenter
@@ -294,11 +298,12 @@ inherited Profit_T: TProfit_T
       Style.ReadOnly = True
       Style.IsFontAssigned = True
       TabOrder = 8
+      ExplicitLeft = 573
       Width = 121
     end
     object edtSum: TcxCurrencyEdit
-      Left = 763
-      Top = 89
+      Left = 738
+      Top = 73
       Anchors = [akTop, akRight]
       ParentFont = False
       Properties.Alignment.Horz = taCenter
@@ -314,6 +319,7 @@ inherited Profit_T: TProfit_T
       Style.ReadOnly = True
       Style.IsFontAssigned = True
       TabOrder = 9
+      ExplicitLeft = 763
       Width = 125
     end
   end

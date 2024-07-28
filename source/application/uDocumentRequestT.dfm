@@ -1,7 +1,9 @@
 inherited DocumentRequestT: TDocumentRequestT
+  BorderIcons = [biSystemMenu]
   Caption = #1047#1072#1087#1088#1086#1089' '#1076#1086#1082#1091#1084#1077#1085#1090#1086#1074
   ClientHeight = 535
   ClientWidth = 930
+  Visible = True
   StyleElements = [seFont, seClient, seBorder]
   ExplicitWidth = 946
   ExplicitHeight = 574
@@ -217,7 +219,7 @@ inherited DocumentRequestT: TDocumentRequestT
       Width = 234
     end
     object btnFilterOk: TcxButton
-      Left = 705
+      Left = 700
       Top = 16
       Width = 99
       Height = 25
@@ -229,7 +231,7 @@ inherited DocumentRequestT: TDocumentRequestT
       OnClick = btnFilterOkClick
     end
     object btnFilterClear: TcxButton
-      Left = 705
+      Left = 700
       Top = 47
       Width = 99
       Height = 25

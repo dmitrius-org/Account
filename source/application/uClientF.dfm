@@ -1,14 +1,14 @@
 inherited ClientF: TClientF
   Caption = #1050#1083#1080#1077#1085#1090
-  ClientHeight = 367
-  ClientWidth = 651
+  ClientHeight = 297
+  ClientWidth = 572
   StyleElements = [seFont, seClient, seBorder]
-  ExplicitWidth = 667
-  ExplicitHeight = 406
+  ExplicitWidth = 588
+  ExplicitHeight = 336
   TextHeight = 17
   inherited Panel: TdxPanel
-    Top = 321
-    Width = 651
+    Top = 251
+    Width = 572
     Frame.Borders = []
     TabOrder = 1
     ExplicitTop = 321
@@ -18,13 +18,13 @@ inherited ClientF: TClientF
       ExplicitHeight = 46
     end
     inherited btnCancel: TcxButton
-      Left = 448
+      Left = 369
       Height = 40
       ExplicitLeft = 448
       ExplicitHeight = 40
     end
     inherited btnOk: TcxButton
-      Left = 543
+      Left = 464
       Height = 40
       OnClick = btnOkClick
       ExplicitLeft = 543
@@ -34,9 +34,9 @@ inherited ClientF: TClientF
   object PageControl1: TPageControl [1]
     Left = 0
     Top = 0
-    Width = 651
-    Height = 321
-    ActivePage = TabCommon
+    Width = 572
+    Height = 251
+    ActivePage = TabDiscount
     Align = alClient
     DoubleBuffered = True
     OwnerDraw = True
@@ -45,6 +45,8 @@ inherited ClientF: TClientF
     TabOrder = 0
     TabWidth = 110
     OnDrawTab = PageControl1DrawTab
+    ExplicitWidth = 651
+    ExplicitHeight = 321
     object TabCommon: TTabSheet
       Margins.Left = 0
       Margins.Top = 0
@@ -53,8 +55,8 @@ inherited ClientF: TClientF
       Caption = #1043#1083#1072#1074#1085#1072#1103
       ImageIndex = 1
       DesignSize = (
-        643
-        281)
+        564
+        211)
       object SkLabel1: TSkLabel
         Left = 8
         Top = 24
@@ -91,7 +93,8 @@ inherited ClientF: TClientF
         Anchors = [akLeft, akTop, akRight]
         TabOrder = 0
         TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077' '#1074#1080#1076#1072' '#1082#1088#1077#1076#1080#1090#1072
-        Width = 519
+        ExplicitWidth = 519
+        Width = 440
       end
       object edtDiscountDate: TcxDateEdit
         Left = 114
@@ -114,8 +117,8 @@ inherited ClientF: TClientF
       object Grid: TcxGrid
         Left = 0
         Top = 37
-        Width = 643
-        Height = 244
+        Width = 564
+        Height = 174
         Align = alClient
         TabOrder = 1
         object TableView: TcxGridDBTableView
@@ -165,7 +168,7 @@ inherited ClientF: TClientF
       object ToolBar1: TToolBar
         Left = 0
         Top = 0
-        Width = 643
+        Width = 564
         Height = 37
         ButtonHeight = 40
         ButtonWidth = 70
@@ -206,8 +209,8 @@ inherited ClientF: TClientF
       object GridDiscount: TcxGrid
         Left = 0
         Top = 0
-        Width = 643
-        Height = 281
+        Width = 564
+        Height = 211
         Align = alClient
         TabOrder = 0
         object TableViewDiscount: TcxGridDBTableView
@@ -264,7 +267,6 @@ inherited ClientF: TClientF
     Top = 264
   end
   object qContact: TFDQuery
-    Active = True
     Connection = DM.FDConnection
     UpdateOptions.KeyFields = 'ID'
     UpdateOptions.AutoIncFields = 'ID'

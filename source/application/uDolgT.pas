@@ -260,8 +260,8 @@ end;
 procedure TDolgT.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   inherited;
-  if Self.FormStyle = fsMDIChild then
-    DM.OpenFormList.Delete(DM.OpenFormList.IndexOf(Self.ClassName));
+//  if Self.FormStyle = fsMDIChild then
+//    DM.OpenFormList.Delete(DM.OpenFormList.IndexOf(Self.ClassName));
 
   Action := caFree;
 end;

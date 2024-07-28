@@ -18,7 +18,7 @@ inherited DolgT: TDolgT
     Top = 102
     Width = 772
     Height = 412
-    ActivePage = tabBuyer
+    ActivePage = TabClient
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -118,15 +118,11 @@ inherited DolgT: TDolgT
         ParentFont = False
         ShowCaption = False
         TabOrder = 0
-        DesignSize = (
-          764
-          70)
         object SkLabel8: TSkLabel
           Left = 331
           Top = 13
           Width = 78
           Height = 19
-          Anchors = [akTop, akRight]
           Words = <
             item
               Caption = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1100':'
@@ -137,7 +133,6 @@ inherited DolgT: TDolgT
           Top = 40
           Width = 58
           Height = 19
-          Anchors = [akTop, akRight]
           Words = <
             item
               Caption = #1055#1072#1088#1090#1085#1077#1088':'
@@ -151,7 +146,6 @@ inherited DolgT: TDolgT
           LookupSQL = 'Select Name from tKontragents (nolock) where KontragentID = :ID'
           LookupKey = 0
           LookupFilter = 'and k.KontragentTypeID = 2 and isnull(k.IsPartner, 0) = 0'
-          Anchors = [akTop, akRight]
           ParentShowHint = False
           Properties.Buttons = <
             item
@@ -179,7 +173,6 @@ inherited DolgT: TDolgT
           Width = 99
           Height = 25
           Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
-          Anchors = [akTop, akRight]
           Caption = #1054#1090#1084#1077#1085#1080#1090#1100
           OptionsImage.ImageIndex = 2
           OptionsImage.Images = IM.IL
@@ -192,7 +185,6 @@ inherited DolgT: TDolgT
           Width = 99
           Height = 25
           Hint = #1055#1088#1080#1084#1077#1085#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
-          Anchors = [akTop, akRight]
           Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
           OptionsImage.ImageIndex = 5
           OptionsImage.Images = IM.IL
@@ -207,7 +199,6 @@ inherited DolgT: TDolgT
           LookupSQL = 'Select Name from tKontragents (nolock) where KontragentID = :ID'
           LookupKey = 0
           LookupFilter = 'and k.KontragentTypeID = 2 and isnull(k.IsPartner, 0) = 1'
-          Anchors = [akTop, akRight]
           ParentShowHint = False
           Properties.Buttons = <
             item
@@ -267,9 +258,6 @@ inherited DolgT: TDolgT
         ParentFont = False
         ShowCaption = False
         TabOrder = 0
-        DesignSize = (
-          764
-          70)
         object SkLabel13: TSkLabel
           Left = 332
           Top = 13
@@ -286,7 +274,6 @@ inherited DolgT: TDolgT
           Width = 99
           Height = 25
           Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
-          Anchors = [akTop, akRight]
           Caption = #1054#1090#1084#1077#1085#1080#1090#1100
           OptionsImage.ImageIndex = 2
           OptionsImage.Images = IM.IL
@@ -299,7 +286,6 @@ inherited DolgT: TDolgT
           Width = 99
           Height = 25
           Hint = #1055#1088#1080#1084#1077#1085#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
-          Anchors = [akTop, akRight]
           Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
           OptionsImage.ImageIndex = 5
           OptionsImage.Images = IM.IL

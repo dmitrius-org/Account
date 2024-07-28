@@ -60,13 +60,20 @@ type
       Shift: TShiftState);
     procedure edtClientPropertiesEditValueChanged(Sender: TObject);
     procedure edtBuyerPropertiesEditValueChanged(Sender: TObject);
+    procedure GridLayoutChanged(Sender: TcxCustomGrid;
+      AGridView: TcxCustomGridView);
+    procedure TableViewLeftPosChanged(Sender: TObject);
+
+
   private
     { Private declarations }
+
   public
     { Public declarations }
     procedure DataLoad(); override;
 
     procedure Summ();
+    procedure AdjustEdit();
   end;
 
 var
@@ -79,6 +86,30 @@ uses
 
 {$R *.dfm}
 
+
+procedure TProfit_T.AdjustEdit;
+var
+  APoint: TPoint;
+begin
+//    APoint := TableView.ViewInfo.HeaderViewInfo.Items[TableViewAmount.VisibleIndex].Bounds.TopLeft;
+//    APoint := TableView.Site.ClientToScreen(APoint);
+//    APoint := edtAVG.Parent.ScreenToClient(APoint);
+//    edtAVG.Left := APoint.X;
+//    edtAVG.Width:= TableViewAmount.Width-1;
+
+
+    APoint := TableView.ViewInfo.HeaderViewInfo.Items[TableViewAmount.VisibleIndex].Bounds.TopLeft;
+    APoint := TableView.Site.ClientToScreen(APoint);
+    APoint := edtSumT.Parent.ScreenToClient(APoint);
+    edtSumT.Left := APoint.X;
+    edtSumT.Width:= TableViewAmount.Width-1;
+
+    APoint := TableView.ViewInfo.HeaderViewInfo.Items[TableViewSumm.VisibleIndex].Bounds.TopLeft;
+    APoint := TableView.Site.ClientToScreen(APoint);
+    APoint := edtSum.Parent.ScreenToClient(APoint);
+    edtSum.Left := APoint.X;
+    edtSum.Width:= TableViewSumm.Width-1;
+end;
 
 procedure TProfit_T.btnFilterClearClick(Sender: TObject);
 begin
@@ -159,6 +190,12 @@ begin
   if Key = 13 then DataLoad;
 end;
 
+procedure TProfit_T.GridLayoutChanged(Sender: TcxCustomGrid;
+  AGridView: TcxCustomGridView);
+begin
+  AdjustEdit
+end;
+
 procedure TProfit_T.Summ;
 begin
   TSQL.Q.Close;
@@ -216,6 +253,18 @@ begin
   edtSum.Value := TSQL.Q.FieldByName('Summ').AsFloat;
 end;
 
+procedure TProfit_T.TableViewLeftPosChanged(Sender: TObject);
+begin
+  AdjustEdit
+end;
+
 initialization
   RegisterClass(TProfit_T);
+
 end.
+
+
+
+
+
+

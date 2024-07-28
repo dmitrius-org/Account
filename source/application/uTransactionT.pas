@@ -69,8 +69,14 @@ type
     procedure TableViewCellClick(Sender: TcxCustomGridTableView;
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
       AShift: TShiftState; var AHandled: Boolean);
+    procedure TableViewColumnSizeChanged(Sender: TcxGridTableView;
+      AColumn: TcxGridColumn);
+    procedure TableViewLeftPosChanged(Sender: TObject);
+    procedure GridLayoutChanged(Sender: TcxCustomGrid;
+      AGridView: TcxCustomGridView);
   private
     { Private declarations }
+    procedure AdjustEdit();
   public
     { Public declarations }
     /// <summary>
@@ -223,6 +229,12 @@ begin
   DataLoad;
 end;
 
+procedure TTransactionT.GridLayoutChanged(Sender: TcxCustomGrid;
+  AGridView: TcxCustomGridView);
+begin
+AdjustEdit
+end;
+
 procedure TTransactionT.SetActionEnabled;
 begin
   inherited;
@@ -338,6 +350,47 @@ procedure TTransactionT.TableViewCellClick(Sender: TcxCustomGridTableView;
   AShift: TShiftState; var AHandled: Boolean);
 begin
   SetActionEnabled
+end;
+
+procedure TTransactionT.AdjustEdit;
+var
+  APoint: TPoint;
+begin
+    APoint := TableView.ViewInfo.HeaderViewInfo.Items[TableViewDebet.VisibleIndex].Bounds.TopLeft;
+    APoint := TableView.Site.ClientToScreen(APoint);
+    APoint := edtSumD.Parent.ScreenToClient(APoint);
+    edtSumD.Left := APoint.X;
+    edtSumD.Width:= TableViewDebet.Width-1;
+
+
+    APoint := TableView.ViewInfo.HeaderViewInfo.Items[TableViewCredit.VisibleIndex].Bounds.TopLeft;
+    APoint := TableView.Site.ClientToScreen(APoint);
+    APoint := edtSumC.Parent.ScreenToClient(APoint);
+    edtSumC.Left := APoint.X;
+    edtSumC.Width:= TableViewCredit.Width-1;
+
+    APoint := TableView.ViewInfo.HeaderViewInfo.Items[TableViewbalance.VisibleIndex].Bounds.TopLeft;
+    APoint := TableView.Site.ClientToScreen(APoint);
+    APoint := edtSum.Parent.ScreenToClient(APoint);
+    edtSum.Left := APoint.X;
+    edtSum.Width:= TableViewbalance.Width-1;
+end;
+
+procedure TTransactionT.TableViewColumnSizeChanged(Sender: TcxGridTableView;
+  AColumn: TcxGridColumn);
+  var
+  APoint: TPoint;
+begin
+//    APoint := cxGrid1DBTableView1.ViewInfo.HeaderViewInfo.Items[cxGrid1DBTableView1Name.VisibleIndex].Bounds.TopLeft;
+//    APoint := cxGrid1DBTableView1.Site.ClientToScreen(APoint);
+//    APoint := Edit1.Parent.ScreenToClient(APoint);
+//    Edit1.Left := APoint.X;
+//  edtSumD.Left := TableViewDebet.he
+end;
+
+procedure TTransactionT.TableViewLeftPosChanged(Sender: TObject);
+begin
+  AdjustEdit
 end;
 
 procedure TTransactionT.ToolBarCustomDrawButton(Sender: TToolBar;

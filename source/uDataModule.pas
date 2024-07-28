@@ -8,8 +8,8 @@ uses
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MSSQL,
   FireDAC.Phys.MSSQLDef, FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf,
   FireDAC.DApt, FireDAC.VCLUI.Wait, FireDAC.VCLUI.Error, FireDAC.Comp.UI,
-  FireDAC.Comp.Client, Data.DB, FireDAC.Comp.DataSet//, Vcl.Forms
-  ;
+  FireDAC.Comp.Client, Data.DB, FireDAC.Comp.DataSet, FireDAC.Phys.ODBCBase,
+  System.Generics.Collections;
 
 type
   TDM = class(TDataModule)
@@ -36,7 +36,11 @@ type
     { Private declarations }
   public
     { Public declarations }
-    OpenFormList: TStringList;
+
+
+   // OpenFormList: TStringList;
+    var OpenFormList: TDictionary<String, TObject>;
+
 
     function dbConnect(AUser: string; APass: string): Boolean;
   end;
@@ -71,7 +75,12 @@ begin
   FDConnection.ConnectionDefName:='Connection';
   FDConnection.Params.Values['DriverID'] :=FDManager.ConnectionDefs.FindConnectionDef('Connection').Params.Values['DriverID'];
 
-  OpenFormList:= TStringList.Create;
+  {$IFDEF Debug}
+  FDConnection.Open();
+  {$ENDIF}
+
+
+  OpenFormList:= TDictionary<String, TObject>.Create;
 
   Logger.Info('TDM.DataModuleCreate End');
 end;
@@ -97,6 +106,7 @@ begin
       Logger.Info('TUniMainModule Server: ' +   FDManager.ConnectionDefs.FindConnectionDef(FDConnection.ConnectionDefName).Params.Values['Server']);
       Logger.Info('TUniMainModule Database: '+  FDManager.ConnectionDefs.FindConnectionDef(FDConnection.ConnectionDefName).Params.Values['Database']);
       Logger.Info('TUniMainModule User_name: '+ FDManager.ConnectionDefs.FindConnectionDef(FDConnection.ConnectionDefName).Params.Values['User_name']);
+      //Logger.Info('TUniMainModule Password: '+ FDManager.ConnectionDefs.FindConnectionDef(FDConnection.ConnectionDefName).Params.Values['Password']);
 
 
       FDConnection.Open;

@@ -53,19 +53,26 @@ type
     lblCount: TSkLabel;
     actCreditType: TAction;
     procedure FormCreate(Sender: TObject);
-    procedure edtDateBKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
+    procedure edtDateBKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure edtStatePropertiesEditValueChanged(Sender: TObject);
     procedure actCreditPaymentExecute(Sender: TObject);
     procedure btnFilterClearClick(Sender: TObject);
     procedure actCreditTypeExecute(Sender: TObject);
+    procedure GridLayoutChanged(Sender: TcxCustomGrid; AGridView: TcxCustomGridView);
+    procedure TableViewSetStoredPropertyValue(Sender: TcxCustomGridView;
+      const AName: string; const AValue: Variant);
+    procedure TableViewLeftPosChanged(Sender: TObject);
+
+
   private
     { Private declarations }
     procedure Summ();
+
   public
     { Public declarations }
     procedure DataLoad(); override;
     procedure SetActionEnabled(); override;
+    procedure AdjustEdit();
   end;
 
 var
@@ -96,6 +103,30 @@ begin
   CreditTypesT  := TCreditTypesT.Create(self);
   CreditTypesT.ShowModal;
   CreditTypesT.Free;
+end;
+
+procedure TCreditsT.AdjustEdit;
+var
+  APoint: TPoint;
+begin
+    APoint := TableView.ViewInfo.HeaderViewInfo.Items[TableViewAmount.VisibleIndex].Bounds.TopLeft;
+    APoint := TableView.Site.ClientToScreen(APoint);
+    APoint := edtAVG.Parent.ScreenToClient(APoint);
+    edtAVG.Left := APoint.X;
+    edtAVG.Width:= TableViewAmount.Width-1;
+
+
+    APoint := TableView.ViewInfo.HeaderViewInfo.Items[TableViewPayAmount.VisibleIndex].Bounds.TopLeft;
+    APoint := TableView.Site.ClientToScreen(APoint);
+    APoint := edtSumT.Parent.ScreenToClient(APoint);
+    edtSumT.Left := APoint.X;
+    edtSumT.Width:= TableViewPayAmount.Width-1;
+
+    APoint := TableView.ViewInfo.HeaderViewInfo.Items[TableViewRest.VisibleIndex].Bounds.TopLeft;
+    APoint := TableView.Site.ClientToScreen(APoint);
+    APoint := edtSum.Parent.ScreenToClient(APoint);
+    edtSum.Left := APoint.X;
+    edtSum.Width:= TableViewRest.Width-1;
 end;
 
 procedure TCreditsT.btnFilterClearClick(Sender: TObject);
@@ -159,13 +190,18 @@ begin
   EditFormClass := 'TCreditsF';
 end;
 
+procedure TCreditsT.GridLayoutChanged(Sender: TcxCustomGrid;
+  AGridView: TcxCustomGridView);
+begin
+  AdjustEdit
+end;
+
 procedure TCreditsT.SetActionEnabled;
 begin
   inherited;
   logger.Info('TCreditsT.SetActionEnabled');
   actCreditPayment.Enabled := (actCreditPayment.Tag = 1) and (Query.RecordCount > 0);
   actCreditType.Enabled := (actCreditType.Tag = 1);
-
 end;
 
 procedure TCreditsT.Summ;
@@ -222,7 +258,23 @@ begin
   edtSum.Value := TSQL.Q.FieldByName('Rest').AsFloat;
 end;
 
+
+
+procedure TCreditsT.TableViewLeftPosChanged(Sender: TObject);
+begin
+  AdjustEdit
+end;
+
+procedure TCreditsT.TableViewSetStoredPropertyValue(Sender: TcxCustomGridView;
+  const AName: string; const AValue: Variant);
+begin
+
+end;
+
+
 initialization
   RegisterClass(TCreditsT);
 
+
 end.
+

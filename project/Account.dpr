@@ -70,7 +70,6 @@ begin
   if 1=1 then
   {$ENDIF}
   begin
-    //Application.CreateForm(TTransactionT, TransactionT);
     Application.CreateForm(TMainForm, MainForm);
 
     Application.Run;

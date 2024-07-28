@@ -7,12 +7,15 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, System.Actions, Vcl.ActnList,
   System.ImageList, Vcl.ImgList, Vcl.VirtualImageList, Vcl.StdActns,
   Vcl.FormTabsBar, Vcl.ComCtrls, Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls,
-  Vcl.ActnMenus, cxImageList, cxGraphics, uGrantUtils;
+  Vcl.ActnMenus, cxImageList, cxGraphics, uGrantUtils,
+
+  uAccountT, uTransactionT, uDocumentRequestT, uStatisticT, dxBarBuiltInMenu,
+  cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxPC,
+  System.Generics.Collections;
 
 type
   TMainForm = class(TForm)
     MainMenu: TMainMenu;
-    FormTabsBar1: TFormTabsBar;
     ActionList: TActionList;
     WindowCascade1: TWindowCascade;
     WindowTileHorizontal1: TWindowTileHorizontal;
@@ -45,9 +48,9 @@ type
     actUser: TAction;
     actStatistic: TAction;
     ToolButton11: TToolButton;
+    MainPage: TcxPageControl;
     procedure FormCreate(Sender: TObject);
     procedure actAccountExecute(Sender: TObject);
-    procedure FormTabsBar1AcceptForm(AForm: TForm; var AAccept: Boolean);
     procedure actKontragentExecute(Sender: TObject);
     procedure actDocumentRequestExecute(Sender: TObject);
     procedure actTaskExecute(Sender: TObject);
@@ -59,20 +62,22 @@ type
     procedure actUserExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure actStatisticExecute(Sender: TObject);
+    procedure MainPageCanCloseEx(Sender: TObject; ATabIndex: Integer;
+      var ACanClose: Boolean);
   private
     { Private declarations }
     FGrant: TAccess;
 
   public
     { Public declarations }
-    procedure CreateMDIChild(const FormClassName: string);
-
     procedure SetActionEnabled();
+
+     procedure CreateTab(const FormClassName: string);
+     procedure CreateModal(const FormClassName: string);
   end;
 
 var
   MainForm: TMainForm;
-
 
 implementation
 
@@ -82,77 +87,95 @@ uses uDataModule, uBaseFormT, MTLogger;
 
 procedure TMainForm.actAccountExecute(Sender: TObject);
 begin
-  CreateMDIChild('TAccountT');
+  CreateTab('TAccountT');
 end;
 
 procedure TMainForm.actCreditExecute(Sender: TObject);
 begin
-  CreateMDIChild('TCreditsT');
+  CreateModal('TCreditsT');
 end;
 
 procedure TMainForm.actDebsExecute(Sender: TObject);
 begin
-  CreateMDIChild('TDolgT');
+  CreateModal('TDolgT');
 end;
 
 procedure TMainForm.actDocumentRequestExecute(Sender: TObject);
 begin
-  CreateMDIChild('TDocumentRequestT');
+  CreateTab('TDocumentRequestT');
 end;
 
 procedure TMainForm.actExpenseItemsExecute(Sender: TObject);
 begin
-  CreateMDIChild('TExpenseItemsT');
+  CreateModal('TExpenseItemsT');
 end;
 
 procedure TMainForm.actKassaExecute(Sender: TObject);
 begin
-  CreateMDIChild('TTransactionT');
+  CreateTab('TTransactionT');
 end;
 
 procedure TMainForm.actKontragentExecute(Sender: TObject);
 begin
-  CreateMDIChild('TKontragentsT');
+  CreateModal('TKontragentsT');
 end;
 
 procedure TMainForm.actProfitExecute(Sender: TObject);
 begin
-  CreateMDIChild('TProfit_T');
+  CreateModal('TProfit_T');
 end;
 
 procedure TMainForm.actStatisticExecute(Sender: TObject);
 begin
-  CreateMDIChild('TStatisticT');
+  CreateModal('TStatisticT');
 end;
 
 procedure TMainForm.actTaskExecute(Sender: TObject);
 begin
-  CreateMDIChild('TTasksT');
+  CreateModal('TTasksT');
 end;
 
 procedure TMainForm.actUserExecute(Sender: TObject);
 begin
-  CreateMDIChild('TUserT');
+  CreateModal('TUserT');
 end;
 
-procedure TMainForm.CreateMDIChild(const FormClassName: string);
+procedure TMainForm.CreateModal(const FormClassName: string);
+var form : TBaseFormT;
+begin
+  form := TFormClass(FindClass(FormClassName)).Create(self) as TBaseFormT;
+  form.ShowModal;
+  form.Free;
+end;
+
+procedure TMainForm.CreateTab(const FormClassName: string);
 var form : TBaseFormT;
     mr : TModalResult;
+
+    Ts : TcxTabSheet;
 begin
 
-  if dm.OpenFormList.IndexOf(FormClassName) >= 0 then
-  begin
-//     form := (Find(FormClassName)). as TForm;
-//     form.Show;
-  end
-  else
-  begin
+    if not DM.OpenFormList.ContainsKey(FormClassName) then
+    begin
+      form := TFormClass(FindClass(FormClassName)).Create(self) as TBaseFormT;
+      Ts := TcxTabSheet.Create(Self);
+      Ts.PageControl := MainPage;
+      Ts.Caption := form.Caption;
+      form.Align := alClient;
+      form.Parent := Ts;
+      form.BorderStyle := bsNone;
 
-    form := TFormClass(FindClass(FormClassName)).Create(self) as TBaseFormT;
-    form.FormStyle := fsMDIChild;
-    dm.OpenFormList.Add(FormClassName);
-  end;
-  //form.ShowModal;
+
+      Ts.Tag := Integer(form);
+
+      dm.OpenFormList.Add(FormClassName, Ts);
+    end
+    else
+    begin
+      dm.OpenFormList.TryGetValue(FormClassName, TObject(Ts));
+    end;
+
+    MainPage.ActivePage := Ts;
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
@@ -163,9 +186,9 @@ end;
 
 procedure TMainForm.FormShow(Sender: TObject);
 begin
-  //{$IFDEF Debug}
-  //TAccess.GrantTemplateCreate(self);
-  //{$ENDIF}
+  {$IFDEF Debug}
+  TAccess.GrantTemplateCreate(self);
+  {$ENDIF}
 
   TAccess.UserGrantLoad;
 
@@ -174,9 +197,11 @@ begin
   SetActionEnabled;
 end;
 
-procedure TMainForm.FormTabsBar1AcceptForm(AForm: TForm; var AAccept: Boolean);
+procedure TMainForm.MainPageCanCloseEx(Sender: TObject; ATabIndex: Integer;
+  var ACanClose: Boolean);
 begin
-  logger.Info('FormTabsBar1AcceptForm ' + AForm.Name);
+    logger.Info('MainPageCanCloseEx ' );
+  (DM.OpenFormList.Remove(MainPage.Pages[ATabIndex].Controls[0].ClassName));
 end;
 
 procedure TMainForm.SetActionEnabled;
@@ -190,6 +215,8 @@ begin
   actExpenseItems.Visible := actExpenseItems.Tag=1;
   actProfit.Visible := actProfit.Tag=1;
   actUser.Visible := actUser.Tag=1;
+  actDebs.Visible := actDebs.Tag=1;
+  actStatistic.Visible := actStatistic.Tag=1;
 end;
 
 end.

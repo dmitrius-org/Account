@@ -1,14 +1,14 @@
 inherited ExpenseItemsT: TExpenseItemsT
   Caption = #1057#1090#1072#1090#1100#1080' '#1088#1072#1089#1093#1086#1076#1086#1074
-  ClientWidth = 871
+  ClientWidth = 860
   StyleElements = [seFont, seClient, seBorder]
-  ExplicitWidth = 887
+  ExplicitWidth = 876
   TextHeight = 17
   inherited ToolBar: TToolBar
-    Width = 871
+    Width = 860
     ButtonWidth = 111
     DoubleBuffered = True
-    ExplicitWidth = 871
+    ExplicitWidth = 860
     inherited tbShow: TToolButton
       AutoSize = True
       ExplicitWidth = 91
@@ -47,10 +47,10 @@ inherited ExpenseItemsT: TExpenseItemsT
   end
   inherited Grid: TcxGrid
     Top = 114
-    Width = 871
+    Width = 860
     Height = 376
     ExplicitTop = 114
-    ExplicitWidth = 871
+    ExplicitWidth = 860
     ExplicitHeight = 376
     inherited TableView: TcxGridDBTableView
       DataController.KeyFieldNames = 'ExpenseItemID'
@@ -75,25 +75,23 @@ inherited ExpenseItemsT: TExpenseItemsT
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
-    ExplicitWidth = 871
+    ExplicitWidth = 860
     ExplicitHeight = 74
     Height = 74
-    Width = 871
+    Width = 860
     object SkLabel1: TSkLabel
-      Left = 200
-      Top = 18
+      Left = 15
+      Top = 19
       Width = 100
       Height = 19
-      Anchors = [akTop, akRight]
       Words = <
         item
           Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
         end>
-      ExplicitLeft = 145
     end
     object SkLabel2: TSkLabel
-      Left = 145
-      Top = 47
+      Left = 15
+      Top = 48
       Width = 48
       Height = 19
       Words = <
@@ -102,9 +100,8 @@ inherited ExpenseItemsT: TExpenseItemsT
         end>
     end
     object edtName: TcxTextEdit
-      Left = 306
-      Top = 15
-      Anchors = [akTop, akRight]
+      Left = 121
+      Top = 16
       Properties.MaxLength = 255
       TabOrder = 0
       TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
@@ -112,8 +109,8 @@ inherited ExpenseItemsT: TExpenseItemsT
       Width = 298
     end
     object cxButton3: TcxButton
-      Left = 605
-      Top = 15
+      Left = 420
+      Top = 16
       Width = 25
       Height = 25
       Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
@@ -121,7 +118,6 @@ inherited ExpenseItemsT: TExpenseItemsT
       Margins.Top = 0
       Margins.Right = 0
       Margins.Bottom = 0
-      Anchors = [akTop, akRight]
       LookAndFeel.NativeStyle = False
       OptionsImage.ImageIndex = 4
       OptionsImage.Images = IM.IL
@@ -132,12 +128,11 @@ inherited ExpenseItemsT: TExpenseItemsT
       OnClick = cxButton3Click
     end
     object btnFilterOk: TcxButton
-      Left = 665
-      Top = 15
+      Left = 458
+      Top = 16
       Width = 102
       Height = 25
       Hint = #1055#1088#1080#1084#1077#1085#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
-      Anchors = [akTop, akRight]
       Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
       OptionsImage.ImageIndex = 5
       OptionsImage.Images = IM.IL
@@ -145,12 +140,11 @@ inherited ExpenseItemsT: TExpenseItemsT
       OnClick = btnFilterOkClick
     end
     object btnFilterClear: TcxButton
-      Left = 766
-      Top = 15
+      Left = 559
+      Top = 16
       Width = 102
       Height = 25
       Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
-      Anchors = [akTop, akRight]
       Caption = #1054#1090#1084#1077#1085#1080#1090#1100
       OptionsImage.ImageIndex = 2
       OptionsImage.Images = IM.IL
@@ -158,8 +152,8 @@ inherited ExpenseItemsT: TExpenseItemsT
       OnClick = btnFilterClearClick
     end
     object edtExpenseGroup: ALookupEdit
-      Left = 251
-      Top = 43
+      Left = 121
+      Top = 44
       LookupConnection = DM.FDConnection
       LookupForm = 'TExpenseGroupsT'
       LookupSQL = 

@@ -58,7 +58,6 @@ inherited ExpenseGroupsT: TExpenseGroupsT
       Top = 18
       Width = 100
       Height = 19
-      Anchors = [akTop, akRight]
       Words = <
         item
           Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
@@ -67,7 +66,6 @@ inherited ExpenseGroupsT: TExpenseGroupsT
     object edtName: TcxTextEdit
       Left = 267
       Top = 15
-      Anchors = [akTop, akRight]
       Properties.MaxLength = 255
       TabOrder = 0
       TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
@@ -84,7 +82,6 @@ inherited ExpenseGroupsT: TExpenseGroupsT
       Margins.Top = 0
       Margins.Right = 0
       Margins.Bottom = 0
-      Anchors = [akTop, akRight]
       LookAndFeel.NativeStyle = False
       OptionsImage.ImageIndex = 4
       OptionsImage.Images = IM.IL
@@ -100,7 +97,6 @@ inherited ExpenseGroupsT: TExpenseGroupsT
       Width = 102
       Height = 25
       Hint = #1055#1088#1080#1084#1077#1085#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
-      Anchors = [akTop, akRight]
       Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
       OptionsImage.ImageIndex = 5
       OptionsImage.Images = IM.IL
@@ -113,7 +109,6 @@ inherited ExpenseGroupsT: TExpenseGroupsT
       Width = 102
       Height = 25
       Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
-      Anchors = [akTop, akRight]
       Caption = #1054#1090#1084#1077#1085#1080#1090#1100
       OptionsImage.ImageIndex = 2
       OptionsImage.Images = IM.IL

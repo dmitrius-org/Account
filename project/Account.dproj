@@ -4,7 +4,7 @@
         <ProjectVersion>20.1</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Release</Config>
+        <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <ProjectName Condition="'$(ProjectName)'==''">Account</ProjectName>
         <TargetedPlatforms>3</TargetedPlatforms>
@@ -73,6 +73,7 @@
         <SanitizedProjectName>Account</SanitizedProjectName>
         <VerInfo_Locale>1049</VerInfo_Locale>
         <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <DCC_Define>SKIA;$(DCC_Define)</DCC_Define>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <DCC_UsePackage>dxPScxCommonRS29;dxRibbonRS29;vclwinx;DataSnapServer;rbRTL2229;dxPScxExtCommonRS29;dxRichEditControlCoreRS29;fmx;dxSpreadSheetReportDesignerRS29;vclie;DbxCommonDriver;bindengine;IndyIPCommon;VCLRESTComponents;DBXMSSQLDriver;FireDACCommonODBC;emsclient;dxComnRS29;dxFlowChartDesignerRS29;appanalytics;IndyProtocols;vclx;Skia.Package.RTL;rbCIDE2229;dbxcds;vcledge;dxBarExtDBItemsRS29;cxVerticalGridRS29;cxFireDACAdaptersRS29;cxSchedulerWebServiceStorageRS29;DBXFirebirdDriver;dxRichEditControlRS29;dxPsPrVwAdvRS29;rbBDE2229;FireDACSqliteDriver;DbxClientDriver;rbUSERDesign2229;dxPSdxGaugeControlLnkRS29;soapmidas;dxRibbonCustomizationFormRS29;dbexpress;dxEMFRS29;rbDAD2229;dxDockingRS29;inet;vcltouch;uniGUI29VCL;dxPSdxFCLnkRS29;dxorgcRS29;FireDACDBXDriver;dxSpreadSheetCoreConditionalFormattingDialogsRS29;fmxdae;dxPSRichEditControlLnkRS29;dxPSdxSpreadSheetLnkRS29;CustomIPTransport;FireDACMSSQLDriver;dclRBFireDAC2229;cxADOAdaptersRS29;dxPSPrVwRibbonRS29;IndySystem;dxPScxTLLnkRS29;dxPSdxDBOCLnkRS29;dxGDIPlusRS29;vclFireDAC;dxPSCoreRS29;dxSpreadSheetRS29;FireDACCommon;DataSnapServerMidas;FireDACODBCDriver;emsserverresource;cxGridEMFRS29;dxPSdxMapControlLnkRS29;dxGanttControlRS29;dxPScxVGridLnkRS29;dxPScxPivotGridLnkRS29;dxADOServerModeRS29;dxWizardControlRS29;bindcompdbx;rtl;FireDACMySQLDriver;dxCloudServiceLibraryRS29;dxServerModeRS29;rbUSER2229;DBXSqliteDriver;dxBarDBNavRS29;DBXSybaseASEDriver;dxSpreadSheetCoreRS29;dxNavBarRS29;vclimg;DataSnapFireDAC;inetdbxpress;FireDAC;xmlrtl;dxFireDACEMFRS29;dsnap;FireDACDb2Driver;dxPSdxLCLnkRS29;DBXOracleDriver;DBXInformixDriver;dclRBADO2229;fmxobj;bindcompvclsmp;DataSnapNativeClient;DatasnapConnectorsFreePascal;dxPSLnksRS29;dxmdsRS29;dxPSdxOCLnkRS29;cxSchedulerGridRS29;dxPScxSchedulerLnkRS29;emshosting;dxADOEMFRS29;dxChartControlRS29;dxPSdxDBTVLnkRS29;FireDACCommonDriver;dxGaugeControlRS29;IndyIPClient;dxPDFViewerRS29;bindcompvclwinx;dxOrgChartAdvancedCustomizeFormRS29;emsedge;bindcompfmx;dclRBDBE2229;uSynEdit_R2025;dxBarExtItemsRS29;dxFlowChartLayoutsRS29;inetdb;dxdborRS29;FireDACASADriver;dxPScxGridLnkRS29;cxPivotGridChartRS29;vclactnband;rbDBE2229;fmxFireDAC;FireDACInfxDriver;dxRichEditCoreRS29;cxTreeListdxBarPopupMenuRS29;DBXMySQLDriver;dxFlowChartAdvancedCustomizeFormRS29;VclSmp;cxSchedulerRibbonStyleEventEditorRS29;DataSnapCommon;fmxase;dxtrmdRS29;dxFlowChartRS29;DBXOdbcDriver;dbrtl;uniGUI29m;FireDACOracleDriver;Skia.Package.FMX;dxPScxPCProdRS29;FireDACMSAccDriver;cxGridRS29;dxSpellCheckerRS29;DataSnapIndy10ServerTransport;dxRichEditDocumentModelRS29;dxMapControlRS29;DataSnapConnectors;vcldsnap;DBXInterBaseDriver;FireDACMongoDBDriver;rbIDE2229;FireDACTDataDriver;rbDIDE2229;uniGUI29Chart;cxLibraryRS29;Skia.Package.VCL;vcldb;rbRIDE2229;rbRAP2229;dxPSdxPDFViewerLnkRS29;cxSchedulerTreeBrowserRS29;bindcomp;dxTabbedMDIRS29;dclRBE2229;cxExportRS29;IndyCore;RESTBackendComponents;rbRest2229;dxHttpIndyRequestRS29;dxTileControlRS29;dxFireDACServerModeRS29;rbCloudSC2229;rbFireDAC2229;cxPivotGridOLAPRS29;FireDACADSDriver;RESTComponents;IndyIPServer;vcl;dsnapxml;adortl;dsnapcon;DataSnapClient;DataSnapProviderClient;dxCoreRS29;cxPivotGridRS29;dxdbtrRS29;rbDB2229;DBXDb2Driver;dxSkinsCoreRS29;emsclientfiredac;FireDACPgDriver;FireDACDSDriver;dxBarRS29;tethering;bindcompvcl;CloudService;DBXSybaseASADriver;dxSpreadSheetConditionalFormattingDialogsRS29;cxTreeListRS29;rbRCL2229;rbADO2229;soaprtl;dxDBXServerModeRS29;cxSchedulerRS29;soapserver;FireDACIBDriver;$(DCC_UsePackage)</DCC_UsePackage>
@@ -105,7 +106,7 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
-        <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
+        <AppDPIAwarenessMode>PerMonitor</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=$(MSBuildProjectName);ProductName=Account;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
@@ -317,6 +318,70 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="4">
+                <DeployFile Condition="'$(SKIADIR)'==''" Required="true" LocalName="$(BDS)\bin64\sk4d.dll" Configuration="Debug" Class="Skia">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\</RemoteDir>
+                        <Operation>0</Operation>
+                        <RemoteName>sk4d.dll</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(SKIADIR)'==''" Required="true" LocalName="$(BDS)\bin64\sk4d.dll" Configuration="Release" Class="Skia">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\</RemoteDir>
+                        <Operation>0</Operation>
+                        <RemoteName>sk4d.dll</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(SKIADIR)'==''" Required="true" LocalName="$(BDS)\bin\sk4d.dll" Configuration="Debug" Class="Skia">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Operation>0</Operation>
+                        <RemoteName>sk4d.dll</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(SKIADIR)'==''" Required="true" LocalName="$(BDS)\bin\sk4d.dll" Configuration="Release" Class="Skia">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Operation>0</Operation>
+                        <RemoteName>sk4d.dll</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(SKIADIR)'!=''" Required="true" LocalName="$(SKIADIR)\Binary\Shared\Win32\sk4d.dll" Configuration="Debug" Class="Skia">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Operation>0</Operation>
+                        <RemoteName>sk4d.dll</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(SKIADIR)'!=''" Required="true" LocalName="$(SKIADIR)\Binary\Shared\Win32\sk4d.dll" Configuration="Release" Class="Skia">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Operation>0</Operation>
+                        <RemoteName>sk4d.dll</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(SKIADIR)'!=''" Required="true" LocalName="$(SKIADIR)\Binary\Shared\Win64\sk4d.dll" Configuration="Debug" Class="Skia">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\</RemoteDir>
+                        <Operation>0</Operation>
+                        <RemoteName>sk4d.dll</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(SKIADIR)'!=''" Required="true" LocalName="$(SKIADIR)\Binary\Shared\Win64\sk4d.dll" Configuration="Release" Class="Skia">
+                    <Platform Name="Win64">
+                        <RemoteDir>.\</RemoteDir>
+                        <Operation>0</Operation>
+                        <RemoteName>sk4d.dll</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Win32\Debug\Account.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>Account.exe</RemoteName>

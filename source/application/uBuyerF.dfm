@@ -1,13 +1,13 @@
 inherited BuyerF: TBuyerF
   Caption = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1100
-  ClientHeight = 411
+  ClientHeight = 403
   ClientWidth = 654
   StyleElements = [seFont, seClient, seBorder]
   ExplicitWidth = 670
-  ExplicitHeight = 450
+  ExplicitHeight = 442
   TextHeight = 17
   inherited Panel: TdxPanel
-    Top = 365
+    Top = 357
     Width = 654
     Frame.Borders = []
     TabOrder = 1
@@ -35,7 +35,7 @@ inherited BuyerF: TBuyerF
     Left = 0
     Top = 0
     Width = 654
-    Height = 365
+    Height = 357
     ActivePage = TabCommon
     Align = alClient
     DoubleBuffered = True
@@ -45,6 +45,7 @@ inherited BuyerF: TBuyerF
     TabOrder = 0
     TabWidth = 110
     OnDrawTab = PageControl1DrawTab
+    ExplicitHeight = 365
     object TabCommon: TTabSheet
       Margins.Left = 0
       Margins.Top = 0
@@ -54,7 +55,7 @@ inherited BuyerF: TBuyerF
       ImageIndex = 1
       DesignSize = (
         646
-        325)
+        317)
       object SkLabel1: TSkLabel
         Left = 6
         Top = 97
@@ -412,7 +413,6 @@ inherited BuyerF: TBuyerF
     Top = 264
   end
   object qContact: TFDQuery
-    Active = True
     Connection = DM.FDConnection
     UpdateOptions.KeyFields = 'ID'
     UpdateOptions.AutoIncFields = 'ID'
