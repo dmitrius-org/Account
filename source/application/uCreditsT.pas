@@ -16,7 +16,7 @@ uses
   cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, cxContainer, cxGroupBox,
   System.Skia, dxCore, cxDateUtils, Vcl.StdCtrls, cxButtons, cxTextEdit,
   cxMaskEdit, cxDropDownEdit, cxCalendar, Vcl.Skia, cxRadioGroup, uLookupEdit,
-  cxCurrencyEdit;
+  cxCurrencyEdit, cxLabel;
 
 type
   TCreditsT = class(TBaseFormDBT)
@@ -34,14 +34,11 @@ type
     TableViewComment: TcxGridDBColumn;
     QueryPayAmount: TFloatField;
     TableViewPayAmount: TcxGridDBColumn;
-    SkLabel7: TSkLabel;
     edtDateB: TcxDateEdit;
-    SkLabel4: TSkLabel;
     edtDateE: TcxDateEdit;
     btnFilterOk: TcxButton;
     btnFilterClear: TcxButton;
     edtCredit: ALookupEdit;
-    edtCreditL: TSkLabel;
     edtState: TcxRadioGroup;
     actCreditPayment: TAction;
     ToolButton1: TToolButton;
@@ -50,8 +47,11 @@ type
     edtSum: TcxCurrencyEdit;
     edtSumT: TcxCurrencyEdit;
     edtAVG: TcxCurrencyEdit;
-    lblCount: TSkLabel;
     actCreditType: TAction;
+    cxLabel1: TcxLabel;
+    cxLabel2: TcxLabel;
+    cxLabel3: TcxLabel;
+    lblCount: TcxLabel;
     procedure FormCreate(Sender: TObject);
     procedure edtDateBKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure edtStatePropertiesEditValueChanged(Sender: TObject);

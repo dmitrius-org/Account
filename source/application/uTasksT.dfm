@@ -1,11 +1,13 @@
 inherited TasksT: TTasksT
   Caption = #1055#1086#1088#1091#1095#1077#1085#1080#1103
   ClientWidth = 830
+  Visible = True
   StyleElements = [seFont, seClient, seBorder]
   ExplicitWidth = 846
   TextHeight = 17
   inherited ToolBar: TToolBar
     Width = 830
+    Color = 12566463
     DoubleBuffered = True
     ExplicitWidth = 830
   end

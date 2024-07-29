@@ -1,11 +1,9 @@
 inherited AccountT: TAccountT
-  AutoSize = True
   BorderIcons = [biSystemMenu]
   Caption = #1057#1095#1077#1090#1072
   ClientHeight = 496
   ClientWidth = 1044
   Visible = True
-  WindowState = wsMaximized
   StyleElements = [seFont, seClient, seBorder]
   ExplicitWidth = 1060
   ExplicitHeight = 535
@@ -21,27 +19,25 @@ inherited AccountT: TAccountT
     inherited tbAdd: TToolButton
       Left = 91
       Action = nil
-      AutoSize = True
       DropdownMenu = AddMenu
       Style = tbsWholeDropDown
       OnClick = nil
       ExplicitLeft = 91
-      ExplicitWidth = 69
     end
     inherited tbEdit: TToolButton
-      Left = 160
+      Left = 178
       AutoSize = True
-      ExplicitLeft = 160
+      ExplicitLeft = 178
       ExplicitWidth = 69
     end
     inherited tbDelete: TToolButton
-      Left = 229
+      Left = 247
       AutoSize = True
-      ExplicitLeft = 229
+      ExplicitLeft = 247
       ExplicitWidth = 58
     end
     object ToolButton1: TToolButton
-      Left = 287
+      Left = 305
       Top = 0
       Width = 8
       Caption = 'ToolButton1'
@@ -49,7 +45,7 @@ inherited AccountT: TAccountT
       Style = tbsSeparator
     end
     object ToolButton2: TToolButton
-      Left = 295
+      Left = 313
       Top = 0
       Action = actKontragent
       AutoSize = True
@@ -129,6 +125,7 @@ inherited AccountT: TAccountT
       object TableViewStatusName: TcxGridDBColumn
         Caption = #1057#1090#1072#1090#1091#1089
         DataBinding.FieldName = 'StatusName'
+        OnCustomDrawCell = TableViewStatusNameCustomDrawCell
         HeaderAlignmentHorz = taCenter
       end
     end
@@ -1389,6 +1386,7 @@ inherited AccountT: TAccountT
       Size = 256
     end
     object QueryPaymentAmount: TIntegerField
+      Alignment = taCenter
       FieldName = 'PaymentAmount'
       Origin = 'PaymentAmount'
       ReadOnly = True

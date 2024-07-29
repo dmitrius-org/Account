@@ -2,6 +2,7 @@ inherited KontragentsT: TKontragentsT
   Caption = #1050#1086#1085#1090#1088#1072#1075#1077#1085#1090#1099
   ClientHeight = 546
   ClientWidth = 914
+  Visible = True
   StyleElements = [seFont, seClient, seBorder]
   ExplicitWidth = 930
   ExplicitHeight = 585
@@ -173,6 +174,7 @@ inherited KontragentsT: TKontragentsT
         Align = alClient
         Properties.EmptySelectionText = #1042#1099#1073#1077#1088#1080#1090#1077' '#1090#1080#1087
         Properties.Items = <>
+        Properties.OnEditValueChanged = edtKontragentTypePropertiesEditValueChanged
         Style.TransparentBorder = True
         Style.ButtonStyle = btsFlat
         TabOrder = 0
@@ -1293,10 +1295,13 @@ inherited KontragentsT: TKontragentsT
       Size = 11
     end
     object QueryDiscount: TFloatField
+      Alignment = taCenter
       FieldName = 'Discount'
       Origin = 'Discount'
+      currency = True
     end
     object QueryDiscountDate: TSQLTimeStampField
+      Alignment = taCenter
       FieldName = 'DiscountDate'
       Origin = 'DiscountDate'
     end

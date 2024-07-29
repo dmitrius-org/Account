@@ -1,6 +1,7 @@
 inherited CreditsT: TCreditsT
   Caption = #1050#1088#1077#1076#1080#1090#1099
   ClientWidth = 944
+  Visible = True
   StyleElements = [seFont, seClient, seBorder]
   ExplicitWidth = 960
   TextHeight = 17
@@ -8,6 +9,7 @@ inherited CreditsT: TCreditsT
     Width = 944
     ButtonWidth = 127
     DoubleBuffered = True
+    Transparent = True
     ExplicitWidth = 944
     inherited tbShow: TToolButton
       AutoSize = True
@@ -109,59 +111,18 @@ inherited CreditsT: TCreditsT
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
+    ExplicitTop = 34
     ExplicitWidth = 944
     ExplicitHeight = 108
     Height = 108
     Width = 944
-    object SkLabel7: TSkLabel
-      Left = 11
-      Top = 17
-      Width = 44
-      Height = 19
-      Words = <
-        item
-          Caption = #1044#1072#1090#1072' '#1089':'
-        end>
-    end
-    object SkLabel4: TSkLabel
-      Left = 168
-      Top = 17
-      Width = 20
-      Height = 19
-      Words = <
-        item
-          Caption = #1087#1086':'
-        end>
-    end
-    object edtCreditL: TSkLabel
-      Left = 304
-      Top = 13
-      Width = 132
-      Height = 34
-      AutoSize = False
-      Words = <
-        item
-          Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077' '#1082#1088#1077#1076#1080#1090#1072':'
-        end>
-    end
-    object lblCount: TSkLabel
-      Left = 12
-      Top = 89
-      Width = 110
-      Height = 19
-      TextSettings.Font.Weight = Bold
-      Words = <
-        item
-          Caption = #1042#1089#1077#1075#1086' '#1082#1088#1077#1076#1080#1090#1086#1074':'
-        end>
-    end
     object edtDateB: TcxDateEdit
       Left = 60
       Top = 15
       Properties.ClearKey = 46
       Properties.DateButtons = [btnClear, btnNow, btnToday]
       Properties.UseNullString = True
-      TabOrder = 0
+      TabOrder = 1
       OnKeyDown = edtDateBKeyDown
       Width = 104
     end
@@ -171,7 +132,7 @@ inherited CreditsT: TCreditsT
       Properties.ClearKey = 46
       Properties.DateButtons = [btnClear, btnNow, btnToday]
       Properties.UseNullString = True
-      TabOrder = 1
+      TabOrder = 2
       OnKeyDown = edtDateBKeyDown
       Width = 104
     end
@@ -184,7 +145,7 @@ inherited CreditsT: TCreditsT
       Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
       OptionsImage.ImageIndex = 5
       OptionsImage.Images = IM.IL
-      TabOrder = 3
+      TabOrder = 4
     end
     object btnFilterClear: TcxButton
       Left = 754
@@ -195,7 +156,7 @@ inherited CreditsT: TCreditsT
       Caption = #1054#1090#1084#1077#1085#1080#1090#1100
       OptionsImage.ImageIndex = 2
       OptionsImage.Images = IM.IL
-      TabOrder = 4
+      TabOrder = 5
       OnClick = btnFilterClearClick
     end
     object edtCredit: ALookupEdit
@@ -222,7 +183,7 @@ inherited CreditsT: TCreditsT
         end>
       Properties.Images = IM.IL
       ShowHint = True
-      TabOrder = 2
+      TabOrder = 3
       OnKeyDown = edtDateBKeyDown
       Width = 232
     end
@@ -249,7 +210,7 @@ inherited CreditsT: TCreditsT
         end>
       Properties.OnEditValueChanged = edtStatePropertiesEditValueChanged
       ItemIndex = 0
-      TabOrder = 5
+      TabOrder = 8
       Height = 51
       Width = 283
     end
@@ -270,7 +231,7 @@ inherited CreditsT: TCreditsT
       Style.Font.Style = [fsBold]
       Style.ReadOnly = True
       Style.IsFontAssigned = True
-      TabOrder = 8
+      TabOrder = 11
       Width = 122
     end
     object edtSumT: TcxCurrencyEdit
@@ -290,7 +251,7 @@ inherited CreditsT: TCreditsT
       Style.Font.Style = [fsBold]
       Style.ReadOnly = True
       Style.IsFontAssigned = True
-      TabOrder = 7
+      TabOrder = 10
       Width = 112
     end
     object edtAVG: TcxCurrencyEdit
@@ -310,8 +271,39 @@ inherited CreditsT: TCreditsT
       Style.Font.Style = [fsBold]
       Style.ReadOnly = True
       Style.IsFontAssigned = True
-      TabOrder = 6
+      TabOrder = 9
       Width = 107
+    end
+    object cxLabel1: TcxLabel
+      Left = 9
+      Top = 16
+      Caption = #1044#1072#1090#1072' '#1089':'
+    end
+    object cxLabel2: TcxLabel
+      Left = 166
+      Top = 16
+      Caption = #1087#1086':'
+    end
+    object cxLabel3: TcxLabel
+      Left = 312
+      Top = 8
+      Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077' '#1082#1088#1077#1076#1080#1090#1072':'
+      Properties.WordWrap = True
+      Width = 93
+    end
+    object lblCount: TcxLabel
+      Left = 11
+      Top = 89
+      Caption = #1042#1089#1077#1075#1086' '#1082#1088#1077#1076#1080#1090#1086#1074':'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = []
+      Style.TextStyle = [fsBold]
+      Style.IsFontAssigned = True
+      Transparent = True
     end
   end
   inherited ActionList: TActionList

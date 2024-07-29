@@ -3,18 +3,19 @@ inherited TransactionT: TTransactionT
   Caption = #1050#1072#1089#1089#1072
   ClientHeight = 469
   ClientWidth = 925
+  Color = 12566463
   Visible = True
-  WindowState = wsMaximized
   StyleElements = [seFont, seClient, seBorder]
   ExplicitWidth = 941
   ExplicitHeight = 508
   TextHeight = 17
   inherited ToolBar: TToolBar
     Width = 925
+    Color = 12566463
     DoubleBuffered = True
+    DrawingStyle = dsNormal
     HideClippedButtons = True
     TabStop = True
-    StyleElements = [seFont, seClient, seBorder]
     OnCustomDrawButton = ToolBarCustomDrawButton
     ExplicitWidth = 925
     inherited tbAdd: TToolButton

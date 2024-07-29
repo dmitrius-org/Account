@@ -100,6 +100,9 @@ type
     procedure actKontragentExecute(Sender: TObject);
     procedure edtBuyerPropertiesButtonClick(Sender: TObject;
       AButtonIndex: Integer);
+    procedure TableViewStatusNameCustomDrawCell(Sender: TcxCustomGridTableView;
+      ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo;
+      var ADone: Boolean);
   private
     { Private declarations }
   protected
@@ -157,7 +160,7 @@ begin
   edtSupplier.Clear;
   edtClient.Clear;
   edtAccountStatus.Clear;
-  edtType.Clear;
+  edtType.Text := '';
 
   DataLoad;
 end;
@@ -290,11 +293,23 @@ procedure TAccountT.TableViewCustomDrawCell(Sender: TcxCustomGridTableView;
   ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo;
   var ADone: Boolean);
 begin
+//  if (AViewInfo.GridRecord.Values[TableViewAccountStatusID.Index]=1) then
+//    ACanvas.font.color:= clGreen
+//  else
+//  if (AViewInfo.GridRecord.Values[TableViewAccountStatusID.Index]=2) then
+//    ACanvas.font.color:= clRed;
+end;
+
+procedure TAccountT.TableViewStatusNameCustomDrawCell(
+  Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
+  AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+begin
   if (AViewInfo.GridRecord.Values[TableViewAccountStatusID.Index]=1) then
     ACanvas.font.color:= clGreen
   else
   if (AViewInfo.GridRecord.Values[TableViewAccountStatusID.Index]=2) then
     ACanvas.font.color:= clRed;
+
 end;
 
 procedure TAccountT.TableViewStylesGetContentStyle(

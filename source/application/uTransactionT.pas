@@ -409,7 +409,7 @@ begin
     begin
       Sender.Canvas.Font.Color := clGray; // Задаем цвет текста
     end;
-    Sender.Canvas.Brush.Color:= clBtnFace;
+    Sender.Canvas.Brush.Color:= $00BFBFBF;
     Sender.Canvas.TextOut(Button.Left + 20, Button.Top + 20, TAction(Button.Action).Caption); // Рисуем текст кнопки
     // DefaultDraw := False; // Отключаем стандартную отрисовку
   end;
@@ -425,7 +425,7 @@ begin
     begin
       Sender.Canvas.Font.Color := clGray; // Задаем цвет текста
     end;
-    Sender.Canvas.Brush.Color:= clBtnFace;
+    Sender.Canvas.Brush.Color:= $00BFBFBF;
     Sender.Canvas.TextOut(Button.Left + 20, Button.Top + 20, TAction(Button.Action).Caption); // Рисуем текст кнопки
   end
 end;

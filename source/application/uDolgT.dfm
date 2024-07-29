@@ -2,6 +2,7 @@ inherited DolgT: TDolgT
   Caption = #1044#1086#1083#1075#1080
   ClientHeight = 514
   ClientWidth = 772
+  Visible = True
   StyleElements = [seFont, seClient, seBorder]
   OnClose = FormClose
   OnShow = FormShow
@@ -18,7 +19,7 @@ inherited DolgT: TDolgT
     Top = 102
     Width = 772
     Height = 412
-    ActivePage = TabClient
+    ActivePage = tabBuyer
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -409,48 +410,13 @@ inherited DolgT: TDolgT
     Height = 64
     Align = alTop
     Caption = 'Panel1'
+    Color = 12566463
+    ParentBackground = False
     ShowCaption = False
     TabOrder = 1
-    DesignSize = (
-      772
-      64)
-    object SkLabel2: TSkLabel
-      Left = 23
-      Top = 6
-      Width = 38
-      Height = 19
-      TextSettings.Font.Weight = Bold
-      Words = <
-        item
-          Caption = #1044#1086#1083#1075':'
-        end>
-    end
-    object SkLabel3: TSkLabel
-      Left = 232
-      Top = 6
-      Width = 117
-      Height = 19
-      TextSettings.Font.Weight = Medium
-      Words = <
-        item
-          Caption = #1044#1086#1083#1075' '#1087#1086#1082#1091#1087#1072#1090#1080#1083#1080':'
-        end>
-    end
-    object SkLabel4: TSkLabel
-      Left = 232
-      Top = 31
-      Width = 96
-      Height = 19
-      TextSettings.Font.Weight = Medium
-      Words = <
-        item
-          Caption = #1044#1086#1083#1075' '#1082#1083#1080#1077#1085#1090#1099':'
-        end>
-    end
     object edtTotal: TcxCurrencyEdit
       Left = 67
       Top = 6
-      Anchors = [akTop, akRight]
       ParentFont = False
       Properties.Alignment.Horz = taCenter
       Properties.DecimalPlaces = 0
@@ -470,7 +436,25 @@ inherited DolgT: TDolgT
     object edtSClient: TcxCurrencyEdit
       Left = 351
       Top = 35
-      Anchors = [akTop, akRight]
+      ParentFont = False
+      Properties.Alignment.Horz = taCenter
+      Properties.DecimalPlaces = 0
+      Properties.DisplayFormat = ',0 '#8381';-,0 '#8381
+      Properties.ReadOnly = True
+      Style.Color = clBtnFace
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = [fsBold]
+      Style.ReadOnly = True
+      Style.IsFontAssigned = True
+      TabOrder = 4
+      Width = 151
+    end
+    object edtSBuyer: TcxCurrencyEdit
+      Left = 351
+      Top = 6
       ParentFont = False
       Properties.Alignment.Horz = taCenter
       Properties.DecimalPlaces = 0
@@ -487,25 +471,23 @@ inherited DolgT: TDolgT
       TabOrder = 2
       Width = 151
     end
-    object edtSBuyer: TcxCurrencyEdit
-      Left = 351
+    object cxLabel1: TcxLabel
+      Left = 28
+      Top = 7
+      Caption = #1044#1086#1083#1075':'
+      Style.TextStyle = [fsBold]
+    end
+    object cxLabel2: TcxLabel
+      Left = 261
+      Top = 36
+      Caption = #1044#1086#1083#1075' '#1082#1083#1080#1077#1085#1090#1099':'
+      Style.TextStyle = [fsBold]
+    end
+    object cxLabel3: TcxLabel
+      Left = 243
       Top = 6
-      Anchors = [akTop, akRight]
-      ParentFont = False
-      Properties.Alignment.Horz = taCenter
-      Properties.DecimalPlaces = 0
-      Properties.DisplayFormat = ',0 '#8381';-,0 '#8381
-      Properties.ReadOnly = True
-      Style.Color = clBtnFace
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -12
-      Style.Font.Name = 'Segoe UI'
-      Style.Font.Style = [fsBold]
-      Style.ReadOnly = True
-      Style.IsFontAssigned = True
-      TabOrder = 1
-      Width = 151
+      Caption = #1044#1086#1083#1075' '#1087#1086#1082#1091#1087#1072#1090#1080#1083#1080':'
+      Style.TextStyle = [fsBold]
     end
   end
   inherited ActionList: TActionList
@@ -1387,7 +1369,7 @@ inherited DolgT: TDolgT
     end
     object GridRowSelect: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
-      Color = clGold
+      Color = clYellow
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -15

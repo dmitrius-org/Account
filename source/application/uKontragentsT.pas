@@ -17,7 +17,7 @@ uses
   cxLabel, cxTextEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
   cxDBLookupComboBox, cxCheckBox, cxDBCheckComboBox, cxCheckComboBox,
   dxCoreGraphics, System.Skia, Vcl.Skia, cxButtonEdit, uLookupEdit,
-  Vcl.StdCtrls, cxButtons, cxGeometry, dxFramedControl, dxPanel;
+  Vcl.StdCtrls, cxButtons, cxGeometry, dxFramedControl, dxPanel, cxCurrencyEdit;
 
 type
   TKontragentsT = class(TBaseFormDBT)
@@ -76,6 +76,8 @@ type
     procedure actDeleteExecute(Sender: TObject);
     procedure actShowExecute(Sender: TObject);
     procedure btnINNClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure edtKontragentTypePropertiesEditValueChanged(Sender: TObject);
   private
     { Private declarations }
   public
@@ -183,18 +185,75 @@ begin
   if Key = 13 then GridFilter;
 end;
 
+procedure TKontragentsT.edtKontragentTypePropertiesEditValueChanged(
+  Sender: TObject);
+
+
+  function GetKontragentTypeChecks(): Integer;
+  Var
+    i, s: Integer;
+  begin
+    with edtKontragentType do
+      begin
+        edtKontragentType.Properties.Items.BeginUpdate;
+        try
+          result:=0;
+          for I := 0 to edtKontragentType.Properties.items.Count - 1 do
+            if  States[i] = cbsChecked then
+            begin
+              Inc(result);
+            end;
+        finally
+          edtKontragentType.Properties.Items.EndUpdate;
+        end;//try
+      end;//with
+
+  end;
+begin
+  //
+  if GetKontragentTypeChecks = 1 then
+  begin
+    if edtKontragentType.GetItemState(0) = cbsChecked  then
+    begin
+      TableViewINN.Visible := False;
+      TableViewPartnerName.Visible := False;
+    end
+    else
+    if edtKontragentType.GetItemState(2) = cbsChecked  then
+    begin
+
+      TableViewDiscount.Visible := False;
+      TableViewDiscountDate.Visible := False;
+      TableViewPartnerName.Visible := False;
+    end
+  end
+  else
+  begin
+    TableViewINN.Visible := True;
+    TableViewPartnerName.Visible := True;
+
+    TableViewDiscount.Visible := True;
+    TableViewDiscountDate.Visible := True;
+    TableViewPartnerName.Visible := True;
+  end;
+end;
+
+procedure TKontragentsT.FormCreate(Sender: TObject);
+begin
+  inherited;
+  ComboBoxFill(edtKontragentType,
+  '''
+    select distinct
+           KontragentTypeID as ID
+          ,Name
+      from tKontragentType (nolock)
+    '''
+  );
+end;
+
 procedure TKontragentsT.FormShow(Sender: TObject);
 begin
   inherited;
-
-  ComboBoxFill(edtKontragentType,
-  '''
-    select KontragentTypeID as ID
-          ,Name
-      from tKontragentType kt (nolock)
-    '''
-  );
-
 
   edtKontragentType.Enabled := not (FormAction = acLookup);
 

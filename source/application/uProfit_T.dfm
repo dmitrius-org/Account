@@ -3,6 +3,7 @@ inherited Profit_T: TProfit_T
   Caption = #1055#1088#1080#1073#1099#1083#1100' '#1089' '#1090#1088#1072#1085#1079#1072#1082#1094#1080#1081
   ClientHeight = 456
   ClientWidth = 904
+  Visible = True
   StyleElements = [seFont, seClient, seBorder]
   ExplicitWidth = 920
   ExplicitHeight = 495
@@ -11,7 +12,7 @@ inherited Profit_T: TProfit_T
     Width = 904
     DoubleBuffered = True
     Visible = False
-    ExplicitWidth = 929
+    ExplicitWidth = 904
   end
   inherited Grid: TcxGrid
     Top = 140
@@ -19,8 +20,8 @@ inherited Profit_T: TProfit_T
     Height = 316
     OnLayoutChanged = GridLayoutChanged
     ExplicitTop = 140
-    ExplicitWidth = 929
-    ExplicitHeight = 350
+    ExplicitWidth = 904
+    ExplicitHeight = 316
     inherited TableView: TcxGridDBTableView
       OnLeftPosChanged = TableViewLeftPosChanged
       object TableViewAccountNumber: TcxGridDBColumn
@@ -75,7 +76,7 @@ inherited Profit_T: TProfit_T
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
-    ExplicitWidth = 929
+    ExplicitWidth = 904
     ExplicitHeight = 100
     Height = 100
     Width = 904
@@ -298,7 +299,6 @@ inherited Profit_T: TProfit_T
       Style.ReadOnly = True
       Style.IsFontAssigned = True
       TabOrder = 8
-      ExplicitLeft = 573
       Width = 121
     end
     object edtSum: TcxCurrencyEdit
@@ -319,7 +319,6 @@ inherited Profit_T: TProfit_T
       Style.ReadOnly = True
       Style.IsFontAssigned = True
       TabOrder = 9
-      ExplicitLeft = 763
       Width = 125
     end
   end

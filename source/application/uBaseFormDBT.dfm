@@ -12,15 +12,19 @@ inherited BaseFormDBT: TBaseFormDBT
   inherited ToolBar: TToolBar
     Width = 816
     Height = 40
+    AutoSize = False
     ButtonHeight = 40
     ButtonWidth = 87
     Ctl3D = False
     DoubleBuffered = True
     DockSite = True
+    DrawingStyle = dsGradient
     GradientEndColor = 12566463
     GradientStartColor = 12566463
     ParentDoubleBuffered = False
+    Transparent = False
     StyleElements = []
+    Wrapable = False
     ExplicitWidth = 816
     ExplicitHeight = 40
     inherited tbShow: TToolButton
@@ -192,7 +196,7 @@ inherited BaseFormDBT: TBaseFormDBT
     end
     object GridRowSelect: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
-      Color = clGold
+      Color = clYellow
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -15

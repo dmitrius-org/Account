@@ -238,7 +238,10 @@ begin
 
   if tRetVal.Code = 0 then
   begin
-    ModalResult:=mrOK;
+    if FormAction = acShow then
+      ModalResult:=mrNo
+    else
+      ModalResult:=mrOK;
   end
   else
   begin
@@ -332,7 +335,9 @@ end;
 
 procedure TAccountF.DataClone;
 begin
-  TSql.Open('''
+  FDQuery.Close;
+  FDQuery.sql.text :=
+  '''
               Select  AccountID
                      ,PaymentDate
                      ,PaymentAmount
@@ -357,10 +362,9 @@ begin
                      ,upDateTime
                  from tAccounts (nolock)
                 where AccountID = :AccountID
-            ''',
-            ['AccountID'],
-            [ID]
-            );
+            ''';
+  FDQuery.ParamByName('AccountID').AsInteger := ID;
+  FDQuery.Open;
 
 end;
 

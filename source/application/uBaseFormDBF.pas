@@ -81,7 +81,7 @@ begin
     end;
     acShow:
     begin
-
+      btnCancel.Visible := False;
       btnOk.Caption := ' Закрыть';
     end;
 

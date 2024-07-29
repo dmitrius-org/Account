@@ -92,12 +92,12 @@ end;
 
 procedure TMainForm.actCreditExecute(Sender: TObject);
 begin
-  CreateModal('TCreditsT');
+  CreateTab('TCreditsT');
 end;
 
 procedure TMainForm.actDebsExecute(Sender: TObject);
 begin
-  CreateModal('TDolgT');
+  CreateTab('TDolgT');
 end;
 
 procedure TMainForm.actDocumentRequestExecute(Sender: TObject);
@@ -107,7 +107,7 @@ end;
 
 procedure TMainForm.actExpenseItemsExecute(Sender: TObject);
 begin
-  CreateModal('TExpenseItemsT');
+  CreateTab('TExpenseItemsT');
 end;
 
 procedure TMainForm.actKassaExecute(Sender: TObject);
@@ -117,12 +117,12 @@ end;
 
 procedure TMainForm.actKontragentExecute(Sender: TObject);
 begin
-  CreateModal('TKontragentsT');
+  CreateTab('TKontragentsT');
 end;
 
 procedure TMainForm.actProfitExecute(Sender: TObject);
 begin
-  CreateModal('TProfit_T');
+  CreateTab('TProfit_T');
 end;
 
 procedure TMainForm.actStatisticExecute(Sender: TObject);
@@ -132,7 +132,7 @@ end;
 
 procedure TMainForm.actTaskExecute(Sender: TObject);
 begin
-  CreateModal('TTasksT');
+  CreateTab('TTasksT');
 end;
 
 procedure TMainForm.actUserExecute(Sender: TObject);
@@ -150,32 +150,36 @@ end;
 
 procedure TMainForm.CreateTab(const FormClassName: string);
 var form : TBaseFormT;
-    mr : TModalResult;
-
-    Ts : TcxTabSheet;
+    //  fc : TFormClass;
+      mr : TModalResult;
+      Ts : TcxTabSheet;
 begin
+  if not DM.OpenFormList.ContainsKey(FormClassName) then
+  begin
+    form := TFormClass(FindClass(FormClassName)).Create(self) as TBaseFormT;
 
-    if not DM.OpenFormList.ContainsKey(FormClassName) then
-    begin
-      form := TFormClass(FindClass(FormClassName)).Create(self) as TBaseFormT;
-      Ts := TcxTabSheet.Create(Self);
-      Ts.PageControl := MainPage;
-      Ts.Caption := form.Caption;
-      form.Align := alClient;
-      form.Parent := Ts;
-      form.BorderStyle := bsNone;
+   // fc := TFormClass(FindClass(FormClassName));
+   // Application.CreateForm(fc, form);
 
+    Ts := TcxTabSheet.Create(Self);
+    Ts.PageControl   := MainPage;
+    Ts.Caption       := form.Caption;
 
-      Ts.Tag := Integer(form);
+    form.Parent      := Ts;
+    form.Align       := alClient;
+    form.BorderStyle := bsNone;
 
-      dm.OpenFormList.Add(FormClassName, Ts);
-    end
-    else
-    begin
-      dm.OpenFormList.TryGetValue(FormClassName, TObject(Ts));
-    end;
+    Ts.Tag := Integer(form);
 
-    MainPage.ActivePage := Ts;
+    dm.OpenFormList.Add(FormClassName, Ts);
+  end
+  else
+  begin
+    dm.OpenFormList.TryGetValue(FormClassName, TObject(Ts));
+
+  end;
+
+  MainPage.ActivePage := Ts;
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);

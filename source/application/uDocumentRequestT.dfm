@@ -8,20 +8,10 @@ inherited DocumentRequestT: TDocumentRequestT
   ExplicitWidth = 946
   ExplicitHeight = 574
   TextHeight = 17
-  object SkLabel2: TSkLabel [0]
-    Left = 7
-    Top = 89
-    Width = 53
-    Height = 19
-    Words = <
-      item
-        Caption = #1057#1095#1077#1090' '#8470':'
-      end>
-  end
-  inherited Grid: TcxGrid [1]
-    Top = 122
+  inherited Grid: TcxGrid [0]
+    Top = 112
     Width = 930
-    Height = 413
+    Height = 423
     ExplicitTop = 122
     ExplicitWidth = 930
     ExplicitHeight = 413
@@ -84,7 +74,7 @@ inherited DocumentRequestT: TDocumentRequestT
       end
     end
   end
-  inherited ToolBar: TToolBar [2]
+  inherited ToolBar: TToolBar [1]
     Width = 930
     DoubleBuffered = True
     ExplicitWidth = 930
@@ -92,12 +82,12 @@ inherited DocumentRequestT: TDocumentRequestT
   inherited FilterPanel: TcxGroupBox
     Visible = True
     ExplicitWidth = 930
-    ExplicitHeight = 82
-    Height = 82
+    ExplicitHeight = 72
+    Height = 72
     Width = 930
     object SkLabel5: TSkLabel
       Left = 211
-      Top = 18
+      Top = 14
       Width = 17
       Height = 19
       Words = <
@@ -107,7 +97,7 @@ inherited DocumentRequestT: TDocumentRequestT
     end
     object SkLabel1: TSkLabel
       Left = 7
-      Top = 18
+      Top = 14
       Width = 53
       Height = 19
       Words = <
@@ -116,8 +106,8 @@ inherited DocumentRequestT: TDocumentRequestT
         end>
     end
     object SkLabel12: TSkLabel
-      Left = 360
-      Top = 49
+      Left = 346
+      Top = 45
       Width = 75
       Height = 19
       Words = <
@@ -126,8 +116,8 @@ inherited DocumentRequestT: TDocumentRequestT
         end>
     end
     object SkLabel8: TSkLabel
-      Left = 360
-      Top = 18
+      Left = 346
+      Top = 14
       Width = 78
       Height = 19
       Words = <
@@ -137,7 +127,7 @@ inherited DocumentRequestT: TDocumentRequestT
     end
     object SkLabel3: TSkLabel
       Left = 7
-      Top = 49
+      Top = 45
       Width = 59
       Height = 19
       Words = <
@@ -147,7 +137,7 @@ inherited DocumentRequestT: TDocumentRequestT
     end
     object edtAccountDate: TcxDateEdit
       Left = 231
-      Top = 16
+      Top = 12
       Properties.DateButtons = [btnClear, btnNow, btnToday]
       TabOrder = 1
       OnKeyDown = edtAccountNumberKeyDown
@@ -155,14 +145,14 @@ inherited DocumentRequestT: TDocumentRequestT
     end
     object edtAccountNumber: TcxTextEdit
       Left = 77
-      Top = 16
+      Top = 12
       TabOrder = 0
       OnKeyDown = edtAccountNumberKeyDown
       Width = 130
     end
     object edtBuyer: ALookupEdit
-      Left = 444
-      Top = 16
+      Left = 430
+      Top = 12
       LookupConnection = DM.FDConnection
       LookupForm = 'TKontragentsT'
       LookupSQL = 'Select Name from tKontragents (nolock) where KontragentID = :ID'
@@ -187,11 +177,11 @@ inherited DocumentRequestT: TDocumentRequestT
       ShowHint = True
       TabOrder = 2
       OnKeyDown = edtAccountNumberKeyDown
-      Width = 234
+      Width = 264
     end
     object edtSupplier: ALookupEdit
-      Left = 444
-      Top = 47
+      Left = 430
+      Top = 41
       LookupConnection = DM.FDConnection
       LookupForm = 'TKontragentsT'
       LookupSQL = 'Select Name from tKontragents (nolock) where KontragentID = :ID'
@@ -214,13 +204,13 @@ inherited DocumentRequestT: TDocumentRequestT
         end>
       Properties.Images = IM.IL
       ShowHint = True
-      TabOrder = 5
+      TabOrder = 4
       OnKeyDown = edtAccountNumberKeyDown
-      Width = 234
+      Width = 264
     end
     object btnFilterOk: TcxButton
       Left = 700
-      Top = 16
+      Top = 12
       Width = 99
       Height = 25
       Hint = #1055#1088#1080#1084#1077#1085#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
@@ -232,7 +222,7 @@ inherited DocumentRequestT: TDocumentRequestT
     end
     object btnFilterClear: TcxButton
       Left = 700
-      Top = 47
+      Top = 43
       Width = 99
       Height = 25
       Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
@@ -243,11 +233,11 @@ inherited DocumentRequestT: TDocumentRequestT
       OnClick = btnFilterClearClick
     end
     object edtPhone: TcxTextEdit
-      Left = 72
-      Top = 47
-      TabOrder = 4
+      Left = 77
+      Top = 43
+      TabOrder = 5
       OnKeyDown = edtAccountNumberKeyDown
-      Width = 263
+      Width = 258
     end
   end
   inherited ActionList: TActionList

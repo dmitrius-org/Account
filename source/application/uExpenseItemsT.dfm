@@ -1,6 +1,7 @@
 inherited ExpenseItemsT: TExpenseItemsT
   Caption = #1057#1090#1072#1090#1100#1080' '#1088#1072#1089#1093#1086#1076#1086#1074
   ClientWidth = 860
+  Visible = True
   StyleElements = [seFont, seClient, seBorder]
   ExplicitWidth = 876
   TextHeight = 17

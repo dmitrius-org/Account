@@ -115,7 +115,8 @@ object DM: TDM
   object qKontragentType: TFDQuery
     Connection = FDConnection
     SQL.Strings = (
-      'select KontragentTypeID'
+      'select distinct '
+      '       KontragentTypeID'
       '      ,Name '
       '  from tKontragentType kt (nolock)')
     Left = 372

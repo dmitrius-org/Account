@@ -30,7 +30,6 @@ type
     btnFilterOk: TcxButton;
     btnFilterClear: TcxButton;
     edtPhone: TcxTextEdit;
-    SkLabel2: TSkLabel;
     SkLabel3: TSkLabel;
     QueryDocumentRequestID: TFMTBCDField;
     QueryPayDate: TSQLTimeStampField;

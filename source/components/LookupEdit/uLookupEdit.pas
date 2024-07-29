@@ -168,12 +168,12 @@ type
 
   published
 
-    property LookupConnection: TFDConnection read FConnection write SetConnection;
-    property LookupForm:string         read FLookupForm     write FLookupForm;
-    property LookupSQL:string          read FLookupSQL      write FLookupSQL;
-    property LookupKey:Integer         read FLookupKey      write SetLookupKey;
-    property LookupFilter:string       read FLookupFilter   write FLookupFilter;
-    property LookupResult:Integer      read FLookupResult   write FLookupResult;
+    property LookupConnection: TFDConnection read FConnection     write SetConnection;
+    property LookupForm:string               read FLookupForm     write FLookupForm;
+    property LookupSQL:string                read FLookupSQL      write FLookupSQL;
+    property LookupKey:Integer               read FLookupKey      write SetLookupKey;
+    property LookupFilter:string             read FLookupFilter   write FLookupFilter;
+    property LookupResult:Integer            read FLookupResult   write FLookupResult;
 
     property Anchors;
     property AutoSize;
@@ -322,6 +322,7 @@ begin
   obj.ID:=FLookupKey;
   obj.LookupFilter := LookupFilter;
   obj.Position:=poDesktopCenter;
+  obj.Visible := False;
   FLookupResult :=obj.ShowModal;
 
   if (obj.ID > 0) and (FLookupResult = 1) then

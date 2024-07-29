@@ -15,7 +15,7 @@ uses
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.ExtCtrls, cxContainer,
   System.Skia, Vcl.StdCtrls, cxButtons, Vcl.Skia, cxTextEdit, cxMaskEdit,
-  uLookupEdit, cxCurrencyEdit;
+  uLookupEdit, cxCurrencyEdit, cxLabel;
 
 type
   TDolgT = class(TBaseFormT)
@@ -82,9 +82,9 @@ type
     edtTotal: TcxCurrencyEdit;
     edtSClient: TcxCurrencyEdit;
     edtSBuyer: TcxCurrencyEdit;
-    SkLabel2: TSkLabel;
-    SkLabel3: TSkLabel;
-    SkLabel4: TSkLabel;
+    cxLabel1: TcxLabel;
+    cxLabel2: TcxLabel;
+    cxLabel3: TcxLabel;
     procedure actRefreshBuyerExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnFilterClearClick(Sender: TObject);
@@ -137,6 +137,7 @@ begin
   TransactionF.ID := TableViewBuyerID.EditValue;
   TransactionF.FormAction := acRequest;
   TransactionF.KassaID := 1;
+  TransactionF.edtKontragent.LookupKey := TableViewBuyerID.EditValue;
   TransactionF.ShowModal;
   TransactionF.Free;
 end;
