@@ -1,27 +1,25 @@
 inherited Profit_T: TProfit_T
-  AutoSize = True
   Caption = #1055#1088#1080#1073#1099#1083#1100' '#1089' '#1090#1088#1072#1085#1079#1072#1082#1094#1080#1081
-  ClientHeight = 456
-  ClientWidth = 904
+  ClientHeight = 441
+  ClientWidth = 1034
   Visible = True
   StyleElements = [seFont, seClient, seBorder]
-  ExplicitWidth = 920
-  ExplicitHeight = 495
+  ExplicitWidth = 1050
+  ExplicitHeight = 480
   TextHeight = 17
   inherited ToolBar: TToolBar
-    Width = 904
+    Width = 1034
     DoubleBuffered = True
-    Visible = False
-    ExplicitWidth = 904
+    ExplicitWidth = 1034
   end
   inherited Grid: TcxGrid
-    Top = 140
-    Width = 904
-    Height = 316
+    Top = 196
+    Width = 1034
+    Height = 245
     OnLayoutChanged = GridLayoutChanged
-    ExplicitTop = 140
-    ExplicitWidth = 904
-    ExplicitHeight = 316
+    ExplicitTop = 196
+    ExplicitWidth = 1034
+    ExplicitHeight = 245
     inherited TableView: TcxGridDBTableView
       OnLeftPosChanged = TableViewLeftPosChanged
       object TableViewAccountNumber: TcxGridDBColumn
@@ -76,81 +74,11 @@ inherited Profit_T: TProfit_T
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
-    ExplicitWidth = 904
+    ExplicitTop = 96
+    ExplicitWidth = 1034
     ExplicitHeight = 100
     Height = 100
-    Width = 904
-    object SkLabel4: TSkLabel
-      Left = 239
-      Top = 47
-      Width = 20
-      Height = 19
-      Words = <
-        item
-          Caption = #1087#1086':'
-        end>
-    end
-    object SkLabel7: TSkLabel
-      Left = 12
-      Top = 44
-      Width = 111
-      Height = 19
-      Words = <
-        item
-          Caption = #1044#1072#1090#1072' '#1090#1088#1072#1085#1079#1072#1082#1094#1080#1080':'
-        end>
-    end
-    object SkLabel1: TSkLabel
-      Left = 12
-      Top = 17
-      Width = 106
-      Height = 19
-      Words = <
-        item
-          Caption = #1050#1086#1076' '#1090#1088#1072#1085#1079#1072#1082#1094#1080#1080':'
-        end>
-    end
-    object SkLabel8: TSkLabel
-      Left = 390
-      Top = 20
-      Width = 78
-      Height = 19
-      Words = <
-        item
-          Caption = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1100':'
-        end>
-    end
-    object SkLabel13: TSkLabel
-      Left = 390
-      Top = 47
-      Width = 48
-      Height = 19
-      Words = <
-        item
-          Caption = #1050#1083#1080#1077#1085#1090':'
-        end>
-    end
-    object lblCount: TSkLabel
-      Left = 12
-      Top = 77
-      Width = 125
-      Height = 19
-      TextSettings.Font.Weight = Bold
-      Words = <
-        item
-          Caption = #1042#1089#1077#1075#1086' '#1090#1088#1072#1085#1079#1072#1082#1094#1080#1081':'
-        end>
-    end
-    object SkLabel2: TSkLabel
-      Left = 325
-      Top = 77
-      Width = 118
-      Height = 19
-      Words = <
-        item
-          Caption = #1057#1088#1077#1076#1085#1103#1103' '#1087#1088#1080#1073#1099#1083#1100':'
-        end>
-    end
+    Width = 1034
     object btnFilterClear: TcxButton
       Left = 730
       Top = 44
@@ -160,7 +88,7 @@ inherited Profit_T: TProfit_T
       Caption = #1054#1090#1084#1077#1085#1080#1090#1100
       OptionsImage.ImageIndex = 2
       OptionsImage.Images = IM.IL
-      TabOrder = 6
+      TabOrder = 8
       OnClick = btnFilterClearClick
     end
     object btnFilterOk: TcxButton
@@ -181,7 +109,7 @@ inherited Profit_T: TProfit_T
       Properties.ClearKey = 46
       Properties.DateButtons = [btnClear, btnNow, btnToday]
       Properties.UseNullString = True
-      TabOrder = 4
+      TabOrder = 6
       OnKeyDown = edtTranCodeKeyDown
       Width = 104
     end
@@ -191,7 +119,7 @@ inherited Profit_T: TProfit_T
       Properties.ClearKey = 46
       Properties.DateButtons = [btnClear, btnNow, btnToday]
       Properties.UseNullString = True
-      TabOrder = 3
+      TabOrder = 5
       OnKeyDown = edtTranCodeKeyDown
       Width = 104
     end
@@ -258,13 +186,13 @@ inherited Profit_T: TProfit_T
       Properties.Images = IM.IL
       Properties.OnEditValueChanged = edtClientPropertiesEditValueChanged
       ShowHint = True
-      TabOrder = 5
+      TabOrder = 7
       OnKeyDown = edtTranCodeKeyDown
       Width = 234
     end
     object edtAVG: TcxCurrencyEdit
       Left = 446
-      Top = 73
+      Top = 74
       ParentFont = False
       Properties.Alignment.Horz = taCenter
       Properties.DecimalPlaces = 0
@@ -278,13 +206,12 @@ inherited Profit_T: TProfit_T
       Style.Font.Style = [fsBold]
       Style.ReadOnly = True
       Style.IsFontAssigned = True
-      TabOrder = 7
+      TabOrder = 13
       Width = 121
     end
     object edtSumT: TcxCurrencyEdit
-      Left = 548
-      Top = 73
-      Anchors = [akTop, akRight]
+      Left = 573
+      Top = 74
       ParentFont = False
       Properties.Alignment.Horz = taCenter
       Properties.DecimalPlaces = 0
@@ -298,13 +225,12 @@ inherited Profit_T: TProfit_T
       Style.Font.Style = [fsBold]
       Style.ReadOnly = True
       Style.IsFontAssigned = True
-      TabOrder = 8
+      TabOrder = 14
       Width = 121
     end
     object edtSum: TcxCurrencyEdit
-      Left = 738
-      Top = 73
-      Anchors = [akTop, akRight]
+      Left = 759
+      Top = 74
       ParentFont = False
       Properties.Alignment.Horz = taCenter
       Properties.DecimalPlaces = 0
@@ -318,8 +244,64 @@ inherited Profit_T: TProfit_T
       Style.Font.Style = [fsBold]
       Style.ReadOnly = True
       Style.IsFontAssigned = True
-      TabOrder = 9
+      TabOrder = 15
       Width = 125
+    end
+    object cxLabel1: TcxLabel
+      Left = 14
+      Top = 17
+      Caption = #1050#1086#1076' '#1090#1088#1072#1085#1079#1072#1082#1094#1080#1080':'
+    end
+    object cxLabel2: TcxLabel
+      Left = 14
+      Top = 45
+      Caption = #1044#1072#1090#1072' '#1090#1088#1072#1085#1079#1072#1082#1094#1080#1080':'
+    end
+    object lblCount: TcxLabel
+      Left = 12
+      Top = 81
+      Caption = #1042#1089#1077#1075#1086' '#1090#1088#1072#1085#1079#1072#1082#1094#1080#1081':'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = [fsBold]
+      Style.IsFontAssigned = True
+    end
+    object cxLabel3: TcxLabel
+      Left = 392
+      Top = 17
+      Caption = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1100':'
+    end
+    object cxLabel4: TcxLabel
+      Left = 237
+      Top = 47
+      Caption = #1087#1086':'
+    end
+    object cxLabel5: TcxLabel
+      Left = 392
+      Top = 45
+      Caption = #1050#1083#1080#1077#1085#1090':'
+    end
+    object cxLabel6: TcxLabel
+      Left = 328
+      Top = 73
+      Caption = #1057#1088#1077#1076#1085#1103#1103' '#1087#1088#1080#1073#1099#1083#1100':'
+    end
+  end
+  inherited dxPanel1: TdxPanel
+    Width = 1034
+    Visible = False
+    ExplicitWidth = 1034
+    inherited btnDel: TcxButton
+      ExplicitLeft = 303
+    end
+    inherited btnEdit: TcxButton
+      ExplicitLeft = 203
+    end
+    inherited btnAdd: TcxButton
+      ExplicitLeft = 103
     end
   end
   inherited ActionList: TActionList

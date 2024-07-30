@@ -14,8 +14,8 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.ExtCtrls, cxContainer,
-  System.Skia, Vcl.StdCtrls, cxButtons, Vcl.Skia, cxTextEdit, cxMaskEdit,
-  uLookupEdit, cxCurrencyEdit, cxLabel;
+  Vcl.StdCtrls, cxButtons, cxTextEdit, cxMaskEdit,
+  uLookupEdit, cxCurrencyEdit, cxLabel, System.Skia, Vcl.Skia;
 
 type
   TDolgT = class(TBaseFormT)
@@ -39,11 +39,9 @@ type
     actRefreshBuyer: TAction;
     actRefreshBuyer1: TMenuItem;
     edtBuyer: ALookupEdit;
-    SkLabel8: TSkLabel;
     btnFilterClear: TcxButton;
     btnFilterOk: TcxButton;
     edtPartner: ALookupEdit;
-    SkLabel1: TSkLabel;
     cxButton1: TcxButton;
     actAddKassaKreditRequest: TAction;
     cxButton2: TcxButton;
@@ -85,6 +83,8 @@ type
     cxLabel1: TcxLabel;
     cxLabel2: TcxLabel;
     cxLabel3: TcxLabel;
+    cxLabel4: TcxLabel;
+    cxLabel5: TcxLabel;
     procedure actRefreshBuyerExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnFilterClearClick(Sender: TObject);

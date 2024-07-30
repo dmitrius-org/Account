@@ -14,7 +14,8 @@ uses
   cxDataStorage, cxEdit, cxNavigator, dxDateRanges, dxScrollbarAnnotations,
   cxDBData, cxGridLevel, cxClasses, cxGridCustomView, cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxGrid, uCommonType, dxSkinBasic,
-  cxContainer, cxGroupBox, uBaseFormF;
+  cxContainer, cxGroupBox, uBaseFormF, cxGeometry, dxFramedControl, dxPanel,
+  Vcl.StdCtrls, cxButtons, Vcl.Buttons;
 
 type
   TBaseFormDBT = class(TBaseFormT)
@@ -32,6 +33,11 @@ type
     N7: TMenuItem;
     FilterPanel: TcxGroupBox;
     GridRow: TcxStyle;
+    dxPanel1: TdxPanel;
+    btnDel: TcxButton;
+    btnEdit: TcxButton;
+    btnAdd: TcxButton;
+    btnShow: TcxButton;
     procedure FormShow(Sender: TObject);
     procedure actAddExecute(Sender: TObject);
     procedure actEditExecute(Sender: TObject);

@@ -15,19 +15,21 @@ inherited BaseFormDBT: TBaseFormDBT
     AutoSize = False
     ButtonHeight = 40
     ButtonWidth = 87
+    Color = 12566463
     Ctl3D = False
     DoubleBuffered = True
-    DockSite = True
     DrawingStyle = dsGradient
     GradientEndColor = 12566463
     GradientStartColor = 12566463
     ParentDoubleBuffered = False
     Transparent = False
+    Visible = False
     StyleElements = []
     Wrapable = False
     ExplicitWidth = 816
     ExplicitHeight = 40
     inherited tbShow: TToolButton
+      Style = tbsTextButton
       ExplicitWidth = 87
       ExplicitHeight = 40
     end
@@ -52,13 +54,15 @@ inherited BaseFormDBT: TBaseFormDBT
   end
   object Grid: TcxGrid [1]
     Left = 0
-    Top = 99
+    Top = 155
     Width = 816
-    Height = 391
+    Height = 335
     Align = alClient
     PopupMenu = PopupMenu
-    TabOrder = 2
+    TabOrder = 3
     LookAndFeel.NativeStyle = False
+    ExplicitTop = 99
+    ExplicitHeight = 391
     object TableView: TcxGridDBTableView
       OnGetStoredProperties = TableViewGetStoredProperties
       OnGetStoredPropertyValue = TableViewGetStoredPropertyValue
@@ -99,7 +103,7 @@ inherited BaseFormDBT: TBaseFormDBT
   end
   object FilterPanel: TcxGroupBox [2]
     Left = 0
-    Top = 40
+    Top = 96
     Align = alTop
     BiDiMode = bdLeftToRight
     Caption = #1060#1080#1083#1100#1090#1088
@@ -107,17 +111,122 @@ inherited BaseFormDBT: TBaseFormDBT
     ParentBiDiMode = False
     ParentColor = False
     ParentFont = False
-    Style.Color = clBtnFace
+    Style.BorderColor = 12566463
+    Style.BorderStyle = ebsNone
+    Style.Color = 12566463
+    Style.Edges = []
     Style.Font.Charset = DEFAULT_CHARSET
     Style.Font.Color = clWindowText
     Style.Font.Height = -13
     Style.Font.Name = 'Segoe UI'
     Style.Font.Style = []
     Style.IsFontAssigned = True
-    TabOrder = 1
+    StyleDisabled.BorderColor = 12566463
+    TabOrder = 2
     Visible = False
+    ExplicitTop = 40
     Height = 59
     Width = 816
+  end
+  object dxPanel1: TdxPanel [3]
+    Left = 0
+    Top = 40
+    Width = 816
+    Height = 56
+    Align = alTop
+    Frame.Borders = [bBottom]
+    Color = 12566463
+    TabOrder = 1
+    object btnDel: TcxButton
+      AlignWithMargins = True
+      Left = 303
+      Top = 3
+      Width = 97
+      Height = 49
+      Margins.Left = 0
+      Align = alLeft
+      Action = actDelete
+      Colors.Default = clGradientActiveCaption
+      Colors.Normal = clGradientActiveCaption
+      Colors.Hot = clGradientInactiveCaption
+      Colors.Pressed = clGradientActiveCaption
+      Colors.Disabled = clGradientActiveCaption
+      LookAndFeel.Kind = lfUltraFlat
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.ScrollbarMode = sbmDefault
+      LookAndFeel.ScrollMode = scmDefault
+      OptionsImage.Images = cxImageList16
+      OptionsImage.Layout = blGlyphTop
+      TabOrder = 3
+      ExplicitLeft = 3
+    end
+    object btnEdit: TcxButton
+      AlignWithMargins = True
+      Left = 203
+      Top = 3
+      Width = 97
+      Height = 49
+      Margins.Left = 0
+      Align = alLeft
+      Action = actEdit
+      Colors.Default = clGradientActiveCaption
+      Colors.Normal = clGradientActiveCaption
+      Colors.Hot = clGradientInactiveCaption
+      Colors.Pressed = clGradientActiveCaption
+      Colors.Disabled = clGradientActiveCaption
+      LookAndFeel.Kind = lfUltraFlat
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.ScrollbarMode = sbmDefault
+      LookAndFeel.ScrollMode = scmDefault
+      OptionsImage.Images = cxImageList16
+      OptionsImage.Layout = blGlyphTop
+      TabOrder = 2
+      ExplicitLeft = 3
+    end
+    object btnAdd: TcxButton
+      AlignWithMargins = True
+      Left = 103
+      Top = 3
+      Width = 97
+      Height = 49
+      Margins.Left = 0
+      Align = alLeft
+      Action = actAdd
+      Colors.Default = clGradientActiveCaption
+      Colors.Normal = clGradientActiveCaption
+      Colors.Hot = clGradientInactiveCaption
+      Colors.Pressed = clGradientActiveCaption
+      Colors.Disabled = clGradientActiveCaption
+      LookAndFeel.Kind = lfUltraFlat
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.ScrollbarMode = sbmDefault
+      LookAndFeel.ScrollMode = scmDefault
+      OptionsImage.Images = cxImageList16
+      OptionsImage.Layout = blGlyphTop
+      TabOrder = 1
+      ExplicitLeft = 3
+    end
+    object btnShow: TcxButton
+      AlignWithMargins = True
+      Left = 3
+      Top = 3
+      Width = 97
+      Height = 49
+      Align = alLeft
+      Action = actShow
+      Colors.Default = clGradientActiveCaption
+      Colors.Normal = clGradientActiveCaption
+      Colors.Hot = clGradientInactiveCaption
+      Colors.Pressed = clGradientActiveCaption
+      Colors.Disabled = clGradientActiveCaption
+      LookAndFeel.Kind = lfUltraFlat
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.ScrollbarMode = sbmDefault
+      LookAndFeel.ScrollMode = scmDefault
+      OptionsImage.Images = cxImageList16
+      OptionsImage.Layout = blGlyphTop
+      TabOrder = 0
+    end
   end
   inherited ActionList: TActionList
     Tag = 1
@@ -162,6 +271,7 @@ inherited BaseFormDBT: TBaseFormDBT
   end
   inherited cxImageList32: TcxImageList
     FormatVersion = 1
+    DesignInfo = 6946857
   end
   inherited cxImageList16: TcxImageList
     FormatVersion = 1

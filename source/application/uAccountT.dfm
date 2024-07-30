@@ -52,12 +52,12 @@ inherited AccountT: TAccountT
     end
   end
   inherited Grid: TcxGrid
-    Top = 141
+    Top = 197
     Width = 1044
-    Height = 355
-    ExplicitTop = 141
+    Height = 299
+    ExplicitTop = 197
     ExplicitWidth = 1044
-    ExplicitHeight = 355
+    ExplicitHeight = 299
     inherited TableView: TcxGridDBTableView
       OnCustomDrawCell = TableViewCustomDrawCell
       DataController.KeyFieldNames = 'AccountID'
@@ -132,120 +132,11 @@ inherited AccountT: TAccountT
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
+    ExplicitTop = 96
     ExplicitWidth = 1044
     ExplicitHeight = 101
     Height = 101
     Width = 1044
-    object SkLabel1: TSkLabel
-      Left = 44
-      Top = 18
-      Width = 53
-      Height = 19
-      Words = <
-        item
-          Caption = #1057#1095#1077#1090' '#8470':'
-        end>
-    end
-    object SkLabel2: TSkLabel
-      Left = 50
-      Top = 45
-      Width = 47
-      Height = 19
-      Words = <
-        item
-          Caption = #1055#1055' '#8470' :'
-        end>
-    end
-    object SkLabel3: TSkLabel
-      Left = 211
-      Top = 45
-      Width = 17
-      Height = 19
-      Words = <
-        item
-          Caption = #1086#1090':'
-        end>
-    end
-    object SkLabel5: TSkLabel
-      Left = 211
-      Top = 18
-      Width = 17
-      Height = 19
-      Words = <
-        item
-          Caption = #1086#1090':'
-        end>
-    end
-    object SkLabel7: TSkLabel
-      Left = 7
-      Top = 73
-      Width = 94
-      Height = 19
-      Words = <
-        item
-          Caption = #1044#1072#1090#1072' '#1086#1087#1083#1072#1090#1099' '#1089':'
-        end>
-    end
-    object SkLabel4: TSkLabel
-      Left = 211
-      Top = 73
-      Width = 20
-      Height = 19
-      Words = <
-        item
-          Caption = #1087#1086':'
-        end>
-    end
-    object SkLabel6: TSkLabel
-      Left = 664
-      Top = 18
-      Width = 44
-      Height = 19
-      Words = <
-        item
-          Caption = #1057#1090#1072#1090#1091#1089':'
-        end>
-    end
-    object SkLabel11: TSkLabel
-      Left = 664
-      Top = 45
-      Width = 27
-      Height = 19
-      Words = <
-        item
-          Caption = #1058#1080#1087':'
-        end>
-    end
-    object SkLabel8: TSkLabel
-      Left = 340
-      Top = 18
-      Width = 78
-      Height = 19
-      Words = <
-        item
-          Caption = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1100':'
-        end>
-    end
-    object SkLabel12: TSkLabel
-      Left = 340
-      Top = 45
-      Width = 75
-      Height = 19
-      Words = <
-        item
-          Caption = #1055#1086#1089#1090#1072#1074#1097#1080#1082':'
-        end>
-    end
-    object SkLabel13: TSkLabel
-      Left = 340
-      Top = 73
-      Width = 48
-      Height = 19
-      Words = <
-        item
-          Caption = #1050#1083#1080#1077#1085#1090':'
-        end>
-    end
     object edtAccountNumber: TcxTextEdit
       Left = 103
       Top = 16
@@ -256,7 +147,7 @@ inherited AccountT: TAccountT
     object edtPayNumber: TcxTextEdit
       Left = 103
       Top = 43
-      TabOrder = 5
+      TabOrder = 9
       OnKeyDown = edtAccountNumberKeyDown
       Width = 104
     end
@@ -273,7 +164,7 @@ inherited AccountT: TAccountT
       Top = 43
       Properties.DateButtons = [btnClear, btnNow, btnToday]
       Properties.UseNullString = True
-      TabOrder = 6
+      TabOrder = 10
       OnKeyDown = edtAccountNumberKeyDown
       Width = 104
     end
@@ -282,7 +173,7 @@ inherited AccountT: TAccountT
       Top = 71
       Properties.DateButtons = [btnClear, btnNow, btnToday]
       Properties.UseNullString = True
-      TabOrder = 10
+      TabOrder = 18
       OnKeyDown = edtAccountNumberKeyDown
       Width = 104
     end
@@ -291,7 +182,7 @@ inherited AccountT: TAccountT
       Top = 71
       Properties.DateButtons = [btnClear, btnNow, btnToday]
       Properties.UseNullString = True
-      TabOrder = 11
+      TabOrder = 19
       OnKeyDown = edtAccountNumberKeyDown
       Width = 104
     end
@@ -315,7 +206,7 @@ inherited AccountT: TAccountT
       Top = 43
       Properties.Items.Strings = (
         #1042#1086#1079#1074#1088#1072#1090#1099)
-      TabOrder = 8
+      TabOrder = 12
       OnKeyDown = edtAccountNumberKeyDown
       Width = 146
     end
@@ -375,7 +266,7 @@ inherited AccountT: TAccountT
       Properties.Images = IM.IL
       Properties.OnButtonClick = edtBuyerPropertiesButtonClick
       ShowHint = True
-      TabOrder = 7
+      TabOrder = 11
       OnKeyDown = edtAccountNumberKeyDown
       Width = 234
     end
@@ -405,7 +296,7 @@ inherited AccountT: TAccountT
       Properties.Images = IM.IL
       Properties.OnButtonClick = edtBuyerPropertiesButtonClick
       ShowHint = True
-      TabOrder = 12
+      TabOrder = 20
       OnKeyDown = edtAccountNumberKeyDown
       Width = 234
     end
@@ -430,8 +321,99 @@ inherited AccountT: TAccountT
       Caption = #1054#1090#1084#1077#1085#1080#1090#1100
       OptionsImage.ImageIndex = 2
       OptionsImage.Images = IM.IL
-      TabOrder = 9
+      TabOrder = 13
       OnClick = btnFilterClearClick
+    end
+    object cxLabel1: TcxLabel
+      Left = 44
+      Top = 18
+      Caption = #1057#1095#1077#1090' '#8470':'
+    end
+    object cxLabel2: TcxLabel
+      Left = 44
+      Top = 45
+      Caption = #1055#1055' '#8470' :'
+    end
+    object cxLabel3: TcxLabel
+      Left = 10
+      Top = 72
+      Caption = #1044#1072#1090#1072' '#1086#1087#1083#1072#1090#1099' '#1089':'
+    end
+    object cxLabel4: TcxLabel
+      Left = 210
+      Top = 18
+      Caption = #1086#1090':'
+    end
+    object cxLabel5: TcxLabel
+      Left = 210
+      Top = 45
+      Caption = #1086#1090':'
+    end
+    object cxLabel6: TcxLabel
+      Left = 210
+      Top = 72
+      Caption = #1087#1086':'
+    end
+    object cxLabel7: TcxLabel
+      Left = 344
+      Top = 17
+      Caption = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1100':'
+    end
+    object cxLabel8: TcxLabel
+      Left = 344
+      Top = 45
+      Caption = #1055#1086#1089#1090#1072#1074#1097#1080#1082':'
+    end
+    object cxLabel9: TcxLabel
+      Left = 344
+      Top = 72
+      Caption = #1050#1083#1080#1077#1085#1090':'
+    end
+    object cxLabel10: TcxLabel
+      Left = 664
+      Top = 17
+      Caption = #1057#1090#1072#1090#1091#1089':'
+    end
+    object cxLabel11: TcxLabel
+      Left = 666
+      Top = 44
+      Caption = #1058#1080#1087':'
+    end
+  end
+  inherited dxPanel1: TdxPanel
+    Width = 1044
+    ExplicitWidth = 1044
+    inherited btnDel: TcxButton
+      ExplicitLeft = 303
+    end
+    inherited btnEdit: TcxButton
+      ExplicitLeft = 203
+    end
+    inherited btnAdd: TcxButton
+      ExplicitLeft = 103
+    end
+    object cxButton5: TcxButton
+      AlignWithMargins = True
+      Left = 403
+      Top = 3
+      Width = 97
+      Height = 49
+      Margins.Left = 0
+      Align = alLeft
+      Action = actKontragent
+      Colors.Default = clGradientActiveCaption
+      Colors.Normal = clGradientActiveCaption
+      Colors.Hot = clGradientInactiveCaption
+      Colors.Pressed = clGradientActiveCaption
+      Colors.Disabled = clGradientActiveCaption
+      LookAndFeel.Kind = lfUltraFlat
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.ScrollbarMode = sbmDefault
+      LookAndFeel.ScrollMode = scmDefault
+      OptionsImage.Images = cxImageList16
+      OptionsImage.Layout = blGlyphTop
+      TabOrder = 4
+      ExplicitLeft = 406
     end
   end
   inherited ActionList: TActionList
@@ -1018,6 +1000,7 @@ inherited AccountT: TAccountT
   end
   inherited cxImageList16: TcxImageList
     FormatVersion = 1
+    DesignInfo = 17104952
     ImageInfo = <
       item
         ImageClass = 'TdxSmartImage'

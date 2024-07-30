@@ -13,9 +13,9 @@ inherited StatisticT: TStatisticT
     ExplicitWidth = 651
   end
   inherited Grid: TcxGrid
-    Top = 82
+    Top = 81
     Width = 651
-    Height = 239
+    Height = 240
     ExplicitTop = 82
     ExplicitWidth = 651
     ExplicitHeight = 239
@@ -43,40 +43,9 @@ inherited StatisticT: TStatisticT
   inherited FilterPanel: TcxGroupBox
     Visible = True
     ExplicitWidth = 651
-    ExplicitHeight = 42
-    Height = 42
+    ExplicitHeight = 41
+    Height = 41
     Width = 651
-    object SkLabel6: TSkLabel
-      Left = 28
-      Top = 43
-      Width = 27
-      Height = 19
-      Visible = False
-      Words = <
-        item
-          Caption = #1058#1080#1087':'
-        end>
-    end
-    object SkLabel7: TSkLabel
-      Left = 28
-      Top = 15
-      Width = 44
-      Height = 19
-      Words = <
-        item
-          Caption = #1044#1072#1090#1072' '#1089':'
-        end>
-    end
-    object SkLabel4: TSkLabel
-      Left = 185
-      Top = 15
-      Width = 20
-      Height = 19
-      Words = <
-        item
-          Caption = #1087#1086':'
-        end>
-    end
     object edtType: TcxLookupComboBox
       Left = 77
       Top = 43
@@ -88,7 +57,7 @@ inherited StatisticT: TStatisticT
         end>
       Properties.ListOptions.ShowHeader = False
       Properties.MaxLength = 256
-      TabOrder = 4
+      TabOrder = 6
       Visible = False
       OnKeyDown = edtDateBKeyDown
       Width = 234
@@ -136,6 +105,16 @@ inherited StatisticT: TStatisticT
       TabOrder = 0
       OnKeyDown = edtDateBKeyDown
       Width = 104
+    end
+    object cxLabel1: TcxLabel
+      Left = 26
+      Top = 15
+      Caption = #1044#1072#1090#1072' '#1089':'
+    end
+    object cxLabel2: TcxLabel
+      Left = 183
+      Top = 15
+      Caption = #1087#1086':'
     end
   end
   inherited ActionList: TActionList

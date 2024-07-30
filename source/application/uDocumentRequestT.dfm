@@ -9,12 +9,12 @@ inherited DocumentRequestT: TDocumentRequestT
   ExplicitHeight = 574
   TextHeight = 17
   inherited Grid: TcxGrid [0]
-    Top = 112
+    Top = 168
     Width = 930
-    Height = 423
-    ExplicitTop = 122
+    Height = 367
+    ExplicitTop = 168
     ExplicitWidth = 930
-    ExplicitHeight = 413
+    ExplicitHeight = 367
     inherited TableView: TcxGridDBTableView
       DataController.KeyFieldNames = 'DocumentRequestID'
       object TableViewDocumentRequestID: TcxGridDBColumn
@@ -81,60 +81,11 @@ inherited DocumentRequestT: TDocumentRequestT
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
+    ExplicitTop = 96
     ExplicitWidth = 930
     ExplicitHeight = 72
     Height = 72
     Width = 930
-    object SkLabel5: TSkLabel
-      Left = 211
-      Top = 14
-      Width = 17
-      Height = 19
-      Words = <
-        item
-          Caption = #1086#1090':'
-        end>
-    end
-    object SkLabel1: TSkLabel
-      Left = 7
-      Top = 14
-      Width = 53
-      Height = 19
-      Words = <
-        item
-          Caption = #1057#1095#1077#1090' '#8470':'
-        end>
-    end
-    object SkLabel12: TSkLabel
-      Left = 346
-      Top = 45
-      Width = 75
-      Height = 19
-      Words = <
-        item
-          Caption = #1055#1086#1089#1090#1072#1074#1097#1080#1082':'
-        end>
-    end
-    object SkLabel8: TSkLabel
-      Left = 346
-      Top = 14
-      Width = 78
-      Height = 19
-      Words = <
-        item
-          Caption = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1100':'
-        end>
-    end
-    object SkLabel3: TSkLabel
-      Left = 7
-      Top = 45
-      Width = 59
-      Height = 19
-      Words = <
-        item
-          Caption = #1058#1077#1083#1077#1092#1086#1085':'
-        end>
-    end
     object edtAccountDate: TcxDateEdit
       Left = 231
       Top = 12
@@ -204,7 +155,7 @@ inherited DocumentRequestT: TDocumentRequestT
         end>
       Properties.Images = IM.IL
       ShowHint = True
-      TabOrder = 4
+      TabOrder = 8
       OnKeyDown = edtAccountNumberKeyDown
       Width = 264
     end
@@ -222,22 +173,60 @@ inherited DocumentRequestT: TDocumentRequestT
     end
     object btnFilterClear: TcxButton
       Left = 700
-      Top = 43
+      Top = 41
       Width = 99
       Height = 25
       Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
       Caption = #1054#1090#1084#1077#1085#1080#1090#1100
       OptionsImage.ImageIndex = 2
       OptionsImage.Images = IM.IL
-      TabOrder = 6
+      TabOrder = 9
       OnClick = btnFilterClearClick
     end
     object edtPhone: TcxTextEdit
       Left = 77
-      Top = 43
-      TabOrder = 5
+      Top = 41
+      TabOrder = 7
       OnKeyDown = edtAccountNumberKeyDown
       Width = 258
+    end
+    object cxLabel1: TcxLabel
+      Left = 9
+      Top = 13
+      Caption = #1057#1095#1077#1090' '#8470':'
+    end
+    object cxLabel2: TcxLabel
+      Left = 9
+      Top = 42
+      Caption = #1058#1077#1083#1077#1092#1086#1085':'
+    end
+    object cxLabel3: TcxLabel
+      Left = 209
+      Top = 13
+      Caption = #1086#1090':'
+    end
+    object cxLabel4: TcxLabel
+      Left = 348
+      Top = 13
+      Caption = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1100':'
+    end
+    object cxLabel5: TcxLabel
+      Left = 351
+      Top = 42
+      Caption = #1055#1086#1089#1090#1072#1074#1097#1080#1082':'
+    end
+  end
+  inherited dxPanel1: TdxPanel
+    Width = 930
+    ExplicitWidth = 930
+    inherited btnDel: TcxButton
+      ExplicitLeft = 303
+    end
+    inherited btnEdit: TcxButton
+      ExplicitLeft = 203
+    end
+    inherited btnAdd: TcxButton
+      ExplicitLeft = 103
     end
   end
   inherited ActionList: TActionList

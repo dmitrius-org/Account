@@ -55,13 +55,13 @@ inherited CreditsT: TCreditsT
     end
   end
   inherited Grid: TcxGrid
-    Top = 148
+    Top = 204
     Width = 944
-    Height = 342
+    Height = 286
     OnLayoutChanged = GridLayoutChanged
-    ExplicitTop = 148
+    ExplicitTop = 204
     ExplicitWidth = 944
-    ExplicitHeight = 342
+    ExplicitHeight = 286
     inherited TableView: TcxGridDBTableView
       DataController.KeyFieldNames = 'CreditID'
       OnLeftPosChanged = TableViewLeftPosChanged
@@ -111,7 +111,7 @@ inherited CreditsT: TCreditsT
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
-    ExplicitTop = 34
+    ExplicitTop = 96
     ExplicitWidth = 944
     ExplicitHeight = 108
     Height = 108
@@ -305,6 +305,9 @@ inherited CreditsT: TCreditsT
       Style.IsFontAssigned = True
       Transparent = True
     end
+  end
+  inherited dxPanel1: TdxPanel
+    Width = 944
   end
   inherited ActionList: TActionList
     Tag = 40

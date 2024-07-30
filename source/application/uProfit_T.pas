@@ -13,23 +13,19 @@ uses
   cxClasses, FireDAC.Comp.DataSet, FireDAC.Comp.Client, System.ImageList,
   Vcl.ImgList, cxImageList, Vcl.Menus, System.Actions, Vcl.ActnList, cxGroupBox,
   cxGridLevel, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
-  cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, System.Skia, dxCore,
-  cxDateUtils, cxDropDownEdit, cxCalendar, Vcl.Skia, cxTextEdit, cxMaskEdit,
-  uLookupEdit, Vcl.StdCtrls, cxButtons, cxCurrencyEdit;
+  cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, dxCore,
+  cxDateUtils, cxDropDownEdit, cxCalendar, cxTextEdit, cxMaskEdit,
+  uLookupEdit, Vcl.StdCtrls, cxButtons, cxCurrencyEdit, cxGeometry,
+  dxFramedControl, cxLabel, dxPanel;
 
 type
   TProfit_T = class(TBaseFormDBT)
     btnFilterClear: TcxButton;
     btnFilterOk: TcxButton;
     edtDateE: TcxDateEdit;
-    SkLabel4: TSkLabel;
     edtDateB: TcxDateEdit;
-    SkLabel7: TSkLabel;
     edtTranCode: TcxTextEdit;
-    SkLabel1: TSkLabel;
     edtBuyer: ALookupEdit;
-    SkLabel8: TSkLabel;
-    SkLabel13: TSkLabel;
     edtClient: ALookupEdit;
     TableViewAccountNumber: TcxGridDBColumn;
     TableViewOperDate: TcxGridDBColumn;
@@ -52,8 +48,13 @@ type
     edtAVG: TcxCurrencyEdit;
     edtSumT: TcxCurrencyEdit;
     edtSum: TcxCurrencyEdit;
-    lblCount: TSkLabel;
-    SkLabel2: TSkLabel;
+    cxLabel1: TcxLabel;
+    cxLabel2: TcxLabel;
+    lblCount: TcxLabel;
+    cxLabel3: TcxLabel;
+    cxLabel4: TcxLabel;
+    cxLabel5: TcxLabel;
+    cxLabel6: TcxLabel;
     procedure btnFilterClearClick(Sender: TObject);
     procedure btnFilterOkClick(Sender: TObject);
     procedure edtTranCodeKeyDown(Sender: TObject; var Key: Word;

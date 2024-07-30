@@ -19,12 +19,12 @@ inherited KontragentsT: TKontragentsT
     end
   end
   inherited Grid: TcxGrid
-    Top = 119
+    Top = 175
     Width = 914
-    Height = 427
-    ExplicitTop = 119
+    Height = 371
+    ExplicitTop = 175
     ExplicitWidth = 914
-    ExplicitHeight = 427
+    ExplicitHeight = 371
     inherited TableView: TcxGridDBTableView
       DataController.KeyFieldNames = 'KontragentID'
       object TableViewKontragentID: TcxGridDBColumn
@@ -73,40 +73,11 @@ inherited KontragentsT: TKontragentsT
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
+    ExplicitTop = 96
     ExplicitWidth = 914
     ExplicitHeight = 79
     Height = 79
     Width = 914
-    object SkLabel2: TSkLabel
-      Left = 16
-      Top = 47
-      Width = 58
-      Height = 19
-      Words = <
-        item
-          Caption = #1055#1072#1088#1090#1085#1077#1088':'
-        end>
-    end
-    object SkLabel1: TSkLabel
-      Left = 333
-      Top = 47
-      Width = 100
-      Height = 19
-      Words = <
-        item
-          Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
-        end>
-    end
-    object SkLabel3: TSkLabel
-      Left = 333
-      Top = 19
-      Width = 34
-      Height = 19
-      Words = <
-        item
-          Caption = #1048#1053#1053':'
-        end>
-    end
     object edtPartner: TcxLookupComboBox
       Left = 80
       Top = 44
@@ -118,7 +89,7 @@ inherited KontragentsT: TKontragentsT
       Properties.ListOptions.ShowHeader = False
       Properties.ListSource = DM.dsKontragent
       Properties.MaxLength = 256
-      TabOrder = 5
+      TabOrder = 6
       OnKeyDown = edtKontragentTypeKeyDown
       Width = 223
     end
@@ -131,7 +102,7 @@ inherited KontragentsT: TKontragentsT
       Left = 439
       Top = 44
       Properties.MaxLength = 255
-      TabOrder = 7
+      TabOrder = 8
       TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
       OnKeyDown = edtKontragentTypeKeyDown
       Width = 279
@@ -157,7 +128,7 @@ inherited KontragentsT: TKontragentsT
       Caption = #1054#1090#1084#1077#1085#1080#1090#1100
       OptionsImage.ImageIndex = 10
       OptionsImage.Images = cxImageList16
-      TabOrder = 9
+      TabOrder = 10
       OnClick = btnFilterClearClick
     end
     object pnKontragent: TdxPanel
@@ -218,7 +189,7 @@ inherited KontragentsT: TKontragentsT
       PaintStyle = bpsGlyph
       SpeedButtonOptions.Flat = True
       SpeedButtonOptions.Transparent = True
-      TabOrder = 8
+      TabOrder = 9
       OnClick = cxButton3Click
     end
     object edtINN: TcxTextEdit
@@ -265,8 +236,40 @@ inherited KontragentsT: TKontragentsT
       PaintStyle = bpsGlyph
       SpeedButtonOptions.Flat = True
       SpeedButtonOptions.Transparent = True
-      TabOrder = 6
+      TabOrder = 7
       OnClick = cxButton2Click
+    end
+    object cxLabel2: TcxLabel
+      Left = 16
+      Top = 47
+      Caption = #1055#1072#1088#1090#1085#1077#1088':'
+    end
+    object cxLabel3: TcxLabel
+      Left = 337
+      Top = 47
+      Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
+    end
+    object cxLabel4: TcxLabel
+      Left = 398
+      Top = 20
+      Caption = #1048#1053#1053':'
+    end
+  end
+  inherited dxPanel1: TdxPanel
+    Width = 914
+    ExplicitWidth = 914
+    inherited btnDel: TcxButton
+      ExplicitLeft = 303
+    end
+    inherited btnEdit: TcxButton
+      ExplicitLeft = 203
+    end
+    inherited btnAdd: TcxButton
+      Action = nil
+      DropDownMenu = AddMenu
+      Kind = cxbkOfficeDropDown
+      OnClick = nil
+      ExplicitLeft = 103
     end
   end
   inherited ActionList: TActionList
@@ -923,6 +926,7 @@ inherited KontragentsT: TKontragentsT
   end
   inherited cxImageList16: TcxImageList
     FormatVersion = 1
+    DesignInfo = 15925289
     ImageInfo = <
       item
         ImageClass = 'TdxSmartImage'

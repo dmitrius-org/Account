@@ -55,85 +55,11 @@ inherited SupplierF: TSupplierF
       DesignSize = (
         646
         284)
-      object SkLabel1: TSkLabel
-        Left = 6
-        Top = 68
-        Width = 100
-        Height = 19
-        Words = <
-          item
-            Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
-          end>
-      end
-      object SkLabel4: TSkLabel
-        Left = 6
-        Top = 35
-        Width = 30
-        Height = 19
-        Words = <
-          item
-            Caption = #1048#1085#1085':'
-          end>
-      end
-      object SkLabel6: TSkLabel
-        Left = 6
-        Top = 95
-        Width = 143
-        Height = 34
-        AutoSize = False
-        Words = <
-          item
-            Caption = #1055#1086#1083#1085#1086#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
-          end>
-      end
-      object SkLabel7: TSkLabel
-        Left = 6
-        Top = 134
-        Width = 72
-        Height = 19
-        Words = <
-          item
-            Caption = #1070#1088'. '#1040#1076#1088#1077#1089':'
-          end>
-      end
-      object SkLabel8: TSkLabel
-        Left = 6
-        Top = 158
-        Width = 143
-        Height = 37
-        AutoSize = False
-        Words = <
-          item
-            Caption = #1055#1086#1095#1090#1086#1074#1099#1081' '#1072#1076#1088#1077#1089':'
-          end>
-      end
-      object SkLabel9: TSkLabel
-        Left = 6
-        Top = 189
-        Width = 100
-        Height = 37
-        AutoSize = False
-        Words = <
-          item
-            Caption = #1069#1044#1054':'
-          end>
-      end
-      object edtEdoIDL: TSkLabel
-        Left = 3
-        Top = 216
-        Width = 143
-        Height = 37
-        AutoSize = False
-        Words = <
-          item
-            Caption = #1048#1076#1077#1085#1090#1080#1092#1080#1082#1072#1090#1086#1088' '#1069#1044#1054':'
-          end>
-      end
       object edtName: TcxTextEdit
         Left = 155
         Top = 68
         Anchors = [akLeft, akTop, akRight]
-        TabOrder = 2
+        TabOrder = 3
         TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
         Width = 484
       end
@@ -148,7 +74,7 @@ inherited SupplierF: TSupplierF
         Left = 155
         Top = 99
         Anchors = [akLeft, akTop, akRight]
-        TabOrder = 3
+        TabOrder = 5
         TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1087#1086#1083#1085#1086#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
         Width = 484
       end
@@ -156,28 +82,28 @@ inherited SupplierF: TSupplierF
         Left = 155
         Top = 131
         Anchors = [akLeft, akTop, akRight]
-        TabOrder = 4
+        TabOrder = 7
         Width = 484
       end
       object edtPostAddress: TcxTextEdit
         Left = 155
         Top = 162
         Anchors = [akLeft, akTop, akRight]
-        TabOrder = 5
+        TabOrder = 9
         Width = 484
       end
       object edtEdo: TcxTextEdit
         Left = 155
         Top = 193
         Anchors = [akLeft, akTop, akRight]
-        TabOrder = 6
+        TabOrder = 11
         Width = 484
       end
       object edtEdoID: TcxTextEdit
         Left = 155
         Top = 224
         Anchors = [akLeft, akTop, akRight]
-        TabOrder = 7
+        TabOrder = 13
         Width = 484
       end
       object btnAuutoFillByInn: TcxButton
@@ -189,6 +115,48 @@ inherited SupplierF: TSupplierF
         Caption = #1040#1074#1090#1086#1084#1072#1090#1080#1095#1077#1089#1082#1086#1077' '#1079#1072#1087#1086#1083#1085#1077#1085#1080#1077' '#1087#1086' '#1048#1053#1053
         TabOrder = 1
         OnClick = btnAuutoFillByInnClick
+      end
+      object cxLabel2: TcxLabel
+        Left = 3
+        Top = 36
+        Caption = #1048#1085#1085':'
+        Transparent = True
+      end
+      object cxLabel4: TcxLabel
+        Left = 3
+        Top = 69
+        Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
+        Transparent = True
+      end
+      object cxLabel3: TcxLabel
+        Left = 3
+        Top = 100
+        Caption = #1055#1086#1083#1085#1086#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
+        Transparent = True
+      end
+      object cxLabel7: TcxLabel
+        Left = 3
+        Top = 132
+        Caption = #1070#1088'. '#1040#1076#1088#1077#1089':'
+        Transparent = True
+      end
+      object cxLabel8: TcxLabel
+        Left = 3
+        Top = 163
+        Caption = #1055#1086#1095#1090#1086#1074#1099#1081' '#1072#1076#1088#1077#1089':'
+        Transparent = True
+      end
+      object cxLabel9: TcxLabel
+        Left = 3
+        Top = 194
+        Caption = #1069#1044#1054':'
+        Transparent = True
+      end
+      object cxLabel10: TcxLabel
+        Left = 3
+        Top = 225
+        Caption = #1048#1076#1077#1085#1090#1080#1092#1080#1082#1072#1090#1086#1088' '#1069#1044#1054':'
+        Transparent = True
       end
     end
     object TabContact: TTabSheet
@@ -294,7 +262,6 @@ inherited SupplierF: TSupplierF
     Top = 264
   end
   object qContact: TFDQuery
-    Active = True
     Connection = DM.FDConnection
     UpdateOptions.KeyFields = 'ID'
     UpdateOptions.AutoIncFields = 'ID'

@@ -14,9 +14,9 @@ uses
   Vcl.ImgList, cxImageList, Vcl.Menus, System.Actions, Vcl.ActnList,
   cxGridLevel, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, cxContainer, cxGroupBox,
-  System.Skia, dxCore, cxDateUtils, Vcl.StdCtrls, cxButtons, cxTextEdit,
-  cxMaskEdit, cxDropDownEdit, cxCalendar, Vcl.Skia, cxRadioGroup, uLookupEdit,
-  cxCurrencyEdit, cxLabel;
+  dxCore, cxDateUtils, Vcl.StdCtrls, cxButtons, cxTextEdit,
+  cxMaskEdit, cxDropDownEdit, cxCalendar, cxRadioGroup, uLookupEdit,
+  cxCurrencyEdit, cxLabel, cxGeometry, dxFramedControl, dxPanel;
 
 type
   TCreditsT = class(TBaseFormDBT)

@@ -14,7 +14,8 @@ uses
   Vcl.ImgList, cxImageList, Vcl.Menus, System.Actions, Vcl.ActnList, cxGroupBox,
   cxGridLevel, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, cxGridExportLink,
-  Vcl.OleAuto, dxSkinBasic;
+  Vcl.OleAuto, dxSkinBasic, cxGeometry, dxFramedControl, Vcl.StdCtrls,
+  cxButtons, dxPanel;
 
 type
   TDebsHistoryClientT = class(TBaseFormDBT)
@@ -38,6 +39,7 @@ type
     Querybalance: TCurrencyField;
     QueryClientID: TFMTBCDField;
     QueryPartnerID: TIntegerField;
+    cxButton1: TcxButton;
     procedure FormShow(Sender: TObject);
     procedure actExportToExcelExecute(Sender: TObject);
     procedure actRefreshExecute(Sender: TObject);

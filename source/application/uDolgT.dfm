@@ -119,26 +119,6 @@ inherited DolgT: TDolgT
         ParentFont = False
         ShowCaption = False
         TabOrder = 0
-        object SkLabel8: TSkLabel
-          Left = 331
-          Top = 13
-          Width = 78
-          Height = 19
-          Words = <
-            item
-              Caption = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1100':'
-            end>
-        end
-        object SkLabel1: TSkLabel
-          Left = 331
-          Top = 40
-          Width = 58
-          Height = 19
-          Words = <
-            item
-              Caption = #1055#1072#1088#1090#1085#1077#1088':'
-            end>
-        end
         object edtBuyer: ALookupEdit
           Left = 415
           Top = 11
@@ -177,7 +157,7 @@ inherited DolgT: TDolgT
           Caption = #1054#1090#1084#1077#1085#1080#1090#1100
           OptionsImage.ImageIndex = 2
           OptionsImage.Images = IM.IL
-          TabOrder = 5
+          TabOrder = 6
           OnClick = btnFilterClearClick
         end
         object btnFilterOk: TcxButton
@@ -217,7 +197,7 @@ inherited DolgT: TDolgT
             end>
           Properties.Images = IM.IL
           ShowHint = True
-          TabOrder = 4
+          TabOrder = 5
           OnKeyDown = edtPartnerKeyDown
           Width = 234
         end
@@ -237,6 +217,16 @@ inherited DolgT: TDolgT
           Action = actHistoryBuyer
           TabOrder = 1
           WordWrap = True
+        end
+        object cxLabel4: TcxLabel
+          Left = 337
+          Top = 13
+          Caption = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1100':'
+        end
+        object cxLabel5: TcxLabel
+          Left = 355
+          Top = 39
+          Caption = #1055#1072#1088#1090#1085#1077#1088':'
         end
       end
     end

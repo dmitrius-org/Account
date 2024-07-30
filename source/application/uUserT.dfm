@@ -49,12 +49,12 @@ inherited UserT: TUserT
     end
   end
   inherited Grid: TcxGrid
-    Top = 86
+    Top = 142
     Width = 678
-    Height = 368
-    ExplicitTop = 86
+    Height = 312
+    ExplicitTop = 142
     ExplicitWidth = 678
-    ExplicitHeight = 368
+    ExplicitHeight = 312
     inherited TableView: TcxGridDBTableView
       DataController.KeyFieldNames = 'UserID'
       object TableViewUserID: TcxGridDBColumn
@@ -92,28 +92,17 @@ inherited UserT: TUserT
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
+    ExplicitTop = 96
     ExplicitWidth = 678
     ExplicitHeight = 46
     Height = 46
     Width = 678
-    object SkLabel1: TSkLabel
-      Left = 94
-      Top = 18
-      Width = 43
-      Height = 19
-      Anchors = [akTop, akRight]
-      Words = <
-        item
-          Caption = #1051#1086#1075#1080#1085':'
-        end>
-      ExplicitLeft = 232
-    end
     object edtLogin: TcxTextEdit
       Left = 143
       Top = 15
       Anchors = [akTop, akRight]
       Properties.MaxLength = 255
-      TabOrder = 0
+      TabOrder = 1
       TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1083#1086#1075#1080#1085
       OnKeyDown = edtLoginKeyDown
       Width = 298
@@ -135,7 +124,7 @@ inherited UserT: TUserT
       PaintStyle = bpsGlyph
       SpeedButtonOptions.Flat = True
       SpeedButtonOptions.Transparent = True
-      TabOrder = 1
+      TabOrder = 2
       OnClick = cxButton3Click
     end
     object btnFilterOk: TcxButton
@@ -148,7 +137,7 @@ inherited UserT: TUserT
       Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
       OptionsImage.ImageIndex = 5
       OptionsImage.Images = IM.IL
-      TabOrder = 2
+      TabOrder = 3
       OnClick = btnFilterOkClick
     end
     object btnFilterClear: TcxButton
@@ -161,8 +150,51 @@ inherited UserT: TUserT
       Caption = #1054#1090#1084#1077#1085#1080#1090#1100
       OptionsImage.ImageIndex = 2
       OptionsImage.Images = IM.IL
-      TabOrder = 3
+      TabOrder = 4
       OnClick = btnFilterClearClick
+    end
+    object cxLabel1: TcxLabel
+      Left = 94
+      Top = 15
+      Caption = #1051#1086#1075#1080#1085':'
+    end
+  end
+  inherited dxPanel1: TdxPanel
+    Width = 678
+    ExplicitWidth = 678
+    inherited btnDel: TcxButton
+      Action = actAccess
+      ExplicitLeft = 403
+    end
+    inherited btnEdit: TcxButton
+      ExplicitLeft = 203
+    end
+    inherited btnAdd: TcxButton
+      ExplicitLeft = 103
+    end
+    object cxButton1: TcxButton
+      AlignWithMargins = True
+      Left = 403
+      Top = 3
+      Width = 97
+      Height = 49
+      Margins.Left = 0
+      Align = alLeft
+      Action = actAccess
+      Colors.Default = clGradientActiveCaption
+      Colors.Normal = clGradientActiveCaption
+      Colors.Hot = clGradientInactiveCaption
+      Colors.Pressed = clGradientActiveCaption
+      Colors.Disabled = clGradientActiveCaption
+      LookAndFeel.Kind = lfUltraFlat
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.ScrollbarMode = sbmDefault
+      LookAndFeel.ScrollMode = scmDefault
+      OptionsImage.Images = cxImageList16
+      OptionsImage.Layout = blGlyphTop
+      TabOrder = 4
+      ExplicitLeft = 477
+      ExplicitTop = 1
     end
   end
   inherited ActionList: TActionList

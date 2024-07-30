@@ -1,4 +1,4 @@
-program Account;
+  program Account;
 
 uses
   Vcl.Forms,

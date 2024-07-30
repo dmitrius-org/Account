@@ -14,23 +14,19 @@ uses
   Vcl.ImgList, cxImageList, Vcl.Menus, System.Actions, Vcl.ActnList, cxGroupBox,
   cxGridLevel, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, dxCore, cxDateUtils,
-  System.Skia, cxTextEdit, Vcl.Skia, cxMaskEdit, cxDropDownEdit, cxCalendar,
-  uLookupEdit, Vcl.StdCtrls, cxButtons;
+  cxTextEdit, cxMaskEdit, cxDropDownEdit, cxCalendar,
+  uLookupEdit, Vcl.StdCtrls, cxButtons, cxGeometry, dxFramedControl, dxPanel,
+  cxLabel;
 
 type
   TDocumentRequestT = class(TBaseFormDBT)
     edtAccountDate: TcxDateEdit;
-    SkLabel5: TSkLabel;
     edtAccountNumber: TcxTextEdit;
-    SkLabel1: TSkLabel;
     edtBuyer: ALookupEdit;
     edtSupplier: ALookupEdit;
-    SkLabel12: TSkLabel;
-    SkLabel8: TSkLabel;
     btnFilterOk: TcxButton;
     btnFilterClear: TcxButton;
     edtPhone: TcxTextEdit;
-    SkLabel3: TSkLabel;
     QueryDocumentRequestID: TFMTBCDField;
     QueryPayDate: TSQLTimeStampField;
     QueryAccountNumber: TStringField;
@@ -49,6 +45,11 @@ type
     TableViewSupplierInn: TcxGridDBColumn;
     TableViewBuyerName: TcxGridDBColumn;
     TableViewBuyerInn: TcxGridDBColumn;
+    cxLabel1: TcxLabel;
+    cxLabel2: TcxLabel;
+    cxLabel3: TcxLabel;
+    cxLabel4: TcxLabel;
+    cxLabel5: TcxLabel;
     procedure FormCreate(Sender: TObject);
     procedure edtAccountNumberKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);

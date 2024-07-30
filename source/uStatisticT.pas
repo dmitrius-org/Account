@@ -13,9 +13,10 @@ uses
   cxClasses, FireDAC.Comp.DataSet, FireDAC.Comp.Client, System.ImageList,
   Vcl.ImgList, cxImageList, Vcl.Menus, System.Actions, Vcl.ActnList, cxGroupBox,
   cxGridLevel, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
-  cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, System.Skia, dxCore,
+  cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, dxCore,
   cxDateUtils, Vcl.StdCtrls, cxButtons, cxDropDownEdit, cxCalendar, cxTextEdit,
-  cxMaskEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, Vcl.Skia;
+  cxMaskEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
+  cxLabel, System.Skia, Vcl.Skia;
 
 type
   TStatisticT = class(TBaseFormDBT)
@@ -27,14 +28,13 @@ type
     TableViewName: TcxGridDBColumn;
     TableViewRest: TcxGridDBColumn;
     TableViewCnt: TcxGridDBColumn;
-    SkLabel6: TSkLabel;
     edtType: TcxLookupComboBox;
-    SkLabel7: TSkLabel;
-    SkLabel4: TSkLabel;
     edtDateE: TcxDateEdit;
     btnFilterOk: TcxButton;
     btnFilterClear: TcxButton;
     edtDateB: TcxDateEdit;
+    cxLabel1: TcxLabel;
+    cxLabel2: TcxLabel;
     procedure btnFilterOkClick(Sender: TObject);
     procedure btnFilterClearClick(Sender: TObject);
     procedure edtDateBKeyDown(Sender: TObject; var Key: Word;

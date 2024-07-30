@@ -13,8 +13,8 @@ uses
   cxClasses, FireDAC.Comp.DataSet, FireDAC.Comp.Client, System.ImageList,
   Vcl.ImgList, cxImageList, Vcl.Menus, System.Actions, Vcl.ActnList,
   cxGridLevel, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
-  cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, cxContainer, cxGroupBox,
-  System.Skia, Vcl.StdCtrls, cxButtons, cxTextEdit, Vcl.Skia;
+  cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, cxContainer, cxGroupBox, Vcl.StdCtrls, cxButtons, cxTextEdit, cxGeometry,
+  dxFramedControl, cxLabel, dxPanel;
 
 type
   TTasksT = class(TBaseFormDBT)
@@ -29,11 +29,11 @@ type
     TableViewDueDate: TcxGridDBColumn;
     TableViewTaskStatus: TcxGridDBColumn;
     QueryTaskID: TFMTBCDField;
-    SkLabel1: TSkLabel;
     edtComment: TcxTextEdit;
     cxButton3: TcxButton;
     btnFilterOk: TcxButton;
     btnFilterClear: TcxButton;
+    cxLabel1: TcxLabel;
     procedure FormCreate(Sender: TObject);
     procedure btnFilterOkClick(Sender: TObject);
     procedure edtCommentKeyDown(Sender: TObject; var Key: Word;

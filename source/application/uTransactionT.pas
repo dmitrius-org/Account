@@ -14,9 +14,10 @@ uses
   Vcl.ImgList, cxImageList, Vcl.Menus, System.Actions, Vcl.ActnList, cxGroupBox,
   cxGridLevel, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, uBaseFormF, uTransactionF,
-  dxCore, cxDateUtils, System.Skia, Vcl.StdCtrls, cxButtons, cxDropDownEdit,
-  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, Vcl.Skia, cxTextEdit,
-  cxMaskEdit, cxCalendar, cxCurrencyEdit;
+  dxCore, cxDateUtils, Vcl.StdCtrls, cxButtons, cxDropDownEdit,
+  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, cxTextEdit,
+  cxMaskEdit, cxCalendar, cxCurrencyEdit, cxGeometry, dxFramedControl, dxPanel,
+  cxLabel;
 
 type
   TTransactionT = class(TBaseFormDBT)
@@ -43,11 +44,8 @@ type
     actAddDebet: TAction;
     N8: TMenuItem;
     edtPaymentDateE: TcxDateEdit;
-    SkLabel4: TSkLabel;
     edtPaymentDate: TcxDateEdit;
-    SkLabel7: TSkLabel;
     edKassa: TcxLookupComboBox;
-    SkLabel6: TSkLabel;
     btnFilterOk: TcxButton;
     btnFilterClear: TcxButton;
     dsKassa: TDataSource;
@@ -56,6 +54,10 @@ type
     edtSumC: TcxCurrencyEdit;
     edtSumD: TcxCurrencyEdit;
     QueryKassaID: TFMTBCDField;
+    cxButton5: TcxButton;
+    cxLabel1: TcxLabel;
+    cxLabel2: TcxLabel;
+    cxLabel3: TcxLabel;
     procedure actAddDebetExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ToolBarCustomDrawButton(Sender: TToolBar; Button: TToolButton;

@@ -10,8 +10,12 @@ inherited CreditPaymentT: TCreditPaymentT
     ExplicitWidth = 880
   end
   inherited Grid: TcxGrid
+    Top = 146
     Width = 880
+    Height = 344
+    ExplicitTop = 155
     ExplicitWidth = 880
+    ExplicitHeight = 335
     inherited TableView: TcxGridDBTableView
       DataController.KeyFieldNames = 'TransactionID'
       object TableViewTransactionID: TcxGridDBColumn
@@ -43,38 +47,11 @@ inherited CreditPaymentT: TCreditPaymentT
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
+    ExplicitTop = 96
     ExplicitWidth = 880
+    ExplicitHeight = 50
+    Height = 50
     Width = 880
-    object SkLabel7: TSkLabel
-      Left = 10
-      Top = 18
-      Width = 44
-      Height = 19
-      Words = <
-        item
-          Caption = #1044#1072#1090#1072' '#1089':'
-        end>
-    end
-    object SkLabel4: TSkLabel
-      Left = 167
-      Top = 18
-      Width = 20
-      Height = 19
-      Words = <
-        item
-          Caption = #1087#1086':'
-        end>
-    end
-    object SkLabel1: TSkLabel
-      Left = 314
-      Top = 18
-      Width = 92
-      Height = 19
-      Words = <
-        item
-          Caption = #1050#1086#1084#1084#1077#1085#1090#1072#1088#1080#1081':'
-        end>
-    end
     object edtPaymentDate: TcxDateEdit
       Left = 60
       Top = 16
@@ -146,15 +123,45 @@ inherited CreditPaymentT: TCreditPaymentT
       TabOrder = 3
       OnClick = cxButton3Click
     end
+    object cxLabel4: TcxLabel
+      Left = 318
+      Top = 17
+      Caption = #1050#1086#1084#1084#1077#1085#1090#1072#1088#1080#1081':'
+    end
+    object cxLabel1: TcxLabel
+      Left = 169
+      Top = 17
+      Caption = #1087#1086':'
+    end
+    object cxLabel2: TcxLabel
+      Left = 9
+      Top = 17
+      Caption = #1044#1072#1090#1072' '#1089':'
+    end
+  end
+  inherited dxPanel1: TdxPanel
+    Width = 880
+    ExplicitWidth = 880
+    inherited btnDel: TcxButton
+      ExplicitLeft = 303
+    end
+    inherited btnEdit: TcxButton
+      ExplicitLeft = 203
+    end
+    inherited btnAdd: TcxButton
+      ExplicitLeft = 103
+    end
   end
   inherited ActionList: TActionList
     Tag = 51
   end
   inherited cxImageList32: TcxImageList
     FormatVersion = 1
+    DesignInfo = 13434915
   end
   inherited cxImageList16: TcxImageList
     FormatVersion = 1
+    DesignInfo = 13828151
   end
   inherited Query: TFDQuery
     SQL.Strings = (

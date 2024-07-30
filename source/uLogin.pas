@@ -18,6 +18,7 @@ type
     btnCancel: TcxButton;
     procedure btnCancelClick(Sender: TObject);
     procedure btnOKClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -49,6 +50,14 @@ begin
   begin
 
   end;
+end;
+
+procedure TLoginForm.FormShow(Sender: TObject);
+begin
+  {$IFDEF Debug}
+  edtLogin.Text := DM.FDManager.ConnectionDefs.FindConnectionDef('Connection').Params.Values['User_name'];
+  edtPassword.Text := DM.FDManager.ConnectionDefs.FindConnectionDef('Connection').Params.Values['Password'];
+  {$ENDIF}
 end;
 
 end.

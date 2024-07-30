@@ -14,8 +14,8 @@ uses
   Vcl.ImgList, cxImageList, Vcl.Menus, System.Actions, Vcl.ActnList,
   cxGridLevel, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, cxContainer, cxGroupBox,
-  System.Skia, Vcl.StdCtrls, cxButtons, cxTextEdit, Vcl.Skia, cxMaskEdit,
-  uLookupEdit;
+  Vcl.StdCtrls, cxButtons, cxTextEdit, cxMaskEdit,
+  uLookupEdit, cxGeometry, dxFramedControl, cxLabel, dxPanel;
 
 type
   TExpenseItemsT = class(TBaseFormDBT)
@@ -30,13 +30,13 @@ type
     actGroup: TAction;
     ToolButton1: TToolButton;
     ToolButton2: TToolButton;
-    SkLabel1: TSkLabel;
     edtName: TcxTextEdit;
     cxButton3: TcxButton;
     btnFilterOk: TcxButton;
     btnFilterClear: TcxButton;
     edtExpenseGroup: ALookupEdit;
-    SkLabel2: TSkLabel;
+    cxLabel1: TcxLabel;
+    cxLabel2: TcxLabel;
     procedure FormCreate(Sender: TObject);
     procedure actGroupExecute(Sender: TObject);
     procedure btnFilterOkClick(Sender: TObject);

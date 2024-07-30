@@ -11,7 +11,6 @@ inherited TransactionT: TTransactionT
   TextHeight = 17
   inherited ToolBar: TToolBar
     Width = 925
-    Color = 12566463
     DoubleBuffered = True
     DrawingStyle = dsNormal
     HideClippedButtons = True
@@ -31,13 +30,13 @@ inherited TransactionT: TTransactionT
     end
   end
   inherited Grid: TcxGrid
-    Top = 116
+    Top = 172
     Width = 925
-    Height = 353
+    Height = 297
     OnLayoutChanged = GridLayoutChanged
-    ExplicitTop = 116
+    ExplicitTop = 172
     ExplicitWidth = 925
-    ExplicitHeight = 353
+    ExplicitHeight = 297
     inherited TableView: TcxGridDBTableView
       OnCellClick = TableViewCellClick
       DataController.KeyFieldNames = 'TransactionID'
@@ -107,40 +106,11 @@ inherited TransactionT: TTransactionT
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
+    ExplicitTop = 96
     ExplicitWidth = 925
     ExplicitHeight = 76
     Height = 76
     Width = 925
-    object SkLabel4: TSkLabel
-      Left = 373
-      Top = 18
-      Width = 20
-      Height = 19
-      Words = <
-        item
-          Caption = #1087#1086':'
-        end>
-    end
-    object SkLabel7: TSkLabel
-      Left = 216
-      Top = 18
-      Width = 44
-      Height = 19
-      Words = <
-        item
-          Caption = #1044#1072#1090#1072' '#1089':'
-        end>
-    end
-    object SkLabel6: TSkLabel
-      Left = 27
-      Top = 16
-      Width = 39
-      Height = 19
-      Words = <
-        item
-          Caption = #1050#1072#1089#1089#1072':'
-        end>
-    end
     object edtPaymentDateE: TcxDateEdit
       Left = 395
       Top = 16
@@ -218,7 +188,7 @@ inherited TransactionT: TTransactionT
       Style.Font.Style = []
       Style.ReadOnly = True
       Style.IsFontAssigned = True
-      TabOrder = 7
+      TabOrder = 10
       Width = 136
     end
     object edtSumC: TcxCurrencyEdit
@@ -238,7 +208,7 @@ inherited TransactionT: TTransactionT
       Style.Font.Style = []
       Style.ReadOnly = True
       Style.IsFontAssigned = True
-      TabOrder = 6
+      TabOrder = 9
       Width = 121
     end
     object edtSumD: TcxCurrencyEdit
@@ -258,8 +228,76 @@ inherited TransactionT: TTransactionT
       Style.Font.Style = []
       Style.ReadOnly = True
       Style.IsFontAssigned = True
-      TabOrder = 5
+      TabOrder = 8
       Width = 121
+    end
+    object cxLabel1: TcxLabel
+      Left = 27
+      Top = 17
+      Caption = #1050#1072#1089#1089#1072':'
+    end
+    object cxLabel2: TcxLabel
+      Left = 213
+      Top = 17
+      Caption = #1044#1072#1090#1072' '#1089':'
+    end
+    object cxLabel3: TcxLabel
+      Left = 372
+      Top = 17
+      Caption = #1087#1086':'
+    end
+  end
+  inherited dxPanel1: TdxPanel
+    Width = 925
+    ExplicitWidth = 925
+    inherited btnDel: TcxButton
+      Left = 403
+      TabOrder = 4
+      ExplicitLeft = 403
+    end
+    inherited btnEdit: TcxButton
+      Left = 303
+      TabOrder = 3
+      ExplicitLeft = 303
+    end
+    inherited btnAdd: TcxButton
+      Left = 203
+      Colors.DefaultText = clRed
+      TabOrder = 2
+      Font.Style = [fsBold]
+      ParentFont = False
+      ExplicitLeft = 103
+    end
+    object cxButton5: TcxButton
+      AlignWithMargins = True
+      Left = 103
+      Top = 3
+      Width = 97
+      Height = 49
+      Margins.Left = 0
+      Align = alLeft
+      Action = actAddDebet
+      Colors.Default = clGradientActiveCaption
+      Colors.DefaultText = clGreen
+      Colors.Normal = clGradientActiveCaption
+      Colors.Hot = clGradientInactiveCaption
+      Colors.Pressed = clGradientActiveCaption
+      Colors.Disabled = clGradientActiveCaption
+      LookAndFeel.Kind = lfUltraFlat
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.ScrollbarMode = sbmDefault
+      LookAndFeel.ScrollMode = scmDefault
+      OptionsImage.Images = cxImageList16
+      OptionsImage.Layout = blGlyphTop
+      TabOrder = 1
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentFont = False
+      ExplicitLeft = 87
+      ExplicitTop = 1
     end
   end
   inherited ActionList: TActionList
@@ -704,6 +742,7 @@ inherited TransactionT: TTransactionT
   end
   inherited cxImageList16: TcxImageList
     FormatVersion = 1
+    DesignInfo = 12845130
     ImageInfo = <
       item
         ImageClass = 'TdxSmartImage'

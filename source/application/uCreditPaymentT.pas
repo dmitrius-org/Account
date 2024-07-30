@@ -13,20 +13,18 @@ uses
   cxClasses, FireDAC.Comp.DataSet, FireDAC.Comp.Client, System.ImageList,
   Vcl.ImgList, cxImageList, Vcl.Menus, System.Actions, Vcl.ActnList, cxGroupBox,
   cxGridLevel, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
-  cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, System.Skia, dxCore,
+  cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, dxCore,
   cxDateUtils, Vcl.StdCtrls, cxButtons, cxTextEdit, cxMaskEdit, cxDropDownEdit,
-  cxCalendar, Vcl.Skia, uBaseFormF;
+  cxCalendar, uBaseFormF, cxGeometry, dxFramedControl, cxLabel,
+  dxPanel;
 
 type
   TCreditPaymentT = class(TBaseFormDBT)
-    SkLabel7: TSkLabel;
     edtPaymentDate: TcxDateEdit;
-    SkLabel4: TSkLabel;
     edtPaymentDateE: TcxDateEdit;
     btnFilterOk: TcxButton;
     btnFilterClear: TcxButton;
     edtComment: TcxTextEdit;
-    SkLabel1: TSkLabel;
     cxButton3: TcxButton;
     QueryTransactionID: TFMTBCDField;
     QueryOperDate: TSQLTimeStampField;
@@ -36,6 +34,9 @@ type
     TableViewOperDate: TcxGridDBColumn;
     TableViewAmount: TcxGridDBColumn;
     TableViewComment: TcxGridDBColumn;
+    cxLabel4: TcxLabel;
+    cxLabel1: TcxLabel;
+    cxLabel2: TcxLabel;
     procedure btnFilterOkClick(Sender: TObject);
     procedure btnFilterClearClick(Sender: TObject);
     procedure edtPaymentDateKeyDown(Sender: TObject; var Key: Word;

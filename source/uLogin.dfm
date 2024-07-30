@@ -12,6 +12,7 @@ object LoginForm: TLoginForm
   Font.Style = []
   Position = poDesktopCenter
   StyleName = 'Windows'
+  OnShow = FormShow
   TextHeight = 15
   object edtLogin: TcxTextEdit
     Left = 56

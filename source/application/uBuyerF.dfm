@@ -11,7 +11,7 @@ inherited BuyerF: TBuyerF
     Width = 654
     Frame.Borders = []
     TabOrder = 1
-    ExplicitTop = 365
+    ExplicitTop = 357
     ExplicitWidth = 654
     inherited dxPanel1: TdxPanel
       Height = 46
@@ -45,7 +45,6 @@ inherited BuyerF: TBuyerF
     TabOrder = 0
     TabWidth = 110
     OnDrawTab = PageControl1DrawTab
-    ExplicitHeight = 365
     object TabCommon: TTabSheet
       Margins.Left = 0
       Margins.Top = 0
@@ -56,115 +55,11 @@ inherited BuyerF: TBuyerF
       DesignSize = (
         646
         317)
-      object SkLabel1: TSkLabel
-        Left = 6
-        Top = 97
-        Width = 100
-        Height = 19
-        Words = <
-          item
-            Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
-          end>
-      end
-      object SkLabel2: TSkLabel
-        Left = 6
-        Top = 163
-        Width = 81
-        Height = 19
-        Words = <
-          item
-            Caption = #1044#1072#1090#1072' '#1089#1082#1080#1076#1082#1080':'
-          end>
-      end
-      object SkLabel3: TSkLabel
-        Left = 306
-        Top = 163
-        Width = 49
-        Height = 19
-        Words = <
-          item
-            Caption = #1057#1082#1080#1076#1082#1072':'
-          end>
-      end
-      object SkLabel4: TSkLabel
-        Left = 6
-        Top = 35
-        Width = 30
-        Height = 19
-        Words = <
-          item
-            Caption = #1048#1085#1085':'
-          end>
-      end
-      object SkLabel5: TSkLabel
-        Left = 6
-        Top = 66
-        Width = 58
-        Height = 19
-        Words = <
-          item
-            Caption = #1055#1072#1088#1090#1085#1077#1088':'
-          end>
-      end
-      object SkLabel6: TSkLabel
-        Left = 6
-        Top = 124
-        Width = 143
-        Height = 34
-        AutoSize = False
-        Words = <
-          item
-            Caption = #1055#1086#1083#1085#1086#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
-          end>
-      end
-      object SkLabel7: TSkLabel
-        Left = 6
-        Top = 196
-        Width = 72
-        Height = 19
-        Words = <
-          item
-            Caption = #1070#1088'. '#1040#1076#1088#1077#1089':'
-          end>
-      end
-      object SkLabel8: TSkLabel
-        Left = 6
-        Top = 220
-        Width = 143
-        Height = 37
-        AutoSize = False
-        Words = <
-          item
-            Caption = #1055#1086#1095#1090#1086#1074#1099#1081' '#1072#1076#1088#1077#1089':'
-          end>
-      end
-      object SkLabel9: TSkLabel
-        Left = 6
-        Top = 251
-        Width = 100
-        Height = 37
-        AutoSize = False
-        Words = <
-          item
-            Caption = #1069#1044#1054':'
-          end>
-      end
-      object edtEdoIDL: TSkLabel
-        Left = 3
-        Top = 278
-        Width = 143
-        Height = 37
-        AutoSize = False
-        Words = <
-          item
-            Caption = #1048#1076#1077#1085#1090#1080#1092#1080#1082#1072#1090#1086#1088' '#1069#1044#1054':'
-          end>
-      end
       object edtName: TcxTextEdit
         Left = 155
         Top = 97
         Anchors = [akLeft, akTop, akRight]
-        TabOrder = 4
+        TabOrder = 6
         TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
         Width = 484
       end
@@ -172,7 +67,7 @@ inherited BuyerF: TBuyerF
         Left = 155
         Top = 160
         Properties.DateButtons = [btnClear, btnNow, btnToday]
-        TabOrder = 6
+        TabOrder = 10
         Width = 121
       end
       object edtSignPartner: TcxCheckBox
@@ -202,14 +97,14 @@ inherited BuyerF: TBuyerF
         Properties.ListOptions.ShowHeader = False
         Properties.ListSource = DM.dsKontragent
         Properties.MaxLength = 256
-        TabOrder = 3
+        TabOrder = 4
         Width = 484
       end
       object edtFullName: TcxTextEdit
         Left = 155
         Top = 128
         Anchors = [akLeft, akTop, akRight]
-        TabOrder = 5
+        TabOrder = 8
         TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1087#1086#1083#1085#1086#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
         Width = 484
       end
@@ -217,28 +112,28 @@ inherited BuyerF: TBuyerF
         Left = 155
         Top = 193
         Anchors = [akLeft, akTop, akRight]
-        TabOrder = 8
+        TabOrder = 14
         Width = 484
       end
       object edtPostAddress: TcxTextEdit
         Left = 155
         Top = 224
         Anchors = [akLeft, akTop, akRight]
-        TabOrder = 9
+        TabOrder = 16
         Width = 484
       end
       object edtEdo: TcxTextEdit
         Left = 155
         Top = 255
         Anchors = [akLeft, akTop, akRight]
-        TabOrder = 10
+        TabOrder = 18
         Width = 484
       end
       object edtEdoID: TcxTextEdit
         Left = 155
         Top = 286
         Anchors = [akLeft, akTop, akRight]
-        TabOrder = 11
+        TabOrder = 20
         Width = 484
       end
       object btnAuutoFillByInn: TcxButton
@@ -255,8 +150,68 @@ inherited BuyerF: TBuyerF
         Left = 388
         Top = 160
         Properties.DisplayFormat = ',0.00 %;-,0.00 %'
-        TabOrder = 7
+        TabOrder = 11
         Width = 121
+      end
+      object cxLabel2: TcxLabel
+        Left = 6
+        Top = 36
+        Caption = #1048#1085#1085':'
+        Transparent = True
+      end
+      object cxLabel1: TcxLabel
+        Left = 6
+        Top = 161
+        Caption = #1044#1072#1090#1072' '#1089#1082#1080#1076#1082#1080':'
+        Transparent = True
+      end
+      object cxLabel3: TcxLabel
+        Left = 6
+        Top = 129
+        Caption = #1055#1086#1083#1085#1086#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
+        Transparent = True
+      end
+      object cxLabel5: TcxLabel
+        Left = 6
+        Top = 67
+        Caption = #1055#1072#1088#1090#1085#1077#1088':'
+        Transparent = True
+      end
+      object cxLabel4: TcxLabel
+        Left = 6
+        Top = 98
+        Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
+        Transparent = True
+      end
+      object cxLabel6: TcxLabel
+        Left = 312
+        Top = 161
+        Caption = #1057#1082#1080#1076#1082#1072':'
+        Transparent = True
+      end
+      object cxLabel7: TcxLabel
+        Left = 6
+        Top = 194
+        Caption = #1070#1088'. '#1040#1076#1088#1077#1089':'
+        Transparent = True
+      end
+      object cxLabel8: TcxLabel
+        Left = 6
+        Top = 225
+        Caption = #1055#1086#1095#1090#1086#1074#1099#1081' '#1072#1076#1088#1077#1089':'
+        Transparent = True
+      end
+      object cxLabel9: TcxLabel
+        Left = 6
+        Top = 256
+        Caption = #1069#1044#1054':'
+        Transparent = True
+      end
+      object cxLabel10: TcxLabel
+        Left = 6
+        Top = 287
+        Caption = #1048#1076#1077#1085#1090#1080#1092#1080#1082#1072#1090#1086#1088' '#1069#1044#1054':'
+        Transparent = True
       end
     end
     object TabContact: TTabSheet
@@ -266,7 +221,7 @@ inherited BuyerF: TBuyerF
         Left = 0
         Top = 37
         Width = 646
-        Height = 288
+        Height = 280
         Align = alClient
         TabOrder = 1
         object TableView: TcxGridDBTableView
@@ -358,7 +313,7 @@ inherited BuyerF: TBuyerF
         Left = 0
         Top = 0
         Width = 646
-        Height = 325
+        Height = 317
         Align = alClient
         TabOrder = 0
         object TableViewDiscount: TcxGridDBTableView
@@ -520,8 +475,8 @@ inherited BuyerF: TBuyerF
   end
   object dsDiscount: TDataSource
     DataSet = qDiscount
-    Left = 308
-    Top = 200
+    Left = 478
+    Top = 214
   end
   object qContactUpdate: TFDUpdateSQL
     Connection = DM.FDConnection

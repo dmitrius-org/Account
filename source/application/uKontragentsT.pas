@@ -16,7 +16,7 @@ uses
   cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, cxContainer, cxGroupBox,
   cxLabel, cxTextEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
   cxDBLookupComboBox, cxCheckBox, cxDBCheckComboBox, cxCheckComboBox,
-  dxCoreGraphics, System.Skia, Vcl.Skia, cxButtonEdit, uLookupEdit,
+  dxCoreGraphics, cxButtonEdit, uLookupEdit,
   Vcl.StdCtrls, cxButtons, cxGeometry, dxFramedControl, dxPanel, cxCurrencyEdit;
 
 type
@@ -47,9 +47,7 @@ type
     N9: TMenuItem;
     actAddClient: TAction;
     cxLabel1: TcxLabel;
-    SkLabel2: TSkLabel;
     edtName: TcxTextEdit;
-    SkLabel1: TSkLabel;
     btnFilterOk: TcxButton;
     btnFilterClear: TcxButton;
     edtPartner: TcxLookupComboBox;
@@ -58,9 +56,11 @@ type
     cxButton1: TcxButton;
     cxButton2: TcxButton;
     cxButton3: TcxButton;
-    SkLabel3: TSkLabel;
     edtINN: TcxTextEdit;
     btnINN: TcxButton;
+    cxLabel2: TcxLabel;
+    cxLabel3: TcxLabel;
+    cxLabel4: TcxLabel;
     procedure actEditExecute(Sender: TObject);
     procedure actAddBuyerExecute(Sender: TObject);
     procedure actAddSupplierExecute(Sender: TObject);

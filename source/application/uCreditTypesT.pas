@@ -14,7 +14,8 @@ uses
   Vcl.ImgList, cxImageList, Vcl.Menus, System.Actions, Vcl.ActnList,
   cxGridLevel, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, cxContainer, cxGroupBox,
-  System.Skia, Vcl.StdCtrls, cxButtons, cxTextEdit, Vcl.Skia;
+  Vcl.StdCtrls, cxButtons, cxTextEdit,cxGeometry,
+  dxFramedControl, dxPanel, cxLabel;
 
 type
   TCreditTypesT = class(TBaseFormDBT)
@@ -24,11 +25,11 @@ type
     QueryInDateTime: TSQLTimeStampField;
     TableViewCreditTypeID: TcxGridDBColumn;
     TableViewName: TcxGridDBColumn;
-    SkLabel1: TSkLabel;
     edtName: TcxTextEdit;
     btnFilterClear: TcxButton;
     btnFilterOk: TcxButton;
     cxButton3: TcxButton;
+    cxLabel4: TcxLabel;
     procedure FormCreate(Sender: TObject);
     procedure btnFilterOkClick(Sender: TObject);
     procedure edtNameKeyDown(Sender: TObject; var Key: Word;

@@ -13,10 +13,11 @@ uses
   cxClasses, FireDAC.Comp.DataSet, FireDAC.Comp.Client, System.ImageList,
   Vcl.ImgList, cxImageList, Vcl.Menus, System.Actions, Vcl.ActnList, cxGroupBox,
   cxGridLevel, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
-  cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, System.Skia, dxCore,
-  cxDateUtils, cxMaskEdit, cxDropDownEdit, cxCalendar, cxTextEdit, Vcl.Skia,
+  cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, dxCore,
+  cxDateUtils, cxMaskEdit, cxDropDownEdit, cxCalendar, cxTextEdit,
   cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, Vcl.StdCtrls, cxButtons,
-  dxCoreGraphics, cxButtonEdit, uLookupEdit;
+  dxCoreGraphics, cxButtonEdit, uLookupEdit, cxGeometry, dxFramedControl,
+  dxPanel, cxLabel;
 
 type
   TAccountT = class(TBaseFormDBT)
@@ -54,25 +55,14 @@ type
     N12: TMenuItem;
     StylePaid: TcxStyle;
     StylePartPaid: TcxStyle;
-    SkLabel1: TSkLabel;
-    SkLabel2: TSkLabel;
-    SkLabel3: TSkLabel;
-    SkLabel5: TSkLabel;
     edtAccountNumber: TcxTextEdit;
     edtPayNumber: TcxTextEdit;
     edtAccountDate: TcxDateEdit;
     edtPayDate: TcxDateEdit;
-    SkLabel7: TSkLabel;
     edtPaymentDate: TcxDateEdit;
     edtPaymentDateE: TcxDateEdit;
-    SkLabel4: TSkLabel;
-    SkLabel6: TSkLabel;
     edtAccountStatus: TcxLookupComboBox;
-    SkLabel11: TSkLabel;
     edtType: TcxComboBox;
-    SkLabel8: TSkLabel;
-    SkLabel12: TSkLabel;
-    SkLabel13: TSkLabel;
     edtBuyer: ALookupEdit;
     edtSupplier: ALookupEdit;
     edtClient: ALookupEdit;
@@ -87,6 +77,18 @@ type
     N14: TMenuItem;
     N15: TMenuItem;
     N16: TMenuItem;
+    cxButton5: TcxButton;
+    cxLabel1: TcxLabel;
+    cxLabel2: TcxLabel;
+    cxLabel3: TcxLabel;
+    cxLabel4: TcxLabel;
+    cxLabel5: TcxLabel;
+    cxLabel6: TcxLabel;
+    cxLabel7: TcxLabel;
+    cxLabel8: TcxLabel;
+    cxLabel9: TcxLabel;
+    cxLabel10: TcxLabel;
+    cxLabel11: TcxLabel;
     procedure FormCreate(Sender: TObject);
     procedure actCloneExecute(Sender: TObject);
     procedure actRefundExecute(Sender: TObject);
@@ -134,6 +136,7 @@ procedure TAccountT.actKontragentExecute(Sender: TObject);
 var kontragent: TKontragentsT;
 begin
   kontragent:= TKontragentsT.Create(self);
+  kontragent.Visible := False;
   kontragent.ShowModal;
   kontragent.Free;
 end;

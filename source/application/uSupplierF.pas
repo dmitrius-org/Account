@@ -12,13 +12,13 @@ uses
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, cxButtons,
   cxButtonEdit, uLookupEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit, cxCalendar,
-  dxPanel, dxBarBuiltInMenu, cxPC, System.Skia, cxCalc, Vcl.Skia, cxStyles,
+  dxPanel, dxBarBuiltInMenu, cxPC, cxCalc, cxStyles,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges,
   dxScrollbarAnnotations, cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
   System.Actions, Vcl.ActnList, System.ImageList, Vcl.ImgList, cxImageList,
   Vcl.ToolWin, cxCheckBox, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
-  cxCurrencyEdit, System.JSON ;
+  cxCurrencyEdit, System.JSON, cxLabel ;
 
 type
   TSupplierF = class(TBaseFormDBF)
@@ -44,13 +44,6 @@ type
     acContactSave: TAction;
     PageControl1: TPageControl;
     TabCommon: TTabSheet;
-    SkLabel1: TSkLabel;
-    SkLabel4: TSkLabel;
-    SkLabel6: TSkLabel;
-    SkLabel7: TSkLabel;
-    SkLabel8: TSkLabel;
-    SkLabel9: TSkLabel;
-    edtEdoIDL: TSkLabel;
     edtName: TcxTextEdit;
     edtINN: TcxTextEdit;
     edtFullName: TcxTextEdit;
@@ -72,6 +65,13 @@ type
     ToolButton2: TToolButton;
     ToolButton3: TToolButton;
     ToolButton4: TToolButton;
+    cxLabel2: TcxLabel;
+    cxLabel4: TcxLabel;
+    cxLabel3: TcxLabel;
+    cxLabel7: TcxLabel;
+    cxLabel8: TcxLabel;
+    cxLabel9: TcxLabel;
+    cxLabel10: TcxLabel;
     procedure btnOkClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure PageControl1DrawTab(Control: TCustomTabControl; TabIndex: Integer;
@@ -281,6 +281,7 @@ begin
       begin
         tRetVal.Code := 1;
         tRetVal.Message := 'Поле [Инн] обязательно к заполнению!';
+        PageControl1.ActivePage := TabCommon;
         edtINN.SetFocus;
         Exit();
       end;
@@ -289,6 +290,7 @@ begin
       begin
         tRetVal.Code := 1;
         tRetVal.Message := 'Поле [Наименование] обязательно к заполнению!';
+        PageControl1.ActivePage := TabCommon;
         edtName.SetFocus;
         Exit();
       end;

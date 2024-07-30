@@ -13,12 +13,12 @@ inherited ExpenseGroupsT: TExpenseGroupsT
     ExplicitWidth = 805
   end
   inherited Grid: TcxGrid
-    Top = 87
+    Top = 143
     Width = 805
-    Height = 283
-    ExplicitTop = 87
+    Height = 227
+    ExplicitTop = 143
     ExplicitWidth = 805
-    ExplicitHeight = 283
+    ExplicitHeight = 227
     inherited TableView: TcxGridDBTableView
       DataController.KeyFieldNames = 'ExpenseGroupID'
       OptionsCustomize.ColumnExpressionEditing = True
@@ -49,20 +49,11 @@ inherited ExpenseGroupsT: TExpenseGroupsT
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
+    ExplicitTop = 96
     ExplicitWidth = 805
     ExplicitHeight = 47
     Height = 47
     Width = 805
-    object SkLabel1: TSkLabel
-      Left = 161
-      Top = 18
-      Width = 100
-      Height = 19
-      Words = <
-        item
-          Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
-        end>
-    end
     object edtName: TcxTextEdit
       Left = 267
       Top = 15
@@ -114,6 +105,24 @@ inherited ExpenseGroupsT: TExpenseGroupsT
       OptionsImage.Images = IM.IL
       TabOrder = 3
       OnClick = btnFilterClearClick
+    end
+    object cxLabel1: TcxLabel
+      Left = 165
+      Top = 16
+      Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
+    end
+  end
+  inherited dxPanel1: TdxPanel
+    Width = 805
+    ExplicitWidth = 805
+    inherited btnDel: TcxButton
+      ExplicitLeft = 303
+    end
+    inherited btnEdit: TcxButton
+      ExplicitLeft = 203
+    end
+    inherited btnAdd: TcxButton
+      ExplicitLeft = 103
     end
   end
   inherited ActionList: TActionList

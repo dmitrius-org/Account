@@ -45,12 +45,12 @@ inherited DebsHistoryClientT: TDebsHistoryClientT
     end
   end
   inherited Grid: TcxGrid
-    Top = 82
+    Top = 138
     Width = 973
-    Height = 363
-    ExplicitTop = 82
+    Height = 307
+    ExplicitTop = 138
     ExplicitWidth = 973
-    ExplicitHeight = 363
+    ExplicitHeight = 307
     inherited TableView: TcxGridDBTableView
       OptionsView.HeaderHeight = 35
       object TableViewOperDate: TcxGridDBColumn
@@ -105,9 +105,49 @@ inherited DebsHistoryClientT: TDebsHistoryClientT
   end
   inherited FilterPanel: TcxGroupBox
     Top = 23
+    TabOrder = 1
     ExplicitTop = 23
     ExplicitWidth = 973
     Width = 973
+  end
+  inherited dxPanel1: TdxPanel
+    Top = 82
+    Width = 973
+    TabOrder = 2
+    ExplicitTop = 82
+    ExplicitWidth = 973
+    inherited btnDel: TcxButton
+      ExplicitLeft = 282
+      ExplicitTop = 6
+    end
+    inherited btnEdit: TcxButton
+      ExplicitLeft = 203
+    end
+    inherited btnAdd: TcxButton
+      ExplicitLeft = 103
+    end
+    object cxButton1: TcxButton
+      AlignWithMargins = True
+      Left = 403
+      Top = 3
+      Width = 114
+      Height = 49
+      Margins.Left = 0
+      Align = alLeft
+      Action = actExportToExcel
+      Colors.Default = clGradientActiveCaption
+      Colors.Normal = clGradientActiveCaption
+      Colors.Hot = clGradientInactiveCaption
+      Colors.Pressed = clGradientActiveCaption
+      Colors.Disabled = clGradientActiveCaption
+      LookAndFeel.Kind = lfUltraFlat
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.ScrollbarMode = sbmDefault
+      LookAndFeel.ScrollMode = scmDefault
+      OptionsImage.Images = cxImageList16
+      OptionsImage.Layout = blGlyphTop
+      TabOrder = 4
+    end
   end
   inherited ActionList: TActionList
     Top = 160

@@ -6,10 +6,10 @@ inherited CreditTypesT: TCreditTypesT
     DoubleBuffered = True
   end
   inherited Grid: TcxGrid
-    Top = 88
-    Height = 402
-    ExplicitTop = 88
-    ExplicitHeight = 402
+    Top = 144
+    Height = 346
+    ExplicitTop = 144
+    ExplicitHeight = 346
     inherited TableView: TcxGridDBTableView
       DataController.KeyFieldNames = 'CreditTypeID'
       object TableViewCreditTypeID: TcxGridDBColumn
@@ -27,18 +27,9 @@ inherited CreditTypesT: TCreditTypesT
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
+    ExplicitTop = 96
     ExplicitHeight = 48
     Height = 48
-    object SkLabel1: TSkLabel
-      Left = 175
-      Top = 18
-      Width = 100
-      Height = 19
-      Words = <
-        item
-          Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
-        end>
-    end
     object edtName: TcxTextEdit
       Left = 281
       Top = 15
@@ -90,6 +81,22 @@ inherited CreditTypesT: TCreditTypesT
       SpeedButtonOptions.Transparent = True
       TabOrder = 1
       OnClick = cxButton3Click
+    end
+    object cxLabel4: TcxLabel
+      Left = 174
+      Top = 16
+      Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
+    end
+  end
+  inherited dxPanel1: TdxPanel
+    inherited btnDel: TcxButton
+      ExplicitLeft = 303
+    end
+    inherited btnEdit: TcxButton
+      ExplicitLeft = 203
+    end
+    inherited btnAdd: TcxButton
+      ExplicitLeft = 103
     end
   end
   inherited ActionList: TActionList

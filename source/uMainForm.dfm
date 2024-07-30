@@ -138,7 +138,7 @@ object MainForm: TMainForm
     Width = 927
     Height = 426
     Align = alClient
-    Color = clSilver
+    Color = clBtnFace
     ParentBackground = False
     ParentColor = False
     TabOrder = 1
@@ -146,6 +146,8 @@ object MainForm: TMainForm
     Properties.CustomButtons.Buttons = <>
     Properties.Options = [pcoAlwaysShowGoDialogButton, pcoCloseButton, pcoGoDialog, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize, pcoUsePageColorForTab]
     Properties.OwnerDraw = True
+    Properties.ShowFrame = True
+    Properties.TabHeight = 30
     Properties.TabSlants.Kind = skCutCorner
     OnCanCloseEx = MainPageCanCloseEx
     ClientRectBottom = 422

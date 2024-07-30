@@ -12,21 +12,18 @@ uses
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, cxButtons,
   cxButtonEdit, uLookupEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit, cxCalendar,
-  dxPanel, dxBarBuiltInMenu, cxPC, System.Skia, cxCalc, Vcl.Skia, cxStyles,
+  dxPanel, dxBarBuiltInMenu, cxPC, cxCalc, cxStyles,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges,
   dxScrollbarAnnotations, cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
   System.Actions, Vcl.ActnList, System.ImageList, Vcl.ImgList, cxImageList,
   Vcl.ToolWin, cxCheckBox, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
-  cxCurrencyEdit, System.JSON;
+  cxCurrencyEdit, System.JSON, cxLabel;
 
 type
   TBuyerF = class(TBaseFormDBF)
     PageControl1: TPageControl;
     TabCommon: TTabSheet;
-    SkLabel1: TSkLabel;
-    SkLabel2: TSkLabel;
-    SkLabel3: TSkLabel;
     edtName: TcxTextEdit;
     edtDiscountDate: TcxDateEdit;
     TabContact: TTabSheet;
@@ -77,21 +74,24 @@ type
     TableViewDiscountDiscountDate: TcxGridDBColumn;
     edtSignPartner: TcxCheckBox;
     edtINN: TcxTextEdit;
-    SkLabel4: TSkLabel;
     edtPartner: TcxLookupComboBox;
-    SkLabel5: TSkLabel;
     edtFullName: TcxTextEdit;
-    SkLabel6: TSkLabel;
     edtlegalAaddress: TcxTextEdit;
     edtPostAddress: TcxTextEdit;
-    SkLabel7: TSkLabel;
-    SkLabel8: TSkLabel;
     edtEdo: TcxTextEdit;
     edtEdoID: TcxTextEdit;
-    SkLabel9: TSkLabel;
-    edtEdoIDL: TSkLabel;
     btnAuutoFillByInn: TcxButton;
     edtDiscount: TcxCurrencyEdit;
+    cxLabel2: TcxLabel;
+    cxLabel1: TcxLabel;
+    cxLabel3: TcxLabel;
+    cxLabel5: TcxLabel;
+    cxLabel4: TcxLabel;
+    cxLabel6: TcxLabel;
+    cxLabel7: TcxLabel;
+    cxLabel8: TcxLabel;
+    cxLabel9: TcxLabel;
+    cxLabel10: TcxLabel;
     procedure btnOkClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure PageControl1DrawTab(Control: TCustomTabControl; TabIndex: Integer;
@@ -320,6 +320,7 @@ begin
       begin
         tRetVal.Code := 1;
         tRetVal.Message := 'Поле [Наименование] обязательно к заполнению!';
+        PageControl1.ActivePage := TabCommon;
         edtName.SetFocus;
         Exit();
       end;
@@ -330,6 +331,7 @@ begin
         begin
           tRetVal.Code := 1;
           tRetVal.Message := 'Поле [Инн] обязательно к заполнению!';
+          PageControl1.ActivePage := TabCommon;
           edtINN.SetFocus;
           Exit();
         end;
@@ -338,6 +340,7 @@ begin
         begin
           tRetVal.Code := 1;
           tRetVal.Message := 'Поле [Дата скидки] обязательно к заполнению!';
+          PageControl1.ActivePage := TabCommon;
           edtDiscountDate.SetFocus;
           Exit();
         end;
@@ -345,6 +348,7 @@ begin
         begin
           tRetVal.Code := 1;
           tRetVal.Message := 'Поле [Скидка] обязательно к заполнению!';
+          PageControl1.ActivePage := TabCommon;
           edtDiscount.SetFocus;
           Exit();
         end

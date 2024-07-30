@@ -14,7 +14,7 @@ uses
   Vcl.ImgList, cxImageList, Vcl.Menus, System.Actions, Vcl.ActnList, cxGroupBox,
   cxGridLevel, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, cxGridExportLink,
-  Vcl.OleAuto;
+  Vcl.OleAuto, cxGeometry, dxFramedControl, Vcl.StdCtrls, cxButtons, dxPanel;
 
 type
   TDebsHistoryBuyerT = class(TBaseFormDBT)
@@ -38,6 +38,7 @@ type
     TableViewcredit: TcxGridDBColumn;
     TableViewbalance: TcxGridDBColumn;
     ToolButton1: TToolButton;
+    cxButton1: TcxButton;
     procedure FormShow(Sender: TObject);
     procedure actExportToExcelExecute(Sender: TObject);
     procedure actRefreshExecute(Sender: TObject);

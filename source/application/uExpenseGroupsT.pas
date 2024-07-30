@@ -14,7 +14,8 @@ uses
   cxImageList, Vcl.Menus, System.Actions, Vcl.ActnList, cxGridLevel, cxClasses,
   cxGridCustomView, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
   cxGrid, Vcl.ComCtrls, Vcl.ToolWin, dxSkinBasic, cxContainer, cxGroupBox,
-  System.Skia, Vcl.StdCtrls, cxButtons, cxTextEdit, Vcl.Skia;
+  Vcl.StdCtrls, cxButtons, cxTextEdit, cxGeometry,
+  dxFramedControl, cxLabel, dxPanel;
 
 type
   TExpenseGroupsT = class(TBaseFormDBT)
@@ -25,11 +26,11 @@ type
     QueryName: TStringField;
     QueryisActive: TBooleanField;
     QueryInDateTime: TSQLTimeStampField;
-    SkLabel1: TSkLabel;
     edtName: TcxTextEdit;
     cxButton3: TcxButton;
     btnFilterOk: TcxButton;
     btnFilterClear: TcxButton;
+    cxLabel1: TcxLabel;
     procedure FormCreate(Sender: TObject);
     procedure btnFilterOkClick(Sender: TObject);
     procedure edtNameKeyDown(Sender: TObject; var Key: Word;

@@ -11,8 +11,8 @@ inherited ClientF: TClientF
     Width = 590
     Frame.Borders = []
     TabOrder = 1
-    ExplicitTop = 251
-    ExplicitWidth = 572
+    ExplicitTop = 324
+    ExplicitWidth = 590
     inherited dxPanel1: TdxPanel
       Height = 46
       ExplicitHeight = 46
@@ -45,8 +45,6 @@ inherited ClientF: TClientF
     TabOrder = 0
     TabWidth = 110
     OnDrawTab = PageControl1DrawTab
-    ExplicitWidth = 572
-    ExplicitHeight = 251
     object TabCommon: TTabSheet
       Margins.Left = 0
       Margins.Top = 0
@@ -57,58 +55,66 @@ inherited ClientF: TClientF
       DesignSize = (
         582
         284)
-      object SkLabel1: TSkLabel
-        Left = 8
-        Top = 24
-        Width = 100
-        Height = 19
-        Words = <
-          item
-            Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
-          end>
-      end
-      object SkLabel2: TSkLabel
-        Left = 8
-        Top = 72
-        Width = 81
-        Height = 19
-        Words = <
-          item
-            Caption = #1044#1072#1090#1072' '#1089#1082#1080#1076#1082#1080':'
-          end>
-      end
-      object SkLabel3: TSkLabel
-        Left = 8
-        Top = 124
-        Width = 49
-        Height = 19
-        Words = <
-          item
-            Caption = #1057#1082#1080#1076#1082#1072':'
-          end>
-      end
       object edtName: TcxTextEdit
         Left = 114
         Top = 24
         Anchors = [akLeft, akTop, akRight]
+        ParentFont = False
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindowText
+        Style.Font.Height = -16
+        Style.Font.Name = 'Segoe UI'
+        Style.Font.Style = []
+        Style.IsFontAssigned = True
         TabOrder = 0
         TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077' '#1082#1083#1080#1077#1085#1090#1072
-        ExplicitWidth = 440
         Width = 458
       end
       object edtDiscountDate: TcxDateEdit
         Left = 114
         Top = 72
+        ParentFont = False
         Properties.DateButtons = [btnClear, btnNow, btnToday]
-        TabOrder = 1
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindowText
+        Style.Font.Height = -16
+        Style.Font.Name = 'Segoe UI'
+        Style.Font.Style = []
+        Style.IsFontAssigned = True
+        TabOrder = 2
         Width = 121
       end
       object edtDiscount: TcxCurrencyEdit
         Left = 114
         Top = 124
+        ParentFont = False
         Properties.DisplayFormat = ',0.00 %;-,0.00 %'
-        TabOrder = 2
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindowText
+        Style.Font.Height = -16
+        Style.Font.Name = 'Segoe UI'
+        Style.Font.Style = []
+        Style.IsFontAssigned = True
+        TabOrder = 4
         Width = 121
+      end
+      object cxLabel3: TcxLabel
+        Left = 12
+        Top = 28
+        Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
+        Transparent = True
+      end
+      object cxLabel1: TcxLabel
+        Left = 12
+        Top = 76
+        Caption = #1044#1072#1090#1072' '#1089#1082#1080#1076#1082#1080':'
+        Transparent = True
+      end
+      object cxLabel2: TcxLabel
+        Left = 12
+        Top = 128
+        Caption = #1057#1082#1080#1076#1082#1072':'
+        Transparent = True
       end
     end
     object TabContact: TTabSheet
@@ -213,8 +219,6 @@ inherited ClientF: TClientF
         Height = 284
         Align = alClient
         TabOrder = 0
-        ExplicitWidth = 564
-        ExplicitHeight = 211
         object TableViewDiscount: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           ScrollbarAnnotations.CustomAnnotations = <>

@@ -13,8 +13,9 @@ uses
   cxClasses, FireDAC.Comp.DataSet, FireDAC.Comp.Client, System.ImageList,
   Vcl.ImgList, cxImageList, Vcl.Menus, System.Actions, Vcl.ActnList, cxGroupBox,
   cxGridLevel, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
-  cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, System.Skia,
-  Vcl.StdCtrls, cxButtons, cxTextEdit, Vcl.Skia;
+  cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin,
+  Vcl.StdCtrls, cxButtons, cxTextEdit, cxGeometry, dxFramedControl,
+  cxLabel, dxPanel;
 
 type
   TUserT = class(TBaseFormDBT)
@@ -31,7 +32,6 @@ type
     TableViewName: TcxGridDBColumn;
     TableViewisAdmin: TcxGridDBColumn;
     TableViewisBlock: TcxGridDBColumn;
-    SkLabel1: TSkLabel;
     edtLogin: TcxTextEdit;
     cxButton3: TcxButton;
     btnFilterOk: TcxButton;
@@ -41,6 +41,8 @@ type
     ToolButton2: TToolButton;
     N8: TMenuItem;
     N9: TMenuItem;
+    cxButton1: TcxButton;
+    cxLabel1: TcxLabel;
     procedure btnFilterClearClick(Sender: TObject);
     procedure btnFilterOkClick(Sender: TObject);
     procedure cxButton3Click(Sender: TObject);

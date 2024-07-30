@@ -47,12 +47,12 @@ inherited ExpenseItemsT: TExpenseItemsT
     end
   end
   inherited Grid: TcxGrid
-    Top = 114
+    Top = 170
     Width = 860
-    Height = 376
-    ExplicitTop = 114
+    Height = 320
+    ExplicitTop = 170
     ExplicitWidth = 860
-    ExplicitHeight = 376
+    ExplicitHeight = 320
     inherited TableView: TcxGridDBTableView
       DataController.KeyFieldNames = 'ExpenseItemID'
       object TableViewExpenseItemID: TcxGridDBColumn
@@ -76,30 +76,11 @@ inherited ExpenseItemsT: TExpenseItemsT
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
+    ExplicitTop = 96
     ExplicitWidth = 860
     ExplicitHeight = 74
     Height = 74
     Width = 860
-    object SkLabel1: TSkLabel
-      Left = 15
-      Top = 19
-      Width = 100
-      Height = 19
-      Words = <
-        item
-          Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
-        end>
-    end
-    object SkLabel2: TSkLabel
-      Left = 15
-      Top = 48
-      Width = 48
-      Height = 19
-      Words = <
-        item
-          Caption = #1043#1088#1091#1087#1087#1072':'
-        end>
-    end
     object edtName: TcxTextEdit
       Left = 121
       Top = 16
@@ -179,9 +160,32 @@ inherited ExpenseItemsT: TExpenseItemsT
       Properties.Images = IM.IL
       Properties.OnButtonClick = edtExpenseGroupPropertiesButtonClick
       ShowHint = True
-      TabOrder = 4
+      TabOrder = 5
       TextHint = #1042#1099#1073#1077#1088#1080#1090#1077' '#1075#1088#1091#1087#1087#1091
       Width = 324
+    end
+    object cxLabel1: TcxLabel
+      Left = 19
+      Top = 45
+      Caption = #1043#1088#1091#1087#1087#1072':'
+    end
+    object cxLabel2: TcxLabel
+      Left = 19
+      Top = 17
+      Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
+    end
+  end
+  inherited dxPanel1: TdxPanel
+    Width = 860
+    ExplicitWidth = 860
+    inherited btnDel: TcxButton
+      ExplicitLeft = 303
+    end
+    inherited btnEdit: TcxButton
+      ExplicitLeft = 203
+    end
+    inherited btnAdd: TcxButton
+      ExplicitLeft = 103
     end
   end
   inherited ActionList: TActionList

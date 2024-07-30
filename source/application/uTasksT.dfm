@@ -1,23 +1,22 @@
 inherited TasksT: TTasksT
   Caption = #1055#1086#1088#1091#1095#1077#1085#1080#1103
-  ClientWidth = 830
+  ClientWidth = 899
   Visible = True
   StyleElements = [seFont, seClient, seBorder]
-  ExplicitWidth = 846
+  ExplicitWidth = 915
   TextHeight = 17
   inherited ToolBar: TToolBar
-    Width = 830
-    Color = 12566463
+    Width = 899
     DoubleBuffered = True
     ExplicitWidth = 830
   end
   inherited Grid: TcxGrid
-    Top = 88
-    Width = 830
-    Height = 402
-    ExplicitTop = 88
+    Top = 144
+    Width = 899
+    Height = 346
+    ExplicitTop = 144
     ExplicitWidth = 830
-    ExplicitHeight = 402
+    ExplicitHeight = 346
     inherited TableView: TcxGridDBTableView
       DataController.KeyFieldNames = 'TaskID'
       object TableViewCreateDate: TcxGridDBColumn
@@ -54,20 +53,11 @@ inherited TasksT: TTasksT
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
+    ExplicitTop = 96
     ExplicitWidth = 830
     ExplicitHeight = 48
     Height = 48
-    Width = 830
-    object SkLabel1: TSkLabel
-      Left = 6
-      Top = 20
-      Width = 75
-      Height = 19
-      Words = <
-        item
-          Caption = #1055#1086#1088#1091#1095#1077#1085#1080#1077':'
-        end>
-    end
+    Width = 899
     object edtComment: TcxTextEdit
       Left = 87
       Top = 17
@@ -119,6 +109,24 @@ inherited TasksT: TTasksT
       OptionsImage.Images = IM.IL
       TabOrder = 3
       OnClick = btnFilterClearClick
+    end
+    object cxLabel1: TcxLabel
+      Left = 9
+      Top = 18
+      Caption = #1055#1086#1088#1091#1095#1077#1085#1080#1077':'
+    end
+  end
+  inherited dxPanel1: TdxPanel
+    Width = 899
+    ExplicitWidth = 830
+    inherited btnDel: TcxButton
+      ExplicitLeft = 303
+    end
+    inherited btnEdit: TcxButton
+      ExplicitLeft = 203
+    end
+    inherited btnAdd: TcxButton
+      ExplicitLeft = 103
     end
   end
   inherited ActionList: TActionList
