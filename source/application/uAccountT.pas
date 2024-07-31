@@ -17,7 +17,8 @@ uses
   cxDateUtils, cxMaskEdit, cxDropDownEdit, cxCalendar, cxTextEdit,
   cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, Vcl.StdCtrls, cxButtons,
   dxCoreGraphics, cxButtonEdit, uLookupEdit, cxGeometry, dxFramedControl,
-  dxPanel, cxLabel;
+  dxPanel, cxLabel, cxLocalization, cxEMFLookupEdit, dxEMF.DataSet,
+  dxEMF.DataDefinitions, cxEMFData;
 
 type
   TAccountT = class(TBaseFormDBT)
@@ -276,9 +277,11 @@ end;
 
 procedure TAccountT.FormShow(Sender: TObject);
 begin
-  inherited;
   qAccountStatus.Close;
   qAccountStatus.Open;
+
+
+  inherited;
 end;
 
 procedure TAccountT.SetActionEnabled;

@@ -52,166 +52,188 @@ inherited BuyerF: TBuyerF
       Margins.Bottom = 0
       Caption = #1043#1083#1072#1074#1085#1072#1103
       ImageIndex = 1
-      DesignSize = (
-        646
-        317)
-      object edtName: TcxTextEdit
-        Left = 155
-        Top = 97
-        Anchors = [akLeft, akTop, akRight]
-        TabOrder = 6
-        TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
-        Width = 484
-      end
-      object edtDiscountDate: TcxDateEdit
-        Left = 155
-        Top = 160
-        Properties.DateButtons = [btnClear, btnNow, btnToday]
-        TabOrder = 10
-        Width = 121
-      end
-      object edtSignPartner: TcxCheckBox
-        Left = 155
-        Top = 6
-        Caption = #1055#1072#1088#1090#1085#1077#1088
-        Properties.OnChange = edtSignPartnerPropertiesChange
-        Style.TransparentBorder = False
+      object dxPanel2: TdxPanel
+        Left = 0
+        Top = 0
+        Width = 646
+        Height = 317
+        Margins.Left = 0
+        Margins.Top = 0
+        Margins.Right = 0
+        Margins.Bottom = 0
+        Align = alClient
+        Frame.Borders = []
+        Color = 15527148
         TabOrder = 0
-      end
-      object edtINN: TcxTextEdit
-        Left = 155
-        Top = 35
-        TabOrder = 1
-        TextHint = #1048#1085#1085
-        Width = 178
-      end
-      object edtPartner: TcxLookupComboBox
-        Left = 155
-        Top = 66
-        Anchors = [akLeft, akTop, akRight]
-        Properties.KeyFieldNames = 'KontragentID'
-        Properties.ListColumns = <
-          item
-            FieldName = 'Name'
-          end>
-        Properties.ListOptions.ShowHeader = False
-        Properties.ListSource = DM.dsKontragent
-        Properties.MaxLength = 256
-        TabOrder = 4
-        Width = 484
-      end
-      object edtFullName: TcxTextEdit
-        Left = 155
-        Top = 128
-        Anchors = [akLeft, akTop, akRight]
-        TabOrder = 8
-        TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1087#1086#1083#1085#1086#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
-        Width = 484
-      end
-      object edtlegalAaddress: TcxTextEdit
-        Left = 155
-        Top = 193
-        Anchors = [akLeft, akTop, akRight]
-        TabOrder = 14
-        Width = 484
-      end
-      object edtPostAddress: TcxTextEdit
-        Left = 155
-        Top = 224
-        Anchors = [akLeft, akTop, akRight]
-        TabOrder = 16
-        Width = 484
-      end
-      object edtEdo: TcxTextEdit
-        Left = 155
-        Top = 255
-        Anchors = [akLeft, akTop, akRight]
-        TabOrder = 18
-        Width = 484
-      end
-      object edtEdoID: TcxTextEdit
-        Left = 155
-        Top = 286
-        Anchors = [akLeft, akTop, akRight]
-        TabOrder = 20
-        Width = 484
-      end
-      object btnAuutoFillByInn: TcxButton
-        Left = 388
-        Top = 35
-        Width = 251
-        Height = 25
-        Anchors = [akTop, akRight]
-        Caption = #1040#1074#1090#1086#1084#1072#1090#1080#1095#1077#1089#1082#1086#1077' '#1079#1072#1087#1086#1083#1085#1077#1085#1080#1077' '#1087#1086' '#1048#1053#1053
-        TabOrder = 2
-        OnClick = btnAuutoFillByInnClick
-      end
-      object edtDiscount: TcxCurrencyEdit
-        Left = 388
-        Top = 160
-        Properties.DisplayFormat = ',0.00 %;-,0.00 %'
-        TabOrder = 11
-        Width = 121
-      end
-      object cxLabel2: TcxLabel
-        Left = 6
-        Top = 36
-        Caption = #1048#1085#1085':'
-        Transparent = True
-      end
-      object cxLabel1: TcxLabel
-        Left = 6
-        Top = 161
-        Caption = #1044#1072#1090#1072' '#1089#1082#1080#1076#1082#1080':'
-        Transparent = True
-      end
-      object cxLabel3: TcxLabel
-        Left = 6
-        Top = 129
-        Caption = #1055#1086#1083#1085#1086#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
-        Transparent = True
-      end
-      object cxLabel5: TcxLabel
-        Left = 6
-        Top = 67
-        Caption = #1055#1072#1088#1090#1085#1077#1088':'
-        Transparent = True
-      end
-      object cxLabel4: TcxLabel
-        Left = 6
-        Top = 98
-        Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
-        Transparent = True
-      end
-      object cxLabel6: TcxLabel
-        Left = 312
-        Top = 161
-        Caption = #1057#1082#1080#1076#1082#1072':'
-        Transparent = True
-      end
-      object cxLabel7: TcxLabel
-        Left = 6
-        Top = 194
-        Caption = #1070#1088'. '#1040#1076#1088#1077#1089':'
-        Transparent = True
-      end
-      object cxLabel8: TcxLabel
-        Left = 6
-        Top = 225
-        Caption = #1055#1086#1095#1090#1086#1074#1099#1081' '#1072#1076#1088#1077#1089':'
-        Transparent = True
-      end
-      object cxLabel9: TcxLabel
-        Left = 6
-        Top = 256
-        Caption = #1069#1044#1054':'
-        Transparent = True
-      end
-      object cxLabel10: TcxLabel
-        Left = 6
-        Top = 287
-        Caption = #1048#1076#1077#1085#1090#1080#1092#1080#1082#1072#1090#1086#1088' '#1069#1044#1054':'
-        Transparent = True
+        DesignSize = (
+          646
+          317)
+        object edtSignPartner: TcxCheckBox
+          Left = 155
+          Top = 6
+          Caption = #1055#1072#1088#1090#1085#1077#1088
+          Properties.OnChange = edtSignPartnerPropertiesChange
+          Style.TransparentBorder = False
+          TabOrder = 0
+        end
+        object cxLabel2: TcxLabel
+          Left = 6
+          Top = 36
+          Caption = #1048#1085#1085':'
+          Transparent = True
+        end
+        object edtINN: TcxTextEdit
+          Left = 155
+          Top = 35
+          TabOrder = 1
+          TextHint = #1048#1085#1085
+          Width = 178
+        end
+        object btnAuutoFillByInn: TcxButton
+          Left = 392
+          Top = 35
+          Width = 251
+          Height = 25
+          Anchors = [akTop, akRight]
+          Caption = #1040#1074#1090#1086#1084#1072#1090#1080#1095#1077#1089#1082#1086#1077' '#1079#1072#1087#1086#1083#1085#1077#1085#1080#1077' '#1087#1086' '#1048#1053#1053
+          TabOrder = 2
+          OnClick = btnAuutoFillByInnClick
+          ExplicitLeft = 390
+        end
+        object edtPartner: TcxLookupComboBox
+          Left = 155
+          Top = 66
+          Anchors = [akLeft, akTop, akRight]
+          Properties.KeyFieldNames = 'KontragentID'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Name'
+            end>
+          Properties.ListOptions.ShowHeader = False
+          Properties.ListSource = DM.dsKontragent
+          Properties.MaxLength = 256
+          TabOrder = 4
+          ExplicitWidth = 486
+          Width = 488
+        end
+        object cxLabel5: TcxLabel
+          Left = 6
+          Top = 67
+          Caption = #1055#1072#1088#1090#1085#1077#1088':'
+          Transparent = True
+        end
+        object cxLabel4: TcxLabel
+          Left = 6
+          Top = 98
+          Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
+          Transparent = True
+        end
+        object cxLabel3: TcxLabel
+          Left = 6
+          Top = 129
+          Caption = #1055#1086#1083#1085#1086#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
+          Transparent = True
+        end
+        object cxLabel1: TcxLabel
+          Left = 6
+          Top = 161
+          Caption = #1044#1072#1090#1072' '#1089#1082#1080#1076#1082#1080':'
+          Transparent = True
+        end
+        object cxLabel7: TcxLabel
+          Left = 6
+          Top = 194
+          Caption = #1070#1088'. '#1040#1076#1088#1077#1089':'
+          Transparent = True
+        end
+        object cxLabel8: TcxLabel
+          Left = 6
+          Top = 225
+          Caption = #1055#1086#1095#1090#1086#1074#1099#1081' '#1072#1076#1088#1077#1089':'
+          Transparent = True
+        end
+        object cxLabel9: TcxLabel
+          Left = 6
+          Top = 256
+          Caption = #1069#1044#1054':'
+          Transparent = True
+        end
+        object cxLabel10: TcxLabel
+          Left = 6
+          Top = 287
+          Caption = #1048#1076#1077#1085#1090#1080#1092#1080#1082#1072#1090#1086#1088' '#1069#1044#1054':'
+          Transparent = True
+        end
+        object edtEdoID: TcxTextEdit
+          Left = 155
+          Top = 286
+          Anchors = [akLeft, akTop, akRight]
+          TabOrder = 20
+          ExplicitWidth = 486
+          Width = 488
+        end
+        object edtEdo: TcxTextEdit
+          Left = 155
+          Top = 255
+          Anchors = [akLeft, akTop, akRight]
+          TabOrder = 18
+          ExplicitWidth = 486
+          Width = 488
+        end
+        object edtPostAddress: TcxTextEdit
+          Left = 155
+          Top = 224
+          Anchors = [akLeft, akTop, akRight]
+          TabOrder = 16
+          ExplicitWidth = 486
+          Width = 488
+        end
+        object edtlegalAaddress: TcxTextEdit
+          Left = 155
+          Top = 193
+          Anchors = [akLeft, akTop, akRight]
+          TabOrder = 14
+          ExplicitWidth = 486
+          Width = 488
+        end
+        object edtDiscountDate: TcxDateEdit
+          Left = 155
+          Top = 160
+          Properties.DateButtons = [btnClear, btnNow, btnToday]
+          TabOrder = 10
+          Width = 121
+        end
+        object cxLabel6: TcxLabel
+          Left = 312
+          Top = 161
+          Caption = #1057#1082#1080#1076#1082#1072':'
+          Transparent = True
+        end
+        object edtDiscount: TcxCurrencyEdit
+          Left = 388
+          Top = 160
+          Properties.DisplayFormat = ',0.00 %;-,0.00 %'
+          TabOrder = 11
+          Width = 121
+        end
+        object edtFullName: TcxTextEdit
+          Left = 155
+          Top = 128
+          Anchors = [akLeft, akTop, akRight]
+          TabOrder = 8
+          TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1087#1086#1083#1085#1086#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
+          ExplicitWidth = 486
+          Width = 488
+        end
+        object edtName: TcxTextEdit
+          Left = 155
+          Top = 97
+          Anchors = [akLeft, akTop, akRight]
+          TabOrder = 6
+          TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
+          ExplicitWidth = 486
+          Width = 488
+        end
       end
     end
     object TabContact: TTabSheet
@@ -224,6 +246,7 @@ inherited BuyerF: TBuyerF
         Height = 280
         Align = alClient
         TabOrder = 1
+        LookAndFeel.NativeStyle = False
         object TableView: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           ScrollbarAnnotations.CustomAnnotations = <>
@@ -245,6 +268,8 @@ inherited BuyerF: TBuyerF
           OptionsView.HeaderHeight = 30
           OptionsView.Indicator = True
           OptionsView.RowSeparatorColor = clBlack
+          Styles.Background = cxStyle2
+          Styles.Header = cxStyle1
           object TableViewPhone: TcxGridDBColumn
             Caption = #1058#1077#1083#1077#1092#1086#1085
             DataBinding.FieldName = 'Phone'
@@ -276,7 +301,12 @@ inherited BuyerF: TBuyerF
         ButtonHeight = 40
         ButtonWidth = 70
         Caption = 'ToolBar1'
+        Color = 15527148
+        DrawingStyle = dsGradient
+        GradientEndColor = 15527148
+        GradientStartColor = 15527148
         Images = cxImageList
+        ParentColor = False
         ShowCaptions = True
         TabOrder = 0
         object ToolButton5: TToolButton
@@ -316,6 +346,7 @@ inherited BuyerF: TBuyerF
         Height = 317
         Align = alClient
         TabOrder = 0
+        LookAndFeel.NativeStyle = False
         object TableViewDiscount: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           ScrollbarAnnotations.CustomAnnotations = <>
@@ -339,6 +370,8 @@ inherited BuyerF: TBuyerF
           OptionsView.HeaderHeight = 30
           OptionsView.Indicator = True
           OptionsView.RowSeparatorColor = clBlack
+          Styles.Background = cxStyle2
+          Styles.Header = cxStyle1
           object TableViewDiscountDiscountDate: TcxGridDBColumn
             Caption = #1044#1072#1090#1072' '#1089#1082#1080#1076#1082#1080
             DataBinding.FieldName = 'DiscountDate'
@@ -712,6 +745,17 @@ inherited BuyerF: TBuyerF
       Enabled = False
       ImageIndex = 4
       OnExecute = acContactSaveExecute
+    end
+  end
+  object cxStyleRepository1: TcxStyleRepository
+    PixelsPerInch = 96
+    object cxStyle1: TcxStyle
+      AssignedValues = [svColor]
+      Color = 14602694
+    end
+    object cxStyle2: TcxStyle
+      AssignedValues = [svColor]
+      Color = 15527148
     end
   end
 end

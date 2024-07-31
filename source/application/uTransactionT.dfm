@@ -4,7 +4,6 @@ inherited TransactionT: TTransactionT
   ClientHeight = 469
   ClientWidth = 925
   Color = 12566463
-  Visible = True
   StyleElements = [seFont, seClient, seBorder]
   ExplicitWidth = 941
   ExplicitHeight = 508
@@ -106,7 +105,6 @@ inherited TransactionT: TTransactionT
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
-    ExplicitTop = 96
     ExplicitWidth = 925
     ExplicitHeight = 76
     Height = 76
@@ -266,7 +264,7 @@ inherited TransactionT: TTransactionT
       TabOrder = 2
       Font.Style = [fsBold]
       ParentFont = False
-      ExplicitLeft = 103
+      ExplicitLeft = 203
     end
     object cxButton5: TcxButton
       AlignWithMargins = True
@@ -296,8 +294,6 @@ inherited TransactionT: TTransactionT
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
-      ExplicitLeft = 87
-      ExplicitTop = 1
     end
   end
   inherited ActionList: TActionList

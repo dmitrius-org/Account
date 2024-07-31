@@ -157,17 +157,15 @@ begin
   if not DM.OpenFormList.ContainsKey(FormClassName) then
   begin
     form := TFormClass(FindClass(FormClassName)).Create(self) as TBaseFormT;
-
-   // fc := TFormClass(FindClass(FormClassName));
-   // Application.CreateForm(fc, form);
-
     Ts := TcxTabSheet.Create(Self);
     Ts.PageControl   := MainPage;
     Ts.Caption       := form.Caption;
 
-    form.Parent      := Ts;
+
+    form.Parent  := Ts;
     form.Align       := alClient;
     form.BorderStyle := bsNone;
+    form.Visible := True;
 
     Ts.Tag := Integer(form);
 

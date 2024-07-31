@@ -1,21 +1,20 @@
 inherited TasksT: TTasksT
   Caption = #1055#1086#1088#1091#1095#1077#1085#1080#1103
   ClientWidth = 899
-  Visible = True
   StyleElements = [seFont, seClient, seBorder]
   ExplicitWidth = 915
   TextHeight = 17
   inherited ToolBar: TToolBar
     Width = 899
     DoubleBuffered = True
-    ExplicitWidth = 830
+    ExplicitWidth = 899
   end
   inherited Grid: TcxGrid
     Top = 144
     Width = 899
     Height = 346
     ExplicitTop = 144
-    ExplicitWidth = 830
+    ExplicitWidth = 899
     ExplicitHeight = 346
     inherited TableView: TcxGridDBTableView
       DataController.KeyFieldNames = 'TaskID'
@@ -53,8 +52,7 @@ inherited TasksT: TTasksT
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
-    ExplicitTop = 96
-    ExplicitWidth = 830
+    ExplicitWidth = 899
     ExplicitHeight = 48
     Height = 48
     Width = 899
@@ -118,16 +116,7 @@ inherited TasksT: TTasksT
   end
   inherited dxPanel1: TdxPanel
     Width = 899
-    ExplicitWidth = 830
-    inherited btnDel: TcxButton
-      ExplicitLeft = 303
-    end
-    inherited btnEdit: TcxButton
-      ExplicitLeft = 203
-    end
-    inherited btnAdd: TcxButton
-      ExplicitLeft = 103
-    end
+    ExplicitWidth = 899
   end
   inherited ActionList: TActionList
     Tag = 80

@@ -2,7 +2,6 @@ inherited Profit_T: TProfit_T
   Caption = #1055#1088#1080#1073#1099#1083#1100' '#1089' '#1090#1088#1072#1085#1079#1072#1082#1094#1080#1081
   ClientHeight = 441
   ClientWidth = 1034
-  Visible = True
   StyleElements = [seFont, seClient, seBorder]
   ExplicitWidth = 1050
   ExplicitHeight = 480
@@ -74,7 +73,6 @@ inherited Profit_T: TProfit_T
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
-    ExplicitTop = 96
     ExplicitWidth = 1034
     ExplicitHeight = 100
     Height = 100
@@ -294,15 +292,6 @@ inherited Profit_T: TProfit_T
     Width = 1034
     Visible = False
     ExplicitWidth = 1034
-    inherited btnDel: TcxButton
-      ExplicitLeft = 303
-    end
-    inherited btnEdit: TcxButton
-      ExplicitLeft = 203
-    end
-    inherited btnAdd: TcxButton
-      ExplicitLeft = 103
-    end
   end
   inherited ActionList: TActionList
     Tag = 55

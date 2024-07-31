@@ -12,27 +12,11 @@ uses
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, cxButtons,
   cxButtonEdit, uLookupEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit, cxCalendar,
-  dxPanel, System.Skia, cxCurrencyEdit, cxDBEdit, Vcl.Skia, cxLookupEdit,
-  cxDBLookupEdit, cxDBLookupComboBox, cxMemo;
+  dxPanel, cxCurrencyEdit, cxDBEdit, cxLookupEdit,
+  cxDBLookupEdit, cxDBLookupComboBox, cxMemo, cxLabel;
 
 type
   TAccountF = class(TBaseFormDBF)
-    SkLabel1: TSkLabel;
-    SkLabel2: TSkLabel;
-    SkLabel3: TSkLabel;
-    SkLabel4: TSkLabel;
-    SkLabel5: TSkLabel;
-    SkLabel6: TSkLabel;
-    SkLabel7: TSkLabel;
-    SkLabel8: TSkLabel;
-    SkLabel9: TSkLabel;
-    SkLabel10: TSkLabel;
-    SkLabel11: TSkLabel;
-    SkLabel12: TSkLabel;
-    SkLabel13: TSkLabel;
-    SkLabel14: TSkLabel;
-    SkLabel15: TSkLabel;
-    SkLabel16: TSkLabel;
     edtAccountNumber: TcxTextEdit;
     edtPayNumber: TcxTextEdit;
     edtPhone: TcxTextEdit;
@@ -52,8 +36,24 @@ type
     edtBuyerDiscount: TcxCurrencyEdit;
     edtClientDiscount: TcxCurrencyEdit;
     dxPanel2: TdxPanel;
-    lblDoplata: TSkLabel;
     btnCopy: TcxButton;
+    cxLabel1: TcxLabel;
+    cxLabel2: TcxLabel;
+    cxLabel3: TcxLabel;
+    cxLabel4: TcxLabel;
+    cxLabel5: TcxLabel;
+    cxLabel6: TcxLabel;
+    cxLabel7: TcxLabel;
+    cxLabel8: TcxLabel;
+    cxLabel9: TcxLabel;
+    cxLabel10: TcxLabel;
+    cxLabel11: TcxLabel;
+    cxLabel12: TcxLabel;
+    cxLabel13: TcxLabel;
+    cxLabel14: TcxLabel;
+    cxLabel15: TcxLabel;
+    cxLabel16: TcxLabel;
+    lblDoplata: TcxLabel;
     procedure btnOkClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure edtAccountNumberPropertiesChange(Sender: TObject);

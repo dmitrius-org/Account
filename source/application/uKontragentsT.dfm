@@ -2,7 +2,6 @@ inherited KontragentsT: TKontragentsT
   Caption = #1050#1086#1085#1090#1088#1072#1075#1077#1085#1090#1099
   ClientHeight = 546
   ClientWidth = 914
-  Visible = True
   StyleElements = [seFont, seClient, seBorder]
   ExplicitWidth = 930
   ExplicitHeight = 585
@@ -73,7 +72,6 @@ inherited KontragentsT: TKontragentsT
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
-    ExplicitTop = 96
     ExplicitWidth = 914
     ExplicitHeight = 79
     Height = 79
@@ -258,18 +256,11 @@ inherited KontragentsT: TKontragentsT
   inherited dxPanel1: TdxPanel
     Width = 914
     ExplicitWidth = 914
-    inherited btnDel: TcxButton
-      ExplicitLeft = 303
-    end
-    inherited btnEdit: TcxButton
-      ExplicitLeft = 203
-    end
     inherited btnAdd: TcxButton
       Action = nil
       DropDownMenu = AddMenu
       Kind = cxbkOfficeDropDown
       OnClick = nil
-      ExplicitLeft = 103
     end
   end
   inherited ActionList: TActionList

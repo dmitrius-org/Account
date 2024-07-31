@@ -2,19 +2,19 @@ inherited AccountT: TAccountT
   BorderIcons = [biSystemMenu]
   Caption = #1057#1095#1077#1090#1072
   ClientHeight = 496
-  ClientWidth = 1044
-  Visible = True
+  ClientWidth = 1058
   StyleElements = [seFont, seClient, seBorder]
-  ExplicitWidth = 1060
+  ExplicitWidth = 1074
   ExplicitHeight = 535
   TextHeight = 17
   inherited ToolBar: TToolBar
-    Width = 1044
+    Width = 1058
     DoubleBuffered = True
     ExplicitWidth = 1044
     inherited tbShow: TToolButton
       AutoSize = True
       ExplicitWidth = 91
+      ExplicitHeight = 38
     end
     inherited tbAdd: TToolButton
       Left = 91
@@ -23,18 +23,21 @@ inherited AccountT: TAccountT
       Style = tbsWholeDropDown
       OnClick = nil
       ExplicitLeft = 91
+      ExplicitHeight = 38
     end
     inherited tbEdit: TToolButton
       Left = 178
       AutoSize = True
       ExplicitLeft = 178
       ExplicitWidth = 69
+      ExplicitHeight = 38
     end
     inherited tbDelete: TToolButton
       Left = 247
       AutoSize = True
       ExplicitLeft = 247
       ExplicitWidth = 58
+      ExplicitHeight = 38
     end
     object ToolButton1: TToolButton
       Left = 305
@@ -53,14 +56,23 @@ inherited AccountT: TAccountT
   end
   inherited Grid: TcxGrid
     Top = 197
-    Width = 1044
+    Width = 1058
     Height = 299
-    ExplicitTop = 197
-    ExplicitWidth = 1044
+    ExplicitTop = 198
+    ExplicitWidth = 1058
     ExplicitHeight = 299
     inherited TableView: TcxGridDBTableView
+      FilterBox.Visible = fvNever
+      FindPanel.Layout = fplCompact
       OnCustomDrawCell = TableViewCustomDrawCell
       DataController.KeyFieldNames = 'AccountID'
+      Filtering.ExpressionEditing = True
+      Filtering.ColumnFilteredItemsList = True
+      Filtering.ColumnPopupMode = fpmClassic
+      FilterRow.SeparatorWidth = 2
+      FilterRow.Visible = True
+      FilterRow.OperatorCustomization = True
+      OptionsView.IndicatorWidth = 25
       Styles.OnGetContentStyle = TableViewStylesGetContentStyle
       object TableViewAccountID: TcxGridDBColumn
         Caption = #1048#1076#1077#1085#1090#1080#1092#1080#1082#1072#1090#1086#1088
@@ -90,6 +102,7 @@ inherited AccountT: TAccountT
         DataBinding.FieldName = 'BuyerName'
         DateTimeGrouping = dtgRelativeToToday
         HeaderAlignmentHorz = taCenter
+        Options.FilterRowOperator = foLike
         Width = 200
       end
       object TableViewBuyerDiscount: TcxGridDBColumn
@@ -102,6 +115,7 @@ inherited AccountT: TAccountT
         Caption = #1050#1083#1080#1077#1085#1090
         DataBinding.FieldName = 'ClientName'
         HeaderAlignmentHorz = taCenter
+        Options.FilterRowOperator = foLike
         Width = 200
       end
       object TableViewClientDiscount: TcxGridDBColumn
@@ -114,6 +128,7 @@ inherited AccountT: TAccountT
         Caption = #1055#1086#1089#1090#1072#1074#1097#1080#1082
         DataBinding.FieldName = 'SupplieName'
         HeaderAlignmentHorz = taCenter
+        Options.FilterRowOperator = foLike
         Width = 200
       end
       object TableViewAccountStatusID: TcxGridDBColumn
@@ -125,18 +140,28 @@ inherited AccountT: TAccountT
       object TableViewStatusName: TcxGridDBColumn
         Caption = #1057#1090#1072#1090#1091#1089
         DataBinding.FieldName = 'StatusName'
+        PropertiesClassName = 'TcxLookupComboBoxProperties'
+        Properties.ClearKey = 46
+        Properties.DropDownAutoSize = True
+        Properties.KeyFieldNames = 'Name'
+        Properties.ListColumns = <
+          item
+            FieldName = 'Name'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = dsAccountStatus
         OnCustomDrawCell = TableViewStatusNameCustomDrawCell
         HeaderAlignmentHorz = taCenter
+        Width = 146
       end
     end
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
-    ExplicitTop = 96
     ExplicitWidth = 1044
     ExplicitHeight = 101
     Height = 101
-    Width = 1044
+    Width = 1058
     object edtAccountNumber: TcxTextEdit
       Left = 103
       Top = 16
@@ -381,17 +406,8 @@ inherited AccountT: TAccountT
     end
   end
   inherited dxPanel1: TdxPanel
-    Width = 1044
+    Width = 1058
     ExplicitWidth = 1044
-    inherited btnDel: TcxButton
-      ExplicitLeft = 303
-    end
-    inherited btnEdit: TcxButton
-      ExplicitLeft = 203
-    end
-    inherited btnAdd: TcxButton
-      ExplicitLeft = 103
-    end
     object cxButton5: TcxButton
       AlignWithMargins = True
       Left = 403
@@ -413,7 +429,6 @@ inherited AccountT: TAccountT
       OptionsImage.Images = cxImageList16
       OptionsImage.Layout = blGlyphTop
       TabOrder = 4
-      ExplicitLeft = 406
     end
   end
   inherited ActionList: TActionList

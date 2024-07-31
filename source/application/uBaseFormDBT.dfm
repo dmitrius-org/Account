@@ -60,9 +60,8 @@ inherited BaseFormDBT: TBaseFormDBT
     Align = alClient
     PopupMenu = PopupMenu
     TabOrder = 3
+    LockedStateImageOptions.Text = 'Please wait...'
     LookAndFeel.NativeStyle = False
-    ExplicitTop = 99
-    ExplicitHeight = 391
     object TableView: TcxGridDBTableView
       OnGetStoredProperties = TableViewGetStoredProperties
       OnGetStoredPropertyValue = TableViewGetStoredPropertyValue
@@ -88,6 +87,7 @@ inherited BaseFormDBT: TBaseFormDBT
       OptionsView.DataRowHeight = 25
       OptionsView.GroupByBox = False
       OptionsView.GroupFooterMultiSummaries = True
+      OptionsView.HeaderFilterButtonShowMode = fbmButton
       OptionsView.HeaderHeight = 30
       OptionsView.Indicator = True
       OptionsView.RowSeparatorColor = clBlack
@@ -106,7 +106,6 @@ inherited BaseFormDBT: TBaseFormDBT
     Top = 96
     Align = alTop
     BiDiMode = bdLeftToRight
-    Caption = #1060#1080#1083#1100#1090#1088
     ParentBackground = False
     ParentBiDiMode = False
     ParentColor = False
@@ -124,7 +123,6 @@ inherited BaseFormDBT: TBaseFormDBT
     StyleDisabled.BorderColor = 12566463
     TabOrder = 2
     Visible = False
-    ExplicitTop = 40
     Height = 59
     Width = 816
   end
@@ -158,7 +156,6 @@ inherited BaseFormDBT: TBaseFormDBT
       OptionsImage.Images = cxImageList16
       OptionsImage.Layout = blGlyphTop
       TabOrder = 3
-      ExplicitLeft = 3
     end
     object btnEdit: TcxButton
       AlignWithMargins = True
@@ -181,7 +178,6 @@ inherited BaseFormDBT: TBaseFormDBT
       OptionsImage.Images = cxImageList16
       OptionsImage.Layout = blGlyphTop
       TabOrder = 2
-      ExplicitLeft = 3
     end
     object btnAdd: TcxButton
       AlignWithMargins = True
@@ -204,7 +200,6 @@ inherited BaseFormDBT: TBaseFormDBT
       OptionsImage.Images = cxImageList16
       OptionsImage.Layout = blGlyphTop
       TabOrder = 1
-      ExplicitLeft = 3
     end
     object btnShow: TcxButton
       AlignWithMargins = True

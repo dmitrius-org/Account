@@ -23,8 +23,6 @@ type
   TClientF = class(TBaseFormDBF)
     PageControl1: TPageControl;
     TabCommon: TTabSheet;
-    edtName: TcxTextEdit;
-    edtDiscountDate: TcxDateEdit;
     TabContact: TTabSheet;
     TabDiscount: TTabSheet;
     dsContact: TDataSource;
@@ -71,10 +69,16 @@ type
     qDiscountComment: TStringField;
     TableViewDiscountDiscount: TcxGridDBColumn;
     TableViewDiscountDiscountDate: TcxGridDBColumn;
+    cxStyleRepository1: TcxStyleRepository;
+    cxStyle1: TcxStyle;
+    dxPanel2: TdxPanel;
     edtDiscount: TcxCurrencyEdit;
-    cxLabel3: TcxLabel;
-    cxLabel1: TcxLabel;
     cxLabel2: TcxLabel;
+    cxLabel1: TcxLabel;
+    edtDiscountDate: TcxDateEdit;
+    edtName: TcxTextEdit;
+    cxLabel3: TcxLabel;
+    cxStyle2: TcxStyle;
     procedure btnOkClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure PageControl1DrawTab(Control: TCustomTabControl; TabIndex: Integer;

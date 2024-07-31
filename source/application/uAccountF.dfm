@@ -7,170 +7,10 @@ inherited AccountF: TAccountF
   ExplicitWidth = 843
   ExplicitHeight = 416
   TextHeight = 17
-  object SkLabel1: TSkLabel [0]
-    Left = 8
-    Top = 44
-    Width = 53
-    Height = 19
-    Words = <
-      item
-        Caption = #1057#1095#1077#1090' '#8470':'
-      end>
-  end
-  object SkLabel2: TSkLabel [1]
-    Left = 8
-    Top = 73
-    Width = 47
-    Height = 19
-    Words = <
-      item
-        Caption = #1055#1055' '#8470' :'
-      end>
-  end
-  object SkLabel3: TSkLabel [2]
-    Left = 257
-    Top = 75
-    Width = 17
-    Height = 19
-    Words = <
-      item
-        Caption = #1086#1090':'
-      end>
-  end
-  object SkLabel4: TSkLabel [3]
-    Left = 404
-    Top = 44
-    Width = 84
-    Height = 19
-    Words = <
-      item
-        Caption = #1057#1091#1084#1084#1072' '#1089#1095#1077#1090#1072':'
-      end>
-  end
-  object SkLabel5: TSkLabel [4]
-    Left = 257
-    Top = 44
-    Width = 17
-    Height = 19
-    Words = <
-      item
-        Caption = #1086#1090':'
-      end>
-  end
-  object SkLabel6: TSkLabel [5]
-    Left = 617
-    Top = 44
-    Width = 44
-    Height = 19
-    Words = <
-      item
-        Caption = #1057#1090#1072#1090#1091#1089':'
-      end>
-  end
-  object SkLabel7: TSkLabel [6]
-    Left = 190
-    Top = 106
-    Width = 84
-    Height = 19
-    Words = <
-      item
-        Caption = #1044#1072#1090#1072' '#1086#1087#1083#1072#1090#1099':'
-      end>
-  end
-  object SkLabel8: TSkLabel [7]
-    Left = 404
-    Top = 106
-    Width = 96
-    Height = 19
-    Words = <
-      item
-        Caption = #1057#1091#1084#1084#1072' '#1086#1087#1083#1072#1090#1099':'
-      end>
-  end
-  object SkLabel9: TSkLabel [8]
-    Left = 404
-    Top = 147
-    Width = 64
-    Height = 19
-    Words = <
-      item
-        Caption = #1057#1082#1080#1076#1082#1072' %:'
-      end>
-  end
-  object SkLabel10: TSkLabel [9]
-    Left = 404
-    Top = 210
-    Width = 64
-    Height = 19
-    Words = <
-      item
-        Caption = #1057#1082#1080#1076#1082#1072' %:'
-      end>
-  end
-  object SkLabel11: TSkLabel [10]
-    Left = 8
-    Top = 145
-    Width = 78
-    Height = 19
-    Words = <
-      item
-        Caption = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1100':'
-      end>
-  end
-  object SkLabel12: TSkLabel [11]
-    Left = 8
-    Top = 177
-    Width = 75
-    Height = 19
-    Words = <
-      item
-        Caption = #1055#1086#1089#1090#1072#1074#1097#1080#1082':'
-      end>
-  end
-  object SkLabel13: TSkLabel [12]
-    Left = 8
-    Top = 208
-    Width = 48
-    Height = 19
-    Words = <
-      item
-        Caption = #1050#1083#1080#1077#1085#1090':'
-      end>
-  end
-  object SkLabel14: TSkLabel [13]
-    Left = 8
-    Top = 244
-    Width = 92
-    Height = 19
-    Words = <
-      item
-        Caption = #1050#1086#1084#1084#1077#1085#1090#1072#1088#1080#1081':'
-      end>
-  end
-  object SkLabel15: TSkLabel [14]
-    Left = 617
-    Top = 215
-    Width = 63
-    Height = 19
-    Words = <
-      item
-        Caption = #1050#1086#1085#1090#1072#1082#1090#1099':'
-      end>
-  end
-  object SkLabel16: TSkLabel [15]
-    Left = 617
-    Top = 275
-    Width = 43
-    Height = 19
-    Words = <
-      item
-        Caption = 'E-Mail:'
-      end>
-  end
   inherited Panel: TdxPanel
     Top = 331
     Width = 827
-    TabOrder = 18
+    TabOrder = 34
     ExplicitTop = 331
     ExplicitWidth = 827
     inherited btnCancel: TcxButton
@@ -183,56 +23,56 @@ inherited AccountF: TAccountF
       ExplicitLeft = 715
     end
   end
-  object edtAccountNumber: TcxTextEdit [17]
+  object edtAccountNumber: TcxTextEdit [1]
     Left = 104
     Top = 42
     Properties.OnChange = edtAccountNumberPropertiesChange
     TabOrder = 1
     Width = 147
   end
-  object edtPayNumber: TcxTextEdit [18]
+  object edtPayNumber: TcxTextEdit [2]
     Left = 104
     Top = 73
-    TabOrder = 5
+    TabOrder = 10
     Width = 147
   end
-  object edtPhone: TcxTextEdit [19]
+  object edtPhone: TcxTextEdit [3]
     Left = 617
     Top = 244
-    TabOrder = 16
+    TabOrder = 30
     Width = 201
   end
-  object edtMail: TcxTextEdit [20]
+  object edtMail: TcxTextEdit [4]
     Left = 617
     Top = 300
-    TabOrder = 17
+    TabOrder = 33
     Width = 202
   end
-  object edtAccountDate: TcxDateEdit [21]
+  object edtAccountDate: TcxDateEdit [5]
     Left = 281
     Top = 42
     Properties.DateButtons = [btnClear, btnNow, btnToday]
     TabOrder = 2
     Width = 104
   end
-  object edtPayDate: TcxDateEdit [22]
+  object edtPayDate: TcxDateEdit [6]
     Left = 281
     Top = 73
     Properties.DateButtons = [btnClear, btnNow, btnToday]
     Properties.UseNullString = True
-    TabOrder = 6
+    TabOrder = 11
     Width = 104
   end
-  object edtPaymentDate: TcxDateEdit [23]
+  object edtPaymentDate: TcxDateEdit [7]
     Left = 281
     Top = 104
     Properties.DateButtons = [btnClear, btnNow, btnToday]
     Properties.UseNullString = True
     Properties.OnChange = edtPaymentDatePropertiesChange
-    TabOrder = 7
+    TabOrder = 13
     Width = 104
   end
-  object edtAccountStatus: TcxLookupComboBox [24]
+  object edtAccountStatus: TcxLookupComboBox [8]
     Left = 674
     Top = 42
     Properties.KeyFieldNames = 'AccountStatusID'
@@ -246,7 +86,7 @@ inherited AccountF: TAccountF
     TabOrder = 4
     Width = 144
   end
-  object edtBuyer: ALookupEdit [25]
+  object edtBuyer: ALookupEdit [9]
     Left = 100
     Top = 144
     LookupConnection = DM.FDConnection
@@ -272,10 +112,10 @@ inherited AccountF: TAccountF
     Properties.Images = IM.IL
     Properties.OnButtonClick = edtBuyerPropertiesButtonClick
     ShowHint = True
-    TabOrder = 10
+    TabOrder = 18
     Width = 285
   end
-  object edtSupplier: ALookupEdit [26]
+  object edtSupplier: ALookupEdit [10]
     Left = 100
     Top = 175
     LookupConnection = DM.FDConnection
@@ -300,10 +140,10 @@ inherited AccountF: TAccountF
       end>
     Properties.Images = IM.IL
     ShowHint = True
-    TabOrder = 12
+    TabOrder = 22
     Width = 285
   end
-  object edtClient: ALookupEdit [27]
+  object edtClient: ALookupEdit [11]
     Left = 100
     Top = 206
     LookupConnection = DM.FDConnection
@@ -329,18 +169,18 @@ inherited AccountF: TAccountF
     Properties.Images = IM.IL
     Properties.OnButtonClick = edtClientPropertiesButtonClick
     ShowHint = True
-    TabOrder = 13
+    TabOrder = 24
     Width = 285
   end
-  object edtComment: TcxMemo [28]
+  object edtComment: TcxMemo [12]
     Left = 100
     Top = 244
     Properties.MaxLength = 256
-    TabOrder = 15
+    TabOrder = 29
     Height = 81
     Width = 511
   end
-  object edtAccountAmount: TcxCurrencyEdit [29]
+  object edtAccountAmount: TcxCurrencyEdit [13]
     Left = 508
     Top = 42
     Properties.DecimalPlaces = 0
@@ -348,57 +188,55 @@ inherited AccountF: TAccountF
     TabOrder = 3
     Width = 102
   end
-  object edtPaymentAmount: TcxCurrencyEdit [30]
+  object edtPaymentAmount: TcxCurrencyEdit [14]
     Left = 508
     Top = 104
     Properties.DecimalPlaces = 0
     Properties.DisplayFormat = ',0 '#8381';-,0 '#8381
     Properties.OnChange = edtPaymentAmountPropertiesChange
-    TabOrder = 8
-    Width = 102
-  end
-  object edtBuyerDiscount: TcxCurrencyEdit [31]
-    Left = 508
-    Top = 144
-    Properties.DisplayFormat = ',0.00 %;-,0.00 %'
-    TabOrder = 11
-    Width = 102
-  end
-  object edtClientDiscount: TcxCurrencyEdit [32]
-    Left = 508
-    Top = 206
-    Properties.DisplayFormat = ',0.00 %;-,0.00 %'
     TabOrder = 14
     Width = 102
   end
-  object dxPanel2: TdxPanel [33]
-    Left = 616
-    Top = -3
-    Width = 203
-    Height = 41
+  object edtBuyerDiscount: TcxCurrencyEdit [15]
+    Left = 508
+    Top = 144
+    Properties.DisplayFormat = ',0.00 %;-,0.00 %'
+    TabOrder = 19
+    Width = 102
+  end
+  object edtClientDiscount: TcxCurrencyEdit [16]
+    Left = 508
+    Top = 206
+    Properties.DisplayFormat = ',0.00 %;-,0.00 %'
+    TabOrder = 25
+    Width = 102
+  end
+  object dxPanel2: TdxPanel [17]
+    Left = 508
+    Top = 6
+    Width = 311
+    Height = 31
     Frame.Borders = []
+    Frame.Scale = True
     TabOrder = 0
-    object lblDoplata: TSkLabel
-      Left = 0
+    object lblDoplata: TcxLabel
+      Left = 249
       Top = 0
-      Width = 203
-      Height = 41
-      Align = alClient
-      TextSettings.Font.Size = 15.000000000000000000
-      TextSettings.Font.Weight = Bold
-      TextSettings.FontColor = claCrimson
-      TextSettings.HorzAlign = Center
-      Words = <
-        item
-          Caption = 'lblDoplata'
-        end>
-      ExplicitLeft = 34
-      ExplicitTop = 8
-      ExplicitWidth = 64
-      ExplicitHeight = 19
+      Align = alRight
+      Caption = #1057#1090#1072#1090#1091#1089':'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -17
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = [fsBold]
+      Style.TextColor = clCrimson
+      Style.IsFontAssigned = True
+      ExplicitLeft = 0
+      ExplicitHeight = 41
     end
   end
-  object btnCopy: TcxButton [34]
+  object btnCopy: TcxButton [18]
     Left = 616
     Top = 104
     Width = 44
@@ -406,8 +244,88 @@ inherited AccountF: TAccountF
     Hint = #1057#1082#1086#1087#1080#1088#1086#1074#1072#1090#1100' '#1089#1091#1084#1084#1091' '#1089#1095#1077#1090#1072
     OptionsImage.ImageIndex = 6
     OptionsImage.Images = IM.IL
-    TabOrder = 9
+    TabOrder = 15
     OnClick = btnCopyClick
+  end
+  object cxLabel1: TcxLabel [19]
+    Left = 8
+    Top = 43
+    Caption = #1057#1095#1077#1090' '#8470':'
+  end
+  object cxLabel2: TcxLabel [20]
+    Left = 8
+    Top = 73
+    Caption = #1055#1055' '#8470' :'
+  end
+  object cxLabel3: TcxLabel [21]
+    Left = 8
+    Top = 145
+    Caption = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1100':'
+  end
+  object cxLabel4: TcxLabel [22]
+    Left = 8
+    Top = 176
+    Caption = #1055#1086#1089#1090#1072#1074#1097#1080#1082':'
+  end
+  object cxLabel5: TcxLabel [23]
+    Left = 8
+    Top = 207
+    Caption = #1050#1083#1080#1077#1085#1090':'
+  end
+  object cxLabel6: TcxLabel [24]
+    Left = 5
+    Top = 245
+    Caption = #1050#1086#1084#1084#1077#1085#1090#1072#1088#1080#1081':'
+  end
+  object cxLabel7: TcxLabel [25]
+    Left = 257
+    Top = 43
+    Caption = #1086#1090':'
+  end
+  object cxLabel8: TcxLabel [26]
+    Left = 257
+    Top = 74
+    Caption = #1086#1090':'
+  end
+  object cxLabel9: TcxLabel [27]
+    Left = 195
+    Top = 105
+    Caption = #1044#1072#1090#1072' '#1086#1087#1083#1072#1090#1099':'
+  end
+  object cxLabel10: TcxLabel [28]
+    Left = 404
+    Top = 145
+    Caption = #1057#1082#1080#1076#1082#1072' %:'
+  end
+  object cxLabel11: TcxLabel [29]
+    Left = 404
+    Top = 207
+    Caption = #1057#1082#1080#1076#1082#1072' %:'
+  end
+  object cxLabel12: TcxLabel [30]
+    Left = 616
+    Top = 210
+    Caption = #1050#1086#1085#1090#1072#1082#1090#1099':'
+  end
+  object cxLabel13: TcxLabel [31]
+    Left = 617
+    Top = 273
+    Caption = 'E-Mail:'
+  end
+  object cxLabel14: TcxLabel [32]
+    Left = 404
+    Top = 43
+    Caption = #1057#1091#1084#1084#1072' '#1089#1095#1077#1090#1072':'
+  end
+  object cxLabel15: TcxLabel [33]
+    Left = 404
+    Top = 105
+    Caption = #1057#1091#1084#1084#1072' '#1086#1087#1083#1072#1090#1099':'
+  end
+  object cxLabel16: TcxLabel [34]
+    Left = 616
+    Top = 43
+    Caption = #1057#1090#1072#1090#1091#1089':'
   end
   inherited FDQuery: TFDQuery
     Top = 318

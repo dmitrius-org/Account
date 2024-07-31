@@ -52,111 +52,133 @@ inherited SupplierF: TSupplierF
       Margins.Bottom = 0
       Caption = #1043#1083#1072#1074#1085#1072#1103
       ImageIndex = 1
-      DesignSize = (
-        646
-        284)
-      object edtName: TcxTextEdit
-        Left = 155
-        Top = 68
-        Anchors = [akLeft, akTop, akRight]
-        TabOrder = 3
-        TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
-        Width = 484
-      end
-      object edtINN: TcxTextEdit
-        Left = 155
-        Top = 35
+      object dxPanel2: TdxPanel
+        Left = 0
+        Top = 0
+        Width = 646
+        Height = 284
+        Margins.Left = 0
+        Margins.Top = 0
+        Margins.Right = 0
+        Margins.Bottom = 0
+        Align = alClient
+        Frame.Color = 15527148
+        Frame.Borders = []
+        Color = 15527148
         TabOrder = 0
-        TextHint = #1048#1085#1085
-        Width = 178
-      end
-      object edtFullName: TcxTextEdit
-        Left = 155
-        Top = 99
-        Anchors = [akLeft, akTop, akRight]
-        TabOrder = 5
-        TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1087#1086#1083#1085#1086#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
-        Width = 484
-      end
-      object edtlegalAaddress: TcxTextEdit
-        Left = 155
-        Top = 131
-        Anchors = [akLeft, akTop, akRight]
-        TabOrder = 7
-        Width = 484
-      end
-      object edtPostAddress: TcxTextEdit
-        Left = 155
-        Top = 162
-        Anchors = [akLeft, akTop, akRight]
-        TabOrder = 9
-        Width = 484
-      end
-      object edtEdo: TcxTextEdit
-        Left = 155
-        Top = 193
-        Anchors = [akLeft, akTop, akRight]
-        TabOrder = 11
-        Width = 484
-      end
-      object edtEdoID: TcxTextEdit
-        Left = 155
-        Top = 224
-        Anchors = [akLeft, akTop, akRight]
-        TabOrder = 13
-        Width = 484
-      end
-      object btnAuutoFillByInn: TcxButton
-        Left = 388
-        Top = 35
-        Width = 251
-        Height = 25
-        Anchors = [akTop, akRight]
-        Caption = #1040#1074#1090#1086#1084#1072#1090#1080#1095#1077#1089#1082#1086#1077' '#1079#1072#1087#1086#1083#1085#1077#1085#1080#1077' '#1087#1086' '#1048#1053#1053
-        TabOrder = 1
-        OnClick = btnAuutoFillByInnClick
-      end
-      object cxLabel2: TcxLabel
-        Left = 3
-        Top = 36
-        Caption = #1048#1085#1085':'
-        Transparent = True
-      end
-      object cxLabel4: TcxLabel
-        Left = 3
-        Top = 69
-        Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
-        Transparent = True
-      end
-      object cxLabel3: TcxLabel
-        Left = 3
-        Top = 100
-        Caption = #1055#1086#1083#1085#1086#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
-        Transparent = True
-      end
-      object cxLabel7: TcxLabel
-        Left = 3
-        Top = 132
-        Caption = #1070#1088'. '#1040#1076#1088#1077#1089':'
-        Transparent = True
-      end
-      object cxLabel8: TcxLabel
-        Left = 3
-        Top = 163
-        Caption = #1055#1086#1095#1090#1086#1074#1099#1081' '#1072#1076#1088#1077#1089':'
-        Transparent = True
-      end
-      object cxLabel9: TcxLabel
-        Left = 3
-        Top = 194
-        Caption = #1069#1044#1054':'
-        Transparent = True
-      end
-      object cxLabel10: TcxLabel
-        Left = 3
-        Top = 225
-        Caption = #1048#1076#1077#1085#1090#1080#1092#1080#1082#1072#1090#1086#1088' '#1069#1044#1054':'
-        Transparent = True
+        DesignSize = (
+          646
+          284)
+        object btnAuutoFillByInn: TcxButton
+          Left = 390
+          Top = 35
+          Width = 251
+          Height = 25
+          Anchors = [akTop, akRight]
+          Caption = #1040#1074#1090#1086#1084#1072#1090#1080#1095#1077#1089#1082#1086#1077' '#1079#1072#1087#1086#1083#1085#1077#1085#1080#1077' '#1087#1086' '#1048#1053#1053
+          TabOrder = 1
+          OnClick = btnAuutoFillByInnClick
+          ExplicitLeft = 388
+        end
+        object edtINN: TcxTextEdit
+          Left = 155
+          Top = 35
+          TabOrder = 0
+          TextHint = #1048#1085#1085
+          Width = 178
+        end
+        object cxLabel2: TcxLabel
+          Left = 3
+          Top = 36
+          Caption = #1048#1085#1085':'
+          Transparent = True
+        end
+        object cxLabel4: TcxLabel
+          Left = 3
+          Top = 69
+          Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
+          Transparent = True
+        end
+        object edtName: TcxTextEdit
+          Left = 155
+          Top = 68
+          Anchors = [akLeft, akTop, akRight]
+          TabOrder = 3
+          TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
+          ExplicitWidth = 484
+          Width = 486
+        end
+        object edtFullName: TcxTextEdit
+          Left = 155
+          Top = 99
+          Anchors = [akLeft, akTop, akRight]
+          TabOrder = 5
+          TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1087#1086#1083#1085#1086#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
+          ExplicitWidth = 484
+          Width = 486
+        end
+        object cxLabel3: TcxLabel
+          Left = 3
+          Top = 100
+          Caption = #1055#1086#1083#1085#1086#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
+          Transparent = True
+        end
+        object cxLabel7: TcxLabel
+          Left = 3
+          Top = 132
+          Caption = #1070#1088'. '#1040#1076#1088#1077#1089':'
+          Transparent = True
+        end
+        object cxLabel8: TcxLabel
+          Left = 3
+          Top = 163
+          Caption = #1055#1086#1095#1090#1086#1074#1099#1081' '#1072#1076#1088#1077#1089':'
+          Transparent = True
+        end
+        object cxLabel9: TcxLabel
+          Left = 3
+          Top = 194
+          Caption = #1069#1044#1054':'
+          Transparent = True
+        end
+        object cxLabel10: TcxLabel
+          Left = 3
+          Top = 225
+          Caption = #1048#1076#1077#1085#1090#1080#1092#1080#1082#1072#1090#1086#1088' '#1069#1044#1054':'
+          Transparent = True
+        end
+        object edtEdoID: TcxTextEdit
+          Left = 155
+          Top = 224
+          Anchors = [akLeft, akTop, akRight]
+          TabOrder = 13
+          ExplicitWidth = 484
+          Width = 486
+        end
+        object edtEdo: TcxTextEdit
+          Left = 155
+          Top = 193
+          Anchors = [akLeft, akTop, akRight]
+          TabOrder = 11
+          ExplicitWidth = 484
+          Width = 486
+        end
+        object edtPostAddress: TcxTextEdit
+          Left = 155
+          Top = 162
+          Anchors = [akLeft, akTop, akRight]
+          TabOrder = 9
+          ExplicitWidth = 484
+          Width = 486
+        end
+        object edtlegalAaddress: TcxTextEdit
+          Left = 155
+          Top = 131
+          Anchors = [akLeft, akTop, akRight]
+          TabOrder = 7
+          ExplicitWidth = 484
+          Width = 486
+        end
       end
     end
     object TabContact: TTabSheet
@@ -169,6 +191,7 @@ inherited SupplierF: TSupplierF
         Height = 247
         Align = alClient
         TabOrder = 1
+        LookAndFeel.NativeStyle = False
         object TableView: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           ScrollbarAnnotations.CustomAnnotations = <>
@@ -190,6 +213,8 @@ inherited SupplierF: TSupplierF
           OptionsView.HeaderHeight = 30
           OptionsView.Indicator = True
           OptionsView.RowSeparatorColor = clBlack
+          Styles.Background = cxStyle2
+          Styles.Header = cxStyle1
           object TableViewPhone: TcxGridDBColumn
             Caption = #1058#1077#1083#1077#1092#1086#1085
             DataBinding.FieldName = 'Phone'
@@ -221,7 +246,12 @@ inherited SupplierF: TSupplierF
         ButtonHeight = 40
         ButtonWidth = 70
         Caption = 'ToolBar1'
+        Color = 15527148
+        DrawingStyle = dsGradient
+        GradientEndColor = 15527148
+        GradientStartColor = 15527148
         Images = cxImageList
+        ParentColor = False
         ShowCaptions = True
         TabOrder = 0
         object ToolButton5: TToolButton
@@ -561,6 +591,20 @@ inherited SupplierF: TSupplierF
       Enabled = False
       ImageIndex = 4
       OnExecute = acContactSaveExecute
+    end
+  end
+  object cxStyleRepository1: TcxStyleRepository
+    PixelsPerInch = 96
+    object cxStyle1: TcxStyle
+      AssignedValues = [svColor]
+      Color = 14602694
+    end
+  end
+  object cxStyleRepository2: TcxStyleRepository
+    PixelsPerInch = 96
+    object cxStyle2: TcxStyle
+      AssignedValues = [svColor]
+      Color = 15527148
     end
   end
 end

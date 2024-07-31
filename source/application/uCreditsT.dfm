@@ -1,7 +1,6 @@
 inherited CreditsT: TCreditsT
   Caption = #1050#1088#1077#1076#1080#1090#1099
   ClientWidth = 944
-  Visible = True
   StyleElements = [seFont, seClient, seBorder]
   ExplicitWidth = 960
   TextHeight = 17
@@ -111,7 +110,6 @@ inherited CreditsT: TCreditsT
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
-    ExplicitTop = 96
     ExplicitWidth = 944
     ExplicitHeight = 108
     Height = 108
@@ -308,6 +306,7 @@ inherited CreditsT: TCreditsT
   end
   inherited dxPanel1: TdxPanel
     Width = 944
+    ExplicitWidth = 944
   end
   inherited ActionList: TActionList
     Tag = 40

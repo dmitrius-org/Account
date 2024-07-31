@@ -9,7 +9,7 @@ uses
   FireDAC.Phys.MSSQLDef, FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf,
   FireDAC.DApt, FireDAC.VCLUI.Wait, FireDAC.VCLUI.Error, FireDAC.Comp.UI,
   FireDAC.Comp.Client, Data.DB, FireDAC.Comp.DataSet, FireDAC.Phys.ODBCBase,
-  System.Generics.Collections;
+  System.Generics.Collections, cxClasses, cxLocalization;
 
 type
   TDM = class(TDataModule)
@@ -29,6 +29,7 @@ type
     qKontragent: TFDQuery;
     dsKontragentType: TDataSource;
     qKontragentType: TFDQuery;
+    cxLocalizer1: TcxLocalizer;
     procedure DataModuleCreate(Sender: TObject);
     procedure FDConnectionAfterConnect(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
@@ -71,6 +72,10 @@ begin
   FDManager.ConnectionDefFileAutoLoad := True;
   FDManager.Active := True;
 
+
+  cxLocalizer1.FileName := ExtractFilePath(ParamStr(0)) + 'RusDevU.ini';
+  cxLocalizer1.Active := True;
+  cxLocalizer1.Locale := 1049;
 
   FDConnection.ConnectionDefName:='Connection';
   FDConnection.Params.Values['DriverID'] :=FDManager.ConnectionDefs.FindConnectionDef('Connection').Params.Values['DriverID'];

@@ -3,7 +3,6 @@ inherited DocumentRequestT: TDocumentRequestT
   Caption = #1047#1072#1087#1088#1086#1089' '#1076#1086#1082#1091#1084#1077#1085#1090#1086#1074
   ClientHeight = 535
   ClientWidth = 930
-  Visible = True
   StyleElements = [seFont, seClient, seBorder]
   ExplicitWidth = 946
   ExplicitHeight = 574
@@ -81,7 +80,6 @@ inherited DocumentRequestT: TDocumentRequestT
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
-    ExplicitTop = 96
     ExplicitWidth = 930
     ExplicitHeight = 72
     Height = 72
@@ -219,15 +217,6 @@ inherited DocumentRequestT: TDocumentRequestT
   inherited dxPanel1: TdxPanel
     Width = 930
     ExplicitWidth = 930
-    inherited btnDel: TcxButton
-      ExplicitLeft = 303
-    end
-    inherited btnEdit: TcxButton
-      ExplicitLeft = 203
-    end
-    inherited btnAdd: TcxButton
-      ExplicitLeft = 103
-    end
   end
   inherited ActionList: TActionList
     Tag = 30

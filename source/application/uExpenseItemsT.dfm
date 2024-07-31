@@ -1,7 +1,6 @@
 inherited ExpenseItemsT: TExpenseItemsT
   Caption = #1057#1090#1072#1090#1100#1080' '#1088#1072#1089#1093#1086#1076#1086#1074
   ClientWidth = 860
-  Visible = True
   StyleElements = [seFont, seClient, seBorder]
   ExplicitWidth = 876
   TextHeight = 17
@@ -76,7 +75,6 @@ inherited ExpenseItemsT: TExpenseItemsT
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
-    ExplicitTop = 96
     ExplicitWidth = 860
     ExplicitHeight = 74
     Height = 74
@@ -178,15 +176,6 @@ inherited ExpenseItemsT: TExpenseItemsT
   inherited dxPanel1: TdxPanel
     Width = 860
     ExplicitWidth = 860
-    inherited btnDel: TcxButton
-      ExplicitLeft = 303
-    end
-    inherited btnEdit: TcxButton
-      ExplicitLeft = 203
-    end
-    inherited btnAdd: TcxButton
-      ExplicitLeft = 103
-    end
   end
   inherited ActionList: TActionList
     Tag = 70
