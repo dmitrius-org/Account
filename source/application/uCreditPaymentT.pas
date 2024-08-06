@@ -77,6 +77,8 @@ begin
   edtPaymentDate.Clear;
   edtPaymentDateE.Clear;
 
+  TableView.DataController.Filter.Clear;
+
   DataLoad
 end;
 

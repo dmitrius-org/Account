@@ -109,6 +109,34 @@ begin
   case FormAction of
     acInsert, acClone, acReset, acResetAcc:
     begin
+
+      // проверка наличия счета с одинаковым номером
+      tSql.Open('''
+                  declare @R          int = 0
+
+                  exec @R = AccountNumberCheck
+                              @AccountNumber = :AccountNumber
+                             ,@SupplierID    = :SupplierID
+
+                  select @R as R
+                ''',
+               ['AccountNumber','SupplierID'],
+               [edtAccountNumber.Text
+               ,edtSupplier.LookupKey]
+               );
+
+      if tSql.Q.FieldByName('R').Value > 0 then
+      case MessageDlg('Счет заданным номером существует, продолжить выполнение операции?', mtConfirmation, [mbOK, mbCancel], 0) of
+        mrOk:
+          begin
+            // OK
+          end;
+        mrCancel:
+          begin
+            exit;
+          end;
+      end;
+
       tSql.Open('''
                   declare @R          int = 0
                          ,@AccountID  numeric(15,0)
@@ -167,6 +195,35 @@ begin
     end;
     acUpdate:
     begin
+      // проверка наличия счета с одинаковым номером
+      tSql.Open('''
+                  declare @R          int = 0
+
+                  exec @R = AccountNumberCheck
+                          @AccountID     = :AccountID
+                         ,@AccountNumber = :AccountNumber
+                         ,@SupplierID    = :SupplierID
+
+                  select @R as R
+                ''',
+               ['AccountNumber','SupplierID','AccountID'],
+               [edtAccountNumber.Text
+               ,edtSupplier.LookupKey
+               ,ID]
+               );
+
+      if tSql.Q.FieldByName('R').Value > 0 then
+      case MessageDlg('Счет заданным номером существует, продолжить выполнение операции?', mtConfirmation, [mbOK, mbCancel], 0) of
+        mrOk:
+          begin
+            // OK
+          end;
+        mrCancel:
+          begin
+            exit;
+          end;
+      end;
+
          tSql.Open('''
                   declare @R int = 0
 

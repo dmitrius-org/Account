@@ -120,6 +120,8 @@ begin
   edtBuyer.Clear;
   edtClient.Clear;
 
+  TableView.DataController.Filter.Clear;
+
   DataLoad;
 end;
 

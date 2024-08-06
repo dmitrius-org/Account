@@ -5,9 +5,12 @@ interface
 uses  System.SysUtils, System.UITypes, cxCheckBox, cxCheckComboBox, cxLookAndFeelPainters ;
 
   procedure ComboBoxFill(AComboBox: TcxCheckComboBox; ASQL: string); overload;
+ // procedure ComboBoxFill(AComboBox: TcxComboBoxProperties); overload;
 
 
   function GetComboChecks(AComboBox: TcxCheckComboBox): string;
+
+
 
 implementation
 

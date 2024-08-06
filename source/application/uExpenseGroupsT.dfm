@@ -49,7 +49,6 @@ inherited ExpenseGroupsT: TExpenseGroupsT
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
-    ExplicitTop = 96
     ExplicitWidth = 805
     ExplicitHeight = 47
     Height = 47
@@ -115,15 +114,6 @@ inherited ExpenseGroupsT: TExpenseGroupsT
   inherited dxPanel1: TdxPanel
     Width = 805
     ExplicitWidth = 805
-    inherited btnDel: TcxButton
-      ExplicitLeft = 303
-    end
-    inherited btnEdit: TcxButton
-      ExplicitLeft = 203
-    end
-    inherited btnAdd: TcxButton
-      ExplicitLeft = 103
-    end
   end
   inherited ActionList: TActionList
     Tag = 75

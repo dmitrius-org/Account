@@ -232,8 +232,6 @@ inherited AccountF: TAccountF
       Style.Font.Style = [fsBold]
       Style.TextColor = clCrimson
       Style.IsFontAssigned = True
-      ExplicitLeft = 0
-      ExplicitHeight = 41
     end
   end
   object btnCopy: TcxButton [18]

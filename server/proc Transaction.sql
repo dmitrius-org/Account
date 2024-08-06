@@ -322,6 +322,7 @@ Select t.TransactionID
 
   inner join tMenu n (nolock)
           on n.ParentID = ka.KassaID
+         and n.Name     = 'TTransactionT.actShow'
   inner join tGrant r (nolock)
           on r.ObjectType = 0
          and r.ObjectID   = dbo.GetUserID()

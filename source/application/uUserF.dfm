@@ -1,100 +1,100 @@
 inherited UserF: TUserF
   Caption = 'UserF'
   ClientHeight = 230
-  ClientWidth = 440
+  ClientWidth = 438
   StyleElements = [seFont, seClient, seBorder]
-  ExplicitWidth = 456
+  ExplicitWidth = 454
   ExplicitHeight = 269
   TextHeight = 17
-  object SkLabel1: TSkLabel [0]
-    Left = 17
-    Top = 8
-    Width = 43
-    Height = 19
-    Words = <
-      item
-        Caption = #1051#1086#1075#1080#1085':'
-      end>
-  end
-  object SkLabel2: TSkLabel [1]
-    Left = 17
-    Top = 39
-    Width = 100
-    Height = 19
-    Words = <
-      item
-        Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
-      end>
-  end
-  object SkLabel3: TSkLabel [2]
-    Left = 175
-    Top = 18
-    Width = 43
-    Height = 19
-    Words = <
-      item
-        Caption = #1051#1086#1075#1080#1085':'
-      end>
-  end
-  object lblPassword: TSkLabel [3]
-    Left = 17
-    Top = 72
-    Width = 51
-    Height = 19
-    Words = <
-      item
-        Caption = #1055#1072#1088#1086#1083#1100':'
-      end>
-  end
   inherited Panel: TdxPanel
     Top = 184
-    Width = 440
-    TabOrder = 5
+    Width = 438
+    TabOrder = 8
+    ExplicitTop = 184
+    ExplicitWidth = 440
     inherited btnCancel: TcxButton
-      Left = 237
+      Left = 235
+      ExplicitLeft = 237
     end
     inherited btnOk: TcxButton
-      Left = 333
+      Left = 331
       OnClick = btnOkClick
+      ExplicitLeft = 333
     end
   end
-  object edtLogin: TcxTextEdit [5]
+  object edtLogin: TcxTextEdit [1]
     Left = 123
     Top = 8
     Properties.MaxLength = 255
-    TabOrder = 0
+    TabOrder = 1
     TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1083#1086#1075#1080#1085
     Width = 298
   end
-  object edtName: TcxTextEdit [6]
+  object edtName: TcxTextEdit [2]
     Left = 123
     Top = 39
     Properties.MaxLength = 255
-    TabOrder = 1
+    TabOrder = 3
     TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
     Width = 298
   end
-  object IsAdmin: TcxCheckBox [7]
+  object IsAdmin: TcxCheckBox [3]
     Left = 123
     Top = 112
     Caption = #1040#1076#1084#1080#1085#1080#1089#1090#1088#1072#1090#1086#1088
     Properties.ReadOnly = True
     Style.TransparentBorder = False
-    TabOrder = 3
+    TabOrder = 6
   end
-  object IsBlock: TcxCheckBox [8]
+  object IsBlock: TcxCheckBox [4]
     Left = 123
     Top = 139
     Caption = #1041#1083#1086#1082#1080#1088#1086#1074#1072#1085
     Style.TransparentBorder = False
-    TabOrder = 4
+    TabOrder = 7
   end
-  object edtPassword: TcxTextEdit [9]
+  object edtPassword: TcxTextEdit [5]
     Left = 123
     Top = 70
     Properties.MaxLength = 255
-    TabOrder = 2
+    TabOrder = 5
     TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1087#1072#1088#1086#1083#1100
     Width = 298
+  end
+  object cxLabel5: TcxLabel [6]
+    Left = 8
+    Top = 7
+    Caption = #1051#1086#1075#1080#1085':'
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -15
+    Style.Font.Name = 'Segoe UI'
+    Style.Font.Style = []
+    Style.IsFontAssigned = True
+  end
+  object cxLabel1: TcxLabel [7]
+    Left = 8
+    Top = 38
+    Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -15
+    Style.Font.Name = 'Segoe UI'
+    Style.Font.Style = []
+    Style.IsFontAssigned = True
+  end
+  object lblPassword: TcxLabel [8]
+    Left = 8
+    Top = 69
+    Caption = #1055#1072#1088#1086#1083#1100':'
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -15
+    Style.Font.Name = 'Segoe UI'
+    Style.Font.Style = []
+    Style.IsFontAssigned = True
   end
 end

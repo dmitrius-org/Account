@@ -136,6 +136,8 @@ begin
   edtCredit.Clear;
   edtState.EditValue := 1;
 
+  TableView.DataController.Filter.Clear;
+
   DataLoad;
 end;
 

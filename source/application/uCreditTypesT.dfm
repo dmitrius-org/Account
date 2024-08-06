@@ -27,7 +27,6 @@ inherited CreditTypesT: TCreditTypesT
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
-    ExplicitTop = 96
     ExplicitHeight = 48
     Height = 48
     object edtName: TcxTextEdit
@@ -86,17 +85,6 @@ inherited CreditTypesT: TCreditTypesT
       Left = 174
       Top = 16
       Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
-    end
-  end
-  inherited dxPanel1: TdxPanel
-    inherited btnDel: TcxButton
-      ExplicitLeft = 303
-    end
-    inherited btnEdit: TcxButton
-      ExplicitLeft = 203
-    end
-    inherited btnAdd: TcxButton
-      ExplicitLeft = 103
     end
   end
   inherited ActionList: TActionList

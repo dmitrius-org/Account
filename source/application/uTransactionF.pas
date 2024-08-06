@@ -11,35 +11,35 @@ uses
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, Vcl.StdCtrls, cxButtons, uLookupEdit, cxTextEdit,
-  cxMaskEdit, cxDropDownEdit, cxCalendar, dxPanel, System.Skia, cxLookupEdit,
-  cxDBLookupEdit, cxDBLookupComboBox, Vcl.Skia, cxCurrencyEdit, cxMemo;
+  cxMaskEdit, cxDropDownEdit, cxCalendar, dxPanel, cxLookupEdit,
+  cxDBLookupEdit, cxDBLookupComboBox, cxCurrencyEdit, cxMemo, cxLabel;
 
 type
   TTransactionF = class(TBaseFormDBF)
-    SkLabel6: TSkLabel;
     edtTranType: TcxLookupComboBox;
     dsTranType: TDataSource;
     qTranType: TFDQuery;
-    SkLabel1: TSkLabel;
     edtOperation: TcxLookupComboBox;
     dsOperation: TDataSource;
     qOperation: TFDQuery;
-    SkLabel7: TSkLabel;
-    SkLabel8: TSkLabel;
     edtOperDate: TcxDateEdit;
     edtAmount: TcxCurrencyEdit;
-    SkLabel14: TSkLabel;
     edtComment: TcxMemo;
-    edtKontragentL: TSkLabel;
     edtKontragent: ALookupEdit;
-    edtExpenseItemL: TSkLabel;
     edtExpenseItem: ALookupEdit;
-    edtCreditDL: TSkLabel;
     edtCreditD: ALookupEdit;
     dxPanel2: TdxPanel;
-    lblRest: TSkLabel;
     dxPanel3: TdxPanel;
-    lblKassa: TSkLabel;
+    cxLabel5: TcxLabel;
+    lblKassa: TcxLabel;
+    lblRest: TcxLabel;
+    cxLabel3: TcxLabel;
+    cxLabel4: TcxLabel;
+    cxLabel6: TcxLabel;
+    cxLabel7: TcxLabel;
+    edtCreditDL: TcxLabel;
+    edtExpenseItemL: TcxLabel;
+    edtKontragentL: TcxLabel;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnOkClick(Sender: TObject);

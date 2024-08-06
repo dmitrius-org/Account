@@ -61,6 +61,9 @@ procedure TTasksT.btnFilterClearClick(Sender: TObject);
 begin
   inherited;
   edtComment.Clear;
+
+  TableView.DataController.Filter.Clear;
+
   DataLoad;
 end;
 

@@ -6,70 +6,10 @@ inherited DocumentRequestF: TDocumentRequestF
   ExplicitWidth = 589
   ExplicitHeight = 474
   TextHeight = 17
-  object SkLabel12: TSkLabel [0]
-    Left = 7
-    Top = 72
-    Width = 75
-    Height = 19
-    Words = <
-      item
-        Caption = #1055#1086#1089#1090#1072#1074#1097#1080#1082':'
-      end>
-  end
-  object SkLabel8: TSkLabel [1]
-    Left = 7
-    Top = 41
-    Width = 78
-    Height = 19
-    Words = <
-      item
-        Caption = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1100':'
-      end>
-  end
-  object SkLabel5: TSkLabel [2]
-    Left = 274
-    Top = 9
-    Width = 84
-    Height = 19
-    Words = <
-      item
-        Caption = #1044#1072#1090#1072' '#1086#1087#1083#1072#1090#1099':'
-      end>
-  end
-  object SkLabel1: TSkLabel [3]
-    Left = 7
-    Top = 11
-    Width = 53
-    Height = 19
-    Words = <
-      item
-        Caption = #1057#1095#1077#1090' '#8470':'
-      end>
-  end
-  object SkLabel2: TSkLabel [4]
-    Left = 7
-    Top = 102
-    Width = 59
-    Height = 19
-    Words = <
-      item
-        Caption = #1058#1077#1083#1077#1092#1086#1085':'
-      end>
-  end
-  object SkLabel3: TSkLabel [5]
-    Left = 7
-    Top = 134
-    Width = 42
-    Height = 19
-    Words = <
-      item
-        Caption = #1055#1086#1095#1090#1072':'
-      end>
-  end
   inherited Panel: TdxPanel
     Top = 389
     Width = 573
-    TabOrder = 7
+    TabOrder = 13
     ExplicitTop = 389
     ExplicitWidth = 573
     inherited btnCancel: TcxButton
@@ -82,7 +22,7 @@ inherited DocumentRequestF: TDocumentRequestF
       ExplicitLeft = 466
     end
   end
-  object edtBuyer: ALookupEdit [7]
+  object edtBuyer: ALookupEdit [1]
     Left = 113
     Top = 39
     LookupConnection = DM.FDConnection
@@ -107,10 +47,10 @@ inherited DocumentRequestF: TDocumentRequestF
       end>
     Properties.Images = IM.IL
     ShowHint = True
-    TabOrder = 2
+    TabOrder = 5
     Width = 452
   end
-  object edtSupplier: ALookupEdit [8]
+  object edtSupplier: ALookupEdit [2]
     Left = 113
     Top = 70
     LookupConnection = DM.FDConnection
@@ -135,42 +75,42 @@ inherited DocumentRequestF: TDocumentRequestF
       end>
     Properties.Images = IM.IL
     ShowHint = True
-    TabOrder = 3
+    TabOrder = 7
     Width = 452
   end
-  object edtAccountDate: TcxDateEdit [9]
-    Left = 380
+  object edtAccountDate: TcxDateEdit [3]
+    Left = 435
     Top = 8
     Properties.DateButtons = [btnClear, btnNow, btnToday]
-    TabOrder = 1
+    TabOrder = 3
     Width = 130
   end
-  object edtAccountNumber: TcxTextEdit [10]
+  object edtAccountNumber: TcxTextEdit [4]
     Left = 113
     Top = 8
-    TabOrder = 0
+    TabOrder = 2
     Width = 130
   end
-  object edtPhone: TcxTextEdit [11]
+  object edtPhone: TcxTextEdit [5]
     Left = 113
     Top = 101
-    TabOrder = 4
+    TabOrder = 9
     Width = 452
   end
-  object edtMail: TcxTextEdit [12]
+  object edtMail: TcxTextEdit [6]
     Left = 113
     Top = 132
-    TabOrder = 5
+    TabOrder = 11
     Width = 452
   end
-  object Panel1: TPanel [13]
+  object Panel1: TPanel [7]
     Left = 8
     Top = 163
     Width = 557
     Height = 220
     Anchors = [akLeft, akTop, akRight, akBottom]
     Caption = 'Panel1'
-    TabOrder = 6
+    TabOrder = 12
     object ToolBar1: TToolBar
       Left = 1
       Top = 1
@@ -255,6 +195,78 @@ inherited DocumentRequestF: TDocumentRequestF
         GridView = TableView
       end
     end
+  end
+  object cxLabel1: TcxLabel [8]
+    Left = 8
+    Top = 7
+    Caption = #1057#1095#1077#1090' '#8470':'
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -15
+    Style.Font.Name = 'Segoe UI'
+    Style.Font.Style = []
+    Style.IsFontAssigned = True
+  end
+  object cxLabel2: TcxLabel [9]
+    Left = 8
+    Top = 38
+    Caption = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1100':'
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -15
+    Style.Font.Name = 'Segoe UI'
+    Style.Font.Style = []
+    Style.IsFontAssigned = True
+  end
+  object cxLabel3: TcxLabel [10]
+    Left = 8
+    Top = 69
+    Caption = #1055#1086#1089#1090#1072#1074#1097#1080#1082':'
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -15
+    Style.Font.Name = 'Segoe UI'
+    Style.Font.Style = []
+    Style.IsFontAssigned = True
+  end
+  object cxLabel4: TcxLabel [11]
+    Left = 8
+    Top = 100
+    Caption = #1058#1077#1083#1077#1092#1086#1085':'
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -15
+    Style.Font.Name = 'Segoe UI'
+    Style.Font.Style = []
+    Style.IsFontAssigned = True
+  end
+  object cxLabel5: TcxLabel [12]
+    Left = 8
+    Top = 131
+    Caption = #1055#1086#1095#1090#1072':'
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -15
+    Style.Font.Name = 'Segoe UI'
+    Style.Font.Style = []
+    Style.IsFontAssigned = True
+  end
+  object cxLabel6: TcxLabel [13]
+    Left = 320
+    Top = 7
+    Caption = #1044#1072#1090#1072' '#1086#1087#1083#1072#1090#1099':'
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -15
+    Style.Font.Name = 'Segoe UI'
+    Style.Font.Style = []
+    Style.IsFontAssigned = True
   end
   inherited DataSource: TDataSource
     Top = 48

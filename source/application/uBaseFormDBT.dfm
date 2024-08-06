@@ -60,7 +60,6 @@ inherited BaseFormDBT: TBaseFormDBT
     Align = alClient
     PopupMenu = PopupMenu
     TabOrder = 3
-    LockedStateImageOptions.Text = 'Please wait...'
     LookAndFeel.NativeStyle = False
     object TableView: TcxGridDBTableView
       OnGetStoredProperties = TableViewGetStoredProperties
@@ -93,9 +92,10 @@ inherited BaseFormDBT: TBaseFormDBT
       OptionsView.RowSeparatorColor = clBlack
       Styles.Background = GridBaground
       Styles.Content = GridRow
+      Styles.OnGetContentStyle = TableViewStylesGetContentStyle
+      Styles.OnGetSelectionStyle = TableViewStylesGetSelectionStyle
       Styles.Footer = GridHeader
       Styles.Header = GridHeader
-      Styles.Selection = GridRowSelect
     end
     object GridLevel: TcxGridLevel
       GridView = TableView
@@ -304,7 +304,7 @@ inherited BaseFormDBT: TBaseFormDBT
       Color = clYellow
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -15
+      Font.Height = -17
       Font.Name = 'Segoe UI'
       Font.Style = []
       TextColor = clBlack
@@ -313,7 +313,25 @@ inherited BaseFormDBT: TBaseFormDBT
       AssignedValues = [svFont]
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -15
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+    end
+    object GridFilterRow: TcxStyle
+      AssignedValues = [svColor, svFont]
+      Color = 12566463
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+    end
+    object GridFilterRowDef: TcxStyle
+      AssignedValues = [svColor, svFont]
+      Color = 12566463
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
       Font.Name = 'Segoe UI'
       Font.Style = []
     end

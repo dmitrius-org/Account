@@ -1,20 +1,19 @@
 inherited AccountT: TAccountT
   BorderIcons = [biSystemMenu]
   Caption = #1057#1095#1077#1090#1072
-  ClientHeight = 496
-  ClientWidth = 1058
+  ClientHeight = 580
+  ClientWidth = 1144
   StyleElements = [seFont, seClient, seBorder]
-  ExplicitWidth = 1074
-  ExplicitHeight = 535
+  ExplicitWidth = 1160
+  ExplicitHeight = 619
   TextHeight = 17
   inherited ToolBar: TToolBar
-    Width = 1058
+    Width = 1144
     DoubleBuffered = True
-    ExplicitWidth = 1044
+    ExplicitWidth = 1144
     inherited tbShow: TToolButton
       AutoSize = True
       ExplicitWidth = 91
-      ExplicitHeight = 38
     end
     inherited tbAdd: TToolButton
       Left = 91
@@ -23,21 +22,18 @@ inherited AccountT: TAccountT
       Style = tbsWholeDropDown
       OnClick = nil
       ExplicitLeft = 91
-      ExplicitHeight = 38
     end
     inherited tbEdit: TToolButton
       Left = 178
       AutoSize = True
       ExplicitLeft = 178
       ExplicitWidth = 69
-      ExplicitHeight = 38
     end
     inherited tbDelete: TToolButton
       Left = 247
       AutoSize = True
       ExplicitLeft = 247
       ExplicitWidth = 58
-      ExplicitHeight = 38
     end
     object ToolButton1: TToolButton
       Left = 305
@@ -55,25 +51,52 @@ inherited AccountT: TAccountT
     end
   end
   inherited Grid: TcxGrid
-    Top = 197
-    Width = 1058
-    Height = 299
-    ExplicitTop = 198
-    ExplicitWidth = 1058
-    ExplicitHeight = 299
+    Top = 156
+    Width = 1144
+    Height = 389
+    ExplicitTop = 156
+    ExplicitWidth = 1144
+    ExplicitHeight = 389
     inherited TableView: TcxGridDBTableView
       FilterBox.Visible = fvNever
       FindPanel.Layout = fplCompact
       OnCustomDrawCell = TableViewCustomDrawCell
+      OnEditing = TableViewEditing
+      OnEditKeyDown = TableViewEditKeyDown
+      OnSelectionChanged = TableViewSelectionChanged
+      DataController.Filter.OnChanged = TableViewDataControllerFilterChanged
       DataController.KeyFieldNames = 'AccountID'
+      DataController.Summary.DefaultGroupSummaryItems.OnSummary = TableViewDataControllerSummaryDefaultGroupSummaryItemsSummary
+      DataController.Summary.FooterSummaryItems.OnSummary = TableViewDataControllerSummaryFooterSummaryItemsSummary
+      DataController.Summary.FooterSummaryItems = <
+        item
+          Format = '###,##0'
+          Kind = skSum
+          OnGetText = TableViewTcxGridDBDataControllerTcxDataSummaryFooterSummaryItems0GetText
+          FieldName = 'PaymentAmount'
+          Column = TableViewPaymentAmount
+          DisplayText = #1057#1091#1084#1084#1072':'
+        end>
+      DataController.Summary.OnAfterSummary = TableViewDataControllerSummaryAfterSummary
       Filtering.ExpressionEditing = True
       Filtering.ColumnFilteredItemsList = True
       Filtering.ColumnPopupMode = fpmClassic
       FilterRow.SeparatorWidth = 2
       FilterRow.Visible = True
-      FilterRow.OperatorCustomization = True
+      NewItemRow.SeparatorWidth = 2
+      NewItemRow.Visible = True
+      OptionsData.Appending = True
+      OptionsData.Editing = True
+      OptionsData.Inserting = True
+      OptionsSelection.CellSelect = True
+      OptionsSelection.MultiSelect = True
+      OptionsSelection.CellMultiSelect = True
+      OptionsSelection.InvertSelect = False
+      OptionsSelection.MultiSelectMode = msmPersistent
+      OptionsView.FooterAutoHeight = True
+      OptionsView.FooterMultiSummaries = True
       OptionsView.IndicatorWidth = 25
-      Styles.OnGetContentStyle = TableViewStylesGetContentStyle
+      Styles.Selection = GridRowSelect
       object TableViewAccountID: TcxGridDBColumn
         Caption = #1048#1076#1077#1085#1090#1080#1092#1080#1082#1072#1090#1086#1088
         DataBinding.FieldName = 'AccountID'
@@ -81,8 +104,11 @@ inherited AccountT: TAccountT
         HeaderAlignmentHorz = taCenter
       end
       object TableViewPaymentDate: TcxGridDBColumn
-        Caption = #1044#1072#1090#1072' '#1086#1087#1083#1072#1090#1099
+        Caption = #1044#1072#1090#1072' '#1089#1095#1077#1090#1072
         DataBinding.FieldName = 'PaymentDate'
+        PropertiesClassName = 'TcxDateEditProperties'
+        Properties.ValidationOptions = [evoRaiseException, evoShowErrorIcon, evoAllowLoseFocus]
+        Properties.OnValidate = TableViewPaymentDatePropertiesValidate
         HeaderAlignmentHorz = taCenter
         Width = 112
       end
@@ -100,9 +126,11 @@ inherited AccountT: TAccountT
       object TableViewBuyerName: TcxGridDBColumn
         Caption = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1100
         DataBinding.FieldName = 'BuyerName'
-        DateTimeGrouping = dtgRelativeToToday
+        PropertiesClassName = 'TcxComboBoxProperties'
+        Properties.IncrementalFiltering = True
+        Properties.OnEditValueChanged = TableViewBuyerNamePropertiesEditValueChanged
         HeaderAlignmentHorz = taCenter
-        Options.FilterRowOperator = foLike
+        Options.FilteringPopupIncrementalFiltering = True
         Width = 200
       end
       object TableViewBuyerDiscount: TcxGridDBColumn
@@ -111,11 +139,22 @@ inherited AccountT: TAccountT
         HeaderAlignmentHorz = taCenter
         HeaderHint = #1057#1082#1080#1076#1082#1072' '#1087#1086#1082#1091#1087#1072#1090#1077#1083#1103
       end
+      object TableViewSupplieName: TcxGridDBColumn
+        Caption = #1055#1086#1089#1090#1072#1074#1097#1080#1082
+        DataBinding.FieldName = 'SupplieName'
+        PropertiesClassName = 'TcxComboBoxProperties'
+        Properties.IncrementalFiltering = True
+        Properties.OnEditValueChanged = TableViewSupplieNamePropertiesEditValueChanged
+        HeaderAlignmentHorz = taCenter
+        Width = 200
+      end
       object TableViewClientName: TcxGridDBColumn
         Caption = #1050#1083#1080#1077#1085#1090
         DataBinding.FieldName = 'ClientName'
+        PropertiesClassName = 'TcxComboBoxProperties'
+        Properties.IncrementalFiltering = True
+        Properties.OnEditValueChanged = TableViewClientNamePropertiesEditValueChanged
         HeaderAlignmentHorz = taCenter
-        Options.FilterRowOperator = foLike
         Width = 200
       end
       object TableViewClientDiscount: TcxGridDBColumn
@@ -123,13 +162,6 @@ inherited AccountT: TAccountT
         DataBinding.FieldName = 'ClientDiscount'
         HeaderAlignmentHorz = taCenter
         HeaderHint = #1057#1082#1080#1076#1082#1072' '#1082#1083#1080#1077#1085#1090#1072
-      end
-      object TableViewSupplieName: TcxGridDBColumn
-        Caption = #1055#1086#1089#1090#1072#1074#1097#1080#1082
-        DataBinding.FieldName = 'SupplieName'
-        HeaderAlignmentHorz = taCenter
-        Options.FilterRowOperator = foLike
-        Width = 200
       end
       object TableViewAccountStatusID: TcxGridDBColumn
         DataBinding.FieldName = 'AccountStatusID'
@@ -158,62 +190,64 @@ inherited AccountT: TAccountT
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
-    ExplicitWidth = 1044
-    ExplicitHeight = 101
-    Height = 101
-    Width = 1058
+    ExplicitWidth = 1144
+    ExplicitHeight = 60
+    Height = 60
+    Width = 1144
     object edtAccountNumber: TcxTextEdit
-      Left = 103
-      Top = 16
-      TabOrder = 0
+      Left = 991
+      Top = 70
+      TabOrder = 20
+      Visible = False
       OnKeyDown = edtAccountNumberKeyDown
       Width = 104
     end
     object edtPayNumber: TcxTextEdit
       Left = 103
-      Top = 43
-      TabOrder = 9
+      Top = 3
+      TabOrder = 2
       OnKeyDown = edtAccountNumberKeyDown
       Width = 104
     end
     object edtAccountDate: TcxDateEdit
-      Left = 231
-      Top = 16
+      Left = 1006
+      Top = 70
       Properties.DateButtons = [btnClear, btnNow, btnToday]
-      TabOrder = 1
+      TabOrder = 21
+      Visible = False
       OnKeyDown = edtAccountNumberKeyDown
       Width = 104
     end
     object edtPayDate: TcxDateEdit
       Left = 231
-      Top = 43
+      Top = 3
       Properties.DateButtons = [btnClear, btnNow, btnToday]
       Properties.UseNullString = True
-      TabOrder = 10
+      TabOrder = 3
       OnKeyDown = edtAccountNumberKeyDown
       Width = 104
     end
     object edtPaymentDate: TcxDateEdit
       Left = 103
-      Top = 71
+      Top = 31
       Properties.DateButtons = [btnClear, btnNow, btnToday]
       Properties.UseNullString = True
-      TabOrder = 18
+      TabOrder = 5
       OnKeyDown = edtAccountNumberKeyDown
       Width = 104
     end
     object edtPaymentDateE: TcxDateEdit
       Left = 231
-      Top = 71
+      Top = 31
       Properties.DateButtons = [btnClear, btnNow, btnToday]
       Properties.UseNullString = True
-      TabOrder = 19
+      TabOrder = 6
       OnKeyDown = edtAccountNumberKeyDown
       Width = 104
     end
     object edtAccountStatus: TcxLookupComboBox
-      Left = 714
-      Top = 16
+      Left = 392
+      Top = 3
       Properties.KeyFieldNames = 'AccountStatusID'
       Properties.ListColumns = <
         item
@@ -222,22 +256,22 @@ inherited AccountT: TAccountT
       Properties.ListOptions.ShowHeader = False
       Properties.ListSource = dsAccountStatus
       Properties.MaxLength = 256
-      TabOrder = 3
+      TabOrder = 4
       OnKeyDown = edtAccountNumberKeyDown
       Width = 146
     end
     object edtType: TcxComboBox
-      Left = 714
-      Top = 43
+      Left = 392
+      Top = 30
       Properties.Items.Strings = (
         #1042#1086#1079#1074#1088#1072#1090#1099)
-      TabOrder = 12
+      TabOrder = 7
       OnKeyDown = edtAccountNumberKeyDown
       Width = 146
     end
     object edtBuyer: ALookupEdit
-      Left = 424
-      Top = 16
+      Left = 907
+      Top = 0
       LookupConnection = DM.FDConnection
       LookupForm = 'TKontragentsT'
       LookupSQL = 'Select Name from tKontragents (nolock) where KontragentID = :ID'
@@ -261,13 +295,14 @@ inherited AccountT: TAccountT
       Properties.Images = IM.IL
       Properties.OnButtonClick = edtBuyerPropertiesButtonClick
       ShowHint = True
-      TabOrder = 2
+      TabOrder = 1
+      Visible = False
       OnKeyDown = edtAccountNumberKeyDown
       Width = 234
     end
     object edtSupplier: ALookupEdit
-      Left = 424
-      Top = 43
+      Left = 910
+      Top = 6
       LookupConnection = DM.FDConnection
       LookupForm = 'TKontragentsT'
       LookupSQL = 'Select Name from tKontragents (nolock) where KontragentID = :ID'
@@ -291,13 +326,14 @@ inherited AccountT: TAccountT
       Properties.Images = IM.IL
       Properties.OnButtonClick = edtBuyerPropertiesButtonClick
       ShowHint = True
-      TabOrder = 11
+      TabOrder = 16
+      Visible = False
       OnKeyDown = edtAccountNumberKeyDown
       Width = 234
     end
     object edtClient: ALookupEdit
-      Left = 424
-      Top = 71
+      Left = 910
+      Top = 3
       LookupConnection = DM.FDConnection
       LookupForm = 'TKontragentsT'
       LookupSQL = 'Select Name from tKontragents (nolock) where KontragentID = :ID'
@@ -321,93 +357,103 @@ inherited AccountT: TAccountT
       Properties.Images = IM.IL
       Properties.OnButtonClick = edtBuyerPropertiesButtonClick
       ShowHint = True
-      TabOrder = 20
+      TabOrder = 10
+      Visible = False
       OnKeyDown = edtAccountNumberKeyDown
       Width = 234
     end
     object btnFilterOk: TcxButton
-      Left = 866
-      Top = 16
+      Left = 544
+      Top = 3
       Width = 99
       Height = 25
       Hint = #1055#1088#1080#1084#1077#1085#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
       Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
       OptionsImage.ImageIndex = 5
       OptionsImage.Images = IM.IL
-      TabOrder = 4
+      TabOrder = 8
       OnClick = btnFilterOkClick
     end
     object btnFilterClear: TcxButton
-      Left = 866
-      Top = 43
+      Left = 544
+      Top = 30
       Width = 99
       Height = 25
       Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
       Caption = #1054#1090#1084#1077#1085#1080#1090#1100
       OptionsImage.ImageIndex = 2
       OptionsImage.Images = IM.IL
-      TabOrder = 13
+      TabOrder = 9
       OnClick = btnFilterClearClick
     end
     object cxLabel1: TcxLabel
-      Left = 44
-      Top = 18
+      Left = 1033
+      Top = 74
       Caption = #1057#1095#1077#1090' '#8470':'
+      Visible = False
     end
     object cxLabel2: TcxLabel
-      Left = 44
-      Top = 45
+      Left = 54
+      Top = 5
       Caption = #1055#1055' '#8470' :'
     end
     object cxLabel3: TcxLabel
       Left = 10
-      Top = 72
+      Top = 32
       Caption = #1044#1072#1090#1072' '#1086#1087#1083#1072#1090#1099' '#1089':'
     end
     object cxLabel4: TcxLabel
-      Left = 210
-      Top = 18
+      Left = 991
+      Top = 74
       Caption = #1086#1090':'
+      Visible = False
     end
     object cxLabel5: TcxLabel
       Left = 210
-      Top = 45
+      Top = 5
       Caption = #1086#1090':'
     end
     object cxLabel6: TcxLabel
       Left = 210
-      Top = 72
+      Top = 32
       Caption = #1087#1086':'
     end
     object cxLabel7: TcxLabel
-      Left = 344
-      Top = 17
+      Left = 825
+      Top = 0
       Caption = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1100':'
+      Visible = False
     end
     object cxLabel8: TcxLabel
-      Left = 344
-      Top = 45
+      Left = 831
+      Top = 6
       Caption = #1055#1086#1089#1090#1072#1074#1097#1080#1082':'
+      Visible = False
     end
     object cxLabel9: TcxLabel
-      Left = 344
-      Top = 72
+      Left = 843
+      Top = 6
       Caption = #1050#1083#1080#1077#1085#1090':'
+      Visible = False
     end
     object cxLabel10: TcxLabel
-      Left = 664
-      Top = 17
+      Left = 342
+      Top = 4
       Caption = #1057#1090#1072#1090#1091#1089':'
     end
     object cxLabel11: TcxLabel
-      Left = 666
-      Top = 44
+      Left = 344
+      Top = 31
       Caption = #1058#1080#1087':'
     end
   end
   inherited dxPanel1: TdxPanel
-    Width = 1058
-    ExplicitWidth = 1044
+    Width = 1144
+    ExplicitWidth = 1144
+    inherited btnAdd: TcxButton
+      DropDownMenu = AddMenu
+      Kind = cxbkOfficeDropDown
+    end
     object cxButton5: TcxButton
       AlignWithMargins = True
       Left = 403
@@ -431,10 +477,28 @@ inherited AccountT: TAccountT
       TabOrder = 4
     end
   end
+  object dxPanel2: TdxPanel [4]
+    Left = 0
+    Top = 545
+    Width = 1144
+    Height = 35
+    Align = alBottom
+    TabOrder = 4
+    object lblSum: TcxLabel
+      AlignWithMargins = True
+      Left = 1089
+      Top = 5
+      Margins.Top = 5
+      Margins.Right = 10
+      Margins.Bottom = 5
+      Align = alRight
+      Caption = #1048#1090#1086#1075#1086':'
+    end
+  end
   inherited ActionList: TActionList
     Tag = 20
-    Left = 543
-    Top = 198
+    Left = 458
+    Top = 247
     object actClone: TAction
       Tag = 1
       Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1087#1086' '#1086#1073#1088#1072#1079#1094#1091
@@ -460,6 +524,8 @@ inherited AccountT: TAccountT
     end
   end
   inherited PopupMenu: TPopupMenu
+    Left = 540
+    Top = 305
     inherited N2: TMenuItem
       Action = nil
       OnClick = nil
@@ -1279,6 +1345,13 @@ inherited AccountT: TAccountT
       end>
   end
   inherited Query: TFDQuery
+    BeforePost = QueryBeforePost
+    UpdateOptions.AssignedValues = [uvEDelete, uvEUpdate, uvCountUpdatedRecords, uvCheckUpdatable]
+    UpdateOptions.EnableDelete = False
+    UpdateOptions.EnableUpdate = False
+    UpdateOptions.CountUpdatedRecords = False
+    UpdateOptions.CheckUpdatable = False
+    UpdateObject = UpdateSQL
     SQL.Strings = (
       'Select a.AccountID'
       '      ,isnull(a.PaymentDate, a.AccountDate) AS PaymentDate     '
@@ -1296,6 +1369,9 @@ inherited AccountT: TAccountT
       '      ,ks.Name        SupplieName'
       '      ,st.AccountStatusID'
       '      ,st.Name StatusName'
+      '      ,a.BuyerID'
+      '      ,a.ClientID'
+      '      ,a.SupplierID '
       '  from tAccounts a (nolock)'
       '  left join tKontragents kb (nolock)'
       '         on kb.KontragentID = a.BuyerID'
@@ -1327,8 +1403,8 @@ inherited AccountT: TAccountT
       ' '
       ' !PaymentDateB'
       ' !PaymentDateE')
-    Left = 764
-    Top = 160
+    Left = 738
+    Top = 316
     MacroData = <
       item
         Value = Null
@@ -1377,23 +1453,20 @@ inherited AccountT: TAccountT
     object QueryPaymentDate: TSQLTimeStampField
       FieldName = 'PaymentDate'
       Origin = 'PaymentDate'
+      Required = True
     end
     object QueryAccountNumber: TStringField
       FieldName = 'AccountNumber'
       Origin = 'AccountNumber'
+      Required = True
       Size = 256
     end
     object QueryPaymentAmount: TIntegerField
       Alignment = taCenter
       FieldName = 'PaymentAmount'
       Origin = 'PaymentAmount'
-      ReadOnly = True
+      Required = True
       DisplayFormat = '###,##0'
-    end
-    object QueryBuyerName: TStringField
-      FieldName = 'BuyerName'
-      Origin = 'BuyerName'
-      Size = 256
     end
     object QueryBuyerDiscount: TCurrencyField
       Alignment = taCenter
@@ -1401,21 +1474,11 @@ inherited AccountT: TAccountT
       Origin = 'BuyerDiscount'
       DisplayFormat = '##0.00%'
     end
-    object QueryClientName: TStringField
-      FieldName = 'ClientName'
-      Origin = 'ClientName'
-      Size = 256
-    end
     object QueryClientDiscount: TCurrencyField
       Alignment = taCenter
       FieldName = 'ClientDiscount'
       Origin = 'ClientDiscount'
       DisplayFormat = '##0.00%'
-    end
-    object QuerySupplieName: TStringField
-      FieldName = 'SupplieName'
-      Origin = 'SupplieName'
-      Size = 256
     end
     object QueryAccountStatusID: TFMTBCDField
       FieldName = 'AccountStatusID'
@@ -1437,10 +1500,39 @@ inherited AccountT: TAccountT
       Precision = 15
       Size = 0
     end
+    object QueryaBuyerID: TFMTBCDField
+      FieldName = 'BuyerID'
+      Required = True
+      Size = 18
+    end
+    object QuerySupplierID: TFMTBCDField
+      FieldName = 'SupplierID'
+      Required = True
+    end
+    object QueryClientID: TFMTBCDField
+      FieldName = 'ClientID'
+      Required = True
+    end
+    object QueryBuyerName: TStringField
+      FieldName = 'BuyerName'
+      Size = 256
+    end
+    object QuerySupplieName: TStringField
+      FieldName = 'SupplieName'
+      Size = 256
+    end
+    object QueryClientName: TStringField
+      FieldName = 'ClientName'
+      Size = 256
+    end
+  end
+  inherited DataSource: TDataSource
+    Left = 659
+    Top = 311
   end
   inherited cxStyleRepository: TcxStyleRepository
-    Left = 154
-    Top = 160
+    Left = 177
+    Top = 242
     PixelsPerInch = 96
     object StylePaid: TcxStyle
       AssignedValues = [svFont]
@@ -1494,5 +1586,136 @@ inherited AccountT: TAccountT
     DataSet = qAccountStatus
     Left = 392
     Top = 341
+  end
+  object UpdateSQL: TFDUpdateSQL
+    InsertSQL.Strings = (
+      ' declare @R          int = 0'
+      '        ,@AccountID  numeric(15,0)'
+      '        ,@M          nvarchar(1024)'
+      ''
+      '  exec @R = AccountNumberCheck'
+      '             @AccountNumber = :New_AccountNumber'
+      '            ,@SupplierID    = :New_SupplierID'
+      ''
+      ''
+      '  if @R > 0'
+      '  begin'
+      '    select @M = dbo.GetRetMsg(@R)'
+      ''
+      '    RAISERROR (@M, 16, 1);'
+      '  end'
+      ''
+      '  exec @R = AccountInsert'
+      '              @AccountID         = @AccountID    out'
+      '             ,@PaymentDate       = null'
+      '             ,@PaymentAmount     = null'
+      '             ,@AccountNumber     = :NEW_AccountNumber'
+      
+        '             ,@AccountDate       = :NEW_PaymentDate --AccountDat' +
+        'e'
+      
+        '             ,@AccountAmount     = :NEW_PaymentAmount --AccountA' +
+        'mount'
+      '             ,@BuyerID           = :NEW_BuyerID'
+      '             ,@BuyerDiscount     = :NEW_BuyerDiscount'
+      '             ,@SupplierID        = :NEW_SupplierID'
+      '             ,@ClientID          = :NEW_ClientID'
+      '             ,@ClientDiscount    = :NEW_ClientDiscount'
+      '             ,@ParentID          = null'
+      '             ,@IsRefund          = null'
+      '             ,@AccountStatusID   = :NEW_AccountStatusID'
+      '             ,@Comment           = '#39#39
+      '             ,@Phone             = '#39#39
+      '             ,@Mail              = '#39#39
+      '             ,@PayNumber         = '#39#39
+      '             ,@PayDate           = '#39#39
+      ''
+      'select @R as R'
+      ''
+      ''
+      ''
+      'Select @AccountID  as AccountID')
+    FetchRowSQL.Strings = (
+      'Select '
+      '       a.AccountID'
+      '      ,isnull(a.PaymentDate, a.AccountDate) AS PaymentDate     '
+      '      ,a.AccountNumber'
+      '      ,case '
+      
+        '         when isnull(a.PaymentAmount, 0) = 0 then a.AccountAmoun' +
+        't '
+      '         else a.PaymentAmount'
+      '       end PaymentAmount'
+      '      ,kb.Name        BuyerName'
+      '      ,a.BuyerDiscount'
+      '      ,kC.Name        ClientName'
+      '      ,a.ClientDiscount'
+      '      ,ks.Name        SupplieName'
+      '      ,st.AccountStatusID'
+      '      ,st.Name StatusName'
+      '      ,a.BuyerID'
+      '      ,a.ClientID'
+      '      ,a.SupplierID'
+      '  from tAccounts a (nolock)'
+      '  left join tKontragents kb (nolock)'
+      '         on kb.KontragentID = a.BuyerID'
+      '  left join tKontragents kC (nolock)'
+      '         on kC.KontragentID = a.ClientID'
+      '  left join tKontragents ks (nolock)'
+      '         on ks.KontragentID = a.SupplierID'
+      '  --left join tAccountStatus st (nolock)'
+      '     --    on st.AccountStatusID = a.AccountStatusID'
+      ' where  a.AccountID =  :NEW_AccountID')
+    Left = 820
+    Top = 312
+  end
+  object dsBuyer: TDataSource
+    DataSet = qBuyer
+    Left = 545
+    Top = 382
+  end
+  object qBuyer: TFDQuery
+    Connection = DM.FDConnection
+    SQL.Strings = (
+      'SELECT distinct'
+      '       KontragentID,'
+      '       Name '
+      '  FROM [tKontragents] (nolock)'
+      ' where KontragentTypeID = 2 '
+      '   and isnull(IsPartner, 0) = 0')
+    Left = 499
+    Top = 364
+  end
+  object dsClient: TDataSource
+    DataSet = qClient
+    Left = 699
+    Top = 410
+  end
+  object qClient: TFDQuery
+    Connection = DM.FDConnection
+    SQL.Strings = (
+      'SELECT distinct'
+      '       KontragentID,'
+      '       Name '
+      '  FROM [tKontragents] (nolock)'
+      ' where KontragentTypeID = 1')
+    Left = 639
+    Top = 397
+  end
+  object dsSupplier: TDataSource
+    DataSet = qSupplier
+    Left = 836
+    Top = 422
+  end
+  object qSupplier: TFDQuery
+    Connection = DM.FDConnection
+    SQL.Strings = (
+      'SELECT distinct'
+      '       KontragentID,'
+      '       Name '
+      '  FROM [tKontragents] (nolock)'
+      ' where KontragentTypeID = 3')
+    Left = 776
+    Top = 409
   end
 end

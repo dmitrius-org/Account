@@ -31,14 +31,14 @@ as
 
   DECLARE @ID TABLE (ID numeric(18,0));
 
-  if exists (select 1 
-               from tAccounts a (nolock)
-              where a.SupplierID    = @SupplierID
-                and a.AccountNumber = @AccountNumber)
-  begin
-    set @r =  181 --   'Ошибка! Счет заданным номером существует.'
-    goto exit_
-  end
+  --if exists (select 1 
+  --             from tAccounts a (nolock)
+  --            where a.SupplierID    = @SupplierID
+  --              and a.AccountNumber = @AccountNumber)
+  --begin
+  --  set @r =  181 --   'Ошибка! Счет заданным номером существует.'
+  --  goto exit_
+  --end
     
   BEGIN TRY 
       Begin tran        
@@ -146,16 +146,6 @@ create proc AccountEdit
 as
   declare @r                 int = 0
 
-  if exists (select 1 
-               from tAccounts a (nolock)
-              where a.SupplierID    = @SupplierID
-                and a.AccountNumber = @AccountNumber
-                and a.AccountID     <> @AccountID)
-  begin
-    set @r =  181 --   'Ошибка! Счет заданным номером существует.'
-    goto exit_
-  end
-
 
   BEGIN TRY 
 
@@ -240,4 +230,50 @@ exit_:
 return @r
 go
 grant exec on AccountDelete to public
+go
+
+
+if OBJECT_ID('AccountNumberCheck') is not null
+    drop proc AccountNumberCheck
+/*
+  AccountNumberCheck - проверка наличия счета 
+*/
+go
+create proc AccountNumberCheck
+              @AccountID         numeric(15,0)  = null --  
+             ,@AccountNumber     varchar(256)  
+             ,@SupplierID        numeric(15, 0) 
+
+as
+  declare @r                 int = 0
+
+  if @AccountID is null
+  begin
+      if exists (select 1 
+                   from tAccounts a (nolock)
+                  where a.SupplierID    = @SupplierID
+                    and a.AccountNumber = @AccountNumber)
+      begin
+        set @r =  181 --   'Ошибка! Счет заданным номером существует.'
+        goto exit_
+      end
+  end  
+  else
+  begin
+      if exists (select 1 
+                   from tAccounts a (nolock)
+                  where a.SupplierID    = @SupplierID
+                    and a.AccountNumber = @AccountNumber
+                    and a.AccountID     <> @AccountID)
+      begin
+        set @r =  181 --   'Ошибка! Счет заданным номером существует.'
+        goto exit_
+      end
+  end
+
+exit_:
+
+return @r
+go
+grant exec on AccountNumberCheck to public
 go

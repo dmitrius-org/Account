@@ -11,20 +11,18 @@ uses
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, Vcl.StdCtrls, cxButtons, uLookupEdit, cxTextEdit,
-  cxMaskEdit, cxDropDownEdit, cxCalendar, dxPanel, System.Skia, cxCheckBox,
-  Vcl.Skia;
+  cxMaskEdit, cxDropDownEdit, cxCalendar, dxPanel, cxCheckBox, cxLabel;
 
 type
   TUserF = class(TBaseFormDBF)
     edtLogin: TcxTextEdit;
-    SkLabel1: TSkLabel;
     edtName: TcxTextEdit;
-    SkLabel2: TSkLabel;
     IsAdmin: TcxCheckBox;
-    SkLabel3: TSkLabel;
     IsBlock: TcxCheckBox;
     edtPassword: TcxTextEdit;
-    lblPassword: TSkLabel;
+    cxLabel5: TcxLabel;
+    cxLabel1: TcxLabel;
+    lblPassword: TcxLabel;
     procedure btnOkClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private

@@ -140,6 +140,9 @@ begin
   edtPartner.Clear;
   edtKontragentType.Clear;
   edtINN.Clear;
+
+  TableView.DataController.Filter.Clear;
+
   GridFilter;
 end;
 

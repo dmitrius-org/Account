@@ -77,6 +77,9 @@ procedure TExpenseItemsT.btnFilterClearClick(Sender: TObject);
 begin
   inherited;
   edtName.Clear;
+
+  TableView.DataController.Filter.Clear;
+
   DataLoad;
 end;
 

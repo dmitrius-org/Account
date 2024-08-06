@@ -78,6 +78,8 @@ begin
   edtBuyer.Clear;
   edtSupplier.Clear;
 
+  TableView.DataController.Filter.Clear;
+
   DataLoad;
 end;
 

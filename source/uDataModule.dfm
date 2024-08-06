@@ -94,8 +94,8 @@ object DM: TDM
   end
   object dsKontragent: TDataSource
     DataSet = qKontragent
-    Left = 500
-    Top = 296
+    Left = 534
+    Top = 337
   end
   object qKontragent: TFDQuery
     Connection = FDConnection
@@ -123,9 +123,6 @@ object DM: TDM
     Top = 280
   end
   object cxLocalizer1: TcxLocalizer
-    Active = True
-    FileName = 'C:\GitHub\Account\project\Win32\Debug\RusDevU.ini'
-    Locale = 1049
     Left = 63
     Top = 224
   end

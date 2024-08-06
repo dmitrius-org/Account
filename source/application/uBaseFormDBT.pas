@@ -38,6 +38,8 @@ type
     btnEdit: TcxButton;
     btnAdd: TcxButton;
     btnShow: TcxButton;
+    GridFilterRow: TcxStyle;
+    GridFilterRowDef: TcxStyle;
     procedure FormShow(Sender: TObject);
     procedure actAddExecute(Sender: TObject);
     procedure actEditExecute(Sender: TObject);
@@ -56,6 +58,11 @@ type
     procedure TableViewCellDblClick(Sender: TcxCustomGridTableView;
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
       AShift: TShiftState; var AHandled: Boolean);
+    procedure TableViewStylesGetContentStyle(Sender: TcxCustomGridTableView;
+      ARecord: TcxCustomGridRecord; AItem: TcxCustomGridTableItem;
+      var AStyle: TcxStyle);
+    procedure TableViewStylesGetSelectionStyle(Sender: TcxCustomGridTableView;
+      ARecord: TcxCustomGridRecord; AItem: TObject; var AStyle: TcxStyle);
   private
     /// <summary>
     ///  SaveGridState - сохранение настроек таблицы
@@ -220,7 +227,6 @@ procedure TBaseFormDBT.SelectLookupKey;
 begin
   ID := Query.FieldByName(TableView.DataController.KeyFieldNames).Value;
   Self.ModalResult := mrOk;
-//  Self.Close;
 end;
 
 procedure TBaseFormDBT.SetActionEnabled;
@@ -251,8 +257,7 @@ begin
 //   AProperties.Add('FormHeight');
 end;
 
-procedure TBaseFormDBT.TableViewGetStoredPropertyValue(
-  Sender: TcxCustomGridView; const AName: string; var AValue: Variant);
+procedure TBaseFormDBT.TableViewGetStoredPropertyValue(Sender: TcxCustomGridView; const AName: string; var AValue: Variant);
 begin
 //  if AName = 'FormWidth' then
 //    if Sender is TcxCustomGridView then
@@ -289,6 +294,24 @@ begin
 //      Self.Height := AValue;
 //      Exit;
 //    end;
+end;
+
+procedure TBaseFormDBT.TableViewStylesGetContentStyle(
+  Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
+  AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
+begin
+  if (ARecord is TcxGridFilterRow) then
+    AStyle := GridFilterRow;
+end;
+
+procedure TBaseFormDBT.TableViewStylesGetSelectionStyle(
+  Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord; AItem: TObject;
+  var AStyle: TcxStyle);
+begin
+ if not (ARecord is TcxGridFilterRow) then    //TcxGridNewItemRow
+    AStyle := GridRowSelect
+ else
+   AStyle := GridFilterRowDef;
 end;
 
 end.

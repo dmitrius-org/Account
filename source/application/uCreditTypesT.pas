@@ -56,6 +56,8 @@ uses
 procedure TCreditTypesT.btnFilterClearClick(Sender: TObject);
 begin
   edtName.Clear;
+  TableView.DataController.Filter.Clear;
+
   DataLoad;
 end;
 

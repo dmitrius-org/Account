@@ -19,7 +19,7 @@ inherited DolgT: TDolgT
     Top = 102
     Width = 772
     Height = 412
-    ActivePage = tabBuyer
+    ActivePage = TabClient
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -144,7 +144,7 @@ inherited DolgT: TDolgT
             end>
           Properties.Images = IM.IL
           ShowHint = True
-          TabOrder = 2
+          TabOrder = 3
           OnKeyDown = edtBuyerKeyDown
           Width = 234
         end
@@ -157,7 +157,7 @@ inherited DolgT: TDolgT
           Caption = #1054#1090#1084#1077#1085#1080#1090#1100
           OptionsImage.ImageIndex = 2
           OptionsImage.Images = IM.IL
-          TabOrder = 6
+          TabOrder = 7
           OnClick = btnFilterClearClick
         end
         object btnFilterOk: TcxButton
@@ -169,7 +169,7 @@ inherited DolgT: TDolgT
           Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
           OptionsImage.ImageIndex = 5
           OptionsImage.Images = IM.IL
-          TabOrder = 3
+          TabOrder = 4
           OnClick = btnFilterOkClick
         end
         object edtPartner: ALookupEdit
@@ -197,7 +197,7 @@ inherited DolgT: TDolgT
             end>
           Properties.Images = IM.IL
           ShowHint = True
-          TabOrder = 5
+          TabOrder = 6
           OnKeyDown = edtPartnerKeyDown
           Width = 234
         end
@@ -220,13 +220,27 @@ inherited DolgT: TDolgT
         end
         object cxLabel4: TcxLabel
           Left = 337
-          Top = 13
+          Top = 11
           Caption = #1055#1086#1082#1091#1087#1072#1090#1077#1083#1100':'
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -13
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = []
+          Style.IsFontAssigned = True
         end
         object cxLabel5: TcxLabel
-          Left = 355
-          Top = 39
+          Left = 351
+          Top = 38
           Caption = #1055#1072#1088#1090#1085#1077#1088':'
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -13
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = []
+          Style.IsFontAssigned = True
         end
       end
     end
@@ -249,16 +263,6 @@ inherited DolgT: TDolgT
         ParentFont = False
         ShowCaption = False
         TabOrder = 0
-        object SkLabel13: TSkLabel
-          Left = 332
-          Top = 13
-          Width = 48
-          Height = 19
-          Words = <
-            item
-              Caption = #1050#1083#1080#1077#1085#1090':'
-            end>
-        end
         object cxButton3: TcxButton
           Left = 656
           Top = 38
@@ -268,7 +272,7 @@ inherited DolgT: TDolgT
           Caption = #1054#1090#1084#1077#1085#1080#1090#1100
           OptionsImage.ImageIndex = 2
           OptionsImage.Images = IM.IL
-          TabOrder = 3
+          TabOrder = 4
           OnClick = cxButton3Click
         end
         object cxButton4: TcxButton
@@ -280,7 +284,7 @@ inherited DolgT: TDolgT
           Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
           OptionsImage.ImageIndex = 5
           OptionsImage.Images = IM.IL
-          TabOrder = 2
+          TabOrder = 3
           OnClick = cxButton4Click
         end
         object cxButton6: TcxButton
@@ -317,9 +321,21 @@ inherited DolgT: TDolgT
             end>
           Properties.Images = IM.IL
           ShowHint = True
-          TabOrder = 1
+          TabOrder = 2
           OnKeyDown = edtClientKeyDown
           Width = 234
+        end
+        object cxLabel6: TcxLabel
+          Left = 347
+          Top = 11
+          Caption = #1050#1083#1080#1077#1085#1090':'
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -13
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = []
+          Style.IsFontAssigned = True
         end
       end
       object GridClient: TcxGrid

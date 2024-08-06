@@ -12,24 +12,24 @@ uses
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, cxButtons,
   cxButtonEdit, uLookupEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit, cxCalendar,
-  dxPanel, System.Skia, cxCheckBox, Vcl.Skia, cxMemo, cxCurrencyEdit;
+  dxPanel, cxCheckBox, cxMemo, cxCurrencyEdit, cxLabel;
 
 type
   TCreditsF = class(TBaseFormDBF)
-    SkLabel7: TSkLabel;
-    SkLabel8: TSkLabel;
-    SkLabel14: TSkLabel;
     edtOperDate: TcxDateEdit;
     edtAmount: TcxCurrencyEdit;
     edtComment: TcxMemo;
-    edtCreditL: TSkLabel;
     edtCredit: ALookupEdit;
-    SkLabel9: TSkLabel;
     edtPrc: TcxCurrencyEdit;
-    SkLabel1: TSkLabel;
     edtPayAmount: TcxCurrencyEdit;
-    SkLabel2: TSkLabel;
     edtCloseDate: TcxDateEdit;
+    cxLabel1: TcxLabel;
+    cxLabel2: TcxLabel;
+    cxLabel3: TcxLabel;
+    cxLabel4: TcxLabel;
+    cxLabel5: TcxLabel;
+    cxLabel6: TcxLabel;
+    cxLabel7: TcxLabel;
     procedure btnOkClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private

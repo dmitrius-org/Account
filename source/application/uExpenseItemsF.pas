@@ -10,18 +10,18 @@ uses
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, cxButtons, dxPanel,
-  System.Skia, cxContainer, cxEdit, cxTextEdit, Vcl.Skia, cxCheckBox,
+  cxContainer, cxEdit, cxTextEdit, cxCheckBox,
   cxMaskEdit, cxButtonEdit, cxDBEdit, dxDBSparkline, dxSparkline, dxTokenEdit,
   dxDBTokenEdit, dxCoreGraphics, uLookupEdit, Vcl.ComCtrls, dxCore, cxDateUtils,
-  cxDropDownEdit, cxCalendar;
+  cxDropDownEdit, cxCalendar, cxLabel;
 
 type
   TExpenseItemsF = class(TBaseFormDBF)
-    SkLabel1: TSkLabel;
     edtName: TcxTextEdit;
     cbIsActive: TcxCheckBox;
-    SkLabel2: TSkLabel;
     edtExpenseGroup: ALookupEdit;
+    cxLabel1: TcxLabel;
+    cxLabel2: TcxLabel;
     procedure btnOkClick(Sender: TObject);
   private
     { Private declarations }

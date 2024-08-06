@@ -14,8 +14,8 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.ExtCtrls, cxContainer,
-  Vcl.StdCtrls, cxButtons, cxTextEdit, cxMaskEdit,
-  uLookupEdit, cxCurrencyEdit, cxLabel, System.Skia, Vcl.Skia;
+  Vcl.StdCtrls, cxButtons, cxTextEdit, cxMaskEdit,uLookupEdit, cxCurrencyEdit,
+  cxLabel;
 
 type
   TDolgT = class(TBaseFormT)
@@ -60,7 +60,6 @@ type
     dsClient: TDataSource;
     actHistoryClient: TAction;
     edtClient: ALookupEdit;
-    SkLabel13: TSkLabel;
     qClientClientID: TFMTBCDField;
     qClientClientName: TStringField;
     qClientbalance: TCurrencyField;
@@ -85,6 +84,7 @@ type
     cxLabel3: TcxLabel;
     cxLabel4: TcxLabel;
     cxLabel5: TcxLabel;
+    cxLabel6: TcxLabel;
     procedure actRefreshBuyerExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnFilterClearClick(Sender: TObject);

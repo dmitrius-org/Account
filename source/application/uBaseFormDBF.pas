@@ -14,7 +14,7 @@ uses
   cxGridCustomView, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
   cxGrid, cxGeometry, dxFramedControl, cxContainer, Vcl.Menus, Vcl.StdCtrls,
   cxButtons, cxTextEdit, cxMaskEdit, cxButtonEdit, cxDBEdit, dxPanel, cxCheckBox,
-  System.Skia, Vcl.Skia, dxSkinBasic, Vcl.ComCtrls, dxCore, cxDateUtils,
+  dxSkinBasic, Vcl.ComCtrls, dxCore, cxDateUtils,
   dxCoreGraphics, uLookupEdit, cxDropDownEdit, cxCalendar;
 
 type
@@ -66,7 +66,7 @@ procedure TBaseFormDBF.FormShow(Sender: TObject);
 begin
   inherited;
   case FormAction of
-    acInsert, acReportCreate, acAddDebet:
+    acInsert, acReportCreate, acAddDebet, acClone:
     begin
       btnOk.Caption := ' Добавить';
     end;

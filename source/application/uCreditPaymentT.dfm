@@ -13,9 +13,7 @@ inherited CreditPaymentT: TCreditPaymentT
     Top = 146
     Width = 880
     Height = 344
-    ExplicitTop = 155
     ExplicitWidth = 880
-    ExplicitHeight = 335
     inherited TableView: TcxGridDBTableView
       DataController.KeyFieldNames = 'TransactionID'
       object TableViewTransactionID: TcxGridDBColumn
@@ -47,7 +45,6 @@ inherited CreditPaymentT: TCreditPaymentT
   end
   inherited FilterPanel: TcxGroupBox
     Visible = True
-    ExplicitTop = 96
     ExplicitWidth = 880
     ExplicitHeight = 50
     Height = 50
@@ -142,15 +139,6 @@ inherited CreditPaymentT: TCreditPaymentT
   inherited dxPanel1: TdxPanel
     Width = 880
     ExplicitWidth = 880
-    inherited btnDel: TcxButton
-      ExplicitLeft = 303
-    end
-    inherited btnEdit: TcxButton
-      ExplicitLeft = 203
-    end
-    inherited btnAdd: TcxButton
-      ExplicitLeft = 103
-    end
   end
   inherited ActionList: TActionList
     Tag = 51

@@ -16,7 +16,7 @@ uses
   cxGridDBTableView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, dxCore,
   cxDateUtils, Vcl.StdCtrls, cxButtons, cxDropDownEdit, cxCalendar, cxTextEdit,
   cxMaskEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
-  cxLabel, System.Skia, Vcl.Skia;
+  cxLabel, cxGeometry, dxFramedControl, dxPanel;
 
 type
   TStatisticT = class(TBaseFormDBT)

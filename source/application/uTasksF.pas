@@ -12,21 +12,20 @@ uses
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, cxButtons,
   cxButtonEdit, uLookupEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit, cxCalendar,
-  dxPanel, System.Skia, Vcl.Skia, cxLookupEdit, cxDBLookupEdit,
-  cxDBLookupComboBox, cxMemo;
+  dxPanel, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, cxMemo, cxLabel;
 
 type
   TTasksF = class(TBaseFormDBF)
-    SkLabel1: TSkLabel;
     edtCreateDate: TcxDateEdit;
-    SkLabel2: TSkLabel;
-    SkLabel3: TSkLabel;
     edtDueDate: TcxDateEdit;
-    SkLabel4: TSkLabel;
-    SkLabel5: TSkLabel;
     edtComment: TcxMemo;
     edtManager: TcxLookupComboBox;
     edtTaskStatus: TcxLookupComboBox;
+    cxLabel1: TcxLabel;
+    cxLabel2: TcxLabel;
+    cxLabel3: TcxLabel;
+    cxLabel4: TcxLabel;
+    cxLabel5: TcxLabel;
     procedure btnOkClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private

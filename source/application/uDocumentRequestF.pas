@@ -11,27 +11,21 @@ uses
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, Vcl.StdCtrls, cxButtons, uLookupEdit, cxTextEdit,
-  cxMaskEdit, cxDropDownEdit, cxCalendar, dxPanel, System.Skia, Vcl.Skia,
+  cxMaskEdit, cxDropDownEdit, cxCalendar, dxPanel,
   cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator,
   dxDateRanges, dxScrollbarAnnotations, cxDBData, cxGridLevel,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
   cxGridCustomView, cxGrid, Vcl.ToolWin, System.Actions, Vcl.ActnList,
-  System.ImageList, Vcl.ImgList, cxImageList, Vcl.ExtCtrls;
+  System.ImageList, Vcl.ImgList, cxImageList, Vcl.ExtCtrls, cxLabel;
 
 type
   TDocumentRequestF = class(TBaseFormDBF)
     edtBuyer: ALookupEdit;
     edtSupplier: ALookupEdit;
-    SkLabel12: TSkLabel;
-    SkLabel8: TSkLabel;
     edtAccountDate: TcxDateEdit;
-    SkLabel5: TSkLabel;
     edtAccountNumber: TcxTextEdit;
-    SkLabel1: TSkLabel;
     edtPhone: TcxTextEdit;
-    SkLabel2: TSkLabel;
     edtMail: TcxTextEdit;
-    SkLabel3: TSkLabel;
     cxImageList: TcxImageList;
     ActionList: TActionList;
     acCommentAdd: TAction;
@@ -64,6 +58,12 @@ type
     ToolButton3: TToolButton;
     ToolButton4: TToolButton;
     ToolButton5: TToolButton;
+    cxLabel1: TcxLabel;
+    cxLabel2: TcxLabel;
+    cxLabel3: TcxLabel;
+    cxLabel4: TcxLabel;
+    cxLabel5: TcxLabel;
+    cxLabel6: TcxLabel;
     procedure btnOkClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure acCommentAddExecute(Sender: TObject);

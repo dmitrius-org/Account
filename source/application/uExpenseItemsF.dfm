@@ -6,30 +6,10 @@ inherited ExpenseItemsF: TExpenseItemsF
   ExplicitWidth = 627
   ExplicitHeight = 236
   TextHeight = 17
-  object SkLabel1: TSkLabel [0]
-    Left = 16
-    Top = 55
-    Width = 100
-    Height = 19
-    Words = <
-      item
-        Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
-      end>
-  end
-  object SkLabel2: TSkLabel [1]
-    Left = 16
-    Top = 20
-    Width = 48
-    Height = 19
-    Words = <
-      item
-        Caption = #1043#1088#1091#1087#1087#1072':'
-      end>
-  end
   inherited Panel: TdxPanel
     Top = 151
     Width = 611
-    TabOrder = 3
+    TabOrder = 5
     ExplicitTop = 151
     ExplicitWidth = 611
     inherited dxPanel1: TdxPanel
@@ -48,23 +28,23 @@ inherited ExpenseItemsF: TExpenseItemsF
       ExplicitLeft = 504
     end
   end
-  object edtName: TcxTextEdit [3]
-    Left = 122
+  object edtName: TcxTextEdit [1]
+    Left = 131
     Top = 55
     Properties.MaxLength = 255
-    TabOrder = 1
+    TabOrder = 3
     TextHint = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077' '#1075#1088#1091#1087#1087#1099' '#1089#1090#1072#1090#1100#1080' '#1088#1072#1089#1093#1086#1076#1086#1074
-    Width = 473
+    Width = 464
   end
-  object cbIsActive: TcxCheckBox [4]
-    Left = 122
+  object cbIsActive: TcxCheckBox [2]
+    Left = 131
     Top = 95
     Caption = #1044#1077#1081#1089#1090#1074#1091#1077#1090
     Style.TransparentBorder = False
-    TabOrder = 2
+    TabOrder = 4
   end
-  object edtExpenseGroup: ALookupEdit [5]
-    Left = 122
+  object edtExpenseGroup: ALookupEdit [3]
+    Left = 131
     Top = 16
     LookupConnection = DM.FDConnection
     LookupForm = 'TExpenseGroupsT'
@@ -89,9 +69,33 @@ inherited ExpenseItemsF: TExpenseItemsF
       end>
     Properties.Images = IM.IL
     ShowHint = True
-    TabOrder = 0
+    TabOrder = 1
     TextHint = #1042#1099#1073#1077#1088#1080#1090#1077' '#1075#1088#1091#1087#1087#1091
-    Width = 473
+    Width = 464
+  end
+  object cxLabel1: TcxLabel [4]
+    Left = 8
+    Top = 54
+    Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077':'
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -15
+    Style.Font.Name = 'Segoe UI'
+    Style.Font.Style = []
+    Style.IsFontAssigned = True
+  end
+  object cxLabel2: TcxLabel [5]
+    Left = 8
+    Top = 15
+    Caption = #1043#1088#1091#1087#1087#1072':'
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -15
+    Style.Font.Name = 'Segoe UI'
+    Style.Font.Style = []
+    Style.IsFontAssigned = True
   end
   inherited FDQuery: TFDQuery
     Left = 556

@@ -9,15 +9,14 @@ uses
   dxFramedControl, Vcl.Menus, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, cxButtons, dxPanel,
-  System.Skia, cxContainer, cxEdit, cxTextEdit, Vcl.Skia, Vcl.ComCtrls, dxCore,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, cxButtons, dxPanel, cxContainer, cxEdit, cxTextEdit, Vcl.ComCtrls, dxCore,
   cxDateUtils, dxCoreGraphics, cxButtonEdit, uLookupEdit, cxMaskEdit,
-  cxDropDownEdit, cxCalendar;
+  cxDropDownEdit, cxCalendar, cxLabel;
 
 type
   TCreditTypesF = class(TBaseFormDBF)
-    SkLabel1: TSkLabel;
     edtName: TcxTextEdit;
+    cxLabel1: TcxLabel;
     procedure btnOkClick(Sender: TObject);
   private
     { Private declarations }
