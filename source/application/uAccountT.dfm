@@ -64,9 +64,7 @@ inherited AccountT: TAccountT
       OnEditing = TableViewEditing
       OnEditKeyDown = TableViewEditKeyDown
       OnSelectionChanged = TableViewSelectionChanged
-      DataController.Filter.OnChanged = TableViewDataControllerFilterChanged
       DataController.KeyFieldNames = 'AccountID'
-      DataController.Summary.DefaultGroupSummaryItems.OnSummary = TableViewDataControllerSummaryDefaultGroupSummaryItemsSummary
       DataController.Summary.FooterSummaryItems.OnSummary = TableViewDataControllerSummaryFooterSummaryItemsSummary
       DataController.Summary.FooterSummaryItems = <
         item
@@ -96,6 +94,7 @@ inherited AccountT: TAccountT
       OptionsView.FooterAutoHeight = True
       OptionsView.FooterMultiSummaries = True
       OptionsView.IndicatorWidth = 25
+      RowLayout.SmartCellNavigation = True
       Styles.Selection = GridRowSelect
       object TableViewAccountID: TcxGridDBColumn
         Caption = #1048#1076#1077#1085#1090#1080#1092#1080#1082#1072#1090#1086#1088
@@ -108,7 +107,6 @@ inherited AccountT: TAccountT
         DataBinding.FieldName = 'PaymentDate'
         PropertiesClassName = 'TcxDateEditProperties'
         Properties.ValidationOptions = [evoRaiseException, evoShowErrorIcon, evoAllowLoseFocus]
-        Properties.OnValidate = TableViewPaymentDatePropertiesValidate
         HeaderAlignmentHorz = taCenter
         Width = 112
       end
@@ -197,7 +195,7 @@ inherited AccountT: TAccountT
     object edtAccountNumber: TcxTextEdit
       Left = 991
       Top = 70
-      TabOrder = 20
+      TabOrder = 19
       Visible = False
       OnKeyDown = edtAccountNumberKeyDown
       Width = 104
@@ -205,7 +203,7 @@ inherited AccountT: TAccountT
     object edtPayNumber: TcxTextEdit
       Left = 103
       Top = 3
-      TabOrder = 2
+      TabOrder = 1
       OnKeyDown = edtAccountNumberKeyDown
       Width = 104
     end
@@ -223,7 +221,7 @@ inherited AccountT: TAccountT
       Top = 3
       Properties.DateButtons = [btnClear, btnNow, btnToday]
       Properties.UseNullString = True
-      TabOrder = 3
+      TabOrder = 2
       OnKeyDown = edtAccountNumberKeyDown
       Width = 104
     end
@@ -232,7 +230,7 @@ inherited AccountT: TAccountT
       Top = 31
       Properties.DateButtons = [btnClear, btnNow, btnToday]
       Properties.UseNullString = True
-      TabOrder = 5
+      TabOrder = 4
       OnKeyDown = edtAccountNumberKeyDown
       Width = 104
     end
@@ -241,7 +239,7 @@ inherited AccountT: TAccountT
       Top = 31
       Properties.DateButtons = [btnClear, btnNow, btnToday]
       Properties.UseNullString = True
-      TabOrder = 6
+      TabOrder = 5
       OnKeyDown = edtAccountNumberKeyDown
       Width = 104
     end
@@ -256,7 +254,7 @@ inherited AccountT: TAccountT
       Properties.ListOptions.ShowHeader = False
       Properties.ListSource = dsAccountStatus
       Properties.MaxLength = 256
-      TabOrder = 4
+      TabOrder = 3
       OnKeyDown = edtAccountNumberKeyDown
       Width = 146
     end
@@ -265,7 +263,7 @@ inherited AccountT: TAccountT
       Top = 30
       Properties.Items.Strings = (
         #1042#1086#1079#1074#1088#1072#1090#1099)
-      TabOrder = 7
+      TabOrder = 6
       OnKeyDown = edtAccountNumberKeyDown
       Width = 146
     end
@@ -295,7 +293,7 @@ inherited AccountT: TAccountT
       Properties.Images = IM.IL
       Properties.OnButtonClick = edtBuyerPropertiesButtonClick
       ShowHint = True
-      TabOrder = 1
+      TabOrder = 0
       Visible = False
       OnKeyDown = edtAccountNumberKeyDown
       Width = 234
@@ -326,7 +324,7 @@ inherited AccountT: TAccountT
       Properties.Images = IM.IL
       Properties.OnButtonClick = edtBuyerPropertiesButtonClick
       ShowHint = True
-      TabOrder = 16
+      TabOrder = 14
       Visible = False
       OnKeyDown = edtAccountNumberKeyDown
       Width = 234
@@ -357,7 +355,7 @@ inherited AccountT: TAccountT
       Properties.Images = IM.IL
       Properties.OnButtonClick = edtBuyerPropertiesButtonClick
       ShowHint = True
-      TabOrder = 10
+      TabOrder = 9
       Visible = False
       OnKeyDown = edtAccountNumberKeyDown
       Width = 234
@@ -371,7 +369,7 @@ inherited AccountT: TAccountT
       Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
       OptionsImage.ImageIndex = 5
       OptionsImage.Images = IM.IL
-      TabOrder = 8
+      TabOrder = 7
       OnClick = btnFilterOkClick
     end
     object btnFilterClear: TcxButton
@@ -383,7 +381,7 @@ inherited AccountT: TAccountT
       Caption = #1054#1090#1084#1077#1085#1080#1090#1100
       OptionsImage.ImageIndex = 2
       OptionsImage.Images = IM.IL
-      TabOrder = 9
+      TabOrder = 8
       OnClick = btnFilterClearClick
     end
     object cxLabel1: TcxLabel

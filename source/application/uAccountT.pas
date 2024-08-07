@@ -114,7 +114,6 @@ type
     procedure actKontragentExecute(Sender: TObject);
     procedure edtBuyerPropertiesButtonClick(Sender: TObject;      AButtonIndex: Integer);
     procedure TableViewStatusNameCustomDrawCell(Sender: TcxCustomGridTableView;      ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo;       var ADone: Boolean);
-    procedure TableViewPaymentDatePropertiesValidate(Sender: TObject;      var DisplayValue: TcxEditValue; var ErrorText: TCaption;        var Error: Boolean);
     procedure TableViewEditing(Sender: TcxCustomGridTableView;   AItem: TcxCustomGridTableItem; var AAllow: Boolean);
     procedure TableViewSupplieNamePropertiesEditValueChanged(Sender: TObject);
     procedure TableViewBuyerNamePropertiesEditValueChanged(Sender: TObject);
@@ -127,7 +126,6 @@ type
     procedure TableViewTcxGridDBDataControllerTcxDataSummaryFooterSummaryItems0GetText(
       Sender: TcxDataSummaryItem; const AValue: Variant; AIsFooter: Boolean;
       var AText: string);
-    procedure TableViewDataControllerFilterChanged(Sender: TObject);
     procedure TableViewDataControllerSummaryAfterSummary(
       ASender: TcxDataSummary);
     procedure TableViewDataControllerSummaryDefaultGroupSummaryItemsSummary(
@@ -159,7 +157,7 @@ var
 
 implementation
 
-uses uCommonType, MTLogger, uKontragentsT, uImageModule, uDataModule;
+uses uCommonType, MTLogger, uKontragentsT, uImageModule, uDataModule, uSql;
 
 {$R *.dfm}
 
@@ -325,8 +323,6 @@ begin
 
   Query.Open();
 
-
-
   inherited;
 end;
 
@@ -418,7 +414,6 @@ begin
 end;
 
 procedure TAccountT.MoveToNextColumn;
-
 var
   View: TcxGridTableView;
   ColIndex, RowIndex: Integer;
@@ -485,7 +480,13 @@ var  SelectedObject: TObject;
 begin
   SelectedObject := TcxComboBox(Sender).Properties.Items.Objects[TcxComboBox(Sender).ItemIndex];
   TableViewBuyerName.EditValue := TcxComboBox(Sender).Text;
+
   Query.FieldByName('BuyerID').Value :=   Integer(SelectedObject);
+
+  TSql.Open('select Discount from tKontragents (nolock) where KontragentID=:ID', ['ID'], [Integer(SelectedObject)]);
+
+  if TSql.Q.RecordCount>0 then
+    TableViewBuyerDiscount.EditValue := TSql.Q.FieldByName('Discount').AsFloat;
 end;
 
 procedure TAccountT.TableViewClientNamePropertiesEditValueChanged(Sender: TObject);
@@ -494,6 +495,11 @@ begin
   SelectedObject := TcxComboBox(Sender).Properties.Items.Objects[TcxComboBox(Sender).ItemIndex];
   TableViewClientName.EditValue := TcxComboBox(Sender).Text;
   Query.FieldByName('ClientID').Value :=   Integer(SelectedObject);
+
+  TSql.Open('select Discount from tKontragents (nolock) where KontragentID=:ID', ['ID'], [Integer(SelectedObject)]);
+
+  if TSql.Q.RecordCount>0 then
+    TableViewClientDiscount.EditValue := TSql.Q.FieldByName('Discount').AsFloat;
 end;
 
 procedure TAccountT.TableViewCustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
@@ -505,15 +511,9 @@ begin
 //    ACanvas.font.color:= clRed;
 end;
 
-procedure TAccountT.TableViewDataControllerFilterChanged(Sender: TObject);
-begin
-  //CalculateTotal;
-end;
-
 procedure TAccountT.TableViewDataControllerSummaryAfterSummary(
   ASender: TcxDataSummary);
 begin
-  // logger.Info('TableViewDataControllerSummaryAfterSummary');
   CalculateTotal;
 end;
 
@@ -545,16 +545,6 @@ begin
     MoveToNextColumn;
     Key := 0;  // Чтобы предотвратить стандартное поведение клавиши Enter
   end;
-end;
-
-procedure TAccountT.TableViewPaymentDatePropertiesValidate(Sender: TObject; var DisplayValue: TcxEditValue; var ErrorText: TCaption; var Error: Boolean);
-begin
-//  logger.Info('DisplayValue' + DisplayValue);
-//  if DisplayValue = '' then
-//  begin
-//    ErrorText := 'Поле обязательно к заполнению!';
-//    Error := true;
-//  end;
 end;
 
 procedure TAccountT.TableViewSelectionChanged(Sender: TcxCustomGridTableView);
