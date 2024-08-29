@@ -93,5 +93,6 @@ insert tRetCode (RetCode, Message) select 250,   'Удаление запрещ�
 
 
 insert tRetCode (RetCode, Message) select 300,   'Удаление учетной записи администратора запрещено!'
+insert tRetCode (RetCode, Message) select 400,   'Связь поставщика и клиента существует!'
 
 select * from tRetCode

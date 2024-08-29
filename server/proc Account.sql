@@ -100,6 +100,17 @@ as
             insert tContacts (ObjectTypeID, ObjectID, Phone, InUserID, UpUserID)
             select 3, @SupplierID, @Phone, dbo.GetUserID(), dbo.GetUserID()
         end
+
+       declare @AuditID numeric(18, 2)
+
+       select @Comment = 'Добавление счета №' + @AccountNumber + ' от:' + convert(varchar, @AccountDate, 104)
+
+       exec AuditInsert     
+              @AuditID      = @AuditID out  
+             ,@ObjectID     = @AccountID               
+             ,@ObjectTypeID = 5 
+             ,@Action       = 'add'  
+             ,@Comment      = @Comment
                      
       commit tran
   END TRY  
@@ -187,7 +198,15 @@ as
     end
          
 
+    declare @AuditID numeric(18, 2)
 
+    select @Comment = 'Изменение счета №' + @AccountNumber + ' от:' + convert(varchar, @AccountDate, 104)
+    exec AuditInsert     
+            @AuditID      = @AuditID out  
+            ,@ObjectID     = @AccountID               
+            ,@ObjectTypeID = 5 
+            ,@Action       = 'edit'  
+            ,@Comment      = @Comment
 
   END TRY  
   BEGIN CATCH  
@@ -211,11 +230,29 @@ create proc AccountDelete
               @AccountID            numeric(15,0) --    
 as
   declare @r int = 0
-
+         ,@AccountNumber     varchar(256)  
+         ,@AccountDate       datetime
   BEGIN TRY 
-		delete 
-          from tAccounts
+        select @AccountNumber = AccountNumber  
+              ,@AccountDate   = AccountDate
+          from tAccounts (nolock)
 		 where AccountID=@AccountID
+
+		delete tAccounts
+          from tAccounts (rowlock)
+		 where AccountID=@AccountID
+
+       declare @AuditID numeric(18, 2)
+
+              ,@Comment  varchar(255)
+       select @Comment = 'Удаление счета №' + @AccountNumber + ' от:' + convert(varchar, @AccountDate, 104)
+
+       exec AuditInsert     
+              @AuditID      = @AuditID out  
+             ,@ObjectID     = @AccountID               
+             ,@ObjectTypeID = 5 
+             ,@Action       = 'delete'  
+             ,@Comment      = @Comment 
             
   END TRY  
   BEGIN CATCH  

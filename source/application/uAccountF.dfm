@@ -33,19 +33,19 @@ inherited AccountF: TAccountF
   object edtPayNumber: TcxTextEdit [2]
     Left = 104
     Top = 73
-    TabOrder = 10
+    TabOrder = 5
     Width = 147
   end
   object edtPhone: TcxTextEdit [3]
     Left = 617
     Top = 244
-    TabOrder = 30
+    TabOrder = 28
     Width = 201
   end
   object edtMail: TcxTextEdit [4]
     Left = 617
     Top = 300
-    TabOrder = 33
+    TabOrder = 32
     Width = 202
   end
   object edtAccountDate: TcxDateEdit [5]
@@ -60,7 +60,7 @@ inherited AccountF: TAccountF
     Top = 73
     Properties.DateButtons = [btnClear, btnNow, btnToday]
     Properties.UseNullString = True
-    TabOrder = 11
+    TabOrder = 6
     Width = 104
   end
   object edtPaymentDate: TcxDateEdit [7]
@@ -69,7 +69,7 @@ inherited AccountF: TAccountF
     Properties.DateButtons = [btnClear, btnNow, btnToday]
     Properties.UseNullString = True
     Properties.OnChange = edtPaymentDatePropertiesChange
-    TabOrder = 13
+    TabOrder = 7
     Width = 104
   end
   object edtAccountStatus: TcxLookupComboBox [8]
@@ -112,7 +112,7 @@ inherited AccountF: TAccountF
     Properties.Images = IM.IL
     Properties.OnButtonClick = edtBuyerPropertiesButtonClick
     ShowHint = True
-    TabOrder = 18
+    TabOrder = 10
     Width = 285
   end
   object edtSupplier: ALookupEdit [10]
@@ -139,8 +139,9 @@ inherited AccountF: TAccountF
         Kind = bkGlyph
       end>
     Properties.Images = IM.IL
+    Properties.OnButtonClick = edtSupplierPropertiesButtonClick
     ShowHint = True
-    TabOrder = 22
+    TabOrder = 16
     Width = 285
   end
   object edtClient: ALookupEdit [11]
@@ -169,14 +170,14 @@ inherited AccountF: TAccountF
     Properties.Images = IM.IL
     Properties.OnButtonClick = edtClientPropertiesButtonClick
     ShowHint = True
-    TabOrder = 24
+    TabOrder = 19
     Width = 285
   end
   object edtComment: TcxMemo [12]
     Left = 100
     Top = 244
     Properties.MaxLength = 256
-    TabOrder = 29
+    TabOrder = 26
     Height = 81
     Width = 511
   end
@@ -194,21 +195,21 @@ inherited AccountF: TAccountF
     Properties.DecimalPlaces = 0
     Properties.DisplayFormat = ',0 '#8381';-,0 '#8381
     Properties.OnChange = edtPaymentAmountPropertiesChange
-    TabOrder = 14
+    TabOrder = 8
     Width = 102
   end
   object edtBuyerDiscount: TcxCurrencyEdit [15]
     Left = 508
     Top = 144
     Properties.DisplayFormat = ',0.00 %;-,0.00 %'
-    TabOrder = 19
+    TabOrder = 12
     Width = 102
   end
   object edtClientDiscount: TcxCurrencyEdit [16]
     Left = 508
     Top = 206
     Properties.DisplayFormat = ',0.00 %;-,0.00 %'
-    TabOrder = 25
+    TabOrder = 21
     Width = 102
   end
   object dxPanel2: TdxPanel [17]
@@ -242,7 +243,7 @@ inherited AccountF: TAccountF
     Hint = #1057#1082#1086#1087#1080#1088#1086#1074#1072#1090#1100' '#1089#1091#1084#1084#1091' '#1089#1095#1077#1090#1072
     OptionsImage.ImageIndex = 6
     OptionsImage.Images = IM.IL
-    TabOrder = 15
+    TabOrder = 9
     OnClick = btnCopyClick
   end
   object cxLabel1: TcxLabel [19]

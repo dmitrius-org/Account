@@ -64,6 +64,8 @@ type
       AButtonIndex: Integer);
     procedure edtClientPropertiesButtonClick(Sender: TObject;
       AButtonIndex: Integer);
+    procedure edtSupplierPropertiesButtonClick(Sender: TObject;
+      AButtonIndex: Integer);
   private
     { Private declarations }
     FIsRefund: Boolean;
@@ -502,7 +504,16 @@ procedure TAccountF.edtClientPropertiesButtonClick(Sender: TObject;
 begin
   if ((AButtonIndex = 0) and (edtClient.LookupResult = 1)) then
   begin
-    TSql.Open('select Discount from tKontragents (nolock) where KontragentID=:ID', ['ID'], [edtClient.LookupKey]);
+    TSql.Open('''
+      declare @Discount money
+      exec ClientPrc
+             @ClientID   = :ClientID
+            ,@SupplierID = :SupplierID
+            ,@Discount   = @Discount out
+
+      select @Discount as Discount
+
+    ''', ['ClientID', 'SupplierID'], [edtClient.LookupKey, edtSupplier.LookupKey]);
 
     if TSql.Q.RecordCount>0 then
       edtClientDiscount.Value := TSql.Q.FieldByName('Discount').AsFloat;
@@ -511,14 +522,33 @@ end;
 
 procedure TAccountF.edtPaymentAmountPropertiesChange(Sender: TObject);
 begin
-  inherited;
   SetStatus;
 end;
 
 procedure TAccountF.edtPaymentDatePropertiesChange(Sender: TObject);
 begin
-  inherited;
   SetStatus;
+end;
+
+procedure TAccountF.edtSupplierPropertiesButtonClick(Sender: TObject;
+  AButtonIndex: Integer);
+begin
+  if ((AButtonIndex = 0) and (edtSupplier.LookupResult = 1)) then
+  begin
+    TSql.Open('''
+      declare @Discount money
+      exec ClientPrc
+             @ClientID   = :ClientID
+            ,@SupplierID = :SupplierID
+            ,@Discount   = @Discount out
+
+      select @Discount as Discount
+
+    ''', ['ClientID', 'SupplierID'], [edtClient.LookupKey, edtSupplier.LookupKey]);
+
+    if TSql.Q.RecordCount>0 then
+      edtClientDiscount.Value := TSql.Q.FieldByName('Discount').AsFloat;
+  end;
 end;
 
 procedure TAccountF.FormShow(Sender: TObject);

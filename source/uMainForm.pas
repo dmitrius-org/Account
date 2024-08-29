@@ -11,7 +11,8 @@ uses
 
   uAccountT, uTransactionT, uDocumentRequestT, uStatisticT, dxBarBuiltInMenu,
   cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxPC,
-  System.Generics.Collections;
+  System.Generics.Collections, Vcl.TitleBarCtrls, Vcl.StdCtrls, cxButtons,
+  Vcl.Buttons;
 
 type
   TMainForm = class(TForm)
@@ -49,6 +50,13 @@ type
     actStatistic: TAction;
     ToolButton11: TToolButton;
     MainPage: TcxPageControl;
+    ToolButton15: TToolButton;
+    actSupplierClient: TAction;
+    actAudit: TAction;
+    ToolButton16: TToolButton;
+    TitleBarPanel1: TTitleBarPanel;
+    cxImageList1: TcxImageList;
+    SpeedButton1: TSpeedButton;
     procedure FormCreate(Sender: TObject);
     procedure actAccountExecute(Sender: TObject);
     procedure actKontragentExecute(Sender: TObject);
@@ -64,9 +72,15 @@ type
     procedure actStatisticExecute(Sender: TObject);
     procedure MainPageCanCloseEx(Sender: TObject; ATabIndex: Integer;
       var ACanClose: Boolean);
+    procedure actSupplierClientExecute(Sender: TObject);
+    procedure actAuditExecute(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
     FGrant: TAccess;
+
+    procedure SetToolBarVisible();
 
   public
     { Public declarations }
@@ -83,11 +97,16 @@ implementation
 
 {$R *.dfm}
 
-uses uDataModule, uBaseFormT, MTLogger;
+uses uDataModule, uBaseFormT, MTLogger, uUtilsRegistry;
 
 procedure TMainForm.actAccountExecute(Sender: TObject);
 begin
   CreateTab('TAccountT');
+end;
+
+procedure TMainForm.actAuditExecute(Sender: TObject);
+begin
+  CreateTab('TAuditT');
 end;
 
 procedure TMainForm.actCreditExecute(Sender: TObject);
@@ -128,6 +147,11 @@ end;
 procedure TMainForm.actStatisticExecute(Sender: TObject);
 begin
   CreateModal('TStatisticT');
+end;
+
+procedure TMainForm.actSupplierClientExecute(Sender: TObject);
+begin
+  CreateTab('TSupplierClientT');
 end;
 
 procedure TMainForm.actTaskExecute(Sender: TObject);
@@ -180,10 +204,19 @@ begin
   MainPage.ActivePage := Ts;
 end;
 
+procedure TMainForm.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  RegSave('Toolbar', ToolBar2.Visible);
+end;
+
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
   Caption := DM.FDManager.ConnectionDefs.FindConnectionDef('Connection').Params.Values['ApplicationName'];
-
+  try
+    ToolBar2.Visible :=  RegLoad('Toolbar');
+  except
+  end;
+  SetToolBarVisible;
 end;
 
 procedure TMainForm.FormShow(Sender: TObject);
@@ -219,6 +252,29 @@ begin
   actUser.Visible := actUser.Tag=1;
   actDebs.Visible := actDebs.Tag=1;
   actStatistic.Visible := actStatistic.Tag=1;
+  actSupplierClient.Visible := actSupplierClient.Tag=1;
+  actAudit.Visible := actAudit.Tag=1;
+end;
+
+procedure TMainForm.SetToolBarVisible;
+begin
+  if ToolBar2.Visible then
+  begin
+    SpeedButton1.ImageIndex := 1;
+    SpeedButton1.Hint := 'Скрыть панель меню';
+  end
+  else
+  begin
+    SpeedButton1.ImageIndex := 0;
+    SpeedButton1.Hint := 'Показать панель меню';
+  end;
+end;
+
+procedure TMainForm.SpeedButton1Click(Sender: TObject);
+begin
+  ToolBar2.Visible := not ToolBar2.Visible;
+
+  SetToolBarVisible;
 end;
 
 end.

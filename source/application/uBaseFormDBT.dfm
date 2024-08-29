@@ -83,7 +83,7 @@ inherited BaseFormDBT: TBaseFormDBT
       OptionsSelection.CellSelect = False
       OptionsSelection.HideSelection = True
       OptionsView.NoDataToDisplayInfoText = #1053#1077#1090' '#1076#1072#1085#1085#1099#1093
-      OptionsView.DataRowHeight = 25
+      OptionsView.DataRowHeight = 26
       OptionsView.GroupByBox = False
       OptionsView.GroupFooterMultiSummaries = True
       OptionsView.HeaderFilterButtonShowMode = fbmButton
@@ -290,14 +290,19 @@ inherited BaseFormDBT: TBaseFormDBT
       Color = 14602694
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
+      Font.Height = -16
       Font.Name = 'Segoe UI'
       Font.Style = []
       TextColor = clBlack
     end
     object GridBaground: TcxStyle
-      AssignedValues = [svColor]
+      AssignedValues = [svColor, svFont]
       Color = 15527148
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
     end
     object GridRowSelect: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
@@ -313,25 +318,25 @@ inherited BaseFormDBT: TBaseFormDBT
       AssignedValues = [svFont]
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
+      Font.Height = -17
       Font.Name = 'Segoe UI'
       Font.Style = []
     end
     object GridFilterRow: TcxStyle
       AssignedValues = [svColor, svFont]
-      Color = 12566463
+      Color = 14602694
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
+      Font.Height = -17
       Font.Name = 'Segoe UI'
       Font.Style = []
     end
     object GridFilterRowDef: TcxStyle
       AssignedValues = [svColor, svFont]
-      Color = 12566463
+      Color = 14602694
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
+      Font.Height = -17
       Font.Name = 'Segoe UI'
       Font.Style = []
     end

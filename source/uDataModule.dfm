@@ -6,8 +6,13 @@ object DM: TDM
   object FDConnection: TFDConnection
     ConnectionName = 'Connection'
     Params.Strings = (
+      'Database=AccountDB'
+      'User_Name=sa'
+      'Password=CE192a12!@'
+      'Server=WIN-26BJ6Q2GFSI\BOOSTER'
       'DriverID=MSSQL')
     FetchOptions.AssignedValues = [evMode, evAutoFetchAll]
+    Connected = True
     LoginPrompt = False
     AfterConnect = FDConnectionAfterConnect
     Left = 42

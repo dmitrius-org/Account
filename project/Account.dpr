@@ -48,7 +48,11 @@ uses
   uUserAccess in '..\source\application\uUserAccess.pas' {UserAccess},
   uGrantUtils in '..\source\application\uGrantUtils.pas',
   uKassaChose in '..\source\application\uKassaChose.pas' {KassaChose},
-  uStatisticT in '..\source\uStatisticT.pas' {StatisticT};
+  uStatisticT in '..\source\uStatisticT.pas' {StatisticT},
+  uSupplierClientT in '..\source\uSupplierClientT.pas' {SupplierClientT},
+  uSupplierClientF in '..\source\application\uSupplierClientF.pas' {SupplierClientF},
+  uAuditT in '..\source\application\uAuditT.pas' {AuditT},
+  uUtilsRegistry in '..\source\application\uUtilsRegistry.pas';
 
 {$R *.res}
 

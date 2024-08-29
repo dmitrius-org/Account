@@ -57,6 +57,16 @@ as
                ,@ObjectID     = @DocumentRequestID
                ,@Mode         = 1
 
+       declare @AuditID numeric(18, 2)
+
+       select @Comment = 'Добавление запроса документов от:' + convert(varchar, @PayDate, 104) + ' №' + @AccountNumber 
+
+       exec AuditInsert     
+              @AuditID      = @AuditID out  
+             ,@ObjectID     = @DocumentRequestID               
+             ,@ObjectTypeID = 8 
+             ,@Action       = 'add'  
+             ,@Comment      = @Comment
         next_:
                      
       commit tran
@@ -117,6 +127,16 @@ as
          ,@ObjectID     = @DocumentRequestID
          ,@Mode         = 1
 
+       declare @AuditID numeric(18, 2)
+
+       select @Comment = 'Изменение запроса документов от:' + convert(varchar, @PayDate, 104) + ' №' + @AccountNumber 
+
+       exec AuditInsert     
+              @AuditID      = @AuditID out  
+             ,@ObjectID     = @DocumentRequestID               
+             ,@ObjectTypeID = 8 
+             ,@Action       = 'edit'  
+             ,@Comment      = @Comment
   END TRY  
   BEGIN CATCH  
 
@@ -143,17 +163,36 @@ create proc DocumentRequestDelete
               @DocumentRequestID	numeric(15, 0)   
 as
   declare @r int = 0
+         ,@PayDate              datetime
+         ,@AccountNumber	    varchar(256)
 
   BEGIN TRY 
-		delete tDocumentRequest
-          from tDocumentRequest (rowlock)
-		 where DocumentRequestID=@DocumentRequestID
+    select @PayDate       = PayDate
+          ,@AccountNumber = AccountNumber
+      from tDocumentRequest (rowlock)
+     where DocumentRequestID=@DocumentRequestID
 
-        delete tComments
-          from tComments (rowlock)
-		 where ObjectID     = @DocumentRequestID
-           and ObjectTypeID = 4
-            
+    delete tDocumentRequest
+      from tDocumentRequest (rowlock)
+     where DocumentRequestID=@DocumentRequestID
+    
+    delete tComments
+      from tComments (rowlock)
+     where ObjectID     = @DocumentRequestID
+       and ObjectTypeID = 4
+    
+
+    declare @AuditID numeric(18, 2)
+           ,@Comment  varchar(255)
+
+    select @Comment = 'Удаление запроса документов от:' + convert(varchar, @PayDate, 104) + ' №' + @AccountNumber
+    
+    exec AuditInsert     
+            @AuditID      = @AuditID out  
+            ,@ObjectID     = @DocumentRequestID               
+            ,@ObjectTypeID = 8 
+            ,@Action       = 'delete'  
+            ,@Comment      = @Comment
   END TRY  
   BEGIN CATCH  
    

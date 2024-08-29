@@ -109,6 +109,17 @@ as
                 @ObjectTypeID = @KontragentTypeID
                ,@ObjectID     = @BuyerID
                ,@Mode         = 1
+
+       declare @AuditID numeric(18, 2)
+              ,@Comment  varchar(255)
+
+       select @Comment = 'Добавление покупателя ' + @Name 
+       exec AuditInsert     
+              @AuditID      = @AuditID out  
+             ,@ObjectID     = @BuyerID               
+             ,@ObjectTypeID = 2 
+             ,@Action       = 'add'  
+             ,@Comment      = @Comment
        
       commit tran
   END TRY  
@@ -224,6 +235,16 @@ as
             ,@ObjectID     = @BuyerID
             ,@Mode         = 1
 
+       declare @AuditID numeric(18, 2)
+              ,@Comment  varchar(255)
+
+       select @Comment = 'Изменение покупателя ' + @Name 
+       exec AuditInsert     
+              @AuditID      = @AuditID out  
+             ,@ObjectID     = @BuyerID               
+             ,@ObjectTypeID = 2 
+             ,@Action       = 'edit'  
+             ,@Comment      = @Comment
   END TRY  
   BEGIN CATCH  
       goto exit_     
@@ -259,20 +280,36 @@ as
   end
 
   BEGIN TRY 
-		delete 
-          from tKontragents
-		 where KontragentID=@BuyerID
+    declare @Name	varchar(256)
+    select @Name = Name  
+      from tKontragents
+	 where KontragentID=@BuyerID
 
-         delete tContacts 
-           from tContacts (rowlock) 
-          where ObjectTypeID = @KontragentTypeID 
-            and ObjectID     = @BuyerID
+    delete 
+      from tKontragents
+	 where KontragentID=@BuyerID
+
+     delete tContacts 
+       from tContacts (rowlock) 
+      where ObjectTypeID = @KontragentTypeID 
+        and ObjectID     = @BuyerID
 
 
-         delete tDiscounts 
-           from tDiscounts (rowlock) 
-          where ObjectTypeID = @KontragentTypeID 
-            and ObjectID     = @BuyerID
+      delete tDiscounts 
+        from tDiscounts (rowlock) 
+       where ObjectTypeID = @KontragentTypeID 
+         and ObjectID     = @BuyerID
+
+      declare @AuditID numeric(18, 2)
+             ,@Comment  varchar(255)
+
+      select @Comment = 'Удаление покупателя ' + @Name 
+      exec AuditInsert     
+              @AuditID      = @AuditID out  
+             ,@ObjectID     = @BuyerID               
+             ,@ObjectTypeID = 2 
+             ,@Action       = 'delete'  
+             ,@Comment      = @Comment
             
   END TRY  
   BEGIN CATCH  

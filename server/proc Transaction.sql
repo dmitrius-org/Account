@@ -13,7 +13,7 @@ create proc TransactionAdd
              ,@CreditID           numeric(15, 0) = null
              ,@Amount             money
              ,@Comment            varchar(256)
-             ,@KassaID            numeric(15, 0)   
+             ,@KassaID            int 
              ,@KontragentID       numeric(15, 0) = null 
              ,@Discount           money = null
              ,@ParentID           numeric(15, 0) = null
@@ -23,9 +23,7 @@ as
   declare @r                 int = 0
          ,@TransactionID2    numeric(15,0)
          ,@LinkOperTypeID    numeric(15, 0) = 0
-        
-
-
+       
 
   DECLARE @ID TABLE (ID numeric(15,0));
 
@@ -121,6 +119,17 @@ as
 
         end
 
+       declare @AuditID numeric(18, 2)
+
+       select @Comment = 'Добавление кассового документа от: ' +  convert(varchar, @OperDate, 104)  + ' Сумма: ' + cast(@Amount as varchar) + ' Касса: '+cast(@KassaID as varchar)
+
+       exec AuditInsert     
+              @AuditID      = @AuditID out  
+             ,@ObjectID     = @TransactionID               
+             ,@ObjectTypeID = 6 
+             ,@Action       = 'add'  
+             ,@Comment      = @Comment 
+
         next_:
                      
       commit tran
@@ -186,7 +195,24 @@ as
            ,ParentID      = @ParentID  
            ,UpUserID      = dbo.GetUserID()
            ,UpDatetime    = GetDate()
-	  where TransactionID  = @TransactionID       
+	  where TransactionID  = @TransactionID  
+      
+
+    declare @AuditID  numeric(18, 2)
+           ,@KassaID  int
+
+	select @KassaID = KassaID 
+      from tTransaction (nolock)
+	 where TransactionID  = @TransactionID  
+
+    select @Comment = 'Изменение кассового документа от: ' +  convert(varchar, @OperDate, 104)  + ' Сумма: ' + cast(@Amount as varchar) + ' Касса: '+cast(@KassaID as varchar)
+
+    exec AuditInsert     
+              @AuditID      = @AuditID out  
+             ,@ObjectID     = @TransactionID               
+             ,@ObjectTypeID = 6 
+             ,@Action       = 'edit'  
+             ,@Comment      = @Comment
 
   END TRY  
   BEGIN CATCH  
@@ -216,9 +242,30 @@ as
   declare @r int = 0
 
   BEGIN TRY 
-		delete 
-          from tTransaction
-		 where TransactionID=@TransactionID
+     declare @Comment  varchar(255)
+            ,@OperDate datetime
+            ,@Amount   money
+            ,@KassaID  int
+
+	 select @KassaID  = KassaID
+           ,@OperDate = OperDate
+           ,@Amount   = Amount
+       from tTransaction (nolock)
+	  where TransactionID  = @TransactionID  
+
+       select @Comment = 'Удаление кассового документа от: ' +  convert(varchar, @OperDate, 104)  + ' Сумма: ' + cast(@Amount as varchar) + ' Касса: '+cast(@KassaID as varchar)
+	
+     delete 
+       from tTransaction
+	  where TransactionID=@TransactionID
+
+     declare @AuditID numeric(18, 2)
+     exec AuditInsert     
+            @AuditID      = @AuditID out  
+            ,@ObjectID     = @TransactionID               
+            ,@ObjectTypeID = 6 
+            ,@Action       = 'delete'  
+            ,@Comment      = @Comment
             
   END TRY  
   BEGIN CATCH  
@@ -302,7 +349,7 @@ Select t.TransactionID
       ,k.Name         as KontragentName
       ,iif(t.TranTypeID = 1, t.Amount, 0) as Debet
       ,iif(t.TranTypeID in (2, 3), t.Amount, 0) as Credit
-      ,ks.Name        as Kassa
+      ,ks.Brief        as Kassa
       ,(Select sum(IIf(t2.TranTypeID=1, 1, -1) * t2.Amount )          
           from tTransaction t2 (nolock)         
          where t2.InDateTime <= t.InDateTime 

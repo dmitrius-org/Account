@@ -201,6 +201,23 @@ as
               ,dbo.GetUserID()
 
 		Select @CreditID = ID from @ID	
+
+
+       declare @AuditID    numeric(18, 2)
+              ,@CreditName varchar(256) 
+
+       select @CreditName = name
+         from tCreditTypes u (nolock)
+        where u.CreditTypeID = @CreditTypeID
+
+       select @Comment = 'Добавление кредита: ' + @CreditName + ' от: ' + convert(varchar, @CreditDate, 104) 
+
+       exec AuditInsert     
+              @AuditID      = @AuditID out  
+             ,@ObjectID     = @CreditID               
+             ,@ObjectTypeID = 7 
+             ,@Action       = 'add'  
+             ,@Comment      = @Comment
         
 		--if @r <> 0
 		--begin 
@@ -243,17 +260,31 @@ as
   BEGIN TRY 
       --Begin tran
 
-		Update tCredits
-           set CreditTypeID= @CreditTypeID
-              ,CreditDate  = @CreditDate	
-              ,Amount      = @Amount	   
-              ,Prc         = @Prc	       
-              ,PayAmount   = nullif(@PayAmount, '19000101') 	
-              ,CloseDate   = nullif(@CloseDate, '19000101') 	
-              ,Comment     = @Comment	   
-		 where CreditID=@CreditID
+	Update tCredits
+       set CreditTypeID= @CreditTypeID
+          ,CreditDate  = @CreditDate	
+          ,Amount      = @Amount	   
+          ,Prc         = @Prc	       
+          ,PayAmount   = nullif(@PayAmount, '19000101') 	
+          ,CloseDate   = nullif(@CloseDate, '19000101') 	
+          ,Comment     = @Comment	   
+	 where CreditID=@CreditID
 
-      --commit tran
+     declare @AuditID numeric(18, 2)
+            ,@CreditName varchar(256) 
+
+     select @CreditName = name
+       from tCreditTypes u (nolock)
+      where u.CreditTypeID = @CreditTypeID
+
+     select @Comment = 'Изменение кредита: ' + @CreditName + ' от: ' + convert(varchar, @CreditDate, 104) 
+
+     exec AuditInsert     
+              @AuditID      = @AuditID out  
+             ,@ObjectID     = @CreditID               
+             ,@ObjectTypeID = 7 
+             ,@Action       = 'edit'  
+             ,@Comment      = @Comment
   END TRY  
   BEGIN CATCH  
       --if @@TRANCOUNT > 0
@@ -289,13 +320,30 @@ as
   end
 
   BEGIN TRY 
-      --Begin tran
+    declare @AuditID    numeric(18, 2)
+           ,@CreditName varchar(256) 
+           ,@Comment    varchar(255)
+           ,@CreditDate datetime
 
-		delete 
-          from tCredits
-		 where CreditID=@CreditID
+    select @CreditName = ct.name
+          ,@CreditDate = c.CreditDate
+      from tCredits c (nolock) 
+     inner join tCreditTypes ct (nolock)
+             on ct.CreditTypeID = c.CreditTypeID
+     where c.CreditID = @CreditID
 
-      --commit tran
+	delete 
+      from tCredits
+	 where CreditID=@CreditID
+
+    select @Comment = 'Удаление кредита: ' + @CreditName + ' от: ' + convert(varchar, @CreditDate, 104) 
+
+    exec AuditInsert     
+            @AuditID      = @AuditID out  
+            ,@ObjectID     = @CreditID               
+            ,@ObjectTypeID = 7 
+            ,@Action       = 'delete'  
+            ,@Comment      = @Comment 
   END TRY  
   BEGIN CATCH  
       --if @@TRANCOUNT > 0

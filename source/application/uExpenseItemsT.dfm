@@ -176,6 +176,28 @@ inherited ExpenseItemsT: TExpenseItemsT
   inherited dxPanel1: TdxPanel
     Width = 860
     ExplicitWidth = 860
+    object cxButton1: TcxButton
+      AlignWithMargins = True
+      Left = 403
+      Top = 3
+      Width = 120
+      Height = 49
+      Margins.Left = 0
+      Align = alLeft
+      Action = actGroup
+      Colors.Default = clGradientActiveCaption
+      Colors.Normal = clGradientActiveCaption
+      Colors.Hot = clGradientInactiveCaption
+      Colors.Pressed = clGradientActiveCaption
+      Colors.Disabled = clGradientActiveCaption
+      LookAndFeel.Kind = lfUltraFlat
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.ScrollbarMode = sbmDefault
+      LookAndFeel.ScrollMode = scmDefault
+      OptionsImage.Images = cxImageList16
+      OptionsImage.Layout = blGlyphTop
+      TabOrder = 4
+    end
   end
   inherited ActionList: TActionList
     Tag = 70

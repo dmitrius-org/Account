@@ -79,6 +79,17 @@ as
                 @ObjectTypeID = @KontragentTypeID
                ,@ObjectID     = @SupplierID
                ,@Mode         = 1
+
+       declare @AuditID numeric(18, 2)
+              ,@Comment  varchar(255)
+
+       select @Comment = 'Добавление поставщика ' + @Name 
+       exec AuditInsert     
+              @AuditID      = @AuditID out  
+             ,@ObjectID     = @SupplierID               
+             ,@ObjectTypeID = 3 
+             ,@Action       = 'add'  
+             ,@Comment      = @Comment
        
       commit tran
   END TRY  
@@ -160,6 +171,17 @@ as
                ,@ObjectID     = @SupplierID
                ,@Mode         = 1
 
+       declare @AuditID numeric(18, 2)
+              ,@Comment  varchar(255)
+
+       select @Comment = 'Изменение поставщика ' + @Name 
+       exec AuditInsert     
+              @AuditID      = @AuditID out  
+             ,@ObjectID     = @SupplierID               
+             ,@ObjectTypeID = 3 
+             ,@Action       = 'edit'  
+             ,@Comment      = @Comment
+
   END TRY  
   BEGIN CATCH  
       goto exit_     
@@ -195,6 +217,11 @@ as
   end
 
   BEGIN TRY 
+    declare @Name	varchar(256)
+    select @Name = Name  
+      from tKontragents
+	 where KontragentID=@SupplierID
+
 		delete 
           from tKontragents
 		 where KontragentID=@SupplierID
@@ -209,7 +236,17 @@ as
            from tDiscounts (rowlock) 
           where ObjectTypeID = @KontragentTypeID 
             and ObjectID     = @SupplierID
-            
+
+       declare @AuditID numeric(18, 2)
+              ,@Comment  varchar(255)
+
+       select @Comment = 'Удаление поставщика ' + @Name 
+       exec AuditInsert     
+              @AuditID      = @AuditID out  
+             ,@ObjectID     = @SupplierID               
+             ,@ObjectTypeID = 3 
+             ,@Action       = 'delete'  
+             ,@Comment      = @Comment
   END TRY  
   BEGIN CATCH  
    

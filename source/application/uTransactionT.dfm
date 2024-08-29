@@ -80,18 +80,27 @@ inherited TransactionT: TTransactionT
       object TableViewDebet: TcxGridDBColumn
         Caption = #1055#1088#1080#1093#1086#1076
         DataBinding.FieldName = 'Debet'
+        PropertiesClassName = 'TcxCurrencyEditProperties'
+        Properties.Alignment.Horz = taCenter
+        Properties.DisplayFormat = ',0;-,0'
         HeaderAlignmentHorz = taCenter
         Width = 122
       end
       object TableViewCredit: TcxGridDBColumn
         Caption = #1056#1072#1089#1093#1086#1076
         DataBinding.FieldName = 'Credit'
+        PropertiesClassName = 'TcxCurrencyEditProperties'
+        Properties.Alignment.Horz = taCenter
+        Properties.DisplayFormat = ',0;-,0'
         HeaderAlignmentHorz = taCenter
         Width = 123
       end
       object TableViewbalance: TcxGridDBColumn
         Caption = #1054#1089#1090#1072#1090#1086#1082
         DataBinding.FieldName = 'balance'
+        PropertiesClassName = 'TcxCurrencyEditProperties'
+        Properties.Alignment.Horz = taCenter
+        Properties.DisplayFormat = ',0;-,0'
         HeaderAlignmentHorz = taCenter
         Width = 124
       end
@@ -99,7 +108,7 @@ inherited TransactionT: TTransactionT
         Caption = #1050#1072#1089#1089#1072
         DataBinding.FieldName = 'Kassa'
         HeaderAlignmentHorz = taCenter
-        Width = 67
+        Width = 59
       end
     end
   end
@@ -110,28 +119,28 @@ inherited TransactionT: TTransactionT
     Height = 76
     Width = 925
     object edtPaymentDateE: TcxDateEdit
-      Left = 395
-      Top = 16
+      Left = 371
+      Top = 5
       Properties.ClearKey = 46
       Properties.DateButtons = [btnClear, btnNow, btnToday]
       Properties.UseNullString = True
       TabOrder = 2
       OnKeyDown = edKassaKeyDown
-      Width = 104
+      Width = 107
     end
     object edtPaymentDate: TcxDateEdit
-      Left = 265
-      Top = 16
+      Left = 241
+      Top = 5
       Properties.ClearKey = 46
       Properties.DateButtons = [btnClear, btnNow, btnToday]
       Properties.UseNullString = True
       TabOrder = 1
       OnKeyDown = edKassaKeyDown
-      Width = 104
+      Width = 107
     end
     object edKassa: TcxLookupComboBox
-      Left = 74
-      Top = 16
+      Left = 50
+      Top = 5
       Properties.ClearKey = 46
       Properties.KeyFieldNames = 'KassaID'
       Properties.ListColumns = <
@@ -143,12 +152,12 @@ inherited TransactionT: TTransactionT
       Properties.MaxLength = 256
       TabOrder = 0
       OnKeyDown = edKassaKeyDown
-      Width = 133
+      Width = 136
     end
     object btnFilterOk: TcxButton
-      Left = 505
-      Top = 16
-      Width = 99
+      Left = 484
+      Top = 5
+      Width = 102
       Height = 25
       Hint = #1055#1088#1080#1084#1077#1085#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
       Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
@@ -158,9 +167,9 @@ inherited TransactionT: TTransactionT
       OnClick = btnFilterOkClick
     end
     object btnFilterClear: TcxButton
-      Left = 610
-      Top = 16
-      Width = 99
+      Left = 586
+      Top = 5
+      Width = 102
       Height = 25
       Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
       Caption = #1054#1090#1084#1077#1085#1080#1090#1100
@@ -176,12 +185,12 @@ inherited TransactionT: TTransactionT
       ParentFont = False
       Properties.Alignment.Horz = taCenter
       Properties.DecimalPlaces = 0
-      Properties.DisplayFormat = ',0 '#8381';-,0 '#8381
+      Properties.DisplayFormat = ',0;-,0'
       Properties.ReadOnly = True
       Style.Color = clLightsalmon
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
-      Style.Font.Height = -16
+      Style.Font.Height = -17
       Style.Font.Name = 'Segoe UI'
       Style.Font.Style = []
       Style.ReadOnly = True
@@ -196,17 +205,17 @@ inherited TransactionT: TTransactionT
       ParentFont = False
       Properties.Alignment.Horz = taCenter
       Properties.DecimalPlaces = 0
-      Properties.DisplayFormat = ',0 '#8381';-,0 '#8381
+      Properties.DisplayFormat = ',0;-,0'
       Properties.ReadOnly = True
       Style.Color = clLightblue
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
-      Style.Font.Height = -16
+      Style.Font.Height = -17
       Style.Font.Name = 'Segoe UI'
       Style.Font.Style = []
       Style.ReadOnly = True
       Style.IsFontAssigned = True
-      TabOrder = 9
+      TabOrder = 8
       Width = 121
     end
     object edtSumD: TcxCurrencyEdit
@@ -216,32 +225,32 @@ inherited TransactionT: TTransactionT
       ParentFont = False
       Properties.Alignment.Horz = taCenter
       Properties.DecimalPlaces = 0
-      Properties.DisplayFormat = ',0 '#8381';-,0 '#8381
+      Properties.DisplayFormat = ',0;-,0'
       Properties.ReadOnly = True
       Style.Color = clLightblue
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
-      Style.Font.Height = -16
+      Style.Font.Height = -17
       Style.Font.Name = 'Segoe UI'
       Style.Font.Style = []
       Style.ReadOnly = True
       Style.IsFontAssigned = True
-      TabOrder = 8
+      TabOrder = 6
       Width = 121
     end
     object cxLabel1: TcxLabel
-      Left = 27
-      Top = 17
+      Left = 3
+      Top = 6
       Caption = #1050#1072#1089#1089#1072':'
     end
     object cxLabel2: TcxLabel
-      Left = 213
-      Top = 17
+      Left = 189
+      Top = 6
       Caption = #1044#1072#1090#1072' '#1089':'
     end
     object cxLabel3: TcxLabel
-      Left = 372
-      Top = 17
+      Left = 348
+      Top = 6
       Caption = #1087#1086':'
     end
   end
@@ -262,6 +271,7 @@ inherited TransactionT: TTransactionT
       Left = 203
       Colors.DefaultText = clRed
       TabOrder = 2
+      Font.Height = -17
       Font.Style = [fsBold]
       ParentFont = False
       ExplicitLeft = 203
@@ -290,7 +300,7 @@ inherited TransactionT: TTransactionT
       TabOrder = 1
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
+      Font.Height = -17
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
@@ -738,7 +748,7 @@ inherited TransactionT: TTransactionT
   end
   inherited cxImageList16: TcxImageList
     FormatVersion = 1
-    DesignInfo = 12845130
+    DesignInfo = 13893752
     ImageInfo = <
       item
         ImageClass = 'TdxSmartImage'
@@ -1032,8 +1042,8 @@ inherited TransactionT: TTransactionT
     Top = 194
   end
   inherited cxStyleRepository: TcxStyleRepository
-    Left = 133
-    Top = 181
+    Left = 263
+    Top = 215
     PixelsPerInch = 96
   end
   object dsKassa: TDataSource

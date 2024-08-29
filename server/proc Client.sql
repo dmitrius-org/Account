@@ -11,6 +11,7 @@ create proc ClientInsert
 	         ,@DiscountDate      DateTime  
 as
   declare @r int = 0
+         
 
   DECLARE @ID TABLE (ID numeric(18,0));
 
@@ -45,7 +46,19 @@ as
                 @ObjectTypeID = 1
                ,@ObjectID     = @ClientID
                ,@Mode         = 1
-       
+
+       declare @AuditID numeric(18, 2)
+              ,@Comment  varchar(255)
+
+       select @Comment = 'Добавление клиента ' + @Name 
+
+       exec AuditInsert     
+              @AuditID      = @AuditID out  
+             ,@ObjectID     = @ClientID               
+             ,@ObjectTypeID = 1 
+             ,@Action       = 'add'  
+             ,@Comment      = @Comment
+
       commit tran
   END TRY  
   BEGIN CATCH  
@@ -110,6 +123,17 @@ as
                ,@ObjectID     = @ClientID
                ,@Mode         = 1
 
+       declare @AuditID numeric(18, 2)
+              ,@Comment  varchar(255)
+
+       select @Comment = 'Изменение клиента ' + @Name 
+       exec AuditInsert     
+              @AuditID      = @AuditID out  
+             ,@ObjectID     = @ClientID               
+             ,@ObjectTypeID = 1 
+             ,@Action       = 'edit'  
+             ,@Comment      = @Comment
+
   END TRY  
   BEGIN CATCH  
       goto exit_     
@@ -142,20 +166,36 @@ as
   end
 
   BEGIN TRY 
-	delete 
+      declare @Name	varchar(256)
+      select @Name = Name  
         from tKontragents
-		where KontragentID=@ClientID
+	   where KontragentID=@ClientID
 
-        delete tContacts 
+	  delete 
+        from tKontragents
+	   where KontragentID=@ClientID
+
+      delete tContacts 
         from tContacts (rowlock) 
-        where ObjectTypeID = 1 
-        and ObjectID     = @ClientID
+       where ObjectTypeID = 1 
+         and ObjectID     = @ClientID
 
 
-        delete tDiscounts 
+      delete tDiscounts 
         from tDiscounts (rowlock) 
-        where ObjectTypeID = 1 
-        and ObjectID     = @ClientID
+       where ObjectTypeID = 1 
+         and ObjectID     = @ClientID
+
+       declare @AuditID numeric(18, 2)
+              ,@Comment  varchar(255)
+
+       select @Comment = 'Удаление клиента ' + @Name 
+       exec AuditInsert     
+              @AuditID      = @AuditID out  
+             ,@ObjectID     = @ClientID               
+             ,@ObjectTypeID = 1 
+             ,@Action       = 'delete'  
+             ,@Comment      = @Comment
             
   END TRY  
   BEGIN CATCH  
@@ -170,4 +210,34 @@ exit_:
 return @r
 go
 grant exec on ClientDelete to public
+go
+
+if OBJECT_ID('ClientPrc') is not null
+    drop proc ClientPrc
+/*
+  ClientPrc -  
+*/
+go
+create proc ClientPrc
+              @ClientID            numeric(15,0)     
+             ,@SupplierID          numeric(15,0)
+             ,@Discount            money out
+as
+  declare @r int = 0
+
+  select @Discount = Discount
+    from tKontragents (nolock)
+   where KontragentID = @ClientID
+
+  select @Discount = Discount
+    from tSupplierClient (nolock)
+   where SupplierID = @SupplierID
+     and ClientID   = @ClientID
+     and Discount   > @Discount
+
+
+exit_:
+return @r
+go
+grant exec on ClientPrc to public
 go

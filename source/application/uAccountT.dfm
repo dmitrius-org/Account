@@ -128,6 +128,7 @@ inherited AccountT: TAccountT
         Properties.IncrementalFiltering = True
         Properties.OnEditValueChanged = TableViewBuyerNamePropertiesEditValueChanged
         HeaderAlignmentHorz = taCenter
+        Options.FilteringAddValueItems = False
         Options.FilteringPopupIncrementalFiltering = True
         Width = 200
       end
@@ -144,6 +145,7 @@ inherited AccountT: TAccountT
         Properties.IncrementalFiltering = True
         Properties.OnEditValueChanged = TableViewSupplieNamePropertiesEditValueChanged
         HeaderAlignmentHorz = taCenter
+        Options.FilteringAddValueItems = False
         Width = 200
       end
       object TableViewClientName: TcxGridDBColumn
@@ -153,6 +155,7 @@ inherited AccountT: TAccountT
         Properties.IncrementalFiltering = True
         Properties.OnEditValueChanged = TableViewClientNamePropertiesEditValueChanged
         HeaderAlignmentHorz = taCenter
+        Options.FilteringAddValueItems = False
         Width = 200
       end
       object TableViewClientDiscount: TcxGridDBColumn
@@ -195,7 +198,7 @@ inherited AccountT: TAccountT
     object edtAccountNumber: TcxTextEdit
       Left = 991
       Top = 70
-      TabOrder = 19
+      TabOrder = 17
       Visible = False
       OnKeyDown = edtAccountNumberKeyDown
       Width = 104
@@ -324,7 +327,7 @@ inherited AccountT: TAccountT
       Properties.Images = IM.IL
       Properties.OnButtonClick = edtBuyerPropertiesButtonClick
       ShowHint = True
-      TabOrder = 14
+      TabOrder = 10
       Visible = False
       OnKeyDown = edtAccountNumberKeyDown
       Width = 234
@@ -484,13 +487,18 @@ inherited AccountT: TAccountT
     TabOrder = 4
     object lblSum: TcxLabel
       AlignWithMargins = True
-      Left = 1089
-      Top = 5
-      Margins.Top = 5
+      Left = 1077
+      Top = 3
       Margins.Right = 10
-      Margins.Bottom = 5
       Align = alRight
       Caption = #1048#1090#1086#1075#1086':'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -17
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
     end
   end
   inherited ActionList: TActionList

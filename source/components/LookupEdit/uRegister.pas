@@ -2,7 +2,7 @@ unit uRegister;
 
 interface
 
-uses System.Classes , Vcl.Controls , DesignIntf, DesignEditors;
+uses System.Classes , Vcl.Controls;
    //  Vcl.Dialogs,
 
 procedure Register;

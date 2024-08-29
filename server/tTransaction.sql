@@ -8,7 +8,8 @@ begin
 	create table tKassa
 	(
 	 KassaID     numeric(15, 0)   --
-	,Name        varchar(32)    
+	,Name        varchar(32)  
+    ,Brief       varchar(32)  
 	);
 
 	create unique index ao1 on tKassa(KassaID);
@@ -16,9 +17,9 @@ begin
 	grant select on tKassa to public;
 end
 go
-insert tKassa (KassaID, Name)
-select 1, 'Касса 1'      union all
-select 2, 'Касса 2' 
+insert tKassa (KassaID, Name, Brief)
+select 1, 'Касса 1', '1'      union all
+select 2, 'Касса 2', '2' 
 go
 if OBJECT_ID('tOperationType') is not null
   drop table tOperationType

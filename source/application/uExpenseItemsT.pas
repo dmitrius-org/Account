@@ -37,6 +37,7 @@ type
     edtExpenseGroup: ALookupEdit;
     cxLabel1: TcxLabel;
     cxLabel2: TcxLabel;
+    cxButton1: TcxButton;
     procedure FormCreate(Sender: TObject);
     procedure actGroupExecute(Sender: TObject);
     procedure btnFilterOkClick(Sender: TObject);

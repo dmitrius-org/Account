@@ -38,8 +38,9 @@ requires
   FireDACCommon,
   dxCoreRS29,
   cxLibraryRS29,
-  dxGDIPlusRS29,
-  designide;
+  dxGDIPlusRS29//,
+  //designide
+  ;
 
 contains
   uLookupEdit in 'uLookupEdit.pas',

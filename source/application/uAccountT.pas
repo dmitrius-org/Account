@@ -478,28 +478,34 @@ end;
 procedure TAccountT.TableViewBuyerNamePropertiesEditValueChanged(Sender: TObject);
 var  SelectedObject: TObject;
 begin
-  SelectedObject := TcxComboBox(Sender).Properties.Items.Objects[TcxComboBox(Sender).ItemIndex];
-  TableViewBuyerName.EditValue := TcxComboBox(Sender).Text;
+  if (TableView.Controller.FocusedRecord.IsNewItemRecord) then
+  begin
+    SelectedObject := TcxComboBox(Sender).Properties.Items.Objects[TcxComboBox(Sender).ItemIndex];
+    TableViewBuyerName.EditValue := TcxComboBox(Sender).Text;
 
-  Query.FieldByName('BuyerID').Value :=   Integer(SelectedObject);
+    Query.FieldByName('BuyerID').Value :=   Integer(SelectedObject);
 
-  TSql.Open('select Discount from tKontragents (nolock) where KontragentID=:ID', ['ID'], [Integer(SelectedObject)]);
+    TSql.Open('select Discount from tKontragents (nolock) where KontragentID=:ID', ['ID'], [Integer(SelectedObject)]);
 
-  if TSql.Q.RecordCount>0 then
-    TableViewBuyerDiscount.EditValue := TSql.Q.FieldByName('Discount').AsFloat;
+    if TSql.Q.RecordCount>0 then
+      TableViewBuyerDiscount.EditValue := TSql.Q.FieldByName('Discount').AsFloat;
+  end;
 end;
 
 procedure TAccountT.TableViewClientNamePropertiesEditValueChanged(Sender: TObject);
 var  SelectedObject: TObject;
 begin
-  SelectedObject := TcxComboBox(Sender).Properties.Items.Objects[TcxComboBox(Sender).ItemIndex];
-  TableViewClientName.EditValue := TcxComboBox(Sender).Text;
-  Query.FieldByName('ClientID').Value :=   Integer(SelectedObject);
+  if (TableView.Controller.FocusedRecord.IsNewItemRecord) then
+  begin
+    SelectedObject := TcxComboBox(Sender).Properties.Items.Objects[TcxComboBox(Sender).ItemIndex];
+    TableViewClientName.EditValue := TcxComboBox(Sender).Text;
+    Query.FieldByName('ClientID').Value :=   Integer(SelectedObject);
 
-  TSql.Open('select Discount from tKontragents (nolock) where KontragentID=:ID', ['ID'], [Integer(SelectedObject)]);
+    TSql.Open('select Discount from tKontragents (nolock) where KontragentID=:ID', ['ID'], [Integer(SelectedObject)]);
 
-  if TSql.Q.RecordCount>0 then
-    TableViewClientDiscount.EditValue := TSql.Q.FieldByName('Discount').AsFloat;
+    if TSql.Q.RecordCount>0 then
+      TableViewClientDiscount.EditValue := TSql.Q.FieldByName('Discount').AsFloat;
+  end;
 end;
 
 procedure TAccountT.TableViewCustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);

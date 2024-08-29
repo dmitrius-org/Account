@@ -72,10 +72,27 @@ begin
           goto exit_
         end;
 
+        DECLARE @ID TABLE (ID numeric(15,0));
+
         insert tExpenseItems
               (Name, isActive, ExpenseGroupID, InUserID, UpUserID)
+        OUTPUT INSERTED.ExpenseItemID INTO @ID
         select :Name, :isActive, :ExpenseGroupID, dbo.GetUserID(), dbo.GetUserID()
 
+       declare @AuditID numeric(18, 2)
+              ,@ExpenseItemID numeric(18, 2)
+              ,@Comment  varchar(255)
+
+       select @Comment = 'Добавление статьи расходов: ' + :Name
+
+       Select @ExpenseItemID = ID from @ID
+
+       exec AuditInsert
+              @AuditID      = @AuditID out
+             ,@ObjectID     = @ExpenseItemID
+             ,@ObjectTypeID = 10
+             ,@Action       = 'add'
+             ,@Comment      = @Comment
 
         exit_:
 
@@ -121,6 +138,18 @@ begin
                UpDateTime=GetDate()
          where ExpenseItemID =:ExpenseItemID
 
+       declare @AuditID numeric(18, 2)
+              ,@Comment  varchar(255)
+
+       select @Comment = 'Изменение статьи расходов: ' + :Name
+
+       exec AuditInsert
+              @AuditID      = @AuditID out
+             ,@ObjectID     = :ExpenseItemID
+             ,@ObjectTypeID = 10
+             ,@Action       = 'edit'
+             ,@Comment      = @Comment
+
         exit_:
 
         select @R as R
@@ -148,6 +177,18 @@ begin
         delete
           from tExpenseItems
          where ExpenseItemID = :ExpenseItemID
+
+        declare @AuditID  numeric(18, 2)
+               ,@Comment  varchar(255)
+
+        select @Comment = 'Удаление статьи расходов ид:' + cast(:ExpenseItemID as varchar)
+
+        exec AuditInsert
+                @AuditID      = @AuditID out
+                ,@ObjectID     = :ExpenseItemID
+                ,@ObjectTypeID = 10
+                ,@Action       = 'delete'
+                ,@Comment      = @Comment
 
 
         exit_:

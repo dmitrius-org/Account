@@ -40,7 +40,15 @@ as
               ,dbo.GetUserID()
               ,dbo.GetUserID()
 
-		Select @TaskID = ID from @ID	
+		Select @TaskID = ID from @ID
+        
+       declare @AuditID numeric(18, 2)
+       exec AuditInsert     
+              @AuditID      = @AuditID out  
+             ,@ObjectID     = @TaskID               
+             ,@ObjectTypeID = 9 
+             ,@Action       = 'add'  
+             ,@Comment      = 'Добавление' 
       
       commit tran
   END TRY  
@@ -83,6 +91,14 @@ as
               ,UpUserID     = dbo.GetUserID()
               ,UpDatetime   = GetDate()
 		 where TaskID=@TaskID
+
+       declare @AuditID numeric(18, 2)
+       exec AuditInsert     
+              @AuditID      = @AuditID out  
+             ,@ObjectID     = @TaskID               
+             ,@ObjectTypeID = 9 
+             ,@Action       = 'edit'  
+             ,@Comment      = 'Изменение' 
   END TRY  
   BEGIN CATCH  
       goto exit_     
@@ -110,6 +126,14 @@ as
 		delete 
           from tTasks
 		 where TaskID=@TaskID
+
+    declare @AuditID numeric(18, 2)
+    exec AuditInsert     
+            @AuditID      = @AuditID out  
+            ,@ObjectID     = @TaskID               
+            ,@ObjectTypeID = 9 
+            ,@Action       = 'delete'  
+            ,@Comment      = 'Удаление' 
   END TRY  
   BEGIN CATCH  
    
